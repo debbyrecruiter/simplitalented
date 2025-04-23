@@ -34,12 +34,12 @@ export function PerformanceChart({ data, className }: PerformanceChartProps) {
             >
               <defs>
                 <linearGradient id="colorPerformance" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#2c7a7b" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#2c7a7b" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#808B96" stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor="#808B96" stopOpacity={0}/>
                 </linearGradient>
                 <linearGradient id="colorAverage" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#1a365d" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#1a365d" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#F9E79F" stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor="#F9E79F" stopOpacity={0}/>
                 </linearGradient>
               </defs>
               <XAxis 
@@ -59,7 +59,7 @@ export function PerformanceChart({ data, className }: PerformanceChartProps) {
               <Area 
                 type="monotone" 
                 dataKey="performance" 
-                stroke="#2c7a7b" 
+                stroke="#808B96" 
                 fillOpacity={1} 
                 fill="url(#colorPerformance)" 
                 strokeWidth={2}
@@ -67,7 +67,7 @@ export function PerformanceChart({ data, className }: PerformanceChartProps) {
               <Area 
                 type="monotone" 
                 dataKey="average" 
-                stroke="#1a365d" 
+                stroke="#F9E79F" 
                 fillOpacity={1} 
                 fill="url(#colorAverage)" 
                 strokeWidth={2}
@@ -77,11 +77,11 @@ export function PerformanceChart({ data, className }: PerformanceChartProps) {
         </div>
         <div className="flex items-center justify-center mt-2 gap-4">
           <div className="flex items-center">
-            <div className="h-3 w-3 rounded bg-brand-teal mr-1"></div>
+            <div className="h-3 w-3 rounded bg-[#808B96] mr-1"></div>
             <span className="text-xs">Team Performance</span>
           </div>
           <div className="flex items-center">
-            <div className="h-3 w-3 rounded bg-brand-blue mr-1"></div>
+            <div className="h-3 w-3 rounded bg-[#F9E79F] mr-1"></div>
             <span className="text-xs">Company Average</span>
           </div>
         </div>
