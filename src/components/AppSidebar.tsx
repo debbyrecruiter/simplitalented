@@ -39,7 +39,7 @@ export function AppSidebar() {
         <div className="h-8 w-8 rounded-md bg-brand-teal flex items-center justify-center">
           <span className="text-white font-bold text-lg">S</span>
         </div>
-        <h1 className="text-lg font-bold font-comfortaa">SimpliTalented</h1>
+        <h1 className="text-3xl font-bold font-comfortaa">SimpliTalented</h1>
         <SidebarTrigger className="ml-auto md:hidden" />
       </div>
       <SidebarContent>
@@ -64,4 +64,3 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
-
