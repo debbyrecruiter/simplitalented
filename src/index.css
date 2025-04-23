@@ -1,28 +1,29 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 252 88% 95%; // Light purple background
+    --background: 252 88% 95%; /* Light purple background */
     --foreground: 240 10% 3.9%;
 
-    --card: 252 88% 98%; // Lighter purple
+    --card: 252 88% 98%; /* Lighter purple */
     --card-foreground: 240 10% 3.9%;
 
     --popover: 252 88% 98%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 252 75% 70%; // Purple
+    --primary: 252 75% 70%; /* Purple */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 214 32% 91%; // Gray
+    --secondary: 214 32% 91%; /* Gray */
     --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 220 8% 70%; // Soft gray
+    --muted: 220 8% 70%; /* Soft gray */
     --muted-foreground: 215 16% 47%;
 
-    --accent: 56 100% 90%; // Soft yellow
+    --accent: 56 100% 90%; /* Soft yellow */
     --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84% 60%;
@@ -34,9 +35,9 @@
 
     --radius: 0.5rem;
 
-    --sidebar-background: 252 75% 50%; // Deeper purple for sidebar
+    --sidebar-background: 252 75% 50%; /* Deeper purple for sidebar */
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 56 100% 90%; // Yellow
+    --sidebar-primary: 56 100% 90%; /* Yellow */
     --sidebar-primary-foreground: 240 5.9% 10%;
     --sidebar-accent: 214 32% 91%;
     --sidebar-accent-foreground: 240 5.9% 10%;
@@ -57,13 +58,13 @@
     --primary: 252 75% 70%;
     --primary-foreground: 240 10% 3.9%;
 
-    --secondary: 214 32% 20%; // Dark gray
+    --secondary: 214 32% 20%; /* Dark gray */
     --secondary-foreground: 0 0% 98%;
 
     --muted: 217 33% 18%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 56 100% 30%; // Dark yellow
+    --accent: 56 100% 30%; /* Dark yellow */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 63% 31%;
