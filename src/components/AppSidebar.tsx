@@ -62,7 +62,7 @@ export function AppSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link to={item.path} className="flex items-center gap-3">
+                    <Link to={item.path} className="flex items-center gap-3 text-[#17202A]">
                       <item.icon className="h-5 w-5" />
                       <span>{item.title}</span>
                     </Link>
@@ -72,7 +72,7 @@ export function AppSidebar() {
                       {item.submenu.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
                           <SidebarMenuSubButton asChild>
-                            <Link to={subItem.path} className="flex items-center gap-3">
+                            <Link to={subItem.path} className="flex items-center gap-3 text-[#17202A]">
                               <subItem.icon className="h-4 w-4" />
                               <span>{subItem.title}</span>
                             </Link>
@@ -90,3 +90,4 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
+
