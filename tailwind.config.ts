@@ -71,6 +71,7 @@ export default {
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
         'comfortaa': ['Comfortaa', 'sans-serif'],
+        'sans': ['Calibri', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', "Helvetica Neue", 'Arial', "Noto Sans", 'sans-serif', "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
       },
       borderRadius: {
         lg: 'var(--radius)',
