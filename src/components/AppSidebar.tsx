@@ -1,4 +1,3 @@
-
 import {
   Award,
   BarChart2,
@@ -36,9 +35,6 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border">
       <div className="p-4 flex items-center gap-2">
-        <div className="h-8 w-8 rounded-md bg-brand-teal flex items-center justify-center">
-          <span className="text-[#17202A] font-bold text-lg">S</span>
-        </div>
         <h1 className="text-3xl font-bold font-comfortaa">SimpliTalented</h1>
         <SidebarTrigger className="ml-auto md:hidden" />
       </div>
