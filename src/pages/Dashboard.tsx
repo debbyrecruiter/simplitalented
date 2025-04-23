@@ -1,4 +1,3 @@
-
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricCard } from "@/components/MetricCard";
 import { GoalTracker } from "@/components/GoalTracker";
@@ -107,14 +106,6 @@ const Dashboard = () => {
             icon={Users}
             trend="up"
             trendValue="+4 this month"
-          />
-          <MetricCard
-            title="Open Positions"
-            value="8"
-            description="3 in final interview stage"
-            icon={Users}
-            trend="neutral"
-            trendValue="2 filled this month"
           />
           <MetricCard
             title="Upcoming Reviews"
