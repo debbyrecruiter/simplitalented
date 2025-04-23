@@ -6,7 +6,9 @@ import {
   FileText,
   Home,
   Settings,
-  Users
+  Users,
+  Video,
+  Search
 } from "lucide-react";
 
 import {
@@ -18,6 +20,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   SidebarTrigger
 } from "@/components/ui/sidebar";
 import { Link } from "react-router-dom";
@@ -28,7 +33,20 @@ const menuItems = [
   { title: "Performance", icon: BarChart2, path: "/performance" },
   { title: "Reviews", icon: FileText, path: "/reviews" },
   { title: "Goals", icon: Award, path: "/goals" },
-  { title: "Schedule", icon: Calendar, path: "/schedule" },
+  {
+    title: "Schedule",
+    icon: Calendar,
+    path: "/schedule",
+    submenu: [
+      {
+        title: "Past 1:1s",
+        items: [
+          { title: "Video", icon: Video, path: "/schedule/past/video" },
+          { title: "Searchable Transcript", icon: Search, path: "/schedule/past/transcript" }
+        ]
+      }
+    ]
+  },
   { title: "Settings", icon: Settings, path: "/settings" }
 ];
 
@@ -52,6 +70,24 @@ export function AppSidebar() {
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
+                  {item.submenu && (
+                    <SidebarMenuSub>
+                      {item.submenu.map((subSection) => (
+                        <React.Fragment key={subSection.title}>
+                          {subSection.items.map((subItem) => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton asChild>
+                                <Link to={subItem.path} className="flex items-center gap-3">
+                                  <subItem.icon className="h-4 w-4" />
+                                  <span>{subItem.title}</span>
+                                </Link>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </React.Fragment>
+                      ))}
+                    </SidebarMenuSub>
+                  )}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -61,3 +97,4 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
+
