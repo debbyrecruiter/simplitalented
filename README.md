@@ -1,4 +1,5 @@
-# Welcome to your Lovable project
+
+# Welcome to your SimpliTalented project
 
 ## Project info
 
