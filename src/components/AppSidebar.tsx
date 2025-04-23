@@ -1,4 +1,5 @@
 
+import React from 'react';
 import {
   Award,
   BarChart2,
@@ -97,4 +98,3 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
-
