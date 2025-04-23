@@ -70,6 +70,7 @@ export default {
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
+        'comfortaa': ['Comfortaa', 'sans-serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',
