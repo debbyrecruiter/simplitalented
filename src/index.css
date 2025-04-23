@@ -34,7 +34,7 @@
 
     --radius: 0.5rem;
 
-    --sidebar-background: 252 75% 50%; /* Deeper purple for sidebar */
+    --sidebar-background: 57 89% 55%; /* Converted #EFEF2B to HSL */
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 56 100% 90%; /* Yellow */
     --sidebar-primary-foreground: 240 5.9% 10%;
@@ -73,7 +73,7 @@
     --input: 217 33% 18%;
     --ring: 252 75% 70%;
     
-    --sidebar-background: 240 10% 3.9%;
+    --sidebar-background: 57 89% 55%; /* Same color for dark mode */
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 56 100% 30%;
     --sidebar-primary-foreground: 0 0% 98%;
