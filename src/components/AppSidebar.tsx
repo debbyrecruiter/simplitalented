@@ -41,9 +41,11 @@ const menuItems = [
     submenu: [
       {
         title: "Past 1:1s",
+        icon: Calendar,
+        path: "/schedule/past-1-1s",
         items: [
-          { title: "Video", icon: Video, path: "/schedule/past/video" },
-          { title: "Searchable Transcript", icon: Search, path: "/schedule/past/transcript" }
+          { title: "Video", icon: Video, path: "/schedule/past-1-1s/video" },
+          { title: "Searchable Transcript", icon: Search, path: "/schedule/past-1-1s/transcript" }
         ]
       }
     ]
@@ -74,18 +76,28 @@ export function AppSidebar() {
                   {item.submenu && (
                     <SidebarMenuSub>
                       {item.submenu.map((subSection) => (
-                        <React.Fragment key={subSection.title}>
-                          {subSection.items.map((subItem) => (
-                            <SidebarMenuSubItem key={subItem.title}>
-                              <SidebarMenuSubButton asChild>
-                                <Link to={subItem.path} className="flex items-center gap-3">
-                                  <subItem.icon className="h-4 w-4" />
-                                  <span>{subItem.title}</span>
-                                </Link>
-                              </SidebarMenuSubButton>
-                            </SidebarMenuSubItem>
-                          ))}
-                        </React.Fragment>
+                        <SidebarMenuItem key={subSection.title}>
+                          <SidebarMenuButton asChild>
+                            <Link to={subSection.path} className="flex items-center gap-3">
+                              <subSection.icon className="h-5 w-5" />
+                              <span>{subSection.title}</span>
+                            </Link>
+                          </SidebarMenuButton>
+                          {subSection.items && (
+                            <SidebarMenuSub>
+                              {subSection.items.map((subItem) => (
+                                <SidebarMenuSubItem key={subItem.title}>
+                                  <SidebarMenuSubButton asChild>
+                                    <Link to={subItem.path} className="flex items-center gap-3">
+                                      <subItem.icon className="h-4 w-4" />
+                                      <span>{subItem.title}</span>
+                                    </Link>
+                                  </SidebarMenuSubButton>
+                                </SidebarMenuSubItem>
+                              ))}
+                            </SidebarMenuSub>
+                          )}
+                        </SidebarMenuItem>
                       ))}
                     </SidebarMenuSub>
                   )}
