@@ -71,7 +71,7 @@ const upcomingReviews = [
 
 const Dashboard = () => {
   const handleMeCardClick = () => {
-    window.open('/profile', '_blank');
+    window.location.href = '/personal';
   };
 
   return (
