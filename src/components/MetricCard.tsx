@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
@@ -27,8 +26,8 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-4 border-[#DBC4EC] bg-[#DBC4EC]/10 rounded-full shadow-sm aspect-square flex flex-col scale-75", 
-        onClick && "cursor-pointer hover:border-[#DBC4EC]/80 transition-colors",
+        "border-4 border-blue-500 bg-yellow-50 rounded-full shadow-sm aspect-square flex flex-col scale-75", 
+        onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
       onClick={onClick}
@@ -36,8 +35,8 @@ export function MetricCard({
       <CardHeader className="flex flex-row items-center justify-center text-center pb-0 pt-12">
         <CardTitle className="text-4xl font-medium text-[#9320E7]">{title}</CardTitle>
         {Icon && (
-          <div className="absolute right-6 h-8 w-8 rounded-full bg-[#DBC4EC]/20 flex items-center justify-center">
-            <Icon className="h-4 w-4 text-[#9320E7]" />
+          <div className="absolute right-6 h-8 w-8 rounded-full bg-yellow-100 flex items-center justify-center">
+            <Icon className="h-4 w-4 text-yellow-600" />
           </div>
         )}
       </CardHeader>

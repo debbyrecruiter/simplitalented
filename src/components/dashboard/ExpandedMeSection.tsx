@@ -16,7 +16,7 @@ export const ExpandedMeSection = ({ onPast11CardClick }: ExpandedMeSectionProps)
         icon={Award}
         trend="up"
         trendValue="On track"
-        className="scale-[0.65] origin-top border-[#DBC4EC]"
+        className="scale-[0.65] origin-top"
       />
       <MetricCard
         title="My Learning"
@@ -25,7 +25,7 @@ export const ExpandedMeSection = ({ onPast11CardClick }: ExpandedMeSectionProps)
         icon={BookOpen}
         trend="neutral"
         trendValue="In progress"
-        className="scale-[0.65] origin-top border-[#DBC4EC]"
+        className="scale-[0.65] origin-top"
       />
       <MetricCard
         title="My Reviews"
@@ -34,7 +34,7 @@ export const ExpandedMeSection = ({ onPast11CardClick }: ExpandedMeSectionProps)
         icon={Star}
         trend="up"
         trendValue="Last: 4.5/5"
-        className="scale-[0.65] origin-top border-[#DBC4EC]"
+        className="scale-[0.65] origin-top"
       />
       <MetricCard
         title="My Schedule"
@@ -43,7 +43,7 @@ export const ExpandedMeSection = ({ onPast11CardClick }: ExpandedMeSectionProps)
         icon={Calendar}
         trend="neutral"
         trendValue="2 tomorrow"
-        className="scale-[0.65] origin-top border-[#DBC4EC]"
+        className="scale-[0.65] origin-top"
       />
       <MetricCard
         title="Past 1:1s"
@@ -52,7 +52,7 @@ export const ExpandedMeSection = ({ onPast11CardClick }: ExpandedMeSectionProps)
         icon={Users}
         trend="up"
         trendValue="+3 from previous"
-        className="scale-[0.65] origin-top border-[#DBC4EC]"
+        className="scale-[0.65] origin-top"
         onClick={onPast11CardClick}
       />
     </div>

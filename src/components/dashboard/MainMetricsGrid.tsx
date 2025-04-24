@@ -1,3 +1,4 @@
+
 import { MetricCard } from "@/components/MetricCard";
 import { Calendar, UserRound, UsersRound } from "lucide-react";
 
@@ -16,7 +17,6 @@ export const MainMetricsGrid = ({ onMeCardClick }: MainMetricsGridProps) => {
         trend="up"
         trendValue="Last promoted 6 months ago"
         onClick={onMeCardClick}
-        className="border-[#DBC4EC]"
       />
       <MetricCard
         title="My Team"
