@@ -27,7 +27,7 @@ export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: M
   return (
     <BaseSidebarMenuItem key={title}>
       <SidebarMenuButton asChild>
-        <Link to={path} className="flex items-center gap-3 text-[#17202A]">
+        <Link to={path} className="flex items-center gap-3 text-[#17202A] font-bold text-[110%]">
           <Icon className="h-5 w-5" />
           <span>{title}</span>
         </Link>
@@ -39,7 +39,7 @@ export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: M
               <SidebarMenuSubButton asChild>
                 <Link 
                   to={subItem.path} 
-                  className={`flex items-center gap-3 ${subItem.className || 'text-[#17202A]'}`}
+                  className={`flex items-center gap-3 font-bold text-[110%] ${subItem.className || 'text-[#17202A]'}`}
                 >
                   <subItem.icon className="h-4 w-4" />
                   <span>{subItem.title}</span>
@@ -52,3 +52,4 @@ export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: M
     </BaseSidebarMenuItem>
   );
 }
+
