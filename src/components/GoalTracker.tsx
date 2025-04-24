@@ -1,5 +1,5 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
@@ -19,9 +19,6 @@ interface GoalTrackerProps {
 export function GoalTracker({ goals, className }: GoalTrackerProps) {
   return (
     <Card className={cn("border shadow-sm", className)}>
-      <CardHeader className="pb-3">
-        <CardTitle className="text-base">Active Goals</CardTitle>
-      </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {goals.map((goal) => (
