@@ -4,7 +4,7 @@ import { GoalTracker } from "@/components/GoalTracker";
 import { TeamMembersCard } from "@/components/TeamMembersCard";
 import { UpcomingReviewsCard } from "@/components/UpcomingReviewsCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
-import { Award, Calendar, Users, BarChart2 } from "lucide-react";
+import { Award, Calendar, Users, BarChart2, UserRound } from "lucide-react";
 
 // Sample data
 const performanceData = [
@@ -99,6 +99,14 @@ const Dashboard = () => {
       <DashboardHeader title="Dashboard" />
       <div className="flex-1 p-6 overflow-auto">
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6">
+          <MetricCard
+            title="Me"
+            value="Senior Developer"
+            description="5 years experience"
+            icon={UserRound}
+            trend="up"
+            trendValue="Last promoted 6 months ago"
+          />
           <MetricCard
             title="Total Employees"
             value="124"
