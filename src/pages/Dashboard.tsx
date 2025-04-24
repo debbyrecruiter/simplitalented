@@ -1,7 +1,7 @@
 
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricCard } from "@/components/MetricCard";
-import { Calendar, UserRound, UsersRound, Award, BookOpen, Star, Users } from "lucide-react";
+import { Calendar, UserRound, UsersRound, Award, BookOpen, Star, Users, Video, Search } from "lucide-react";
 import { useState } from "react";
 
 // Sample data
@@ -76,6 +76,10 @@ const Dashboard = () => {
 
   const handleMeCardClick = () => {
     setExpandedSection(expandedSection === "me" ? null : "me");
+  };
+
+  const handlePast11CardClick = () => {
+    setExpandedSection(expandedSection === "past11s" ? null : "past11s");
   };
 
   return (
@@ -164,6 +168,39 @@ const Dashboard = () => {
               trend="up"
               trendValue="+3 from previous"
               className="scale-[0.65] origin-top"
+              onClick={handlePast11CardClick}
+            />
+          </div>
+        )}
+
+        {expandedSection === "past11s" && (
+          <div className="grid gap-4 grid-cols-3 mb-4 animate-in fade-in-50 mt-2">
+            <MetricCard
+              title="Video"
+              value="8 Recordings"
+              description="From last month"
+              icon={Video}
+              trend="neutral"
+              trendValue="Latest: 2 days ago"
+              className="scale-[0.45] origin-top"
+            />
+            <MetricCard
+              title="My Learning"
+              value="3 Insights"
+              description="From recordings"
+              icon={BookOpen}
+              trend="up"
+              trendValue="2 new points"
+              className="scale-[0.45] origin-top"
+            />
+            <MetricCard
+              title="Searchable Transcript"
+              value="12 Documents"
+              description="All meetings"
+              icon={Search}
+              trend="neutral"
+              trendValue="Updated daily"
+              className="scale-[0.45] origin-top"
             />
           </div>
         )}
