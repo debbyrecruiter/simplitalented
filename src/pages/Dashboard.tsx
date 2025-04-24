@@ -4,7 +4,7 @@ import { GoalTracker } from "@/components/GoalTracker";
 import { TeamMembersCard } from "@/components/TeamMembersCard";
 import { UpcomingReviewsCard } from "@/components/UpcomingReviewsCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
-import { Award, Calendar, Users, BarChart2, UserRound, UsersRound } from "lucide-react";
+import { Calendar, UserRound, UsersRound } from "lucide-react";
 
 // Sample data
 const performanceData = [
@@ -116,12 +116,12 @@ const Dashboard = () => {
             trendValue="+2 this quarter"
           />
           <MetricCard
-            title="Total Employees"
-            value="124"
-            description="Across 6 departments"
-            icon={Users}
+            title="My Direct Reports"
+            value="5 Members"
+            description="Across 2 teams"
+            icon={UsersRound}
             trend="up"
-            trendValue="+4 this month"
+            trendValue="+1 this month"
           />
           <MetricCard
             title="Upcoming Reviews"
