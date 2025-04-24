@@ -1,8 +1,6 @@
-
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricCard } from "@/components/MetricCard";
 import { GoalTracker } from "@/components/GoalTracker";
-import { UpcomingReviewsCard } from "@/components/UpcomingReviewsCard";
 import { PerformanceChart } from "@/components/PerformanceChart";
 import { Calendar, UserRound, UsersRound } from "lucide-react";
 
@@ -140,14 +138,9 @@ const Dashboard = () => {
           />
           <GoalTracker goals={goals} />
         </div>
-        
-        <div className="grid gap-6 grid-cols-1 lg:grid-cols-3">
-          <UpcomingReviewsCard reviews={upcomingReviews} />
-        </div>
       </div>
     </div>
   );
 };
 
 export default Dashboard;
-
