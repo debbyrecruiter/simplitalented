@@ -1,4 +1,3 @@
-
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricCard } from "@/components/MetricCard";
 import { Calendar, UserRound, UsersRound, Award, BookOpen, Star, Users, Video, Search } from "lucide-react";
@@ -123,7 +122,7 @@ const Dashboard = () => {
         </div>
 
         {expandedSection === "me" && (
-          <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-4 animate-in fade-in-50">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-5 mb-4 animate-in fade-in-50">
             <MetricCard
               title="My Goals"
               value="4 Active"
@@ -174,7 +173,7 @@ const Dashboard = () => {
         )}
 
         {expandedSection === "past11s" && (
-          <div className="grid gap-4 grid-cols-3 mb-4 animate-in fade-in-50 mt-2">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-3 mb-4 animate-in fade-in-50 mt-2">
             <MetricCard
               title="Video"
               value="8 Recordings"
