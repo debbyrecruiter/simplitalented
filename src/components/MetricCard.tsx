@@ -27,8 +27,8 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-4 border-yellow-200 bg-yellow-50 rounded-2xl shadow-sm aspect-square flex flex-col", 
-        onClick && "cursor-pointer hover:border-yellow-300 transition-colors",
+        "border-4 border-blue-500 bg-yellow-50 rounded-2xl shadow-sm aspect-square flex flex-col", 
+        onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
       onClick={onClick}
@@ -64,3 +64,4 @@ export function MetricCard({
     </Card>
   );
 }
+
