@@ -11,6 +11,7 @@ interface MetricCardProps {
   trend?: "up" | "down" | "neutral";
   trendValue?: string;
   className?: string;
+  onClick?: () => void;
 }
 
 export function MetricCard({
@@ -20,14 +21,17 @@ export function MetricCard({
   icon: Icon,
   trend,
   trendValue,
-  className
+  className,
+  onClick
 }: MetricCardProps) {
   return (
     <Card 
       className={cn(
         "border-4 border-blue-500 rounded-xl shadow-sm aspect-square flex flex-col", 
+        onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
+      onClick={onClick}
     >
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>

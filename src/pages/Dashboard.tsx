@@ -91,6 +91,10 @@ const upcomingReviews = [
 ];
 
 const Dashboard = () => {
+  const handleMeCardClick = () => {
+    window.open('/profile', '_blank');
+  };
+
   return (
     <div className="flex flex-col h-screen">
       <DashboardHeader title="Dashboard" />
@@ -103,6 +107,7 @@ const Dashboard = () => {
             icon={UserRound}
             trend="up"
             trendValue="Last promoted 6 months ago"
+            onClick={handleMeCardClick}
           />
           <MetricCard
             title="My Team"
