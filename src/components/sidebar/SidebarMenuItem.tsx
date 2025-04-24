@@ -13,6 +13,7 @@ interface MenuSubItem {
   title: string;
   icon: LucideIcon;
   path: string;
+  className?: string;
 }
 
 interface MenuItemProps {
@@ -36,7 +37,10 @@ export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: M
           {submenu.map((subItem) => (
             <SidebarMenuSubItem key={subItem.title}>
               <SidebarMenuSubButton asChild>
-                <Link to={subItem.path} className="flex items-center gap-3 text-[#17202A]">
+                <Link 
+                  to={subItem.path} 
+                  className={`flex items-center gap-3 ${subItem.className || 'text-[#17202A]'}`}
+                >
                   <subItem.icon className="h-4 w-4" />
                   <span>{subItem.title}</span>
                 </Link>
@@ -48,4 +52,3 @@ export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: M
     </BaseSidebarMenuItem>
   );
 }
-

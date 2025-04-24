@@ -23,10 +23,19 @@ export const menuItems = [
     icon: Calendar,
     path: "/past-1-1s",
     submenu: [
-      { title: "Video", icon: Video, path: "/past-1-1s/video" },
-      { title: "Searchable Transcript", icon: Search, path: "/past-1-1s/transcript" }
+      { 
+        title: "Video", 
+        icon: Video, 
+        path: "/past-1-1s/video",
+        className: "text-[#17202A]" 
+      },
+      { 
+        title: "Searchable Transcript", 
+        icon: Search, 
+        path: "/past-1-1s/transcript",
+        className: "text-[#17202A]" 
+      }
     ]
   },
   { title: "Settings", icon: Settings, path: "/settings" }
 ];
-
