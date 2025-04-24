@@ -23,7 +23,7 @@ export function MetricCard({
   className
 }: MetricCardProps) {
   return (
-    <Card className={cn("border shadow-sm", className)}>
+    <Card className={cn("border shadow-sm aspect-square flex flex-col", className)}>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
         {Icon && (
@@ -32,7 +32,7 @@ export function MetricCard({
           </div>
         )}
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-1 flex flex-col justify-center">
         <div className="text-2xl font-bold">{value}</div>
         {description && (
           <p className="text-xs text-muted-foreground">{description}</p>
