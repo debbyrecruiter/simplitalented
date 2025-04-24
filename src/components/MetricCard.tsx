@@ -33,10 +33,10 @@ export function MetricCard({
       )}
       onClick={onClick}
     >
-      <CardHeader className="flex flex-row items-center justify-between pb-2">
+      <CardHeader className="flex flex-row items-center justify-center text-center pb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
         {Icon && (
-          <div className="h-8 w-8 rounded-full bg-yellow-100 flex items-center justify-center">
+          <div className="absolute right-6 h-8 w-8 rounded-full bg-yellow-100 flex items-center justify-center">
             <Icon className="h-4 w-4 text-yellow-600" />
           </div>
         )}
