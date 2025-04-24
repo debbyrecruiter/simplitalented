@@ -1,6 +1,5 @@
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricCard } from "@/components/MetricCard";
-import { GoalTracker } from "@/components/GoalTracker";
 import { Calendar, UserRound, UsersRound } from "lucide-react";
 
 // Sample data
@@ -113,10 +112,6 @@ const Dashboard = () => {
             trend="up"
             trendValue="+3 from last period"
           />
-        </div>
-        
-        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 mb-4">
-          <GoalTracker goals={goals} />
         </div>
       </div>
     </div>
