@@ -4,14 +4,19 @@ import { useState } from "react";
 import { MainMetricsGrid } from "@/components/dashboard/MainMetricsGrid";
 import { ExpandedMeSection } from "@/components/dashboard/ExpandedMeSection";
 import { Past11sSubmenu } from "@/components/dashboard/Past11sSubmenu";
+import { ExpandedTeamSection } from "@/components/dashboard/ExpandedTeamSection";
 
-type ExpandedSectionType = "me" | "past11s" | null;
+type ExpandedSectionType = "me" | "past11s" | "team" | null;
 
 const Dashboard = () => {
   const [expandedSection, setExpandedSection] = useState<ExpandedSectionType>(null);
 
   const handleMeCardClick = () => {
     setExpandedSection(expandedSection === "me" ? null : "me");
+  };
+
+  const handleTeamCardClick = () => {
+    setExpandedSection(expandedSection === "team" ? null : "team");
   };
 
   const handlePast11CardClick = () => {
@@ -22,11 +27,16 @@ const Dashboard = () => {
     <div className="flex flex-col h-screen">
       <DashboardHeader title="Dashboard" />
       <div className="flex-1 p-4 overflow-auto">
-        <MainMetricsGrid onMeCardClick={handleMeCardClick} />
+        <MainMetricsGrid 
+          onMeCardClick={handleMeCardClick}
+          onTeamCardClick={handleTeamCardClick} 
+        />
 
         {expandedSection === "me" && (
           <ExpandedMeSection onPast11CardClick={handlePast11CardClick} />
         )}
+
+        {expandedSection === "team" && <ExpandedTeamSection />}
 
         {expandedSection === "past11s" && <Past11sSubmenu />}
       </div>

@@ -1,12 +1,12 @@
-
 import { MetricCard } from "@/components/MetricCard";
 import { Calendar, UserRound, UsersRound } from "lucide-react";
 
 interface MainMetricsGridProps {
   onMeCardClick: () => void;
+  onTeamCardClick: () => void;
 }
 
-export const MainMetricsGrid = ({ onMeCardClick }: MainMetricsGridProps) => {
+export const MainMetricsGrid = ({ onMeCardClick, onTeamCardClick }: MainMetricsGridProps) => {
   return (
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-4">
       <MetricCard
@@ -25,6 +25,7 @@ export const MainMetricsGrid = ({ onMeCardClick }: MainMetricsGridProps) => {
         icon={UsersRound}
         trend="up"
         trendValue="+2 this quarter"
+        onClick={onTeamCardClick}
       />
       <MetricCard
         title="My Direct Reports"
