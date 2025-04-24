@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
@@ -26,7 +27,7 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-4 border-blue-500 bg-yellow-50 rounded-2xl shadow-sm aspect-square flex flex-col scale-75", 
+        "border-4 border-blue-500 bg-yellow-50 rounded-full shadow-sm aspect-square flex flex-col scale-75", 
         onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
@@ -35,18 +36,18 @@ export function MetricCard({
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
         {Icon && (
-          <div className="h-8 w-8 rounded-md bg-yellow-100 flex items-center justify-center">
+          <div className="h-8 w-8 rounded-full bg-yellow-100 flex items-center justify-center">
             <Icon className="h-4 w-4 text-yellow-600" />
           </div>
         )}
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col justify-center">
+      <CardContent className="flex-1 flex flex-col justify-center text-center">
         <div className="text-2xl font-bold">{value}</div>
         {description && (
           <p className="text-xs text-muted-foreground">{description}</p>
         )}
         {trend && (
-          <div className="flex items-center mt-1">
+          <div className="flex items-center justify-center mt-1">
             <span
               className={cn(
                 "text-xs font-medium",
