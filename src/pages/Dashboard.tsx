@@ -1,7 +1,6 @@
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricCard } from "@/components/MetricCard";
 import { GoalTracker } from "@/components/GoalTracker";
-import { PerformanceChart } from "@/components/PerformanceChart";
 import { Calendar, UserRound, UsersRound } from "lucide-react";
 
 // Sample data
@@ -131,11 +130,7 @@ const Dashboard = () => {
           />
         </div>
         
-        <div className="grid gap-6 grid-cols-1 lg:grid-cols-3 mb-6">
-          <PerformanceChart 
-            data={performanceData} 
-            className="lg:col-span-2"
-          />
+        <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 mb-6">
           <GoalTracker goals={goals} />
         </div>
       </div>
