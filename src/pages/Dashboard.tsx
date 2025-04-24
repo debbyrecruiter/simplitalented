@@ -94,8 +94,8 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col h-screen">
       <DashboardHeader title="Dashboard" />
-      <div className="flex-1 p-6 overflow-auto">
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="flex-1 p-4 overflow-auto">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-4">
           <MetricCard
             title="Me"
             value="Senior Developer"
@@ -130,7 +130,7 @@ const Dashboard = () => {
           />
         </div>
         
-        <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 mb-6">
+        <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 mb-4">
           <GoalTracker goals={goals} />
         </div>
       </div>
