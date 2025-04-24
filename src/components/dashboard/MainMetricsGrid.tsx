@@ -5,9 +5,14 @@ import { UserRound, UsersRound } from "lucide-react";
 interface MainMetricsGridProps {
   onMeCardClick: () => void;
   onTeamCardClick: () => void;
+  onDirectReportsClick: () => void;
 }
 
-export const MainMetricsGrid = ({ onMeCardClick, onTeamCardClick }: MainMetricsGridProps) => {
+export const MainMetricsGrid = ({ 
+  onMeCardClick, 
+  onTeamCardClick, 
+  onDirectReportsClick 
+}: MainMetricsGridProps) => {
   return (
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-4">
       <MetricCard
@@ -35,8 +40,8 @@ export const MainMetricsGrid = ({ onMeCardClick, onTeamCardClick }: MainMetricsG
         icon={UsersRound}
         trend="up"
         trendValue="+1 this month"
+        onClick={onDirectReportsClick}
       />
     </div>
   );
 };
-
