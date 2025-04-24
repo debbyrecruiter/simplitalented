@@ -1,5 +1,6 @@
+
 import { MetricCard } from "@/components/MetricCard";
-import { Calendar, UserRound, UsersRound } from "lucide-react";
+import { UserRound, UsersRound } from "lucide-react";
 
 interface MainMetricsGridProps {
   onMeCardClick: () => void;
@@ -8,7 +9,7 @@ interface MainMetricsGridProps {
 
 export const MainMetricsGrid = ({ onMeCardClick, onTeamCardClick }: MainMetricsGridProps) => {
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-4">
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-4">
       <MetricCard
         title="Me"
         value="Senior Developer"
@@ -35,14 +36,7 @@ export const MainMetricsGrid = ({ onMeCardClick, onTeamCardClick }: MainMetricsG
         trend="up"
         trendValue="+1 this month"
       />
-      <MetricCard
-        title="Upcoming Reviews"
-        value="12"
-        description="Due in the next 14 days"
-        icon={Calendar}
-        trend="up"
-        trendValue="+3 from last period"
-      />
     </div>
   );
 };
+

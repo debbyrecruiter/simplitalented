@@ -36,27 +36,4 @@ export const teamMembers = [
   },
 ];
 
-export const upcomingReviews = [
-  { 
-    id: 1, 
-    reviewee: {
-      name: "Jamie Chen", 
-      avatarUrl: "https://i.pravatar.cc/300?u=jamie@example.com", 
-      initials: "JC"
-    }, 
-    type: "Quarterly Review", 
-    date: "May 12", 
-    time: "2:00 PM" 
-  },
-  { 
-    id: 2, 
-    reviewee: {
-      name: "Ryan Johnson", 
-      avatarUrl: "https://i.pravatar.cc/300?u=ryan@example.com", 
-      initials: "RJ"
-    }, 
-    type: "Performance Evaluation", 
-    date: "May 15", 
-    time: "10:30 AM" 
-  },
-];
+// Removed upcomingReviews array
