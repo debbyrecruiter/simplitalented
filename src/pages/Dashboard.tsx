@@ -15,27 +15,7 @@ const performanceData = [
 ];
 
 const goals = [
-  { 
-    id: 1, 
-    title: "Increase team productivity", 
-    progress: 75, 
-    category: "Team Performance", 
-    dueDate: "June 30" 
-  },
-  { 
-    id: 2, 
-    title: "Complete leadership training", 
-    progress: 40, 
-    category: "Professional Development", 
-    dueDate: "July 15" 
-  },
-  { 
-    id: 3, 
-    title: "Implement new review process", 
-    progress: 25, 
-    category: "Process Improvement", 
-    dueDate: "August 1" 
-  },
+  // Goals removed as per user request
 ];
 
 const teamMembers = [
