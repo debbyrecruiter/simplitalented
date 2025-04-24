@@ -34,7 +34,7 @@ export function MetricCard({
       onClick={onClick}
     >
       <CardHeader className="flex flex-row items-center justify-center text-center pb-2">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
+        <CardTitle className="text-2xl font-medium">{title}</CardTitle>
         {Icon && (
           <div className="absolute right-6 h-8 w-8 rounded-full bg-yellow-100 flex items-center justify-center">
             <Icon className="h-4 w-4 text-yellow-600" />
