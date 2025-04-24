@@ -1,3 +1,4 @@
+
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricCard } from "@/components/MetricCard";
 import { Calendar, UserRound, UsersRound, Award, BookOpen, Star, Users } from "lucide-react";
@@ -118,7 +119,7 @@ const Dashboard = () => {
         </div>
 
         {expandedSection === "me" && (
-          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-4 animate-in fade-in-50">
+          <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-4 animate-in fade-in-50">
             <MetricCard
               title="My Goals"
               value="4 Active"
@@ -126,6 +127,7 @@ const Dashboard = () => {
               icon={Award}
               trend="up"
               trendValue="On track"
+              className="scale-[0.65] origin-top"
             />
             <MetricCard
               title="My Learning"
@@ -134,6 +136,7 @@ const Dashboard = () => {
               icon={BookOpen}
               trend="neutral"
               trendValue="In progress"
+              className="scale-[0.65] origin-top"
             />
             <MetricCard
               title="My Reviews"
@@ -142,6 +145,7 @@ const Dashboard = () => {
               icon={Star}
               trend="up"
               trendValue="Last: 4.5/5"
+              className="scale-[0.65] origin-top"
             />
             <MetricCard
               title="My Schedule"
@@ -150,6 +154,7 @@ const Dashboard = () => {
               icon={Calendar}
               trend="neutral"
               trendValue="2 tomorrow"
+              className="scale-[0.65] origin-top"
             />
             <MetricCard
               title="Past 1:1s"
@@ -158,6 +163,7 @@ const Dashboard = () => {
               icon={Users}
               trend="up"
               trendValue="+3 from previous"
+              className="scale-[0.65] origin-top"
             />
           </div>
         )}
