@@ -1,20 +1,12 @@
 
 import { DashboardHeader } from "@/components/DashboardHeader";
-import { useState } from "react";
 import { HeaderMetrics } from "@/components/dashboard/HeaderMetrics";
 import { PersonalMetrics } from "@/components/dashboard/PersonalMetrics";
 import { Past11Metrics } from "@/components/dashboard/Past11Metrics";
+import { useDashboardState } from "@/hooks/useDashboardState";
 
 const Dashboard = () => {
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
-
-  const handleMeCardClick = () => {
-    setExpandedSection(expandedSection === "me" ? null : "me");
-  };
-
-  const handlePast11CardClick = () => {
-    setExpandedSection(expandedSection === "past11s" ? null : "past11s");
-  };
+  const { expandedSection, handleMeCardClick, handlePast11CardClick } = useDashboardState();
 
   return (
     <div className="flex flex-col h-screen">
