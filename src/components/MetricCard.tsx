@@ -23,7 +23,12 @@ export function MetricCard({
   className
 }: MetricCardProps) {
   return (
-    <Card className={cn("border shadow-sm aspect-square flex flex-col", className)}>
+    <Card 
+      className={cn(
+        "border-2 border-blue-500 rounded-xl shadow-sm aspect-square flex flex-col", 
+        className
+      )}
+    >
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
         {Icon && (
