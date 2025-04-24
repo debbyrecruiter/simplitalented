@@ -25,7 +25,7 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-4 border-blue-500 rounded-xl shadow-sm h-[150px]", // Reduced from default square aspect
+        "border-4 border-blue-500 rounded-xl shadow-sm aspect-square flex flex-col", 
         className
       )}
     >
