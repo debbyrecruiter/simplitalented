@@ -1,4 +1,3 @@
-
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MetricCard } from "@/components/MetricCard";
 import { Calendar, UserRound, UsersRound, Award, BookOpen, Star, Users, Video, Search } from "lucide-react";
@@ -13,10 +12,6 @@ const performanceData = [
   { month: 'May', performance: 70, average: 64 },
   { month: 'Jun', performance: 78, average: 65 },
   { month: 'Jul', performance: 82, average: 66 },
-];
-
-const goals = [
-  // Goals removed as per user request
 ];
 
 const teamMembers = [
@@ -71,8 +66,11 @@ const upcomingReviews = [
   },
 ];
 
+// Define a type for our expanded section options
+type ExpandedSectionType = "me" | "past11s" | null;
+
 const Dashboard = () => {
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [expandedSection, setExpandedSection] = useState<ExpandedSectionType>(null);
 
   const handleMeCardClick = () => {
     setExpandedSection(expandedSection === "me" ? null : "me");
