@@ -34,7 +34,7 @@
 
     --radius: 0.5rem;
 
-    --sidebar-background: 57 89% 55%; /* Converted #F3F31B to HSL */
+    --sidebar-background: 240 100% 97%; /* Converted #F0F0FF to HSL */
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 56 100% 90%; /* Yellow */
     --sidebar-primary-foreground: 240 5.9% 10%;
@@ -73,7 +73,7 @@
     --input: 217 33% 18%;
     --ring: 252 75% 70%;
     
-    --sidebar-background: 57 89% 55%; /* Same color for dark mode */
+    --sidebar-background: 240 100% 97%; /* Same color for dark mode */
     --sidebar-foreground: 0 0% 98%;
     --sidebar-primary: 56 100% 30%;
     --sidebar-primary-foreground: 0 0% 98%;
