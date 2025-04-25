@@ -18,7 +18,7 @@ interface MenuSubItem {
 
 interface MenuItemProps {
   title: string;
-  icon: Icon;
+  icon: LucideIcon; // Changed from Icon to LucideIcon
   path: string;
   submenu?: MenuSubItem[];
 }
