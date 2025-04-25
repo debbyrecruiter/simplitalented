@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { LucideIcon } from "lucide-react";
 import {
   SidebarMenuItem as BaseSidebarMenuItem,
@@ -18,17 +18,21 @@ interface MenuSubItem {
 
 interface MenuItemProps {
   title: string;
-  icon: LucideIcon;
+  icon: Icon;
   path: string;
   submenu?: MenuSubItem[];
 }
 
 export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: MenuItemProps) {
+  const location = useLocation();
+  const isSelected = location.pathname === path;
+  const textColor = isSelected ? "text-[#512888]" : "text-[#8E9196]";
+
   return (
     <BaseSidebarMenuItem key={title}>
       <SidebarMenuButton asChild>
-        <Link to={path} className="flex items-center gap-3 text-[#512888] font-bold text-[110%]">
-          <Icon className="h-5 w-5 text-[#512888]" />
+        <Link to={path} className={`flex items-center gap-3 font-bold text-[110%] ${textColor} transition-colors duration-200`}>
+          <Icon className={`h-5 w-5 ${textColor} transition-colors duration-200`} />
           <span>{title}</span>
         </Link>
       </SidebarMenuButton>
