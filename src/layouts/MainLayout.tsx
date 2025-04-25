@@ -9,7 +9,7 @@ export default function MainLayout() {
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
         <AppSidebar />
-        <div className="flex-1">
+        <div className="flex-1 relative">
           <Outlet />
         </div>
         <ChatbotButton />
