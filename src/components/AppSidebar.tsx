@@ -17,7 +17,7 @@ export function AppSidebar() {
       <SidebarLogo />
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[#17202A] font-bold text-[110%]">Main Menu</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-[#512888] font-bold text-[110%]">Main Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
@@ -30,4 +30,3 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
-
