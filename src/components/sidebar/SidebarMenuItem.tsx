@@ -39,9 +39,9 @@ export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: M
               <SidebarMenuSubButton asChild>
                 <Link 
                   to={subItem.path} 
-                  className={`flex items-center gap-3 font-bold text-[110%] text-[#512888] ${subItem.className || ''}`}
+                  className={`flex items-center gap-3 font-bold text-[110%] text-[#0067D9] ${subItem.className || ''}`}
                 >
-                  <subItem.icon className="h-4 w-4 text-[#512888]" />
+                  <subItem.icon className="h-4 w-4 text-[#0067D9]" />
                   <span>{subItem.title}</span>
                 </Link>
               </SidebarMenuSubButton>
