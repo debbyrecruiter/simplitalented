@@ -1,20 +1,34 @@
 
-import { Bell, Search } from "lucide-react";
+import { Bell, Search, AlignJustify } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSidebar } from "@/components/ui/sidebar";
 
 interface DashboardHeaderProps {
   title: string;
 }
 
 export function DashboardHeader({ title }: DashboardHeaderProps) {
+  const { toggleSidebar } = useSidebar();
+
   return (
     <div className="flex flex-col gap-4 md:flex-row md:items-center justify-between py-4 px-6 border-b">
-      <h1 className="text-3xl font-comfortaa">
-        <span className="text-[#512888] font-bold">Simpli</span>
-        <span className="text-black">Talented</span>
-      </h1>
+      <div className="flex items-center gap-4">
+        <Button 
+          onClick={toggleSidebar} 
+          variant="ghost" 
+          size="icon" 
+          className="md:hidden"
+        >
+          <AlignJustify className="h-5 w-5" />
+          <span className="sr-only">Toggle Menu</span>
+        </Button>
+        <h1 className="text-3xl font-comfortaa">
+          <span className="text-[#512888] font-bold">Simpli</span>
+          <span className="text-black">Talented</span>
+        </h1>
+      </div>
       <div className="flex items-center gap-3">
         <div className="relative md:w-64">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -36,4 +50,3 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
     </div>
   );
 }
-
