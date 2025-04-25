@@ -29,10 +29,11 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
           <span className="absolute top-1 right-1.5 w-2 h-2 bg-brand-coral rounded-full"></span>
         </Button>
         <Avatar>
-          <AvatarImage src="https://i.pravatar.cc/300?u=user@example.com" />
+          <AvatarImage src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&h=400&auto=format&fit=crop" />
           <AvatarFallback>JD</AvatarFallback>
         </Avatar>
       </div>
     </div>
   );
 }
+
