@@ -22,7 +22,7 @@
     --muted: 220 8% 70%; /* Soft gray */
     --muted-foreground: 215 16% 47%;
 
-    --accent: 56 100% 90%; /* Soft yellow */
+    --accent: 237 100% 95%; /* Converted #F0F0FF to HSL */
     --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84% 60%;
@@ -63,7 +63,7 @@
     --muted: 217 33% 18%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 56 100% 30%; /* Dark yellow */
+    --accent: 237 100% 40%; /* Darker shade for dark mode */
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 63% 31%;
