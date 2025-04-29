@@ -12,6 +12,7 @@ export const Past11sSubmenu = () => {
         icon={Video}
         trend="neutral"
         trendValue="Latest: 2 days ago"
+        className="origin-center scale-65" // Slightly bigger than 50% but still smaller than main menu
       />
       <MetricCard
         title="My Learning"
@@ -20,6 +21,7 @@ export const Past11sSubmenu = () => {
         icon={BookOpen}
         trend="up"
         trendValue="2 new points"
+        className="origin-center scale-65" // Slightly bigger than 50% but still smaller than main menu
       />
       <MetricCard
         title="Searchable Transcript"
@@ -28,6 +30,7 @@ export const Past11sSubmenu = () => {
         icon={Search}
         trend="neutral"
         trendValue="Updated daily"
+        className="origin-center scale-65" // Slightly bigger than 50% but still smaller than main menu
       />
     </div>
   );
