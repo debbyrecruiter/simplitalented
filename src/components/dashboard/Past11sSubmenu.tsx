@@ -1,6 +1,7 @@
 
 import { MetricCard } from "@/components/MetricCard";
 import { Video, BookOpen, Search } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const Past11sSubmenu = () => {
   return (
@@ -12,7 +13,13 @@ export const Past11sSubmenu = () => {
         icon={Video}
         trend="neutral"
         trendValue="Latest: 2 days ago"
-        className="aspect-square rounded-full scale-50 origin-center"
+        className="aspect-square rounded-full scale-50 origin-center" 
+        avatar={
+          <Avatar className="h-10 w-10 border-2 border-[#42376a]">
+            <AvatarImage src="/placeholder.svg" />
+            <AvatarFallback>VR</AvatarFallback>
+          </Avatar>
+        }
       />
       <MetricCard
         title="My Learning"
@@ -22,6 +29,12 @@ export const Past11sSubmenu = () => {
         trend="up"
         trendValue="2 new points"
         className="aspect-square rounded-full scale-50 origin-center"
+        avatar={
+          <Avatar className="h-10 w-10 border-2 border-[#42376a]">
+            <AvatarImage src="/placeholder.svg" />
+            <AvatarFallback>ML</AvatarFallback>
+          </Avatar>
+        }
       />
       <MetricCard
         title="Searchable Transcript"
@@ -31,6 +44,12 @@ export const Past11sSubmenu = () => {
         trend="neutral"
         trendValue="Updated daily"
         className="aspect-square rounded-full scale-50 origin-center"
+        avatar={
+          <Avatar className="h-10 w-10 border-2 border-[#42376a]">
+            <AvatarImage src="/placeholder.svg" />
+            <AvatarFallback>ST</AvatarFallback>
+          </Avatar>
+        }
       />
     </div>
   );
