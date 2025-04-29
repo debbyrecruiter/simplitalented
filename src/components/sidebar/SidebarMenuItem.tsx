@@ -18,7 +18,7 @@ interface MenuSubItem {
 
 interface MenuItemProps {
   title: string;
-  icon: LucideIcon; // Changed from Icon to LucideIcon
+  icon: LucideIcon;
   path: string;
   submenu?: MenuSubItem[];
 }
@@ -45,7 +45,7 @@ export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: M
                   to={subItem.path} 
                   className={`flex items-center gap-3 text-[110%] text-[#0067D9] ${subItem.className || ''}`}
                 >
-                  <subItem.icon className="h-4 w-4 text-[#0067D9]" />
+                  <subItem.icon className="h-5 w-5 text-[#0067D9]" />
                   <span>{subItem.title}</span>
                 </Link>
               </SidebarMenuSubButton>
