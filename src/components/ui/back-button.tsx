@@ -19,7 +19,7 @@ export function BackButton({ onClick, label = "Back" }: BackButtonProps) {
         <ChevronLeft className="h-5 w-5 -ml-3" />
         <ChevronLeft className="h-5 w-5 -ml-3" />
       </div>
-      {label && <span className="ml-1">{label}</span>}
+      {label && <span className="ml-1 text-[1.75rem]">{label}</span>}
     </Button>
   );
 }
