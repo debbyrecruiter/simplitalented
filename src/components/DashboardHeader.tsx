@@ -19,13 +19,13 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
           onClick={toggleSidebar} 
           variant="ghost" 
           size="icon" 
-          className="md:hidden aspect-square"
+          className="md:hidden"
         >
           <AlignJustify className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
         <h1 className="text-3xl font-comfortaa">
-          <span className="text-[#A171E5] font-bold">Simpli</span>
+          <span className="text-[#512888] font-bold">Simpli</span>
           <span className="text-black">Talented</span>
         </h1>
       </div>
@@ -38,11 +38,11 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
             className="pl-8 bg-background"
           />
         </div>
-        <Button size="icon" variant="ghost" className="relative aspect-square">
+        <Button size="icon" variant="ghost" className="relative">
           <Bell className="h-5 w-5" />
           <span className="absolute top-1 right-1.5 w-2 h-2 bg-brand-coral rounded-full"></span>
         </Button>
-        <Avatar className="aspect-square">
+        <Avatar>
           <AvatarImage src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&h=400&auto=format&fit=crop" />
           <AvatarFallback>JD</AvatarFallback>
         </Avatar>
