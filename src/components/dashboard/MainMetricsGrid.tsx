@@ -39,8 +39,8 @@ export const MainMetricsGrid = ({
           </div>
           <h3 className="font-semibold text-6xl text-primary">My Team</h3>
           <p className="mt-2 text-4xl font-bold">8 Members</p>
-          <p className="text-base text-muted-foreground">Frontend Development</p>
-          <div className="mt-2 text-sm text-primary">+2 this quarter</div>
+          <p className="text-text-2xl text-muted-foreground">Frontend Development</p>
+          <div className="mt-2 text-text-2xl text-primary">+2 this quarter</div>
         </CardContent>
       </Card>
 
@@ -54,8 +54,8 @@ export const MainMetricsGrid = ({
           </div>
           <h3 className="font-semibold text-6xl text-primary">My Direct Reports</h3>
           <p className="mt-2 text-4xl font-bold">5 Members</p>
-          <p className="text-base text-muted-foreground">Across 2 teams</p>
-          <div className="mt-2 text-sm text-primary">+1 this month</div>
+          <p className="text-text-2xl text-muted-foreground">Across 2 teams</p>
+          <div className="mt-2 text-text-2xl text-primary">+1 this month</div>
         </CardContent>
       </Card>
     </div>;
