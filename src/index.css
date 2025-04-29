@@ -1,11 +1,10 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 195 35% 83%; /* Updated to #C0DCE5 */
+    --background: 0 0% 100%; /* Updated to pure white */
     --foreground: 240 10% 3.9%;
 
     --card: 57 89% 55%; /* Converted #F5F599 to HSL */
