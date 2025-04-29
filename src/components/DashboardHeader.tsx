@@ -25,7 +25,7 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
           <span className="sr-only">Toggle Menu</span>
         </Button>
         <h1 className="text-3xl font-comfortaa">
-          <span className="text-[#512888] font-bold">Simpli</span>
+          <span className="text-[#A171E5] font-bold">Simpli</span>
           <span className="text-black">Talented</span>
         </h1>
       </div>
