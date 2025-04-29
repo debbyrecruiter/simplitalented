@@ -27,7 +27,7 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-8 border-[#42376a] bg-[#F0F0FF] rounded-full shadow-sm aspect-square flex flex-col overflow-hidden", 
+        "border-8 border-[#42376a] bg-[#F0F0FF] rounded-full shadow-sm aspect-square flex flex-col scale-50", 
         onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
@@ -41,16 +41,16 @@ export function MetricCard({
           </div>
         )}
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col justify-center text-center px-4">
-        <div className="text-3xl font-bold truncate">{value}</div>
+      <CardContent className="flex-1 flex flex-col justify-center text-center">
+        <div className="text-3xl font-bold">{value}</div>
         {description && (
-          <p className="text-sm text-muted-foreground truncate">{description}</p>
+          <p className="text-sm text-muted-foreground">{description}</p>
         )}
         {trend && (
           <div className="flex items-center justify-center mt-1">
             <span
               className={cn(
-                "text-sm font-medium truncate",
+                "text-sm font-medium",
                 trend === "up" && "text-green-600",
                 trend === "down" && "text-red-600",
                 trend === "neutral" && "text-muted-foreground"
