@@ -36,7 +36,10 @@ export function MetricCard({
       )}
       onClick={onClick}
     >
-      <CardHeader className="flex flex-row items-center justify-center text-center pb-0 pt-10 px-2">
+      <CardHeader className={cn(
+        "flex flex-row items-center justify-center text-center px-2",
+        isMenuCard ? "pb-0 pt-6" : "pb-0 pt-10" // Moved down for menu cards
+      )}>
         <CardTitle className={cn(
           "font-small text-[#9320E7] truncate",
           isMenuCard ? "text-4xl" : "text-6xl" // Reduced by ~30% for menu cards
@@ -49,7 +52,10 @@ export function MetricCard({
           </div>
         )}
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col justify-center text-center p-2">
+      <CardContent className={cn(
+        "flex-1 flex flex-col justify-center text-center",
+        isMenuCard ? "pt-1" : "p-2" // Adjust spacing for menu cards
+      )}>
         <div className={cn(
           "font-bold truncate",
           isMenuCard ? "text-2xl" : "text-3xl" // Reduced by ~30% for menu cards
