@@ -12,7 +12,7 @@ export const Past11sSubmenu = () => {
         icon={Video}
         trend="neutral"
         trendValue="Latest: 2 days ago"
-        className="aspect-square" // Using aspect-square for consistent aspect ratio
+        className="rounded-full scale-50 aspect-square" // Added rounded-full and scale-50 to match main menu
       />
       <MetricCard
         title="My Learning"
@@ -21,7 +21,7 @@ export const Past11sSubmenu = () => {
         icon={BookOpen}
         trend="up"
         trendValue="2 new points"
-        className="aspect-square" // Using aspect-square for consistent aspect ratio
+        className="rounded-full scale-50 aspect-square" // Added rounded-full and scale-50 to match main menu
       />
       <MetricCard
         title="Searchable Transcript"
@@ -30,7 +30,7 @@ export const Past11sSubmenu = () => {
         icon={Search}
         trend="neutral"
         trendValue="Updated daily"
-        className="aspect-square" // Using aspect-square for consistent aspect ratio
+        className="rounded-full scale-50 aspect-square" // Added rounded-full and scale-50 to match main menu
       />
     </div>
   );
