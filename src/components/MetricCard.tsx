@@ -30,7 +30,7 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-8 border-[#42376a] bg-[#C6B4E9] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center", 
+        "border-8 border-[#42376a] bg-[#F0F0FF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center", 
         onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
@@ -47,7 +47,7 @@ export function MetricCard({
           {title}
         </CardTitle>
         {Icon && (
-          <div className="absolute right-6 h-12 w-12 rounded-full bg-[#C6B4E9]/50 flex items-center justify-center">
+          <div className="absolute right-6 h-12 w-12 rounded-full bg-[#F0F0FF]/50 flex items-center justify-center">
             <Icon className="h-6 w-6 text-blue-600" />
           </div>
         )}
