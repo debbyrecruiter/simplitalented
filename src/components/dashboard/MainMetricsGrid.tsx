@@ -24,8 +24,8 @@ export const MainMetricsGrid = ({
           </div>
           <h3 className="font-semibold text-6xl text-primary">Me</h3>
           <p className="mt-2 text-4xl font-bold">Senior Developer</p>
-          <p className="text-lg text-muted-foreground">5 years experience</p>
-          <div className="mt-2 text-sm text-primary">Last promoted 6 months ago</div>
+          <p className="text-2xl text-muted-foreground">5 years experience</p>
+          <div className="mt-2 text-2xl text-primary">Last promoted 6 months ago</div>
         </CardContent>
       </Card>
 
