@@ -50,7 +50,7 @@ export function MetricCard({
           <div className="flex items-center justify-center mt-1">
             <span
               className={cn(
-                "text-sm font-medium truncate",
+                "text-sm font-small truncate",
                 trend === "up" && "text-green-600",
                 trend === "down" && "text-red-600",
                 trend === "neutral" && "text-muted-foreground"
