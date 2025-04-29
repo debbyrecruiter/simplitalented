@@ -37,7 +37,7 @@ export const MainMetricsGrid = ({
           <div className="p-2 rounded-full bg-primary/10 mb-3">
             <UsersRound className="h-9 w-9 text-primary" />
           </div>
-          <h3 className="font-semibold text-2xl text-primary">My Team</h3>
+          <h3 className="font-semibold text-3xl text-primary">My Team</h3>
           <p className="mt-2 text-3xl font-bold">8 Members</p>
           <p className="text-base text-muted-foreground">Frontend Development</p>
           <div className="mt-2 text-sm text-primary">+2 this quarter</div>
