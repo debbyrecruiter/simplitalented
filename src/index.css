@@ -1,10 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* Updated to pure white */
+    --background: 195 52% 76%; /* Changed to #A5D3E1 in HSL format */
     --foreground: 240 10% 3.9%;
 
     --card: 57 89% 55%; /* Converted #F5F599 to HSL */
@@ -91,3 +92,4 @@
     @apply bg-background text-foreground font-sans;
   }
 }
+
