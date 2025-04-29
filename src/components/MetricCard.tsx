@@ -27,7 +27,7 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-8 border-[#42376a] bg-[#F0F0FF] rounded-full shadow-sm aspect-square flex flex-col overflow-hidden", 
+        "border-8 border-[#42376a] bg-[#F0F0FF] rounded-full shadow-sm aspect-square flex flex-col overflow-hidden transform scale-50", 
         onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}

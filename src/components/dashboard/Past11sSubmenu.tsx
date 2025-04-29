@@ -12,7 +12,6 @@ export const Past11sSubmenu = () => {
         icon={Video}
         trend="neutral"
         trendValue="Latest: 2 days ago"
-        className="aspect-square rounded-full scale-50 origin-center"
       />
       <MetricCard
         title="My Learning"
@@ -21,7 +20,6 @@ export const Past11sSubmenu = () => {
         icon={BookOpen}
         trend="up"
         trendValue="2 new points"
-        className="aspect-square rounded-full scale-50 origin-center"
       />
       <MetricCard
         title="Searchable Transcript"
@@ -30,7 +28,6 @@ export const Past11sSubmenu = () => {
         icon={Search}
         trend="neutral"
         trendValue="Updated daily"
-        className="aspect-square rounded-full scale-50 origin-center"
       />
     </div>
   );
