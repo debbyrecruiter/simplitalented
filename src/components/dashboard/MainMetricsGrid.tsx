@@ -15,10 +15,10 @@ export const MainMetricsGrid = ({
 }: MainMetricsGridProps) => {
   return <div className="grid gap-4 grid-cols-1 md:grid-cols-3 mb-4">
       <Card 
-        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-8 border-[#42376a] transform scale-50" 
+        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-12 border-[#840DD7] transform scale-50" 
         onClick={onMeCardClick}
       >
-        <CardContent className="p-6 bg-[#F0F0FF] flex flex-col items-center justify-center h-full w-full">
+        <CardContent className="p-6 bg-[#FAFFCB] flex flex-col items-center justify-center h-full w-full">
           <div className="p-2 rounded-full bg-primary/10 mb-3">
             <UserRound className="h-9 w-9 text-primary" />
           </div>
@@ -30,10 +30,10 @@ export const MainMetricsGrid = ({
       </Card>
 
       <Card 
-        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-8 border-[#42376a] transform scale-50" 
+        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-12 border-[#840DD7] transform scale-50" 
         onClick={onTeamCardClick}
       >
-        <CardContent className="p-6 bg-[#F0F0FF] flex flex-col items-center justify-center h-full w-full">
+        <CardContent className="p-6 bg-[#FAFFCB] flex flex-col items-center justify-center h-full w-full">
           <div className="p-2 rounded-full bg-primary/10 mb-3">
             <UsersRound className="h-9 w-9 text-primary" />
           </div>
@@ -45,10 +45,10 @@ export const MainMetricsGrid = ({
       </Card>
 
       <Card 
-        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-8 border-[#42376a] transform scale-50" 
+        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-12 border-[#840DD7] transform scale-50" 
         onClick={onDirectReportsClick}
       >
-        <CardContent className="p-6 bg-[#F0F0FF] flex flex-col items-center justify-center h-full w-full">
+        <CardContent className="p-6 bg-[#FAFFCB] flex flex-col items-center justify-center h-full w-full">
           <div className="p-2 rounded-full bg-primary/10 mb-3">
             <UsersRound className="h-9 w-9 text-primary" />
           </div>

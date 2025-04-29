@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -67,6 +68,9 @@ export default {
           gray: "#8E9196",
           yellow: "#FEF7CD",
         }
+      },
+      borderWidth: {
+        '12': '12px',
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
