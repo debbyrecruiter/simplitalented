@@ -9,7 +9,7 @@ export const ExpandedDirectReportsSection = () => {
 
   return (
     <div className="mt-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
         {directReports.map((member) => (
           <MetricCard
             key={member.id}
@@ -17,9 +17,10 @@ export const ExpandedDirectReportsSection = () => {
             value={member.role}
             description={`Status: ${member.status}`}
             icon={UserRound}
+            className="transform scale-75"
           />
         ))}
       </div>
     </div>
   );
-}
+};

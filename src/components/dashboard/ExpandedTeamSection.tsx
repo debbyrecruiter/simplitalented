@@ -16,6 +16,9 @@ const TeamMemberCard = ({ name, role, level }: TeamMemberCardProps) => {
       value={role}
       description={level === "manager" ? "Team Manager" : "Direct Report"}
       icon={UserRound}
+      className={`transform scale-75 ${
+        level === "direct-report" ? "mt-8" : ""
+      }`}
     />
   );
 };
