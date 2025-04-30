@@ -41,7 +41,7 @@ export function MetricCard({
         isMenuCard ? "pb-0 pt-6" : "pb-0 pt-10" // Adjusted padding for menu cards
       )}>
         <CardTitle className={cn(
-          "font-small text-[#9320E7] truncate whitespace-pre-line",
+          "font-small text-[#9320E7] truncate",
           isMenuCard ? "text-4xl" : "text-6xl" // Sized appropriately for menu cards
         )}>
           {title}
