@@ -6,11 +6,6 @@ import { Badge } from "@/components/ui/badge";
 export function ExpandedCompanyGoalsSection() {
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold text-[#512888] mb-2">Company & Team Goals</h2>
-        <p className="text-muted-foreground">Strategic objectives and key results</p>
-      </div>
-      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="border shadow-sm">
           <CardHeader className="pb-2">
