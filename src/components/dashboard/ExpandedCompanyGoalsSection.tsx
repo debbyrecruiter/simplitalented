@@ -1,5 +1,4 @@
 
-import { MetricCard } from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Goal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -12,7 +11,7 @@ export function ExpandedCompanyGoalsSection() {
         <p className="text-muted-foreground">Strategic objectives and key results</p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="border shadow-sm">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
@@ -82,44 +81,6 @@ export function ExpandedCompanyGoalsSection() {
                       <div className="bg-green-500 h-2 w-[85%] rounded-full"></div>
                     </div>
                     <span className="text-xs text-muted-foreground">85%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card className="border shadow-sm">
-          <CardHeader className="pb-2">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-lg text-[#6E59A5]">Strategic Initiatives</CardTitle>
-              <Badge className="bg-amber-500 hover:bg-amber-600">Needs Attention</Badge>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Goal className="h-5 w-5 text-[#7E69AB]" />
-                <div>
-                  <p className="font-medium">Digital Transformation</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <div className="bg-gray-200 h-2 w-full rounded-full">
-                      <div className="bg-amber-500 h-2 w-1/3 rounded-full"></div>
-                    </div>
-                    <span className="text-xs text-muted-foreground">33%</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <Goal className="h-5 w-5 text-[#7E69AB]" />
-                <div>
-                  <p className="font-medium">Market Expansion</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <div className="bg-gray-200 h-2 w-full rounded-full">
-                      <div className="bg-amber-500 h-2 w-2/5 rounded-full"></div>
-                    </div>
-                    <span className="text-xs text-muted-foreground">40%</span>
                   </div>
                 </div>
               </div>
