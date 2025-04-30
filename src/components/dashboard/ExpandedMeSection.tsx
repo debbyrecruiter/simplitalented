@@ -1,60 +1,48 @@
 
 import { MetricCard } from "@/components/MetricCard";
-import { Award, BookOpen, Star, Calendar, Users } from "lucide-react";
+import { Grid } from "@/components/ui/grid";
 
 interface ExpandedMeSectionProps {
   onPast11CardClick: () => void;
+  onGoalsCardClick: () => void;
 }
 
-export const ExpandedMeSection = ({ onPast11CardClick }: ExpandedMeSectionProps) => {
+export function ExpandedMeSection({ onPast11CardClick, onGoalsCardClick }: ExpandedMeSectionProps) {
   return (
-    <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-4 animate-in fade-in-50">
-      <MetricCard
-        title="My Goals"
-        value="4 Active"
-        description="2 completed this quarter"
-        icon={Award}
-        trend="up"
-        trendValue="On track"
-        className="scale-[0.65] origin-top"
-      />
-      <MetricCard
-        title="My Learning"
-        value="3 Courses"
-        description="Frontend Development"
-        icon={BookOpen}
-        trend="neutral"
-        trendValue="In progress"
-        className="scale-[0.65] origin-top"
-      />
-      <MetricCard
-        title="My Reviews"
-        value="Next: May 15"
-        description="Quarterly Performance"
-        icon={Star}
-        trend="up"
-        trendValue="Last: 4.5/5"
-        className="scale-[0.65] origin-top"
-      />
-      <MetricCard
-        title="My Schedule"
-        value="3 Upcoming"
-        description="This week's meetings"
-        icon={Calendar}
-        trend="neutral"
-        trendValue="2 tomorrow"
-        className="scale-[0.65] origin-top"
-      />
-      <MetricCard
-        title="Past 1:1s"
-        value="12 Total"
-        description="Last month"
-        icon={Users}
-        trend="up"
-        trendValue="+3 from previous"
-        className="scale-[0.65] origin-top"
-        onClick={onPast11CardClick}
-      />
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-3xl font-bold text-[#512888] mb-2">My Personal Dashboard</h2>
+        <p className="text-muted-foreground">View and manage your performance metrics</p>
+      </div>
+      <Grid columns={4} className="gap-4">
+        <MetricCard
+          title="My Goals"
+          value="3 Active"
+          description="Track your progress"
+          onClick={onGoalsCardClick}
+        />
+        <MetricCard
+          title="My Learning"
+          value="2 Courses"
+          description="In progress"
+        />
+        <MetricCard
+          title="My Reviews"
+          value="Next: Jun 15"
+          description="Performance review"
+        />
+        <MetricCard
+          title="My Schedule"
+          value="Today: 3 meetings"
+          description="Upcoming events"
+        />
+        <MetricCard
+          title="Past 1:1s"
+          value="Last: Apr 28"
+          description="Meeting history"
+          onClick={onPast11CardClick}
+        />
+      </Grid>
     </div>
   );
-};
+}

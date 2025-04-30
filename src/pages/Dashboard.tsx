@@ -1,3 +1,4 @@
+
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { useState } from "react";
 import { MainMetricsGrid } from "@/components/dashboard/MainMetricsGrid";
@@ -6,8 +7,9 @@ import { Past11sSubmenu } from "@/components/dashboard/Past11sSubmenu";
 import { ExpandedTeamSection } from "@/components/dashboard/ExpandedTeamSection";
 import { ExpandedDirectReportsSection } from "@/components/dashboard/ExpandedDirectReportsSection";
 import { BackButton } from "@/components/ui/back-button";
+import { GoalsSubmenu } from "@/components/dashboard/GoalsSubmenu";
 
-type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | null;
+type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | null;
 
 const Dashboard = () => {
   const [expandedSection, setExpandedSection] = useState<ExpandedSectionType>(null);
@@ -27,10 +29,14 @@ const Dashboard = () => {
   const handlePast11CardClick = () => {
     setExpandedSection(expandedSection === "past11s" ? null : "past11s");
   };
+
+  const handleGoalsCardClick = () => {
+    setExpandedSection(expandedSection === "goals" ? null : "goals");
+  };
   
   const handleBackClick = () => {
-    // If we're in past11s, go back to "me" section
-    if (expandedSection === "past11s") {
+    // If we're in past11s or goals submenu, go back to "me" section
+    if (expandedSection === "past11s" || expandedSection === "goals") {
       setExpandedSection("me");
     } else {
       // Otherwise, go back to the main dashboard
@@ -52,17 +58,20 @@ const Dashboard = () => {
           <MainMetricsGrid 
             onMeCardClick={handleMeCardClick} 
             onTeamCardClick={handleTeamCardClick} 
-            onDirectReportsClick={handleDirectReportsClick} 
+            onDirectReportsClick={handleDirectReportsClick}
+            onGoalsCardClick={handleGoalsCardClick}
           />
         )}
 
-        {expandedSection === "me" && <ExpandedMeSection onPast11CardClick={handlePast11CardClick} />}
+        {expandedSection === "me" && <ExpandedMeSection onPast11CardClick={handlePast11CardClick} onGoalsCardClick={handleGoalsCardClick} />}
 
         {expandedSection === "team" && <ExpandedTeamSection />}
 
         {expandedSection === "direct-reports" && <ExpandedDirectReportsSection />}
 
         {expandedSection === "past11s" && <Past11sSubmenu />}
+        
+        {expandedSection === "goals" && <GoalsSubmenu />}
       </div>
     </div>
   );

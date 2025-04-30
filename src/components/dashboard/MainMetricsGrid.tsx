@@ -1,62 +1,77 @@
 
-import { Card, CardContent } from "@/components/ui/card";
-import { UserRound, UsersRound } from "lucide-react";
+import { MetricCard } from "@/components/MetricCard";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Grid } from "@/components/ui/grid";
 
 interface MainMetricsGridProps {
   onMeCardClick: () => void;
   onTeamCardClick: () => void;
   onDirectReportsClick: () => void;
+  onGoalsCardClick?: () => void;
 }
 
-export const MainMetricsGrid = ({
-  onMeCardClick,
-  onTeamCardClick,
-  onDirectReportsClick
-}: MainMetricsGridProps) => {
-  return <div className="grid gap-4 grid-cols-1 md:grid-cols-3 mb-4">
+export function MainMetricsGrid({ 
+  onMeCardClick, 
+  onTeamCardClick, 
+  onDirectReportsClick,
+  onGoalsCardClick
+}: MainMetricsGridProps) {
+  return (
+    <Grid columns={3} className="gap-4">
       <Card 
-        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-12 border-[#840DD7] transform scale-50" 
+        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
         onClick={onMeCardClick}
       >
-        <CardContent className="p-6 bg-[#FAFFCB] flex flex-col items-center justify-center h-full w-full">
-          <div className="p-2 rounded-full bg-primary/10 mb-3">
-            <UserRound className="h-9 w-9 text-primary" />
+        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+            Me
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+          <div className="text-3xl font-bold truncate">
+            Your metrics
           </div>
-          <h3 className="font-semibold text-6xl text-primary">Me</h3>
-          <p className="mt-2 text-4xl font-bold">Senior Developer</p>
-          <p className="text-2xl text-muted-foreground">5 years experience</p>
-          <div className="mt-2 text-2xl text-primary">Last promoted 6 months ago</div>
+          <p className="text-sm text-muted-foreground truncate">
+            Personal dashboard
+          </p>
         </CardContent>
       </Card>
-
       <Card 
-        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-12 border-[#840DD7] transform scale-50" 
+        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
         onClick={onTeamCardClick}
       >
-        <CardContent className="p-6 bg-[#FAFFCB] flex flex-col items-center justify-center h-full w-full">
-          <div className="p-2 rounded-full bg-primary/10 mb-3">
-            <UsersRound className="h-9 w-9 text-primary" />
+        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+            Team
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+          <div className="text-3xl font-bold truncate">
+            Team overview
           </div>
-          <h3 className="font-semibold text-6xl text-primary">My Team</h3>
-          <p className="mt-2 text-4xl font-bold">8 Members</p>
-          <p className="text-text-2xl text-muted-foreground">Frontend Development</p>
-          <div className="mt-2 text-text-2xl text-primary">+2 this quarter</div>
+          <p className="text-sm text-muted-foreground truncate">
+            Performance metrics
+          </p>
         </CardContent>
       </Card>
-
       <Card 
-        className="relative cursor-pointer hover:border-primary/50 transition-colors aspect-square rounded-full flex flex-col items-center justify-center text-center overflow-hidden border-12 border-[#840DD7] transform scale-50" 
+        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
         onClick={onDirectReportsClick}
       >
-        <CardContent className="p-6 bg-[#FAFFCB] flex flex-col items-center justify-center h-full w-full">
-          <div className="p-2 rounded-full bg-primary/10 mb-3">
-            <UsersRound className="h-9 w-9 text-primary" />
+        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+            Direct Reports
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+          <div className="text-3xl font-bold truncate">
+            Team members
           </div>
-          <h3 className="font-semibold text-6xl text-primary">My Direct Reports</h3>
-          <p className="mt-2 text-4xl font-bold">5 Members</p>
-          <p className="text-text-2xl text-muted-foreground">Across 2 teams</p>
-          <div className="mt-2 text-text-2xl text-primary">+1 this month</div>
+          <p className="text-sm text-muted-foreground truncate">
+            Individual performance
+          </p>
         </CardContent>
       </Card>
-    </div>;
-};
+    </Grid>
+  );
+}
