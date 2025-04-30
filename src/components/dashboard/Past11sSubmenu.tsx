@@ -24,7 +24,7 @@ export const Past11sSubmenu = () => {
         className="transform origin-center scale-65" // Explicitly adding transform
       />
       <MetricCard
-        title="Searchable Transcript"
+        title="Transcript"
         value="12 Documents"
         description="All meetings"
         icon={Search}
