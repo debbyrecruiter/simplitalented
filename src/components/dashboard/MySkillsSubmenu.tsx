@@ -1,13 +1,12 @@
 
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Star, Code, Laptop, BrainCircuit, Cloud } from "lucide-react";
+import { Star, Code } from "lucide-react";
 
 export function MySkillsSubmenu() {
   const skills = [
     { name: "Leadership", level: 80, description: "Leading teams and projects" },
     { name: "Python", level: 85, description: "Python programming language" },
-    { name: "Technical", level: 90, description: "Domain expertise" },
     { name: "Problem-solving", level: 75, description: "Critical thinking" },
     { name: "React", level: 88, description: "Frontend development" },
     { name: "Scala", level: 70, description: "Functional programming" },
@@ -25,11 +24,11 @@ export function MySkillsSubmenu() {
               {skill.name === "Python" ? (
                 <Code className="h-5 w-5 text-[#9320E7] mr-2" />
               ) : skill.name === "React" ? (
-                <Laptop className="h-5 w-5 text-[#9320E7] mr-2" />
+                <Code className="h-5 w-5 text-[#9320E7] mr-2" />
               ) : skill.name === "Scala" ? (
-                <BrainCircuit className="h-5 w-5 text-[#9320E7] mr-2" />
+                <Code className="h-5 w-5 text-[#9320E7] mr-2" />
               ) : skill.name === "AWS" ? (
-                <Cloud className="h-5 w-5 text-[#9320E7] mr-2" />
+                <Code className="h-5 w-5 text-[#9320E7] mr-2" />
               ) : (
                 <Star className="h-5 w-5 text-[#9320E7] mr-2" />
               )}
