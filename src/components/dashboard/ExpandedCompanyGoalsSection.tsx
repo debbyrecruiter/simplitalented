@@ -71,7 +71,7 @@ export function ExpandedCompanyGoalsSection() {
       </Card>
 
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
+        className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
       >
         <div className="flex flex-col items-center justify-center p-8 text-center h-full">
           <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
@@ -99,7 +99,7 @@ export function ExpandedCompanyGoalsSection() {
       </Card>
       
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
+        className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
       >
         <div className="flex flex-col items-center justify-center p-8 text-center h-full">
           <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
