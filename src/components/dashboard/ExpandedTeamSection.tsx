@@ -12,7 +12,8 @@ interface TeamMemberCardProps {
 const TeamMemberCard = ({ name, role, level }: TeamMemberCardProps) => {
   return (
     <Card 
-      className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
+      className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
+      style={{ width: "250px", height: "250px" }}
     >
       <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
         <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
@@ -38,15 +39,13 @@ const TeamMemberCard = ({ name, role, level }: TeamMemberCardProps) => {
 
 export const ExpandedTeamSection = () => {
   return (
-    <div className="mt-4 space-y-8">
-      <div className="flex justify-center">
+    <div className="mt-4">
+      <div className="flex flex-nowrap overflow-x-auto gap-6 pb-4 justify-center">
         <TeamMemberCard
           name="Alex Morgan"
           role="Senior Developer"
           level="manager"
         />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
         {teamMembers.slice(1).map((member) => (
           <TeamMemberCard
             key={member.id}
