@@ -2,6 +2,7 @@
 import { teamMembers } from "@/data/dashboardData";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserRound } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export const ExpandedDirectReportsSection = () => {
   // Filter only direct reports from team members (excluding the first member who is the manager)
@@ -16,8 +17,12 @@ export const ExpandedDirectReportsSection = () => {
             className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
             style={{ width: "437.5px", height: "437.5px" }}
           >
-            <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-              <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+            <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-6">
+              <Avatar className="h-20 w-20 mb-2">
+                <AvatarImage src={member.avatarUrl} alt={member.name} />
+                <AvatarFallback>{member.initials}</AvatarFallback>
+              </Avatar>
+              <CardTitle className="text-4xl font-small text-[#9320E7] truncate">
                 {member.name}
               </CardTitle>
               <div className="absolute right-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">

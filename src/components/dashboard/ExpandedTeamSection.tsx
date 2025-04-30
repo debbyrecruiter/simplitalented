@@ -2,21 +2,28 @@
 import { teamMembers } from "@/data/dashboardData";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserRound } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface TeamMemberCardProps {
   name: string;
   role: string;
   level: "manager" | "direct-report";
+  avatarUrl?: string;
+  initials: string;
 }
 
-const TeamMemberCard = ({ name, role, level }: TeamMemberCardProps) => {
+const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCardProps) => {
   return (
     <Card 
       className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
       style={{ width: "437.5px", height: "437.5px" }}
     >
-      <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-        <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+      <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-6">
+        <Avatar className="h-20 w-20 mb-2">
+          <AvatarImage src={avatarUrl} alt={name} />
+          <AvatarFallback>{initials}</AvatarFallback>
+        </Avatar>
+        <CardTitle className="text-4xl font-small text-[#9320E7] truncate">
           {name}
         </CardTitle>
         {level === "manager" && (
@@ -45,6 +52,8 @@ export const ExpandedTeamSection = () => {
           name="Alex Morgan"
           role="Senior Developer"
           level="manager"
+          avatarUrl={teamMembers[0].avatarUrl}
+          initials={teamMembers[0].initials}
         />
         {teamMembers.slice(1).map((member) => (
           <TeamMemberCard
@@ -52,6 +61,8 @@ export const ExpandedTeamSection = () => {
             name={member.name}
             role={member.role}
             level="direct-report"
+            avatarUrl={member.avatarUrl}
+            initials={member.initials}
           />
         ))}
       </div>
