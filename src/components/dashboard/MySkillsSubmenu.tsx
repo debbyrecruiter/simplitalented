@@ -8,8 +8,7 @@ export function MySkillsSubmenu() {
     { name: "Leadership", level: 80, description: "Leading teams and projects" },
     { name: "Communication", level: 85, description: "Verbal and written skills" },
     { name: "Technical", level: 90, description: "Domain expertise" },
-    { name: "Problem-solving", level: 75, description: "Critical thinking" },
-    { name: "Collaboration", level: 88, description: "Working with others" }
+    { name: "Problem-solving", level: 75, description: "Critical thinking" }
   ];
 
   return (
