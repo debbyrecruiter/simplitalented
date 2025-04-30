@@ -19,78 +19,30 @@ export function MainMetricsGrid({
 }: MainMetricsGridProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      <Card 
-        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors max-w-[75%] mx-auto"
+      <MetricCard
+        title="Me"
+        value="Your metrics"
+        description="Personal dashboard"
         onClick={onMeCardClick}
-      >
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-            Me
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Your metrics
-          </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Personal dashboard
-          </p>
-        </CardContent>
-      </Card>
-      <Card 
-        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors max-w-[75%] mx-auto"
+      />
+      <MetricCard
+        title="Team"
+        value="Team overview"
+        description="Performance metrics"
         onClick={onTeamCardClick}
-      >
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-            Team
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Team overview
-          </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Performance metrics
-          </p>
-        </CardContent>
-      </Card>
-      <Card 
-        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors max-w-[75%] mx-auto"
+      />
+      <MetricCard
+        title="Direct Reports"
+        value="Team members"
+        description="Individual performance"
         onClick={onDirectReportsClick}
-      >
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-            Direct Reports
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Team members
-          </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Individual performance
-          </p>
-        </CardContent>
-      </Card>
-      <Card 
-        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors max-w-[75%] mx-auto"
+      />
+      <MetricCard
+        title="Company Goals"
+        value="Team objectives"
+        description="Strategic priorities"
         onClick={onCompanyGoalsClick}
-      >
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-            Company Goals
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Team objectives
-          </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Strategic priorities
-          </p>
-        </CardContent>
-      </Card>
+      />
     </div>
   );
 }
