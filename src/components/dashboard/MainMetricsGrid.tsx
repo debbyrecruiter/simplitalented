@@ -60,8 +60,8 @@ export function MainMetricsGrid({
         onClick={onDirectReportsClick}
       >
         <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-            Direct Reports
+          <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
+            Direct<br />Reports
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
@@ -78,8 +78,8 @@ export function MainMetricsGrid({
         onClick={onCompanyGoalsClick}
       >
         <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-            Company Goals
+          <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
+            Company<br />Goals
           </CardTitle>
         </CardHeader>
         <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
