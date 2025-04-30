@@ -38,7 +38,7 @@ const TeamMemberCard = ({ name, role, level }: TeamMemberCardProps) => {
 
 export const ExpandedTeamSection = () => {
   return (
-    <div className="mt-4 space-y-4">
+    <div className="mt-4 space-y-8">
       <div className="flex justify-center">
         <TeamMemberCard
           name="Alex Morgan"
@@ -46,7 +46,7 @@ export const ExpandedTeamSection = () => {
           level="manager"
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
         {teamMembers.slice(1).map((member) => (
           <TeamMemberCard
             key={member.id}
