@@ -19,7 +19,7 @@ export function ExpandedCompanyGoalsSection() {
       >
         <div className="flex flex-col items-center justify-center p-8 text-center h-full">
           <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
-            Enterprise Sales
+            Increase Enterprise Sales
           </h3>
           <p className="text-3xl font-bold mb-5">+15%</p>
           
@@ -47,7 +47,7 @@ export function ExpandedCompanyGoalsSection() {
       >
         <div className="flex flex-col items-center justify-center p-8 text-center h-full">
           <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
-            User Experience
+            Improve User Experience
           </h3>
           <p className="text-3xl font-bold mb-5">+25%</p>
           
@@ -75,7 +75,7 @@ export function ExpandedCompanyGoalsSection() {
       >
         <div className="flex flex-col items-center justify-center p-8 text-center h-full">
           <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
-            Market Share
+            Increase Market Share
           </h3>
           <p className="text-3xl font-bold mb-5">+10%</p>
           
@@ -103,7 +103,7 @@ export function ExpandedCompanyGoalsSection() {
       >
         <div className="flex flex-col items-center justify-center p-8 text-center h-full">
           <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
-            Employee Satisfaction
+            Increase Employee Satisfaction
           </h3>
           <p className="text-3xl font-bold mb-5">+10%</p>
           
