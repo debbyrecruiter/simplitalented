@@ -16,7 +16,7 @@ const TeamMemberCard = ({ name, role, level }: TeamMemberCardProps) => {
       value={role}
       description={level === "manager" ? "Team Manager" : "Direct Report"}
       icon={UserRound}
-      className={`${level === "direct-report" ? "mt-8" : ""}`}
+      className={`${level === "direct-report" ? "mt-8" : ""} w-64 h-64 md:w-72 md:h-72`}
     />
   );
 };
@@ -44,4 +44,3 @@ export const ExpandedTeamSection = () => {
     </div>
   );
 };
-
