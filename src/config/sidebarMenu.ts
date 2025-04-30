@@ -9,11 +9,25 @@ import {
   Users,
   Video,
   Search,
-  Goal
+  Goal,
+  Star
 } from "lucide-react";
 
 export const menuItems = [
   { title: "Dashboard", icon: Home, path: "/" },
+  { 
+    title: "Me", 
+    icon: Users, 
+    path: "/me",
+    submenu: [
+      { 
+        title: "My Skills", 
+        icon: Star, 
+        path: "/me/skills",
+        className: "text-[#17202A]" 
+      }
+    ]
+  },
   { title: "Employees", icon: Users, path: "/employees" },
   { title: "Performance", icon: BarChart2, path: "/performance" },
   { title: "Reviews", icon: FileText, path: "/reviews" },

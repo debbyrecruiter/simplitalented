@@ -4,9 +4,14 @@ import { MetricCard } from "@/components/MetricCard";
 interface ExpandedMeSectionProps {
   onPast11CardClick: () => void;
   onGoalsCardClick: () => void;
+  onMySkillsClick: () => void;
 }
 
-export function ExpandedMeSection({ onPast11CardClick, onGoalsCardClick }: ExpandedMeSectionProps) {
+export function ExpandedMeSection({ 
+  onPast11CardClick, 
+  onGoalsCardClick,
+  onMySkillsClick 
+}: ExpandedMeSectionProps) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -15,6 +20,12 @@ export function ExpandedMeSection({ onPast11CardClick, onGoalsCardClick }: Expan
           value="3 Active"
           description="Track your progress"
           onClick={onGoalsCardClick}
+        />
+        <MetricCard
+          title="My Skills"
+          value="5 Skills"
+          description="Development areas"
+          onClick={onMySkillsClick}
         />
         <MetricCard
           title="My Learning"

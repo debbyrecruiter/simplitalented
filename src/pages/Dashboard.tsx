@@ -9,8 +9,9 @@ import { ExpandedDirectReportsSection } from "@/components/dashboard/ExpandedDir
 import { BackButton } from "@/components/ui/back-button";
 import { GoalsSubmenu } from "@/components/dashboard/GoalsSubmenu";
 import { ExpandedCompanyGoalsSection } from "@/components/dashboard/ExpandedCompanyGoalsSection";
+import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
 
-type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | "company-goals" | null;
+type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | "company-goals" | "my-skills" | null;
 
 const Dashboard = () => {
   const [expandedSection, setExpandedSection] = useState<ExpandedSectionType>(null);
@@ -39,9 +40,13 @@ const Dashboard = () => {
     setExpandedSection(expandedSection === "company-goals" ? null : "company-goals");
   };
   
+  const handleMySkillsClick = () => {
+    setExpandedSection(expandedSection === "my-skills" ? null : "my-skills");
+  };
+  
   const handleBackClick = () => {
-    // If we're in past11s or goals submenu, go back to "me" section
-    if (expandedSection === "past11s" || expandedSection === "goals") {
+    // If we're in past11s, goals, or skills submenu, go back to "me" section
+    if (expandedSection === "past11s" || expandedSection === "goals" || expandedSection === "my-skills") {
       setExpandedSection("me");
     } else {
       // Otherwise, go back to the main dashboard
@@ -69,7 +74,13 @@ const Dashboard = () => {
           />
         )}
 
-        {expandedSection === "me" && <ExpandedMeSection onPast11CardClick={handlePast11CardClick} onGoalsCardClick={handleGoalsCardClick} />}
+        {expandedSection === "me" && (
+          <ExpandedMeSection 
+            onPast11CardClick={handlePast11CardClick} 
+            onGoalsCardClick={handleGoalsCardClick}
+            onMySkillsClick={handleMySkillsClick}
+          />
+        )}
 
         {expandedSection === "team" && <ExpandedTeamSection />}
 
@@ -80,6 +91,8 @@ const Dashboard = () => {
         {expandedSection === "goals" && <GoalsSubmenu />}
         
         {expandedSection === "company-goals" && <ExpandedCompanyGoalsSection />}
+        
+        {expandedSection === "my-skills" && <MySkillsSubmenu />}
       </div>
     </div>
   );
