@@ -67,7 +67,7 @@ export function PerformanceChart({ data, className }: PerformanceChartProps) {
               <Area 
                 type="monotone" 
                 dataKey="average" 
-                stroke="#F9E79F" 
+                stroke="#FFFFFF" 
                 fillOpacity={1} 
                 fill="url(#colorAverage)" 
                 strokeWidth={2}
