@@ -1,6 +1,6 @@
 
 import { teamMembers } from "@/data/dashboardData";
-import { MetricCard } from "@/components/MetricCard";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserRound } from "lucide-react";
 
 interface TeamMemberCardProps {
@@ -11,13 +11,28 @@ interface TeamMemberCardProps {
 
 const TeamMemberCard = ({ name, role, level }: TeamMemberCardProps) => {
   return (
-    <MetricCard
-      title={name}
-      value={role}
-      description={level === "manager" ? "Team Manager" : "Direct Report"}
-      icon={UserRound}
-      className={`${level === "direct-report" ? "mt-8" : ""} w-64 h-64 md:w-72 md:h-72`}
-    />
+    <Card 
+      className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
+    >
+      <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+        <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+          {name}
+        </CardTitle>
+        {level === "manager" && (
+          <div className="absolute right-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
+            <UserRound className="h-6 w-6 text-blue-600" />
+          </div>
+        )}
+      </CardHeader>
+      <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+        <div className="text-3xl font-bold truncate">
+          {role}
+        </div>
+        <p className="text-sm text-muted-foreground truncate">
+          {level === "manager" ? "Team Manager" : "Direct Report"}
+        </p>
+      </CardContent>
+    </Card>
   );
 };
 
