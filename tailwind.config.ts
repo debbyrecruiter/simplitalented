@@ -66,7 +66,7 @@ export default {
         brand: {
           purple: "#512888",
           gray: "#8E9196",
-          yellow: "#FEF7CD",
+          yellow: "#FCFDF7",
         }
       },
       borderWidth: {
