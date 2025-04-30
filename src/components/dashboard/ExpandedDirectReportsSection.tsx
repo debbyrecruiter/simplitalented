@@ -17,7 +17,6 @@ export const ExpandedDirectReportsSection = () => {
             value={member.role}
             description={`Status: ${member.status}`}
             icon={UserRound}
-            className="transform scale-75"
           />
         ))}
       </div>
