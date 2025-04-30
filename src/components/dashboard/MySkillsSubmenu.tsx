@@ -32,30 +32,6 @@ export function MySkillsSubmenu() {
           </Card>
         ))}
       </div>
-      
-      <div className="mt-8">
-        <Card className="p-6 shadow-sm">
-          <h3 className="text-xl font-medium mb-4">Skills Development Plan</h3>
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-medium">Short-term goals:</h4>
-              <ul className="list-disc list-inside text-sm pl-2 space-y-1 mt-2">
-                <li>Complete advanced leadership training by Q3</li>
-                <li>Improve presentation skills through weekly practice</li>
-                <li>Obtain certification in project management</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-medium">Long-term development:</h4>
-              <ul className="list-disc list-inside text-sm pl-2 space-y-1 mt-2">
-                <li>Mentor junior team members starting next quarter</li>
-                <li>Lead cross-functional project within 6 months</li>
-                <li>Develop expertise in emerging technologies in our field</li>
-              </ul>
-            </div>
-          </div>
-        </Card>
-      </div>
     </div>
   );
 }
