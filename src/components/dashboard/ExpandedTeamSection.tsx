@@ -13,7 +13,7 @@ const TeamMemberCard = ({ name, role, level }: TeamMemberCardProps) => {
   return (
     <Card 
       className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
-      style={{ width: "250px", height: "250px" }}
+      style={{ width: "437.5px", height: "437.5px" }}
     >
       <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
         <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
