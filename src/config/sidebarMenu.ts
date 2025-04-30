@@ -8,7 +8,8 @@ import {
   Settings,
   Users,
   Video,
-  Search
+  Search,
+  Goal
 } from "lucide-react";
 
 export const menuItems = [
@@ -17,6 +18,7 @@ export const menuItems = [
   { title: "Performance", icon: BarChart2, path: "/performance" },
   { title: "Reviews", icon: FileText, path: "/reviews" },
   { title: "Goals", icon: Award, path: "/goals" },
+  { title: "Company Goals", icon: Goal, path: "/company-goals" },
   { title: "Schedule", icon: Calendar, path: "/schedule" },
   {
     title: "Past 1:1s",
