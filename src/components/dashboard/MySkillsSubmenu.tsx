@@ -1,14 +1,17 @@
 
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Star } from "lucide-react";
+import { Star, Python, React, Scala, Aws } from "lucide-react";
 
 export function MySkillsSubmenu() {
   const skills = [
     { name: "Leadership", level: 80, description: "Leading teams and projects" },
-    { name: "Communication", level: 85, description: "Verbal and written skills" },
+    { name: "Python", level: 85, description: "Python programming language" },
     { name: "Technical", level: 90, description: "Domain expertise" },
-    { name: "Problem-solving", level: 75, description: "Critical thinking" }
+    { name: "Problem-solving", level: 75, description: "Critical thinking" },
+    { name: "React", level: 88, description: "Frontend development" },
+    { name: "Scala", level: 70, description: "Functional programming" },
+    { name: "AWS", level: 82, description: "Cloud infrastructure" }
   ];
 
   return (
@@ -19,7 +22,17 @@ export function MySkillsSubmenu() {
         {skills.map((skill) => (
           <Card key={skill.name} className="p-6 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center mb-2">
-              <Star className="h-5 w-5 text-[#9320E7] mr-2" />
+              {skill.name === "Python" ? (
+                <Python className="h-5 w-5 text-[#9320E7] mr-2" />
+              ) : skill.name === "React" ? (
+                <React className="h-5 w-5 text-[#9320E7] mr-2" />
+              ) : skill.name === "Scala" ? (
+                <Scala className="h-5 w-5 text-[#9320E7] mr-2" />
+              ) : skill.name === "AWS" ? (
+                <Aws className="h-5 w-5 text-[#9320E7] mr-2" />
+              ) : (
+                <Star className="h-5 w-5 text-[#9320E7] mr-2" />
+              )}
               <h3 className="text-xl font-medium">{skill.name}</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-3">{skill.description}</p>
