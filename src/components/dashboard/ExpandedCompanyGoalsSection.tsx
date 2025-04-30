@@ -1,50 +1,41 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Goal } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { CircleDot } from "lucide-react";
 
 export function ExpandedCompanyGoalsSection() {
+  // Progress value for the enterprise sales goal (75%)
+  const progressValue = 75;
+  
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 gap-4">
-        <Card className="border shadow-sm">
-          <CardHeader className="pb-2">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-lg text-[#6E59A5]">Q2 Objectives</CardTitle>
-              <Badge className="bg-[#9b87f5] hover:bg-[#7E69AB]">In Progress</Badge>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <Card 
+        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
+      >
+        <div className="flex flex-col items-center justify-center p-4 text-center h-full">
+          <h3 className="text-3xl font-medium text-[#9320E7] mb-2">
+            Increase Enterprise Sales
+          </h3>
+          <p className="text-xl font-bold mb-4">by 15%</p>
+          
+          <div className="w-full max-w-[80%] mb-2">
+            <Progress value={progressValue} className="h-3 bg-gray-200" />
+          </div>
+          
+          <div className="flex items-center justify-center mt-1 gap-2">
+            <CircleDot className="h-4 w-4 text-[#7E69AB]" />
+            <span className="font-bold text-xl">{progressValue}%</span>
+            <span className="text-sm text-muted-foreground">complete</span>
+          </div>
+          
+          <div className="mt-4 flex flex-col items-center">
+            <div className="flex items-center space-x-1 text-sm">
+              <span className="font-medium">Target:</span>
+              <span>Q2 2025</span>
             </div>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Goal className="h-5 w-5 text-[#7E69AB]" />
-                <div>
-                  <p className="font-medium">Improve User Experience</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <div className="bg-gray-200 h-2 w-full rounded-full">
-                      <div className="bg-[#6E59A5] h-2 w-3/4 rounded-full"></div>
-                    </div>
-                    <span className="text-xs text-muted-foreground">75%</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <Goal className="h-5 w-5 text-[#7E69AB]" />
-                <div>
-                  <p className="font-medium">Expand Market Share</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <div className="bg-gray-200 h-2 w-full rounded-full">
-                      <div className="bg-[#6E59A5] h-2 w-1/2 rounded-full"></div>
-                    </div>
-                    <span className="text-xs text-muted-foreground">50%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 }
