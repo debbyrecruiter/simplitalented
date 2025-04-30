@@ -13,28 +13,28 @@ export function ExpandedCompanyGoalsSection() {
   const communicationScoreProgress = 40;
   
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <Card 
         className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
       >
-        <div className="flex flex-col items-center justify-center p-6 text-center h-full">
-          <h3 className="text-4xl font-medium text-[#9320E7] mb-3">
+        <div className="flex flex-col items-center justify-center p-8 text-center h-full">
+          <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
             Enterprise Sales
           </h3>
-          <p className="text-2xl font-bold mb-4">+15%</p>
+          <p className="text-3xl font-bold mb-5">+15%</p>
           
-          <div className="w-full max-w-[80%] mb-3">
-            <Progress value={enterpriseSalesProgress} className="h-4 bg-gray-200" />
+          <div className="w-full max-w-[80%] mb-4">
+            <Progress value={enterpriseSalesProgress} className="h-5 bg-gray-200" />
           </div>
           
-          <div className="flex items-center justify-center mt-2 gap-2">
-            <CircleDot className="h-5 w-5 text-[#7E69AB]" />
-            <span className="font-bold text-2xl">{enterpriseSalesProgress}%</span>
-            <span className="text-sm text-muted-foreground">complete</span>
+          <div className="flex items-center justify-center mt-3 gap-2">
+            <CircleDot className="h-6 w-6 text-[#7E69AB]" />
+            <span className="font-bold text-3xl">{enterpriseSalesProgress}%</span>
+            <span className="text-base text-muted-foreground">complete</span>
           </div>
           
-          <div className="mt-5 flex flex-col items-center">
-            <div className="flex items-center space-x-2 text-sm">
+          <div className="mt-6 flex flex-col items-center">
+            <div className="flex items-center space-x-2 text-base">
               <span className="font-medium">Target:</span>
               <span>Q2 2025</span>
             </div>
@@ -45,24 +45,24 @@ export function ExpandedCompanyGoalsSection() {
       <Card 
         className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
       >
-        <div className="flex flex-col items-center justify-center p-6 text-center h-full">
-          <h3 className="text-4xl font-medium text-[#9320E7] mb-3">
+        <div className="flex flex-col items-center justify-center p-8 text-center h-full">
+          <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
             User Experience
           </h3>
-          <p className="text-2xl font-bold mb-4">+25%</p>
+          <p className="text-3xl font-bold mb-5">+25%</p>
           
-          <div className="w-full max-w-[80%] mb-3">
-            <Progress value={userExperienceProgress} className="h-4 bg-gray-200" />
+          <div className="w-full max-w-[80%] mb-4">
+            <Progress value={userExperienceProgress} className="h-5 bg-gray-200" />
           </div>
           
-          <div className="flex items-center justify-center mt-2 gap-2">
-            <CircleDot className="h-5 w-5 text-[#7E69AB]" />
-            <span className="font-bold text-2xl">{userExperienceProgress}%</span>
-            <span className="text-sm text-muted-foreground">complete</span>
+          <div className="flex items-center justify-center mt-3 gap-2">
+            <CircleDot className="h-6 w-6 text-[#7E69AB]" />
+            <span className="font-bold text-3xl">{userExperienceProgress}%</span>
+            <span className="text-base text-muted-foreground">complete</span>
           </div>
           
-          <div className="mt-5 flex flex-col items-center">
-            <div className="flex items-center space-x-2 text-sm">
+          <div className="mt-6 flex flex-col items-center">
+            <div className="flex items-center space-x-2 text-base">
               <span className="font-medium">Target:</span>
               <span>Q3 2025</span>
             </div>
@@ -73,24 +73,24 @@ export function ExpandedCompanyGoalsSection() {
       <Card 
         className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
       >
-        <div className="flex flex-col items-center justify-center p-6 text-center h-full">
-          <h3 className="text-4xl font-medium text-[#9320E7] mb-3">
+        <div className="flex flex-col items-center justify-center p-8 text-center h-full">
+          <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
             Market Share
           </h3>
-          <p className="text-2xl font-bold mb-4">+10%</p>
+          <p className="text-3xl font-bold mb-5">+10%</p>
           
-          <div className="w-full max-w-[80%] mb-3">
-            <Progress value={marketShareProgress} className="h-4 bg-gray-200" />
+          <div className="w-full max-w-[80%] mb-4">
+            <Progress value={marketShareProgress} className="h-5 bg-gray-200" />
           </div>
           
-          <div className="flex items-center justify-center mt-2 gap-2">
-            <CircleDot className="h-5 w-5 text-[#7E69AB]" />
-            <span className="font-bold text-2xl">{marketShareProgress}%</span>
-            <span className="text-sm text-muted-foreground">complete</span>
+          <div className="flex items-center justify-center mt-3 gap-2">
+            <CircleDot className="h-6 w-6 text-[#7E69AB]" />
+            <span className="font-bold text-3xl">{marketShareProgress}%</span>
+            <span className="text-base text-muted-foreground">complete</span>
           </div>
           
-          <div className="mt-5 flex flex-col items-center">
-            <div className="flex items-center space-x-2 text-sm">
+          <div className="mt-6 flex flex-col items-center">
+            <div className="flex items-center space-x-2 text-base">
               <span className="font-medium">Target:</span>
               <span>Q4 2025</span>
             </div>
@@ -101,32 +101,32 @@ export function ExpandedCompanyGoalsSection() {
       <Card 
         className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
       >
-        <div className="flex flex-col items-center justify-center p-6 text-center h-full">
-          <h3 className="text-4xl font-medium text-[#9320E7] mb-3">
+        <div className="flex flex-col items-center justify-center p-8 text-center h-full">
+          <h3 className="text-5xl font-medium text-[#9320E7] mb-4">
             Employee Satisfaction
           </h3>
-          <p className="text-2xl font-bold mb-4">+10%</p>
+          <p className="text-3xl font-bold mb-5">+10%</p>
           
-          <div className="w-full max-w-[80%] mb-2">
-            <div className="text-sm text-left mb-1">Transparency Score</div>
-            <Progress value={transparencyScoreProgress} className="h-3 bg-gray-200" />
-            <div className="flex items-center mt-1 mb-3 text-sm">
-              <CircleDot className="h-4 w-4 text-[#7E69AB] mr-1" />
+          <div className="w-full max-w-[80%] mb-3">
+            <div className="text-base text-left mb-1">Transparency Score</div>
+            <Progress value={transparencyScoreProgress} className="h-4 bg-gray-200" />
+            <div className="flex items-center mt-2 mb-4 text-base">
+              <CircleDot className="h-5 w-5 text-[#7E69AB] mr-2" />
               <span>{transparencyScoreProgress}%</span>
             </div>
           </div>
           
           <div className="w-full max-w-[80%]">
-            <div className="text-sm text-left mb-1">Communication Score</div>
-            <Progress value={communicationScoreProgress} className="h-3 bg-gray-200" />
-            <div className="flex items-center mt-1 text-sm">
-              <CircleDot className="h-4 w-4 text-[#7E69AB] mr-1" />
+            <div className="text-base text-left mb-1">Communication Score</div>
+            <Progress value={communicationScoreProgress} className="h-4 bg-gray-200" />
+            <div className="flex items-center mt-2 text-base">
+              <CircleDot className="h-5 w-5 text-[#7E69AB] mr-2" />
               <span>{communicationScoreProgress}%</span>
             </div>
           </div>
           
-          <div className="mt-4 flex flex-col items-center">
-            <div className="flex items-center space-x-2 text-sm">
+          <div className="mt-5 flex flex-col items-center">
+            <div className="flex items-center space-x-2 text-base">
               <span className="font-medium">Target:</span>
               <span>Q4 2025</span>
             </div>
