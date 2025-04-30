@@ -1,16 +1,59 @@
 
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Star, Code } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function MySkillsSubmenu() {
   const skills = [
-    { name: "Leadership", level: 80, description: "Leading teams and projects" },
-    { name: "Python", level: 85, description: "Python programming language" },
-    { name: "Problem-solving", level: 75, description: "Critical thinking" },
-    { name: "React", level: 88, description: "Frontend development" },
-    { name: "Scala", level: 70, description: "Functional programming" },
-    { name: "AWS", level: 82, description: "Cloud infrastructure" }
+    { 
+      name: "Leadership", 
+      description: "Leading teams and projects",
+      endorsements: [
+        { name: "Alex Morgan", avatarUrl: "https://i.pravatar.cc/300?u=alex@example.com", initials: "AM" },
+        { name: "Jamie Chen", avatarUrl: "https://i.pravatar.cc/300?u=jamie@example.com", initials: "JC" },
+        { name: "Taylor Smith", avatarUrl: "https://i.pravatar.cc/300?u=taylor@example.com", initials: "TS" },
+      ]
+    },
+    { 
+      name: "Python", 
+      description: "Python programming language",
+      endorsements: [
+        { name: "Jamie Chen", avatarUrl: "https://i.pravatar.cc/300?u=jamie@example.com", initials: "JC" },
+        { name: "Alex Morgan", avatarUrl: "https://i.pravatar.cc/300?u=alex@example.com", initials: "AM" },
+      ]
+    },
+    { 
+      name: "Problem-solving", 
+      description: "Critical thinking",
+      endorsements: [
+        { name: "Taylor Smith", avatarUrl: "https://i.pravatar.cc/300?u=taylor@example.com", initials: "TS" },
+        { name: "Alex Morgan", avatarUrl: "https://i.pravatar.cc/300?u=alex@example.com", initials: "AM" },
+      ]
+    },
+    { 
+      name: "React", 
+      description: "Frontend development",
+      endorsements: [
+        { name: "Jamie Chen", avatarUrl: "https://i.pravatar.cc/300?u=jamie@example.com", initials: "JC" },
+        { name: "Taylor Smith", avatarUrl: "https://i.pravatar.cc/300?u=taylor@example.com", initials: "TS" },
+      ]
+    },
+    { 
+      name: "Scala", 
+      description: "Functional programming",
+      endorsements: [
+        { name: "Alex Morgan", avatarUrl: "https://i.pravatar.cc/300?u=alex@example.com", initials: "AM" },
+      ]
+    },
+    { 
+      name: "AWS", 
+      description: "Cloud infrastructure",
+      endorsements: [
+        { name: "Jamie Chen", avatarUrl: "https://i.pravatar.cc/300?u=jamie@example.com", initials: "JC" },
+        { name: "Taylor Smith", avatarUrl: "https://i.pravatar.cc/300?u=taylor@example.com", initials: "TS" },
+        { name: "Alex Morgan", avatarUrl: "https://i.pravatar.cc/300?u=alex@example.com", initials: "AM" },
+      ]
+    }
   ];
 
   return (
@@ -35,11 +78,21 @@ export function MySkillsSubmenu() {
               <h3 className="text-xl font-medium">{skill.name}</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-3">{skill.description}</p>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium">Proficiency</span>
-              <span className="text-sm font-medium">{skill.level}%</span>
+            
+            <div className="mt-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-medium">Endorsements</span>
+                <span className="text-sm text-muted-foreground">{skill.endorsements.length}</span>
+              </div>
+              <div className="flex -space-x-2">
+                {skill.endorsements.map((endorser, idx) => (
+                  <Avatar key={`${skill.name}-${endorser.name}-${idx}`} className="border-2 border-background w-8 h-8">
+                    <AvatarImage src={endorser.avatarUrl} alt={endorser.name} />
+                    <AvatarFallback>{endorser.initials}</AvatarFallback>
+                  </Avatar>
+                ))}
+              </div>
             </div>
-            <Progress value={skill.level} className="h-2" />
           </Card>
         ))}
       </div>
