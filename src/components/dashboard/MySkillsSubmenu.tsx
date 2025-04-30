@@ -28,7 +28,7 @@ export function MySkillsSubmenu() {
               <span className="text-sm font-medium">Proficiency</span>
               <span className="text-sm font-medium">{skill.level}%</span>
             </div>
-            <Progress value={skill.level} className="h-2" indicatorClassName="bg-[#9320E7]" />
+            <Progress value={skill.level} className="h-2" />
           </Card>
         ))}
       </div>

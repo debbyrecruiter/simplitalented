@@ -24,7 +24,7 @@ export function ExpandedMeSection({
         <MetricCard
           title="My Skills"
           value="5 Skills"
-          description="Development areas"
+          description=""
           onClick={onMySkillsClick}
         />
         <MetricCard
