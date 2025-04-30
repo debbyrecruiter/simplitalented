@@ -32,7 +32,7 @@ export const menuItems = [
         className: "text-[#17202A]" 
       },
       { 
-        title: "Searchable Transcripts", 
+        title: "Searchable\nTranscripts", 
         icon: Search, 
         path: "/past-1-1s/transcript",
         className: "text-[#17202A]" 

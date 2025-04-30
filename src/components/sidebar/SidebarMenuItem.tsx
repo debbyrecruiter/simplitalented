@@ -46,7 +46,7 @@ export function SidebarMenuItemComponent({ title, icon: Icon, path, submenu }: M
                   className={`flex items-center gap-3 text-[110%] text-[#0067D9] ${subItem.className || ''}`}
                 >
                   <subItem.icon className="h-5 w-5 text-[#0067D9]" />
-                  <span>{subItem.title}</span>
+                  <span className="whitespace-pre-line">{subItem.title}</span>
                 </Link>
               </SidebarMenuSubButton>
             </SidebarMenuSubItem>
