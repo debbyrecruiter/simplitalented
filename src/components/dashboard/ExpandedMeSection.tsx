@@ -17,6 +17,11 @@ export function ExpandedMeSection({ onPast11CardClick, onGoalsCardClick }: Expan
           onClick={onGoalsCardClick}
         />
         <MetricCard
+          title="My Learning"
+          value="2 Courses"
+          description="In progress"
+        />
+        <MetricCard
           title="My Reviews"
           value="Next: Jun 15"
           description="Performance review"
