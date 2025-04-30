@@ -3,6 +3,7 @@ import { teamMembers } from "@/data/dashboardData";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserRound } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 
 interface TeamMemberCardProps {
   name: string;
@@ -33,6 +34,20 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
         )}
       </CardHeader>
       <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+        <div className="flex justify-center space-x-4 mb-4">
+          <Button 
+            size="sm" 
+            className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white"
+          >
+            Endorse
+          </Button>
+          <Button 
+            size="sm" 
+            className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white"
+          >
+            Review
+          </Button>
+        </div>
         <div className="text-3xl font-bold truncate">
           {role}
         </div>
