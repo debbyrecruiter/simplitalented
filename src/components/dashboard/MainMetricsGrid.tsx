@@ -19,7 +19,7 @@ export function MainMetricsGrid({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FAFFCB] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+        className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
         onClick={onMeCardClick}
       >
         <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
