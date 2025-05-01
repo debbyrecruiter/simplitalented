@@ -15,7 +15,7 @@ const MyGoalsPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <DashboardHeader title="My Goals" />
-      <div className="flex-1 p-4 overflow-auto rounded-sm bg-white border border-gray-200">
+      <div className="flex-1 p-4 overflow-auto rounded-sm">
         <div className="mb-4">
           <BackButton onClick={handleBackClick} />
         </div>
