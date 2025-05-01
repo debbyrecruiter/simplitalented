@@ -7,7 +7,7 @@ export function GoalsFeed() {
   const feedItems = [
     {
       id: 1,
-      type: "review",
+      type: "review" as const,
       title: "Q2 Performance Review",
       date: "June 15, 2025",
       avatar: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=400&h=400&auto=format&fit=crop",
@@ -17,7 +17,7 @@ export function GoalsFeed() {
     },
     {
       id: 2,
-      type: "endorsement",
+      type: "endorsement" as const,
       title: "Skill Endorsement",
       date: "May 21, 2025",
       avatar: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&h=400&auto=format&fit=crop",
@@ -28,7 +28,7 @@ export function GoalsFeed() {
     },
     {
       id: 3,
-      type: "video",
+      type: "video" as const,
       title: "Q1 Performance Video Review",
       date: "March 30, 2025",
       avatar: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=400&h=400&auto=format&fit=crop",
@@ -39,7 +39,7 @@ export function GoalsFeed() {
     },
     {
       id: 4,
-      type: "endorsement",
+      type: "endorsement" as const,
       title: "Skill Endorsement",
       date: "February 12, 2025",
       avatar: "https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=400&h=400&auto=format&fit=crop",
@@ -50,7 +50,7 @@ export function GoalsFeed() {
     },
     {
       id: 5,
-      type: "review",
+      type: "review" as const,
       title: "Goal Completion Review",
       date: "January 25, 2025",
       avatar: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?q=80&w=400&h=400&auto=format&fit=crop",
@@ -87,7 +87,7 @@ interface FeedItemProps {
 function FeedItem({ item }: FeedItemProps) {
   return (
     <Card 
-      className="overflow-hidden border-l-4 hover:shadow-md transition-shadow animate-fade-in bg-white" 
+      className="overflow-hidden border-l-4 hover:shadow-md transition-shadow animate-fade-in bg-white border-12 border-[#840DD7]" 
       style={{ borderLeftColor: getBorderColor(item.type) }}
     >
       <CardHeader className="pb-3 flex flex-row justify-between items-center">
