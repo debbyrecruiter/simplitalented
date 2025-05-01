@@ -9,7 +9,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MyGoalsPage from "./pages/MyGoalsPage";
 import TeamGoalsPage from "./pages/TeamGoalsPage";
-import GoalsTimelinePage from "./pages/GoalsTimelinePage";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +23,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/my-goals" element={<MyGoalsPage />} />
             <Route path="/team-goals" element={<TeamGoalsPage />} />
-            <Route path="/my-reviews/timeline" element={<GoalsTimelinePage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
