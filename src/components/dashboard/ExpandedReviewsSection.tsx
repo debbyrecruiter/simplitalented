@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { ListCheck } from "lucide-react";
 import { GoalsFeed } from "@/components/goals/GoalsFeed";
+import { Separator } from "@/components/ui/separator";
 
 export function ExpandedReviewsSection() {
   const navigate = useNavigate();
@@ -19,7 +20,9 @@ export function ExpandedReviewsSection() {
         <h2 className="text-3xl font-bold text-[#512888]">Goals Timeline</h2>
       </div>
       
-      <div className="max-w-3xl mx-auto">
+      <Separator className="my-4 bg-gray-200" />
+      
+      <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg border-[3px] border-[#840DD7] shadow-sm">
         <GoalsFeed />
       </div>
     </div>
