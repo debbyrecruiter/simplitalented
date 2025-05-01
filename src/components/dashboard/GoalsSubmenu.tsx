@@ -1,6 +1,5 @@
 
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function GoalsSubmenu() {
   return (
@@ -10,58 +9,71 @@ export function GoalsSubmenu() {
         <p className="text-muted-foreground">View and manage your different goals</p>
       </div>
 
-      <Tabs defaultValue="department" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 bg-[#F0E6FF]">
-          <TabsTrigger value="department" className="data-[state=active]:bg-[#840DD7] data-[state=active]:text-white">
-            Department Goals
-          </TabsTrigger>
-          <TabsTrigger value="individual" className="data-[state=active]:bg-[#840DD7] data-[state=active]:text-white">
-            Individual Goals
-          </TabsTrigger>
-          <TabsTrigger value="professional" className="data-[state=active]:bg-[#840DD7] data-[state=active]:text-white">
-            Professional Development
-          </TabsTrigger>
-        </TabsList>
+      <div className="flex flex-nowrap gap-6 justify-center mt-8">
+        {/* My Goals Circle */}
+        <div 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
+          style={{ width: "437.5px", height: "437.5px" }}
+        >
+          <div className="flex flex-col items-center justify-center text-center pb-0 pt-6">
+            <div className="text-4xl font-small text-[#9320E7] truncate">
+              My Goals
+            </div>
+          </div>
+          <div className="p-6 flex-1 flex flex-col justify-center text-center">
+            <div className="flex justify-center space-x-4 mb-4">
+              <button 
+                className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white h-9 rounded-md px-3 inline-flex items-center justify-center"
+              >
+                Endorse
+              </button>
+              <button 
+                className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white h-9 rounded-md px-3 inline-flex items-center justify-center"
+              >
+                Review
+              </button>
+            </div>
+            <div className="text-3xl font-bold truncate">
+              Department Goals
+            </div>
+            <p className="text-sm text-muted-foreground truncate">
+              Goals related to your department
+            </p>
+          </div>
+        </div>
 
-        <TabsContent value="department" className="mt-6">
-          <Card className="bg-[#FAFFCB] border-[#840DD7] border-12">
-            <CardHeader>
-              <CardTitle>Department Goals</CardTitle>
-              <CardDescription>Goals related to your department's objectives</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p>Your department goals will be displayed here.</p>
-              {/* Department goals content will go here */}
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="individual" className="mt-6">
-          <Card className="bg-[#FAFFCB] border-[#840DD7] border-12">
-            <CardHeader>
-              <CardTitle>Individual Goals</CardTitle>
-              <CardDescription>Your personal performance goals</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p>Your individual goals will be displayed here.</p>
-              {/* Individual goals content will go here */}
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="professional" className="mt-6">
-          <Card className="bg-[#FAFFCB] border-[#840DD7] border-12">
-            <CardHeader>
-              <CardTitle>Professional Development Goals</CardTitle>
-              <CardDescription>Goals for your career growth and development</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p>Your professional development goals will be displayed here.</p>
-              {/* Professional development goals content will go here */}
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+        {/* Team Goals Circle */}
+        <div 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
+          style={{ width: "437.5px", height: "437.5px" }}
+        >
+          <div className="flex flex-col items-center justify-center text-center pb-0 pt-6">
+            <div className="text-4xl font-small text-[#9320E7] truncate">
+              Team Goals
+            </div>
+          </div>
+          <div className="p-6 flex-1 flex flex-col justify-center text-center">
+            <div className="flex justify-center space-x-4 mb-4">
+              <button 
+                className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white h-9 rounded-md px-3 inline-flex items-center justify-center"
+              >
+                Endorse
+              </button>
+              <button 
+                className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white h-9 rounded-md px-3 inline-flex items-center justify-center"
+              >
+                Review
+              </button>
+            </div>
+            <div className="text-3xl font-bold truncate">
+              Individual Goals
+            </div>
+            <p className="text-sm text-muted-foreground truncate">
+              Team performance goals
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
