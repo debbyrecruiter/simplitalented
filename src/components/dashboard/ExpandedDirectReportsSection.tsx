@@ -10,9 +10,9 @@ export const ExpandedDirectReportsSection = () => {
 
   return (
     <div className="mt-4 relative">
-      {/* Watermark */}
+      {/* Watermark - made more visible */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-        <p className="text-5xl font-bold text-gray-300/30 transform -rotate-12 select-none">
+        <p className="text-7xl font-bold text-purple-500/40 transform -rotate-12 select-none">
           Manager View Only
         </p>
       </div>
