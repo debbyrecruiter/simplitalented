@@ -58,9 +58,15 @@ export function MainMetricsGrid({
         </CardContent>
       </Card>
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+        className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
         onClick={onDirectReportsClick}
       >
+        {/* Watermark for Direct Reports card */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+          <p className="text-4xl font-bold text-purple-500/40 transform -rotate-12 select-none">
+            Manager View Only
+          </p>
+        </div>
         <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
           <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
             Direct<br />Reports
