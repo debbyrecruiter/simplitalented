@@ -21,18 +21,6 @@ export function GoalsSubmenu() {
             </div>
           </div>
           <div className="p-6 flex-1 flex flex-col justify-center text-center">
-            <div className="flex justify-center space-x-4 mb-4">
-              <button 
-                className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white h-9 rounded-md px-3 inline-flex items-center justify-center"
-              >
-                Endorse
-              </button>
-              <button 
-                className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white h-9 rounded-md px-3 inline-flex items-center justify-center"
-              >
-                Review
-              </button>
-            </div>
             <div className="text-3xl font-bold truncate">
               Department Goals
             </div>
@@ -53,18 +41,6 @@ export function GoalsSubmenu() {
             </div>
           </div>
           <div className="p-6 flex-1 flex flex-col justify-center text-center">
-            <div className="flex justify-center space-x-4 mb-4">
-              <button 
-                className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white h-9 rounded-md px-3 inline-flex items-center justify-center"
-              >
-                Endorse
-              </button>
-              <button 
-                className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white h-9 rounded-md px-3 inline-flex items-center justify-center"
-              >
-                Review
-              </button>
-            </div>
             <div className="text-3xl font-bold truncate">
               Individual Goals
             </div>
