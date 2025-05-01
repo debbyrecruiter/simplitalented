@@ -42,10 +42,10 @@ export function GoalsSubmenu() {
           </div>
           <div className="p-6 flex-1 flex flex-col justify-center text-center">
             <div className="text-3xl font-bold truncate">
-              Individual Goals
+              Team performance goals
             </div>
             <p className="text-sm text-muted-foreground truncate">
-              Team performance goals
+              Team progress overview
             </p>
           </div>
         </div>
