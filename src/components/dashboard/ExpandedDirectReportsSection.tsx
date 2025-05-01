@@ -9,7 +9,14 @@ export const ExpandedDirectReportsSection = () => {
   const directReports = teamMembers.filter(member => member.id !== 1);
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 relative">
+      {/* Watermark */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <p className="text-5xl font-bold text-gray-300/30 transform -rotate-12 select-none">
+          Manager View Only
+        </p>
+      </div>
+      
       <div className="flex flex-nowrap overflow-x-auto gap-6 pb-4 justify-center">
         {directReports.map((member) => (
           <Card 
