@@ -171,7 +171,7 @@ function getItemIcon(type: string) {
 function getBorderColor(type: string) {
   switch (type) {
     case "review":
-      return "#FFD700"; // Gold
+      return "#FFFFFF"; // Gold
     case "endorsement":
       return "#0067D9"; // Blue
     case "video":
