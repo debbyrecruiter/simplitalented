@@ -86,8 +86,10 @@ interface FeedItemProps {
 
 function FeedItem({ item }: FeedItemProps) {
   return (
-    <Card className="overflow-hidden border-l-4 hover:shadow-md transition-shadow animate-fade-in" 
-          style={{ borderLeftColor: getBorderColor(item.type) }}>
+    <Card 
+      className="overflow-hidden border-l-4 hover:shadow-md transition-shadow animate-fade-in bg-white" 
+      style={{ borderLeftColor: getBorderColor(item.type) }}
+    >
       <CardHeader className="pb-3 flex flex-row justify-between items-center">
         <div className="flex items-center gap-3">
           <Avatar className="h-10 w-10 border border-gray-200">
