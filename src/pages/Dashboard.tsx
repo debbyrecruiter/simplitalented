@@ -10,8 +10,9 @@ import { BackButton } from "@/components/ui/back-button";
 import { GoalsSubmenu } from "@/components/dashboard/GoalsSubmenu";
 import { ExpandedCompanyGoalsSection } from "@/components/dashboard/ExpandedCompanyGoalsSection";
 import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
+import { ExpandedReviewsSection } from "@/components/dashboard/ExpandedReviewsSection";
 
-type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | "company-goals" | "my-skills" | null;
+type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | "company-goals" | "my-skills" | "reviews" | null;
 
 const Dashboard = () => {
   const [expandedSection, setExpandedSection] = useState<ExpandedSectionType>(null);
@@ -44,6 +45,10 @@ const Dashboard = () => {
     setExpandedSection(expandedSection === "my-skills" ? null : "my-skills");
   };
   
+  const handleReviewsClick = () => {
+    setExpandedSection(expandedSection === "reviews" ? null : "reviews");
+  };
+  
   const handleBackClick = () => {
     // If we're in past11s, goals, or skills submenu, go back to "me" section
     if (expandedSection === "past11s" || expandedSection === "goals" || expandedSection === "my-skills") {
@@ -71,6 +76,7 @@ const Dashboard = () => {
             onDirectReportsClick={handleDirectReportsClick}
             onGoalsCardClick={handleGoalsCardClick}
             onCompanyGoalsClick={handleCompanyGoalsClick}
+            onReviewsClick={handleReviewsClick}
           />
         )}
 
@@ -93,6 +99,8 @@ const Dashboard = () => {
         {expandedSection === "company-goals" && <ExpandedCompanyGoalsSection />}
         
         {expandedSection === "my-skills" && <MySkillsSubmenu />}
+        
+        {expandedSection === "reviews" && <ExpandedReviewsSection />}
       </div>
     </div>
   );

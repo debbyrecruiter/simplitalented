@@ -10,7 +10,8 @@ import {
   Video,
   Search,
   Goal,
-  Star
+  Star,
+  ListCheck
 } from "lucide-react";
 
 export const menuItems = [
@@ -30,7 +31,19 @@ export const menuItems = [
   },
   { title: "Employees", icon: Users, path: "/employees" },
   { title: "Performance", icon: BarChart2, path: "/performance" },
-  { title: "Reviews", icon: FileText, path: "/reviews" },
+  { 
+    title: "Reviews", 
+    icon: FileText, 
+    path: "/reviews",
+    submenu: [
+      { 
+        title: "My Goals Timeline", 
+        icon: ListCheck, 
+        path: "/my-goals",
+        className: "text-[#17202A]" 
+      }
+    ]
+  },
   { title: "Goals", icon: Award, path: "/goals" },
   { title: "Company Goals", icon: Goal, path: "/company-goals" },
   { title: "Schedule", icon: Calendar, path: "/schedule" },
