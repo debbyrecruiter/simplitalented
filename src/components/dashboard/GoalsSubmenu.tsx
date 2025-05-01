@@ -15,11 +15,6 @@ export function GoalsSubmenu() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold text-[#512888] mb-2">My Goals</h2>
-        <p className="text-muted-foreground">View and manage your different goals</p>
-      </div>
-
       <div className="flex flex-nowrap gap-6 justify-center mt-8">
         {/* My Goals Circle */}
         <div 
