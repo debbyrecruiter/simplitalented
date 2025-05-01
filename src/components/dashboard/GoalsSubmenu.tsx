@@ -22,10 +22,10 @@ export function GoalsSubmenu() {
           </div>
           <div className="p-6 flex-1 flex flex-col justify-center text-center">
             <div className="text-3xl font-bold truncate">
-              Department Goals
+              Your Goals
             </div>
             <p className="text-sm text-muted-foreground truncate">
-              Goals related to your department
+              Your progress
             </p>
           </div>
         </div>
