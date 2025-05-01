@@ -5,8 +5,8 @@ import { ListCheck } from "lucide-react";
 export function ExpandedReviewsSection() {
   const navigate = useNavigate();
   
-  const handleMyGoalsTimelineClick = () => {
-    navigate("/my-goals");
+  const handleGoalsTimelineClick = () => {
+    navigate("/my-reviews/timeline");
   };
 
   return (
@@ -16,26 +16,20 @@ export function ExpandedReviewsSection() {
         <p className="text-muted-foreground">View and manage your different reviews and goals</p>
       </div>
 
-      <div className="flex flex-nowrap gap-6 justify-center mt-8">
-        {/* My Goals Timeline Circle */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         <div 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0 cursor-pointer hover:border-blue-600 transition-colors"
-          style={{ width: "437.5px", height: "437.5px" }}
-          onClick={handleMyGoalsTimelineClick}
+          onClick={handleGoalsTimelineClick}
+          className="bg-white p-6 rounded-lg border-[3px] border-[#840DD7] shadow-sm cursor-pointer hover:shadow-md transition-all flex flex-col gap-4"
         >
-          <div className="flex flex-col items-center justify-center text-center pb-0 pt-6">
-            <div className="text-4xl font-small text-[#9320E7] truncate">
-              My Goals
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-[#F1F0FB] rounded-full">
+              <ListCheck className="h-6 w-6 text-[#512888]" />
             </div>
+            <h3 className="text-xl font-semibold text-[#512888]">Goals Timeline</h3>
           </div>
-          <div className="p-6 flex-1 flex flex-col justify-center text-center">
-            <div className="text-3xl font-bold truncate">
-              Timeline
-            </div>
-            <p className="text-sm text-muted-foreground truncate">
-              Track your goal progress over time
-            </p>
-          </div>
+          <p className="text-muted-foreground">
+            Track your goal progress over time with your personal goals timeline
+          </p>
         </div>
       </div>
     </div>

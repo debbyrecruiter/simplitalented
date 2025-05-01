@@ -37,9 +37,9 @@ export const menuItems = [
     path: "/reviews",
     submenu: [
       { 
-        title: "My Goals Timeline", 
+        title: "Goals Timeline", 
         icon: ListCheck, 
-        path: "/my-goals",
+        path: "/my-reviews/timeline",
         className: "text-[#17202A]" 
       }
     ]
