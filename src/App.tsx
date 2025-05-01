@@ -8,6 +8,7 @@ import MainLayout from "./layouts/MainLayout";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MyGoalsPage from "./pages/MyGoalsPage";
+import TeamGoalsPage from "./pages/TeamGoalsPage";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route element={<MainLayout />}>
             <Route path="/" element={<Index />} />
             <Route path="/my-goals" element={<MyGoalsPage />} />
+            <Route path="/team-goals" element={<TeamGoalsPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
