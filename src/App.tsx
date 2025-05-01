@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -6,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import MyGoalsPage from "./pages/MyGoalsPage";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +20,7 @@ const App = () => (
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Index />} />
+            <Route path="/my-goals" element={<MyGoalsPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
