@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { MainMetricsGrid } from "@/components/dashboard/MainMetricsGrid";
@@ -12,70 +13,74 @@ import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
 import { ExpandedReviewsSection } from "@/components/dashboard/ExpandedReviewsSection";
 import { ExpandedToDoSection } from "@/components/dashboard/ExpandedToDoListSection";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | "company-goals" | "my-skills" | "reviews" | "todo-list" | "reports" | null;
 
 const Dashboard = () => {
   const [expandedSection, setExpandedSection] = useState<ExpandedSectionType>(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Helper function to update section and push state to history
+  const updateSection = (section: ExpandedSectionType) => {
+    setExpandedSection(section);
+    
+    // Only push to history if we're changing to a new section
+    if (section) {
+      window.history.pushState(
+        { section, previousSection: expandedSection }, 
+        "", 
+        `${location.pathname}${section ? `?section=${section}` : ""}`
+      );
+    }
+  };
   
   const handleMeCardClick = () => {
-    setExpandedSection("me");
-    window.history.pushState({ section: "me" }, "");
+    updateSection("me");
   };
   
   const handleTeamCardClick = () => {
-    setExpandedSection("team");
-    window.history.pushState({ section: "team" }, "");
+    updateSection("team");
   };
   
   const handleDirectReportsClick = () => {
-    setExpandedSection("direct-reports");
-    window.history.pushState({ section: "direct-reports" }, "");
+    updateSection("direct-reports");
   };
   
   const handlePast11CardClick = () => {
-    setExpandedSection("past11s");
-    window.history.pushState({ section: "past11s" }, "");
+    updateSection("past11s");
   };
 
   const handleGoalsCardClick = () => {
-    setExpandedSection("goals");
-    window.history.pushState({ section: "goals" }, "");
+    updateSection("goals");
   };
   
   const handleCompanyGoalsClick = () => {
-    setExpandedSection("company-goals");
-    window.history.pushState({ section: "company-goals" }, "");
+    updateSection("company-goals");
   };
   
   const handleMySkillsClick = () => {
-    setExpandedSection("my-skills");
-    window.history.pushState({ section: "my-skills" }, "");
+    updateSection("my-skills");
   };
   
   const handleReviewsClick = () => {
-    setExpandedSection("reviews");
-    window.history.pushState({ section: "reviews" }, "");
+    updateSection("reviews");
   };
   
   const handleToDoListClick = () => {
-    setExpandedSection("todo-list");
-    window.history.pushState({ section: "todo-list" }, "");
+    updateSection("todo-list");
   };
   
   const handleReportsClick = () => {
-    setExpandedSection("reports");
-    window.history.pushState({ section: "reports" }, "");
+    updateSection("reports");
   };
   
   const handleBackClick = () => {
     // If we're in past11s, goals, my-skills, or todo-list submenu, go back to "me" section
     if (expandedSection === "past11s" || expandedSection === "goals" || 
         expandedSection === "my-skills" || expandedSection === "todo-list") {
-      setExpandedSection("me");
-      window.history.pushState({ section: "me" }, "");
+      updateSection("me");
     } else {
       // Otherwise, go back to the main dashboard
       setExpandedSection(null);
@@ -96,6 +101,16 @@ const Dashboard = () => {
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  // Check URL params on initial load to set the correct section
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const sectionParam = searchParams.get('section') as ExpandedSectionType | null;
+    
+    if (sectionParam) {
+      setExpandedSection(sectionParam);
+    }
+  }, [location]);
 
   return (
     <div className="flex flex-col h-screen">
