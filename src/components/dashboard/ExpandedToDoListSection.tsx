@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ListCheck, MessageSquare, User, UserCheck, Star } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -25,6 +24,7 @@ interface ReviewToWrite {
   completed: boolean;
   rating: number | null;
   feedback: string;
+  isConfidential?: boolean;
 }
 
 interface ReviewToRespond {
@@ -103,6 +103,7 @@ export function ExpandedToDoSection() {
       completed: false,
       rating: null,
       feedback: '',
+      isConfidential: true,
     },
   ]);
 
@@ -291,7 +292,13 @@ export function ExpandedToDoSection() {
           </TableHeader>
           <TableBody>
             {reviewsToWrite.map((review) => (
-              <TableRow key={review.id} className={cn(review.completed && "bg-gray-50")}>
+              <TableRow 
+                key={review.id} 
+                className={cn(
+                  review.completed && "bg-gray-50",
+                  review.isConfidential && "bg-yellow-50"
+                )}
+              >
                 <TableCell>
                   <Button
                     variant="outline"
@@ -323,6 +330,9 @@ export function ExpandedToDoSection() {
                   review.completed && "text-gray-500"
                 )}>
                   {review.reviewee.role}
+                  {review.isConfidential && (
+                    <span className="ml-2 font-bold text-red-600">CONFIDENTIAL</span>
+                  )}
                 </TableCell>
                 <TableCell className={cn(
                   "text-right",
