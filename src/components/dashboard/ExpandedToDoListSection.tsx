@@ -10,6 +10,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Textarea } from "@/components/ui/textarea";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Card, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Define types for our review items
 interface ReviewToWrite {
@@ -25,6 +26,7 @@ interface ReviewToWrite {
   rating: number | null;
   feedback: string;
   isConfidential?: boolean;
+  revealIdentity?: boolean;
 }
 
 interface ReviewToRespond {
@@ -104,6 +106,7 @@ export function ExpandedToDoSection() {
       rating: null,
       feedback: '',
       isConfidential: true,
+      revealIdentity: false,
     },
   ]);
 
@@ -202,6 +205,15 @@ export function ExpandedToDoSection() {
     setReviewsToRespond(reviews =>
       reviews.map(review =>
         review.id === id ? { ...review, response } : review
+      )
+    );
+  };
+
+  // Update reveal identity checkbox state
+  const toggleRevealIdentity = (id: string) => {
+    setReviewsToWrite(reviews =>
+      reviews.map(review =>
+        review.id === id ? { ...review, revealIdentity: !review.revealIdentity } : review
       )
     );
   };
@@ -368,6 +380,21 @@ export function ExpandedToDoSection() {
                               className="min-h-[120px]"
                             />
                           </div>
+                          {review.reviewee.role === 'Team Manager' && (
+                            <div className="flex items-center space-x-2">
+                              <Checkbox 
+                                id={`reveal-identity-${review.id}`}
+                                checked={review.revealIdentity}
+                                onCheckedChange={() => toggleRevealIdentity(review.id)}
+                              />
+                              <label 
+                                htmlFor={`reveal-identity-${review.id}`}
+                                className="text-sm text-gray-700 leading-tight"
+                              >
+                                Your review is 100% anonymous. Check this box if you would like to reveal your identity to HR
+                              </label>
+                            </div>
+                          )}
                           <Button 
                             className="w-full bg-[#840DD7] hover:bg-[#6b0ab0]"
                             onClick={() => submitReview(review.id)}
