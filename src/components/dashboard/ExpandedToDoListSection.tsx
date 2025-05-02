@@ -12,7 +12,7 @@ interface TodoItem {
   completed: boolean;
 }
 
-export function ExpandedToDoListSection() {
+export function ExpandedToDoSection() {
   const [todos, setTodos] = useState<TodoItem[]>([
     { id: '1', text: 'Complete quarterly review', completed: false },
     { id: '2', text: 'Schedule team meeting', completed: true },
@@ -56,7 +56,7 @@ export function ExpandedToDoListSection() {
         <div className="p-2 bg-[#F1F0FB] rounded-full">
           <ListCheck className="h-6 w-6 text-[#512888]" />
         </div>
-        <h2 className="text-3xl font-bold text-[#512888]">My To Do List</h2>
+        <h2 className="text-3xl font-bold text-[#512888]">My To Do</h2>
       </div>
       
       <Separator className="my-4 bg-gray-200" />
