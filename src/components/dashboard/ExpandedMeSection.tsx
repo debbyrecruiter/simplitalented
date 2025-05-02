@@ -52,7 +52,7 @@ export function ExpandedMeSection({
         />
         {/* Added To Do List card */}
         <MetricCard
-          title="My To Do List"
+          title="My To Do"
           value="Daily Tasks"
           description="Keep track of work"
           onClick={onToDoListClick}
