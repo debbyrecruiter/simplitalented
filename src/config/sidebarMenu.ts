@@ -28,7 +28,7 @@ export const menuItems = [
         className: "text-[#17202A]" 
       },
       {
-        title: "My To Do List",
+        title: "My To Do",
         icon: ListCheck,
         path: "/me/todo",
         className: "text-[#17202A]"
