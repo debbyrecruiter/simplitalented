@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from "react";
 import { DashboardHeader } from "@/components/DashboardHeader";
-import { useState } from "react";
 import { MainMetricsGrid } from "@/components/dashboard/MainMetricsGrid";
 import { ExpandedMeSection } from "@/components/dashboard/ExpandedMeSection";
 import { Past11sSubmenu } from "@/components/dashboard/Past11sSubmenu";
@@ -12,50 +12,62 @@ import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
 import { ExpandedReviewsSection } from "@/components/dashboard/ExpandedReviewsSection";
 import { ExpandedToDoSection } from "@/components/dashboard/ExpandedToDoListSection";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | "company-goals" | "my-skills" | "reviews" | "todo-list" | "reports" | null;
 
 const Dashboard = () => {
   const [expandedSection, setExpandedSection] = useState<ExpandedSectionType>(null);
+  const navigate = useNavigate();
   
   const handleMeCardClick = () => {
-    setExpandedSection(expandedSection === "me" ? null : "me");
+    setExpandedSection("me");
+    window.history.pushState({ section: "me" }, "");
   };
   
   const handleTeamCardClick = () => {
-    setExpandedSection(expandedSection === "team" ? null : "team");
+    setExpandedSection("team");
+    window.history.pushState({ section: "team" }, "");
   };
   
   const handleDirectReportsClick = () => {
-    setExpandedSection(expandedSection === "direct-reports" ? null : "direct-reports");
+    setExpandedSection("direct-reports");
+    window.history.pushState({ section: "direct-reports" }, "");
   };
   
   const handlePast11CardClick = () => {
-    setExpandedSection(expandedSection === "past11s" ? null : "past11s");
+    setExpandedSection("past11s");
+    window.history.pushState({ section: "past11s" }, "");
   };
 
   const handleGoalsCardClick = () => {
-    setExpandedSection(expandedSection === "goals" ? null : "goals");
+    setExpandedSection("goals");
+    window.history.pushState({ section: "goals" }, "");
   };
   
   const handleCompanyGoalsClick = () => {
-    setExpandedSection(expandedSection === "company-goals" ? null : "company-goals");
+    setExpandedSection("company-goals");
+    window.history.pushState({ section: "company-goals" }, "");
   };
   
   const handleMySkillsClick = () => {
-    setExpandedSection(expandedSection === "my-skills" ? null : "my-skills");
+    setExpandedSection("my-skills");
+    window.history.pushState({ section: "my-skills" }, "");
   };
   
   const handleReviewsClick = () => {
-    setExpandedSection(expandedSection === "reviews" ? null : "reviews");
+    setExpandedSection("reviews");
+    window.history.pushState({ section: "reviews" }, "");
   };
   
   const handleToDoListClick = () => {
-    setExpandedSection(expandedSection === "todo-list" ? null : "todo-list");
+    setExpandedSection("todo-list");
+    window.history.pushState({ section: "todo-list" }, "");
   };
   
   const handleReportsClick = () => {
-    setExpandedSection(expandedSection === "reports" ? null : "reports");
+    setExpandedSection("reports");
+    window.history.pushState({ section: "reports" }, "");
   };
   
   const handleBackClick = () => {
@@ -63,11 +75,27 @@ const Dashboard = () => {
     if (expandedSection === "past11s" || expandedSection === "goals" || 
         expandedSection === "my-skills" || expandedSection === "todo-list") {
       setExpandedSection("me");
+      window.history.pushState({ section: "me" }, "");
     } else {
       // Otherwise, go back to the main dashboard
       setExpandedSection(null);
+      window.history.back();
     }
   };
+
+  // Listen for popstate events (when browser back button is clicked)
+  useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      if (event.state && event.state.section) {
+        setExpandedSection(event.state.section);
+      } else {
+        setExpandedSection(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   return (
     <div className="flex flex-col h-screen">

@@ -17,12 +17,8 @@ export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: Back
       // Use custom click handler if provided
       onClick();
     } else {
-      // Go back in history, or use fallback if there's no history
-      if (window.history.length > 1) {
-        navigate(-1);
-      } else {
-        navigate(fallbackPath);
-      }
+      // Use React Router's navigate(-1) which properly handles the history stack
+      navigate(-1);
     }
   };
 
