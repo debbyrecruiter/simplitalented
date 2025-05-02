@@ -11,6 +11,7 @@ import { ExpandedCompanyGoalsSection } from "@/components/dashboard/ExpandedComp
 import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
 import { ExpandedReviewsSection } from "@/components/dashboard/ExpandedReviewsSection";
 import { ExpandedToDoSection } from "@/components/dashboard/ExpandedToDoListSection";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | "company-goals" | "my-skills" | "reviews" | "todo-list" | "reports" | null;
 
