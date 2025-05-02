@@ -22,16 +22,21 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  // Helper function to update section and push state to history
+  // Helper function to update section
   const updateSection = (section: ExpandedSectionType) => {
     setExpandedSection(section);
     
-    // Only push to history if we're changing to a new section
+    // Add to browser history
     if (section) {
+      // Create a new URL with the section as a query parameter
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.set('section', section);
+      
+      // Push the new state to browser history
       window.history.pushState(
-        { section, previousSection: expandedSection }, 
+        { section }, 
         "", 
-        `${location.pathname}${section ? `?section=${section}` : ""}`
+        newUrl.toString()
       );
     }
   };
@@ -84,7 +89,10 @@ const Dashboard = () => {
     } else {
       // Otherwise, go back to the main dashboard
       setExpandedSection(null);
-      window.history.back();
+      // Remove query parameters from URL
+      const newUrl = new URL(window.location.href);
+      newUrl.search = '';
+      window.history.pushState({}, "", newUrl.toString());
     }
   };
 
