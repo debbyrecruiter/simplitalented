@@ -26,6 +26,12 @@ export const menuItems = [
         icon: Star, 
         path: "/me/skills",
         className: "text-[#17202A]" 
+      },
+      {
+        title: "My To Do List",
+        icon: ListCheck,
+        path: "/me/todo",
+        className: "text-[#17202A]"
       }
     ]
   },
@@ -34,15 +40,7 @@ export const menuItems = [
   { 
     title: "Reviews", 
     icon: FileText, 
-    path: "/reviews",
-    submenu: [
-      { 
-        title: "Goals Timeline", 
-        icon: ListCheck, 
-        path: "/my-reviews/timeline",
-        className: "text-[#17202A]" 
-      }
-    ]
+    path: "/reviews"
   },
   { title: "Goals", icon: Award, path: "/goals" },
   { title: "Company Goals", icon: Goal, path: "/company-goals" },
