@@ -55,8 +55,9 @@ const Dashboard = () => {
   };
   
   const handleBackClick = () => {
-    // If we're in past11s, goals, or skills submenu, go back to "me" section
-    if (expandedSection === "past11s" || expandedSection === "goals" || expandedSection === "my-skills") {
+    // If we're in past11s, goals, my-skills, or todo-list submenu, go back to "me" section
+    if (expandedSection === "past11s" || expandedSection === "goals" || 
+        expandedSection === "my-skills" || expandedSection === "todo-list") {
       setExpandedSection("me");
     } else {
       // Otherwise, go back to the main dashboard
