@@ -1,16 +1,34 @@
 
 import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface BackButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   label?: string;
+  fallbackPath?: string;
 }
 
-export function BackButton({ onClick, label = "Back" }: BackButtonProps) {
+export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: BackButtonProps) {
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    if (onClick) {
+      // Use custom click handler if provided
+      onClick();
+    } else {
+      // Go back in history, or use fallback if there's no history
+      if (window.history.length > 1) {
+        navigate(-1);
+      } else {
+        navigate(fallbackPath);
+      }
+    }
+  };
+
   return (
     <Button
-      onClick={onClick}
+      onClick={handleClick}
       variant="ghost"
       className="flex items-center gap-1 text-[#840DD7] hover:text-[#840DD7]/80 hover:bg-transparent p-0"
     >

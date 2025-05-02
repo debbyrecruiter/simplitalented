@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
@@ -57,7 +56,7 @@ const MyGoalsPage = () => {
       <DashboardHeader title="My Goals" />
       <div className="flex-1 p-4 overflow-auto rounded-sm bg-[#DBE1F3]">
         <div className="mb-4">
-          <BackButton onClick={handleBackClick} />
+          <BackButton />
         </div>
         
         <div className="max-w-7xl mx-auto">

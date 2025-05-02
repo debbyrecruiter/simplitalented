@@ -1,19 +1,11 @@
-
 import { useState } from "react";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
-import { useNavigate } from "react-router-dom";
 import { GoalsTeamFeed } from "@/components/goals/GoalsTeamFeed";
 import { GoalTracker } from "@/components/GoalTracker";
 import { ListCheck } from "lucide-react";
 
 const TeamGoalsPage = () => {
-  const navigate = useNavigate();
-
-  const handleBackClick = () => {
-    navigate("/");
-  };
-
   // Sample team goals data for the tracker
   const teamGoals = [
     {
@@ -58,7 +50,7 @@ const TeamGoalsPage = () => {
       <DashboardHeader title="Team Goals" />
       <div className="flex-1 p-4 overflow-auto rounded-sm bg-[#DBE1F3]">
         <div className="mb-4">
-          <BackButton onClick={handleBackClick} />
+          <BackButton />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">

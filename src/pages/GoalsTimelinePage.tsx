@@ -1,23 +1,16 @@
 
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
-import { useNavigate } from "react-router-dom";
 import { GoalsFeed } from "@/components/goals/GoalsFeed";
 import { ListCheck } from "lucide-react";
 
 const GoalsTimelinePage = () => {
-  const navigate = useNavigate();
-
-  const handleBackClick = () => {
-    navigate("/");
-  };
-
   return (
     <div className="flex flex-col h-screen">
       <DashboardHeader title="Goals Timeline" />
       <div className="flex-1 p-4 overflow-auto rounded-sm bg-[#DBE1F3]">
         <div className="mb-4">
-          <BackButton onClick={handleBackClick} />
+          <BackButton />
         </div>
         
         <div className="max-w-7xl mx-auto">
