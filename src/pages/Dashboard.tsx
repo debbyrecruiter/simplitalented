@@ -1,4 +1,3 @@
-
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { useState } from "react";
 import { MainMetricsGrid } from "@/components/dashboard/MainMetricsGrid";
@@ -92,6 +91,7 @@ const Dashboard = () => {
             onPast11CardClick={handlePast11CardClick} 
             onGoalsCardClick={handleGoalsCardClick}
             onMySkillsClick={handleMySkillsClick}
+            onToDoListClick={handleToDoListClick}
           />
         )}
 

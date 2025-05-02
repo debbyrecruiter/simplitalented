@@ -5,12 +5,14 @@ interface ExpandedMeSectionProps {
   onPast11CardClick: () => void;
   onGoalsCardClick: () => void;
   onMySkillsClick: () => void;
+  onToDoListClick: () => void; // Added this prop
 }
 
 export function ExpandedMeSection({ 
   onPast11CardClick, 
   onGoalsCardClick,
-  onMySkillsClick 
+  onMySkillsClick,
+  onToDoListClick // Added this prop
 }: ExpandedMeSectionProps) {
   return (
     <div className="space-y-6">
@@ -47,6 +49,13 @@ export function ExpandedMeSection({
           value="Last: Apr 28"
           description="Meeting history"
           onClick={onPast11CardClick}
+        />
+        {/* Added To Do List card */}
+        <MetricCard
+          title="My To Do List"
+          value="Daily Tasks"
+          description="Keep track of work"
+          onClick={onToDoListClick}
         />
       </div>
     </div>
