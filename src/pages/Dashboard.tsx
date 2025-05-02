@@ -10,7 +10,7 @@ import { GoalsSubmenu } from "@/components/dashboard/GoalsSubmenu";
 import { ExpandedCompanyGoalsSection } from "@/components/dashboard/ExpandedCompanyGoalsSection";
 import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
 import { ExpandedReviewsSection } from "@/components/dashboard/ExpandedReviewsSection";
-import { ExpandedToDoListSection } from "@/components/dashboard/ExpandedToDoListSection";
+import { ExpandedToDoSection } from "@/components/dashboard/ExpandedToDoListSection";
 
 type ExpandedSectionType = "me" | "past11s" | "team" | "direct-reports" | "goals" | "company-goals" | "my-skills" | "reviews" | "todo-list" | null;
 
@@ -109,7 +109,7 @@ const Dashboard = () => {
         
         {expandedSection === "reviews" && <ExpandedReviewsSection />}
         
-        {expandedSection === "todo-list" && <ExpandedToDoListSection />}
+        {expandedSection === "todo-list" && <ExpandedToDoSection />}
       </div>
     </div>
   );
