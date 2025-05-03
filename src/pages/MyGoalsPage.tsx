@@ -62,7 +62,7 @@ const MyGoalsPage = () => {
           <BackButton />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-24 max-w-7xl mx-auto">
           {/* Left column - Goals tracker */}
           <div className="md:col-span-1">
             <div className="flex justify-between items-center mb-6">
