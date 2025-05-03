@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { GoalTracker } from "@/components/GoalTracker";
 import { Button } from "@/components/ui/button";
 import { ListCheck, PlusCircle } from "lucide-react";
+import { GoalsFeed } from "@/components/goals/GoalsFeed";
 
 const MyGoalsPage = () => {
   const navigate = useNavigate();
@@ -61,21 +62,30 @@ const MyGoalsPage = () => {
           <BackButton />
         </div>
         
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold text-[#512888]">My Goals</h2>
-            <Button className="bg-[#9320E7] hover:bg-[#7E69AB]" size="sm">
-              <PlusCircle className="mr-2 h-4 w-4" />
-              Add New Goal
-            </Button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {/* Left column - Goals tracker */}
+          <div className="md:col-span-1">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-3xl font-bold text-[#512888]">My Goals</h2>
+              <Button className="bg-[#9320E7] hover:bg-[#7E69AB]" size="sm">
+                <PlusCircle className="mr-2 h-4 w-4" />
+                Add New Goal
+              </Button>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg border-[3px] border-[#840DD7] mb-4">
+              <div className="flex items-center gap-2 mb-3">
+                <ListCheck className="h-5 w-5 text-[#512888]" />
+                <h3 className="text-xl font-semibold text-[#512888]">My Active Goals</h3>
+              </div>
+              <GoalTracker goals={goals} className="bg-white border-none shadow-none" />
+            </div>
           </div>
           
-          <div className="bg-white p-6 rounded-lg border-[3px] border-[#840DD7] mb-4">
-            <div className="flex items-center gap-2 mb-3">
-              <ListCheck className="h-5 w-5 text-[#512888]" />
-              <h3 className="text-xl font-semibold text-[#512888]">My Active Goals</h3>
-            </div>
-            <GoalTracker goals={goals} className="bg-white border-none shadow-none" />
+          {/* Right column - Feed */}
+          <div className="md:col-span-2">
+            <h2 className="text-3xl font-bold text-[#512888] mb-6">Goals Timeline</h2>
+            <GoalsFeed />
           </div>
         </div>
       </div>
