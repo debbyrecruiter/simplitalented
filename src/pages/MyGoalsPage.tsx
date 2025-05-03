@@ -62,7 +62,7 @@ const MyGoalsPage = () => {
           <BackButton />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {/* Left column - Goals tracker */}
           <div className="md:col-span-1">
             <div className="flex justify-between items-center mb-6">
@@ -84,7 +84,7 @@ const MyGoalsPage = () => {
           
           {/* Right column - Feed */}
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold text-[#512888] mb-6">Goals Timeline</h2>
+            <h2 className="text-3xl font-bold text-[#512888] mb-8">Goals Timeline</h2>
             <GoalsFeed />
           </div>
         </div>
