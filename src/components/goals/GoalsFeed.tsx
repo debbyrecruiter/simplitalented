@@ -1,10 +1,22 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Video, Star, MessageSquare, ThumbsUp, Calendar } from "lucide-react";
+import { Video, Star, MessageSquare, ThumbsUp, Calendar, Tag } from "lucide-react";
 
 export function GoalsFeed() {
   const feedItems = [
+    {
+      id: 0,
+      type: "slack" as const,
+      title: "Organized Team Lunch & Learn",
+      date: "May 3, 2025", // Current date from system context
+      avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=400&h=400&auto=format&fit=crop",
+      author: "You",
+      authorRole: "Team Member",
+      content: "Successfully organized cross-team Lunch & Learn session on the new API integration strategy.",
+      source: "Slack",
+      tags: ["leadership"]
+    },
     {
       id: 1,
       type: "review" as const,
@@ -72,7 +84,7 @@ export function GoalsFeed() {
 interface FeedItemProps {
   item: {
     id: number;
-    type: "review" | "endorsement" | "video";
+    type: "review" | "endorsement" | "video" | "slack";
     title: string;
     date: string;
     avatar: string;
@@ -81,6 +93,8 @@ interface FeedItemProps {
     content: string;
     skills?: string[];
     videoThumbnail?: string;
+    source?: string;
+    tags?: string[];
   };
 }
 
@@ -142,6 +156,25 @@ function FeedItem({ item }: FeedItemProps) {
           </div>
         )}
         
+        {item.type === "slack" && item.tags && (
+          <div className="flex flex-wrap gap-2 mb-3">
+            {item.tags.map((tag) => (
+              <span 
+                key={tag} 
+                className="flex items-center gap-1 px-2 py-1 bg-[#F0F4FA] text-[#1264A3] rounded-full text-xs font-medium"
+              >
+                <Tag className="h-3 w-3" />
+                {tag}
+              </span>
+            ))}
+            {item.source && (
+              <span className="px-2 py-1 bg-[#E8F5FA] text-[#36C5F0] rounded-full text-xs font-medium">
+                via {item.source}
+              </span>
+            )}
+          </div>
+        )}
+        
         <div className="flex justify-between mt-4 pt-3 border-t border-gray-100">
           <button className="flex items-center gap-1 text-xs text-muted-foreground hover:text-[#512888]">
             <ThumbsUp className="h-4 w-4" /> 
@@ -165,6 +198,8 @@ function getItemIcon(type: string) {
       return <ThumbsUp className="h-5 w-5 text-blue-500" />;
     case "video":
       return <Video className="h-5 w-5 text-purple-500" />;
+    case "slack":
+      return <MessageSquare className="h-5 w-5 text-[#36C5F0]" />;
     default:
       return null;
   }
@@ -177,6 +212,8 @@ function getBorderColor(type: string) {
     case "endorsement":
       return "#840DD7"; // Purple to match the left card
     case "video":
+      return "#840DD7"; // Purple to match the left card
+    case "slack":
       return "#840DD7"; // Purple to match the left card
     default:
       return "#840DD7"; // Default purple to match the left card
