@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
@@ -53,7 +54,7 @@ const TeamGoalsPage = () => {
           <BackButton />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Left column - Team Goals tracker */}
           <div className="md:col-span-1">
             <div className="bg-white p-4 rounded-lg border-[3px] border-[#840DD7] mb-4">
