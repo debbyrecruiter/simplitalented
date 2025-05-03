@@ -1,7 +1,6 @@
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Video, Star, MessageSquare, ThumbsUp, Calendar, Tag } from "lucide-react";
+import { Video, Star, MessageSquare, ThumbsUp, Calendar, Tag, Zoom, Jira } from "lucide-react";
 
 export function GoalsFeed() {
   const feedItems = [
@@ -16,6 +15,29 @@ export function GoalsFeed() {
       content: "Successfully organized cross-team Lunch & Learn session on the new API integration strategy.",
       source: "Slack",
       tags: ["leadership"]
+    },
+    {
+      id: 6,
+      type: "jira" as const,
+      title: "Completed Phase 1 of Design System Implementation",
+      date: "May 1, 2025",
+      avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=400&h=400&auto=format&fit=crop",
+      author: "You",
+      authorRole: "Team Member",
+      content: "Successfully completed the first phase of our design system implementation, setting the foundation for consistent UI components across all products.",
+      source: "Jira",
+      tags: ["leadership"]
+    },
+    {
+      id: 7,
+      type: "zoom" as const,
+      title: "Coordinated Team Trivia Night",
+      date: "April 28, 2025",
+      avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=400&h=400&auto=format&fit=crop",
+      author: "You",
+      authorRole: "Team Member",
+      content: "Organized and hosted a virtual team trivia night to boost morale and team bonding. 15 team members participated.",
+      source: "Zoom"
     },
     {
       id: 1,
@@ -84,7 +106,7 @@ export function GoalsFeed() {
 interface FeedItemProps {
   item: {
     id: number;
-    type: "review" | "endorsement" | "video" | "slack";
+    type: "review" | "endorsement" | "video" | "slack" | "jira" | "zoom";
     title: string;
     date: string;
     avatar: string;
@@ -156,9 +178,9 @@ function FeedItem({ item }: FeedItemProps) {
           </div>
         )}
         
-        {item.type === "slack" && item.tags && (
+        {(item.type === "slack" || item.type === "jira" || item.type === "zoom") && item.source && (
           <div className="flex flex-wrap gap-2 mb-3">
-            {item.tags.map((tag) => (
+            {item.tags && item.tags.map((tag) => (
               <span 
                 key={tag} 
                 className="flex items-center gap-1 px-2 py-1 bg-[#F0F4FA] text-[#1264A3] rounded-full text-xs font-medium"
@@ -168,7 +190,15 @@ function FeedItem({ item }: FeedItemProps) {
               </span>
             ))}
             {item.source && (
-              <span className="px-2 py-1 bg-[#E8F5FA] text-[#36C5F0] rounded-full text-xs font-medium">
+              <span className={`px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${
+                item.source === "Slack" ? "bg-[#E8F5FA] text-[#36C5F0]" :
+                item.source === "Jira" ? "bg-[#E9F2FF] text-[#0052CC]" :
+                item.source === "Zoom" ? "bg-[#E9F7FB] text-[#2D8CFF]" :
+                "bg-gray-100 text-gray-600"
+              }`}>
+                {item.source === "Jira" && <Jira className="h-3 w-3" />}
+                {item.source === "Zoom" && <Zoom className="h-3 w-3" />}
+                {item.source === "Slack" && <MessageSquare className="h-3 w-3" />}
                 via {item.source}
               </span>
             )}
@@ -200,6 +230,10 @@ function getItemIcon(type: string) {
       return <Video className="h-5 w-5 text-purple-500" />;
     case "slack":
       return <MessageSquare className="h-5 w-5 text-[#36C5F0]" />;
+    case "jira":
+      return <Jira className="h-5 w-5 text-[#0052CC]" />;
+    case "zoom":
+      return <Zoom className="h-5 w-5 text-[#2D8CFF]" />;
     default:
       return null;
   }
@@ -215,6 +249,10 @@ function getBorderColor(type: string) {
       return "#840DD7"; // Purple to match the left card
     case "slack":
       return "#840DD7"; // Purple to match the left card
+    case "jira":
+      return "#0052CC"; // Jira blue
+    case "zoom":
+      return "#2D8CFF"; // Zoom blue
     default:
       return "#840DD7"; // Default purple to match the left card
   }
