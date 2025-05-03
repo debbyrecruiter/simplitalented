@@ -1,9 +1,11 @@
+
 import { useState } from "react";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
 import { useNavigate } from "react-router-dom";
 import { GoalTracker } from "@/components/GoalTracker";
-import { ListCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ListCheck, PlusCircle } from "lucide-react";
 
 const MyGoalsPage = () => {
   const navigate = useNavigate();
@@ -60,7 +62,13 @@ const MyGoalsPage = () => {
         </div>
         
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#512888] mb-6">My Goals</h2>
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-3xl font-bold text-[#512888]">My Goals</h2>
+            <Button className="bg-[#9320E7] hover:bg-[#7E69AB]" size="sm">
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Add New Goal
+            </Button>
+          </div>
           
           <div className="bg-white p-6 rounded-lg border-[3px] border-[#840DD7] mb-4">
             <div className="flex items-center gap-2 mb-3">
