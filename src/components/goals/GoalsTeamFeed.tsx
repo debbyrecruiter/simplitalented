@@ -87,8 +87,8 @@ interface FeedItemProps {
 function FeedItem({ item }: FeedItemProps) {
   return (
     <Card 
-      className="overflow-hidden border-l-4 hover:shadow-md transition-shadow animate-fade-in bg-white border-12 border-[#840DD7]" 
-      style={{ borderLeftColor: getBorderColor(item.type) }}
+      className="overflow-hidden border-[3px] hover:shadow-md transition-shadow animate-fade-in bg-white"
+      style={{ borderColor: getBorderColor(item.type) }}
     >
       <CardHeader className="pb-3 flex flex-row justify-between items-center">
         <div className="flex items-center gap-3">
@@ -173,13 +173,13 @@ function getItemIcon(type: string) {
 function getBorderColor(type: string) {
   switch (type) {
     case "milestone":
-      return "#9320E7"; // Purple
+      return "#840DD7"; // Purple to match the left card
     case "achievement":
-      return "#0067D9"; // Blue
+      return "#840DD7"; // Purple to match the left card
     case "planning":
-      return "#FFFFFF"; // White
+      return "#840DD7"; // Purple to match the left card
     default:
-      return "#E5E7EB"; // Default gray
+      return "#840DD7"; // Default purple to match the left card
   }
 }
 
