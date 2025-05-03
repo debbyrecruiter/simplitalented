@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Video, Star, MessageSquare, ThumbsUp, Calendar, Tag, Zoom, Jira } from "lucide-react";
+import { Video, Star, MessageSquare, ThumbsUp, Calendar, Tag } from "lucide-react";
 
 export function GoalsFeed() {
   const feedItems = [
@@ -8,7 +8,7 @@ export function GoalsFeed() {
       id: 0,
       type: "slack" as const,
       title: "Organized Team Lunch & Learn",
-      date: "May 3, 2025", // Current date from system context
+      date: "May 3, 2025", 
       avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=400&h=400&auto=format&fit=crop",
       author: "You",
       authorRole: "Team Member",
@@ -196,8 +196,8 @@ function FeedItem({ item }: FeedItemProps) {
                 item.source === "Zoom" ? "bg-[#E9F7FB] text-[#2D8CFF]" :
                 "bg-gray-100 text-gray-600"
               }`}>
-                {item.source === "Jira" && <Jira className="h-3 w-3" />}
-                {item.source === "Zoom" && <Zoom className="h-3 w-3" />}
+                {item.source === "Jira" && <MessageSquare className="h-3 w-3" />}
+                {item.source === "Zoom" && <Video className="h-3 w-3" />}
                 {item.source === "Slack" && <MessageSquare className="h-3 w-3" />}
                 via {item.source}
               </span>
@@ -231,9 +231,9 @@ function getItemIcon(type: string) {
     case "slack":
       return <MessageSquare className="h-5 w-5 text-[#36C5F0]" />;
     case "jira":
-      return <Jira className="h-5 w-5 text-[#0052CC]" />;
+      return <MessageSquare className="h-5 w-5 text-[#0052CC]" />;
     case "zoom":
-      return <Zoom className="h-5 w-5 text-[#2D8CFF]" />;
+      return <Video className="h-5 w-5 text-[#2D8CFF]" />;
     default:
       return null;
   }
