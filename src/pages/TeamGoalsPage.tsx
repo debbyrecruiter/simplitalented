@@ -54,10 +54,14 @@ const TeamGoalsPage = () => {
           <BackButton />
         </div>
         
-        <div className="flex flex-col md:flex-row gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-24 max-w-7xl mx-auto">
           {/* Left column - Team Goals tracker */}
-          <div className="md:w-1/3">
-            <div className="bg-white p-4 rounded-lg border-[3px] border-[#840DD7] mb-4">
+          <div className="md:col-span-1">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-3xl font-bold text-[#512888]">Team Goals</h2>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg border-[3px] border-[#840DD7] mb-4">
               <div className="flex items-center gap-2 mb-3">
                 <ListCheck className="h-5 w-5 text-[#512888]" />
                 <h3 className="text-xl font-semibold text-[#512888]">Active Team Goals</h3>
@@ -67,8 +71,8 @@ const TeamGoalsPage = () => {
           </div>
           
           {/* Right column - Feed */}
-          <div className="md:w-2/3">
-            <h2 className="text-3xl font-bold text-[#512888] mb-6">Team Goals Timeline</h2>
+          <div className="md:col-span-2">
+            <h2 className="text-3xl font-bold text-[#512888] mb-10">Team Goals Timeline</h2>
             <GoalsTeamFeed />
           </div>
         </div>
