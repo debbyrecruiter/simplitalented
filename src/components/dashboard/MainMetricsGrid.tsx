@@ -8,7 +8,6 @@ interface MainMetricsGridProps {
   onDirectReportsClick: () => void;
   onGoalsCardClick?: () => void;
   onCompanyGoalsClick?: () => void;
-  onReviewsClick?: () => void;
   onToDoListClick?: () => void;
   onReportsClick?: () => void;
 }
@@ -19,7 +18,6 @@ export function MainMetricsGrid({
   onDirectReportsClick,
   onGoalsCardClick,
   onCompanyGoalsClick,
-  onReviewsClick,
   onToDoListClick,
   onReportsClick
 }: MainMetricsGridProps) {
@@ -85,24 +83,8 @@ export function MainMetricsGrid({
           </p>
         </CardContent>
       </Card>
-      <Card 
-        className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
-        onClick={onReviewsClick}
-      >
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
-            Reviews
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Performance
-          </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Reviews and goals
-          </p>
-        </CardContent>
-      </Card>
+      
+      {/* Removed the Reviews Card */}
       
       {/* New Reports Card with Watermark */}
       <Card 
@@ -129,7 +111,6 @@ export function MainMetricsGrid({
           </p>
         </CardContent>
       </Card>
-      {/* Removed the To Do List card from here */}
     </div>
   );
 }

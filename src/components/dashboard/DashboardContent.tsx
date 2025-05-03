@@ -9,7 +9,6 @@ import { ExpandedDirectReportsSection } from "@/components/dashboard/ExpandedDir
 import { GoalsSubmenu } from "@/components/dashboard/GoalsSubmenu";
 import { ExpandedCompanyGoalsSection } from "@/components/dashboard/ExpandedCompanyGoalsSection";
 import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
-import { ExpandedReviewsSection } from "@/components/dashboard/ExpandedReviewsSection";
 import { ExpandedToDoSection } from "@/components/dashboard/ExpandedToDoListSection";
 import { useDashboard, ExpandedSectionType } from "@/context/DashboardContext";
 import { ReportsSection } from "@/components/dashboard/ReportsSection";
@@ -24,7 +23,6 @@ export const DashboardContent: React.FC = () => {
   const handleGoalsCardClick = () => updateSection("goals");
   const handleCompanyGoalsClick = () => updateSection("company-goals");
   const handleMySkillsClick = () => updateSection("my-skills");
-  const handleReviewsClick = () => updateSection("reviews");
   const handleToDoListClick = () => updateSection("todo-list");
   const handleReportsClick = () => updateSection("reports");
 
@@ -43,7 +41,6 @@ export const DashboardContent: React.FC = () => {
           onDirectReportsClick={handleDirectReportsClick}
           onGoalsCardClick={handleGoalsCardClick}
           onCompanyGoalsClick={handleCompanyGoalsClick}
-          onReviewsClick={handleReviewsClick}
           onToDoListClick={handleToDoListClick}
           onReportsClick={handleReportsClick}
         />
@@ -70,7 +67,7 @@ export const DashboardContent: React.FC = () => {
       
       {expandedSection === "my-skills" && <MySkillsSubmenu />}
       
-      {expandedSection === "reviews" && <ExpandedReviewsSection />}
+      {/* Removed the reviews section rendering */}
       
       {expandedSection === "todo-list" && <ExpandedToDoSection />}
       
