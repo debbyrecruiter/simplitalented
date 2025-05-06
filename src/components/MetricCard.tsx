@@ -30,7 +30,7 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center", 
+        "border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center w-[220px] h-[220px]", 
         onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}

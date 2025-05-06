@@ -25,7 +25,7 @@ export function MainMetricsGrid({
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       <div className="flex justify-center">
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors w-[300px] h-[300px]"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors w-[250px] h-[250px]"
           onClick={onMeCardClick}
         >
           <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
@@ -45,7 +45,7 @@ export function MainMetricsGrid({
       </div>
       <div className="flex justify-center">
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors w-[300px] h-[300px]"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors w-[250px] h-[250px]"
           onClick={onTeamCardClick}
         >
           <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
@@ -65,7 +65,7 @@ export function MainMetricsGrid({
       </div>
       <div className="flex justify-center">
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative w-[300px] h-[300px]"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative w-[250px] h-[250px]"
           onClick={onDirectReportsClick}
         >
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
@@ -94,7 +94,7 @@ export function MainMetricsGrid({
       {/* New Reports Card with Watermark */}
       <div className="flex justify-center">
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative w-[300px] h-[300px]"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative w-[250px] h-[250px]"
           onClick={onReportsClick}
         >
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
