@@ -1,4 +1,3 @@
-
 import { MetricCard } from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -24,7 +23,7 @@ export function MainMetricsGrid({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       <div className="flex justify-center">
-        <div className="w-4/5">
+        <div className="w-3/5">
           <Card 
             className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
             onClick={onMeCardClick}
@@ -46,7 +45,7 @@ export function MainMetricsGrid({
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="w-4/5">
+        <div className="w-3/5">
           <Card 
             className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
             onClick={onTeamCardClick}
@@ -68,12 +67,11 @@ export function MainMetricsGrid({
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="w-4/5">
+        <div className="w-3/5">
           <Card 
             className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
             onClick={onDirectReportsClick}
           >
-            {/* Watermark for Direct Reports card */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
               <p className="text-4xl font-bold text-purple-500/40 transform -rotate-12 select-none">
                 Manager View Only
@@ -100,12 +98,11 @@ export function MainMetricsGrid({
       
       {/* New Reports Card with Watermark */}
       <div className="flex justify-center">
-        <div className="w-4/5">
+        <div className="w-3/5">
           <Card 
             className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
             onClick={onReportsClick}
           >
-            {/* Watermark for Reports card */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
               <p className="text-4xl font-bold text-purple-500/40 transform -rotate-12 select-none">
                 People Team View Only
