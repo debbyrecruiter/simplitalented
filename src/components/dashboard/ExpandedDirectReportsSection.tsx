@@ -255,9 +255,9 @@ export const ExpandedDirectReportsSection = () => {
                           </div>
                           <span className="text-sm font-medium text-green-600">Completed</span>
                         </div>
-                        <Progress value={100} className="h-2 bg-gray-200">
+                        <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
                           <div className="h-full bg-[#3F3DA1]" style={{ width: "100%" }} />
-                        </Progress>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -279,15 +279,12 @@ export const ExpandedDirectReportsSection = () => {
                           </div>
                           <span className="text-sm font-medium">{course.progress}%</span>
                         </div>
-                        <Progress value={course.progress} className="h-2">
+                        <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
                           <div 
-                            className="h-full transition-all" 
-                            style={{ 
-                              width: `${course.progress}%`,
-                              backgroundColor: "#3F3DA1" 
-                            }} 
+                            className="h-full transition-all bg-[#3F3DA1]" 
+                            style={{ width: `${course.progress}%` }} 
                           />
-                        </Progress>
+                        </div>
                       </div>
                     ))}
                   </div>
