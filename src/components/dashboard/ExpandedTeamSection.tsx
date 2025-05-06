@@ -16,14 +16,15 @@ interface TeamMemberCardProps {
 const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCardProps) => {
   return (
     <Card 
-      className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0 w-[220px] h-[220px]"
+      className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
+      style={{ width: "437.5px", height: "437.5px" }}
     >
       <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-6">
-        <Avatar className="h-16 w-16 mb-2">
+        <Avatar className="h-20 w-20 mb-2">
           <AvatarImage src={avatarUrl} alt={name} />
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
-        <CardTitle className="text-3xl font-small text-[#9320E7] truncate">
+        <CardTitle className="text-4xl font-small text-[#9320E7] truncate">
           {name}
         </CardTitle>
         {level === "manager" && (
@@ -33,21 +34,21 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
         )}
       </CardHeader>
       <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-        <div className="flex justify-center space-x-4 mb-2">
+        <div className="flex justify-center space-x-4 mb-4">
           <Button 
             size="sm" 
-            className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white text-xs px-2 py-1"
+            className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white"
           >
             Endorse
           </Button>
           <Button 
             size="sm" 
-            className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white text-xs px-2 py-1"
+            className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white"
           >
             Review
           </Button>
         </div>
-        <div className="text-2xl font-bold truncate">
+        <div className="text-3xl font-bold truncate">
           {role}
         </div>
         <p className="text-sm text-muted-foreground truncate">
