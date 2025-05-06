@@ -5,7 +5,6 @@ import { UserRound, ListCheck, BookOpen } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { GoalTracker } from "@/components/GoalTracker";
 import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const ExpandedDirectReportsSection = () => {
   // Filter only direct reports from team members (excluding the first member who is the manager)
@@ -221,97 +220,83 @@ export const ExpandedDirectReportsSection = () => {
               </div>
             </div>
             
-            <Tabs defaultValue="goals" className="w-full mt-4">
-              <TabsList className="mb-4 bg-muted/50">
-                <TabsTrigger value="goals">Goals Progress</TabsTrigger>
-                <TabsTrigger value="learning">Learning & Development</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="goals">
-                <div className="pl-4 border-l-2 border-[#840DD7]">
-                  <h4 className="text-lg font-medium text-[#512888] mb-2">Goals Progress</h4>
-                  {memberGoals[member.id] && (
-                    <GoalTracker 
-                      goals={memberGoals[member.id]} 
-                      className="bg-white border-none shadow-none" 
-                    />
-                  )}
-                  {!memberGoals[member.id] && (
-                    <p className="text-muted-foreground italic">No active goals</p>
-                  )}
+            {/* Goals Progress Section */}
+            <div className="pl-4 border-l-2 border-[#840DD7] mb-6">
+              <h4 className="text-lg font-medium text-[#512888] mb-2">Goals Progress</h4>
+              {memberGoals[member.id] && (
+                <GoalTracker 
+                  goals={memberGoals[member.id]} 
+                  className="bg-white border-none shadow-none" 
+                />
+              )}
+              {!memberGoals[member.id] && (
+                <p className="text-muted-foreground italic">No active goals</p>
+              )}
+            </div>
+            
+            {/* Learning & Development Section */}
+            <div className="pl-4 border-l-2 border-[#840DD7]">
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <BookOpen className="h-5 w-5 text-[#512888]" />
+                  <h4 className="text-lg font-medium text-[#512888]">Learning & Development</h4>
                 </div>
-              </TabsContent>
-              
-              <TabsContent value="learning">
-                <div className="pl-4 border-l-2 border-[#840DD7]">
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <BookOpen className="h-5 w-5 text-[#512888]" />
-                      <h4 className="text-lg font-medium text-[#512888]">Completed Courses</h4>
-                    </div>
-                    
-                    {learningData[member.id]?.completed?.length > 0 ? (
-                      <div className="space-y-4">
-                        {learningData[member.id].completed.map((course) => (
-                          <div key={course.id} className="space-y-2">
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <h5 className="text-sm font-medium">{course.title}</h5>
-                                <p className="text-xs text-muted-foreground">
-                                  Completed on {course.completionDate}
-                                </p>
-                              </div>
-                              <span className="text-sm font-medium text-green-600">Completed</span>
-                            </div>
-                            <Progress value={100} className="h-2 bg-gray-200">
-                              <div className="h-full bg-[#3F3DA1]" style={{ width: "100%" }} />
-                            </Progress>
+                
+                <h5 className="text-sm font-semibold mb-3">Completed Courses</h5>
+                {learningData[member.id]?.completed?.length > 0 ? (
+                  <div className="space-y-4">
+                    {learningData[member.id].completed.map((course) => (
+                      <div key={course.id} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h5 className="text-sm font-medium">{course.title}</h5>
+                            <p className="text-xs text-muted-foreground">
+                              Completed on {course.completionDate}
+                            </p>
                           </div>
-                        ))}
+                          <span className="text-sm font-medium text-green-600">Completed</span>
+                        </div>
+                        <Progress value={100} className="h-2 bg-gray-200">
+                          <div className="h-full bg-[#3F3DA1]" style={{ width: "100%" }} />
+                        </Progress>
                       </div>
-                    ) : (
-                      <p className="text-muted-foreground italic">No completed courses</p>
-                    )}
+                    ))}
                   </div>
-                  
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <BookOpen className="h-5 w-5 text-[#512888]" />
-                      <h4 className="text-lg font-medium text-[#512888]">Upcoming Training</h4>
-                    </div>
-                    
-                    {learningData[member.id]?.upcoming?.length > 0 ? (
-                      <div className="space-y-4">
-                        {learningData[member.id].upcoming.map((course) => (
-                          <div key={course.id} className="space-y-2">
-                            <div className="flex items-center justify-between">
-                              <div>
-                                <h5 className="text-sm font-medium">{course.title}</h5>
-                                <p className="text-xs text-muted-foreground">
-                                  Due {course.dueDate}
-                                </p>
-                              </div>
-                              <span className="text-sm font-medium">{course.progress}%</span>
-                            </div>
-                            <Progress value={course.progress} className="h-2">
-                              <div 
-                                className="h-full transition-all" 
-                                style={{ 
-                                  width: `${course.progress}%`,
-                                  backgroundColor: "#3F3DA1" 
-                                }} 
-                              />
-                            </Progress>
+                ) : (
+                  <p className="text-muted-foreground italic">No completed courses</p>
+                )}
+                
+                <h5 className="text-sm font-semibold mt-4 mb-3">Upcoming Training</h5>
+                {learningData[member.id]?.upcoming?.length > 0 ? (
+                  <div className="space-y-4">
+                    {learningData[member.id].upcoming.map((course) => (
+                      <div key={course.id} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <h5 className="text-sm font-medium">{course.title}</h5>
+                            <p className="text-xs text-muted-foreground">
+                              Due {course.dueDate}
+                            </p>
                           </div>
-                        ))}
+                          <span className="text-sm font-medium">{course.progress}%</span>
+                        </div>
+                        <Progress value={course.progress} className="h-2">
+                          <div 
+                            className="h-full transition-all" 
+                            style={{ 
+                              width: `${course.progress}%`,
+                              backgroundColor: "#3F3DA1" 
+                            }} 
+                          />
+                        </Progress>
                       </div>
-                    ) : (
-                      <p className="text-muted-foreground italic">No upcoming training</p>
-                    )}
+                    ))}
                   </div>
-                </div>
-              </TabsContent>
-            </Tabs>
+                ) : (
+                  <p className="text-muted-foreground italic">No upcoming training</p>
+                )}
+              </div>
+            </div>
           </div>
         ))}
       </div>
