@@ -36,32 +36,23 @@ export function MetricCard({
       )}
       onClick={onClick}
     >
-      <CardHeader className={cn(
-        "flex flex-row items-center justify-center text-center px-2",
-        isMenuCard ? "pb-0 pt-6" : "pb-0 pt-10" // Adjusted padding for menu cards
-      )}>
+      <div className="flex flex-col items-center justify-center h-full p-4 text-center">
         <CardTitle className={cn(
-          "font-small text-[#9320E7] text-center w-full whitespace-pre-line",
-          isMenuCard ? "text-4xl" : "text-6xl" // Sized appropriately for menu cards
+          "font-small text-[#9320E7] text-center w-full whitespace-pre-line mb-1",
+          isMenuCard ? "text-4xl" : "text-5xl" // Sized appropriately for menu cards
         )}>
           {title}
         </CardTitle>
-        {Icon && (
-          <div className="absolute right-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
-            <Icon className="h-6 w-6 text-blue-600" />
+        
+        {value && (
+          <div className={cn(
+            "font-bold text-center w-full whitespace-pre-line",
+            isMenuCard ? "text-2xl" : "text-3xl" // Sized appropriately for menu cards
+          )}>
+            {value}
           </div>
         )}
-      </CardHeader>
-      <CardContent className={cn(
-        "flex-1 flex flex-col items-center justify-center text-center",
-        isMenuCard ? "pt-1" : "p-2" // Adjusted spacing for menu cards
-      )}>
-        <div className={cn(
-          "font-bold text-center w-full whitespace-pre-line",
-          isMenuCard ? "text-2xl" : "text-3xl" // Sized appropriately for menu cards
-        )}>
-          {value}
-        </div>
+        
         {description && (
           <p className={cn(
             "text-muted-foreground text-center w-full whitespace-pre-line",
@@ -70,6 +61,7 @@ export function MetricCard({
             {description}
           </p>
         )}
+        
         {trend && (
           <div className="flex items-center justify-center mt-1">
             <span
@@ -85,7 +77,13 @@ export function MetricCard({
             </span>
           </div>
         )}
-      </CardContent>
+        
+        {Icon && (
+          <div className="absolute right-6 top-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
+            <Icon className="h-6 w-6 text-blue-600" />
+          </div>
+        )}
+      </div>
     </Card>
   );
 }
