@@ -463,41 +463,61 @@ const CompensationAnalysis = () => {
             <CardContent>
               <div className="h-[400px] w-full">
                 <ChartContainer config={chartConfig}>
-                  <BarChart data={marketComparisonData}>
+                  <BarChart 
+                    data={marketComparisonData}
+                    margin={{ top: 5, right: 30, bottom: 30, left: 20 }}
+                    barGap={10} // Add gap between bars in the same category
+                    barSize={40} // Control the width of the bars
+                  >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="role" />
+                    <XAxis 
+                      dataKey="role" 
+                      height={50}
+                      tick={{ fontSize: 12 }}
+                      tickMargin={10}
+                    />
                     <YAxis />
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend />
-                    <Bar dataKey="internal" name="Internal Salary" fill="#0067D9" />
-                    <Bar dataKey="market" name="Market Rate" fill="#FF6B6B" />
+                    <Legend wrapperStyle={{ paddingTop: "10px" }} />
+                    <Bar 
+                      dataKey="internal" 
+                      name="Internal Salary" 
+                      fill="#0067D9" 
+                      radius={[4, 4, 0, 0]} 
+                    />
+                    <Bar 
+                      dataKey="market" 
+                      name="Market Rate" 
+                      fill="#FF6B6B" 
+                      radius={[4, 4, 0, 0]} 
+                    />
                   </BarChart>
                 </ChartContainer>
               </div>
               
-              <div className="mt-8 overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Internal Rate</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Market Rate</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Difference</th>
-                      <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+              <div className="mt-8 border rounded-md overflow-hidden">
+                <Table>
+                  <TableHeader className="bg-gray-50">
+                    <TableRow>
+                      <TableHead>Role</TableHead>
+                      <TableHead className="text-right">Internal Rate</TableHead>
+                      <TableHead className="text-right">Market Rate</TableHead>
+                      <TableHead className="text-right">Difference</TableHead>
+                      <TableHead className="text-center">Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
                     {marketComparisonData.map((item, i) => (
-                      <tr key={i}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.role}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right">${item.internal.toLocaleString()}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-right">${item.market.toLocaleString()}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                      <TableRow key={i}>
+                        <TableCell className="font-medium">{item.role}</TableCell>
+                        <TableCell className="text-right">${item.internal.toLocaleString()}</TableCell>
+                        <TableCell className="text-right">${item.market.toLocaleString()}</TableCell>
+                        <TableCell className="text-right">
                           <span className={item.difference >= 0 ? "text-green-600" : "text-red-600"}>
-                            {item.difference >= 0 ? "+" : ""}{item.difference.toLocaleString()}
+                            {item.difference >= 0 ? "+" : ""}${Math.abs(item.difference).toLocaleString()}
                           </span>
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
+                        </TableCell>
+                        <TableCell className="text-center">
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                             Math.abs(item.difference) < 5000 
                               ? "bg-green-100 text-green-800" 
@@ -511,11 +531,11 @@ const CompensationAnalysis = () => {
                                 ? "Minor Gap"
                                 : "Significant Gap"}
                           </span>
-                        </td>
-                      </tr>
+                        </TableCell>
+                      </TableRow>
                     ))}
-                  </tbody>
-                </table>
+                  </TableBody>
+                </Table>
               </div>
             </CardContent>
           </Card>
