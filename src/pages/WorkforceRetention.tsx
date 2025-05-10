@@ -418,7 +418,7 @@ const WorkforceRetention = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart 
                     data={performanceScoreData} 
-                    margin={{ top: 5, right: 30, left: 20, bottom: 100 }}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 150 }}
                     className="bg-white"
                   >
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -485,7 +485,7 @@ const WorkforceRetention = () => {
                     />
                     <Legend 
                       verticalAlign="bottom"
-                      wrapperStyle={{ paddingTop: "20px" }}
+                      wrapperStyle={{ paddingTop: "70px" }}
                       payload={[
                         { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
                         { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
