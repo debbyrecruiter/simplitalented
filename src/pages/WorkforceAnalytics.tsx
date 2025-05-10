@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -41,29 +42,13 @@ const WorkforceAnalytics = () => {
     return (
       <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
         <CardContent className="pt-6">
-          <div className="border rounded-md">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Department</TableHead>
-                  <TableHead>Male</TableHead>
-                  <TableHead>Female</TableHead>
-                  <TableHead>Non-binary</TableHead>
-                  <TableHead>Total</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {demographicsData.map((dept) => (
-                  <TableRow key={dept.name}>
-                    <TableCell className="font-medium">{dept.name}</TableCell>
-                    <TableCell>{dept.male}</TableCell>
-                    <TableCell>{dept.female}</TableCell>
-                    <TableCell>{dept.nonbinary}</TableCell>
-                    <TableCell>{dept.male + dept.female + dept.nonbinary}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+          <div className="p-4 text-center">
+            <p className="text-muted-foreground">
+              Demographics data visualization coming soon.
+            </p>
+            <p className="mt-4">
+              This section will include detailed breakdowns of workforce demographics by department, gender, age, and other relevant factors.
+            </p>
           </div>
         </CardContent>
       </Card>
