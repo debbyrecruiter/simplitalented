@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -10,7 +9,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { BackButton } from "@/components/ui/back-button";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { MetricCard } from "@/components/MetricCard";
-import { Users, ArrowDownUp, LayoutGrid, PieChart, BarChartIcon } from "lucide-react";
+import { Users, ArrowDownUp, LayoutGrid, PieChart } from "lucide-react";
 
 const demographicsData = [
   { name: 'Engineering', male: 65, female: 35, nonbinary: 10 },
@@ -37,15 +36,31 @@ const chartConfig = {
 
 const WorkforceAnalytics = () => {
   const [activeView, setActiveView] = useState<'demographics' | 'retention' | 'structure'>('demographics');
-  const [demographicsSubview, setDemographicsSubview] = useState<'department' | 'gender' | 'overview'>('department');
+  const [demographicsSubview, setDemographicsSubview] = useState<'gender' | 'overview'>('gender');
 
   const renderDemographicsContent = () => {
     switch (demographicsSubview) {
-      case 'department':
+      case 'gender':
         return (
           <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
-              <CardTitle>Employee Demographics by Department</CardTitle>
+              <CardTitle>Gender Distribution Overview</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="p-4 text-center">
+                <p className="text-muted-foreground">
+                  Gender distribution visualization coming soon.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        );
+      case 'overview':
+      default:
+        return (
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
+            <CardHeader>
+              <CardTitle>Demographics Overview</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="h-[400px] w-full">
@@ -90,37 +105,6 @@ const WorkforceAnalytics = () => {
             </CardContent>
           </Card>
         );
-      case 'gender':
-        return (
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Gender Distribution Overview</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="p-4 text-center">
-                <p className="text-muted-foreground">
-                  Gender distribution visualization coming soon.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        );
-      case 'overview':
-      default:
-        return (
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Demographics Overview</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="p-4 text-center">
-                <p className="text-muted-foreground">
-                  Demographics overview visualization coming soon.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        );
     }
   };
 
@@ -129,14 +113,7 @@ const WorkforceAnalytics = () => {
       case 'demographics':
         return (
           <>
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <MetricCard
-                title="By Department"
-                value=""
-                icon={BarChartIcon}
-                onClick={() => setDemographicsSubview('department')}
-                className={demographicsSubview === 'department' ? 'ring-4 ring-blue-500' : ''}
-              />
+            <div className="grid grid-cols-2 gap-4 mb-6">
               <MetricCard
                 title="By Gender"
                 value=""
