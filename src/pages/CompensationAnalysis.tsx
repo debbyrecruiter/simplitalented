@@ -39,17 +39,40 @@ const groupedCompData = compensationData.map(item => ({
 
 // Transform compensation data for pie charts
 const pieChartsData = compensationData.map(item => {
+  const total = item.total;
   return {
     name: item.name,
     role: item.role,
     data: [
-      { name: 'Base Salary', value: item.base, color: '#0067D9' },
-      { name: 'Annual Bonus', value: item.bonus, color: '#FF6B6B' },
-      { name: 'Equity', value: item.equity, color: '#9320E7' }
+      { name: 'Base Salary', value: item.base, color: '#0067D9', percentage: Math.round((item.base / total) * 100) },
+      { name: 'Annual Bonus', value: item.bonus, color: '#FF6B6B', percentage: Math.round((item.bonus / total) * 100) },
+      { name: 'Equity', value: item.equity, color: '#9320E7', percentage: Math.round((item.equity / total) * 100) }
     ],
-    total: item.total
+    total: total
   };
 });
+
+// Custom pie chart label to show the percentage
+const renderCustomizedLabel = (props) => {
+  const { cx, cy, midAngle, innerRadius, outerRadius, percent, index, payload, name, value, percentage } = props;
+  const RADIAN = Math.PI / 180;
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <text 
+      x={x} 
+      y={y} 
+      fill="white" 
+      textAnchor={x > cx ? 'start' : 'end'} 
+      dominantBaseline="central"
+      className="text-xs font-medium"
+    >
+      {`${percentage}%`}
+    </text>
+  );
+};
 
 // Sample historical data for trends
 const historicalData = [
@@ -145,12 +168,17 @@ const CompensationAnalysis = () => {
                     <CardContent>
                       <div className="h-[200px] flex justify-center">
                         <PieChart width={200} height={200}>
-                          <Tooltip formatter={(value) => [`$${value.toLocaleString()}`, '']} />
+                          <Tooltip 
+                            formatter={(value, name, props) => {
+                              return [`$${value.toLocaleString()} (${props.payload.percentage}%)`, name];
+                            }}
+                          />
                           <Pie
                             data={item.data}
                             cx="50%"
                             cy="50%"
                             labelLine={false}
+                            label={renderCustomizedLabel}
                             outerRadius={80}
                             fill="#8884d8"
                             dataKey="value"
@@ -169,7 +197,7 @@ const CompensationAnalysis = () => {
                                 className="h-3 w-3 rounded mr-1" 
                                 style={{ backgroundColor: entry.color }}
                               ></div>
-                              <span className="text-xs">{entry.name}</span>
+                              <span className="text-xs">{entry.name}: {entry.percentage}%</span>
                             </div>
                           ))}
                         </div>
