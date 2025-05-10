@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -87,6 +88,33 @@ const marketComparisonData = [
   { role: 'QA Engineer', internal: 152000, market: 155000, difference: -3000 },
 ];
 
+// Enhanced comparative data for the cleaner view
+const enhancedCompData = compensationData.map(item => {
+  const maxValue = Math.max(...compensationData.map(d => d.total));
+  const percentageOfHighest = Math.round((item.total / maxValue) * 100);
+  return {
+    name: item.name,
+    role: item.role,
+    base: item.base,
+    bonus: item.bonus,
+    equity: item.equity,
+    total: item.total,
+    percentageOfHighest,
+    basePercentage: Math.round((item.base / item.total) * 100),
+    bonusPercentage: Math.round((item.bonus / item.total) * 100),
+    equityPercentage: Math.round((item.equity / item.total) * 100),
+  };
+});
+
+// Simple bar chart data for total compensation
+const totalCompData = compensationData.map(item => ({
+  name: item.name,
+  role: item.role,
+  Total: item.total,
+  color: item.name === 'Alex Morgan' ? '#0067D9' : 
+         item.name === 'Jamie Chen' ? '#FF6B6B' : '#9320E7'
+}));
+
 const COLORS = ['#0067D9', '#FF6B6B', '#9320E7'];
 
 const chartConfig = {
@@ -101,7 +129,8 @@ const chartConfig = {
   market: { label: "Market Rate", theme: { light: "#FF6B6B", dark: "#FF6B6B" } },
   Base: { label: "Base Salary", theme: { light: "#0067D9", dark: "#0067D9" } },
   Bonus: { label: "Annual Bonus", theme: { light: "#FF6B6B", dark: "#FF6B6B" } },
-  Equity: { label: "Equity (Annual)", theme: { light: "#9320E7", dark: "#9320E7" } }
+  Equity: { label: "Equity (Annual)", theme: { light: "#9320E7", dark: "#9320E7" } },
+  Total: { label: "Total Compensation", theme: { light: "#512888", dark: "#512888" } }
 };
 
 const CompensationAnalysis = () => {
@@ -233,20 +262,84 @@ const CompensationAnalysis = () => {
                 <CardHeader>
                   <CardTitle className="text-base">Comparative View</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="h-[400px] w-full">
-                    <ChartContainer config={chartConfig}>
-                      <BarChart data={groupedCompData} layout="horizontal">
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis tickFormatter={formatCurrency} />
-                        <ChartTooltip content={<ChartTooltipContent />} />
-                        <Legend />
-                        <Bar dataKey="Base" name="Base Salary" fill="#0067D9" />
-                        <Bar dataKey="Bonus" name="Annual Bonus" fill="#FF6B6B" />
-                        <Bar dataKey="Equity" name="Equity (Annual)" fill="#9320E7" />
-                      </BarChart>
-                    </ChartContainer>
+                <CardContent className="pt-0">
+                  <div className="grid grid-cols-1 xl:grid-cols-6 gap-6">
+                    {/* Simple total compensation comparison */}
+                    <div className="xl:col-span-2 border rounded-lg p-4 bg-gray-50">
+                      <h3 className="text-sm font-medium text-center mb-4">Total Compensation</h3>
+                      <div className="space-y-4">
+                        {enhancedCompData.sort((a, b) => b.total - a.total).map((item, i) => (
+                          <div key={i} className="space-y-1">
+                            <div className="flex justify-between items-center text-xs">
+                              <div className="font-medium flex items-center">
+                                <div 
+                                  className="h-2 w-2 rounded-full mr-2" 
+                                  style={{ backgroundColor: i === 0 ? '#0067D9' : i === 1 ? '#FF6B6B' : '#9320E7' }}
+                                ></div>
+                                {item.name}
+                              </div>
+                              <span className="font-mono">${item.total.toLocaleString()}</span>
+                            </div>
+                            <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className="h-full rounded-full"
+                                style={{ 
+                                  width: `${item.percentageOfHighest}%`,
+                                  backgroundColor: i === 0 ? '#0067D9' : i === 1 ? '#FF6B6B' : '#9320E7'
+                                }}
+                              ></div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Compensation breakdown */}
+                    <div className="xl:col-span-4 bg-white border rounded-lg">
+                      <div className="h-[300px] w-full">
+                        <ChartContainer config={chartConfig}>
+                          <BarChart data={groupedCompData} layout="horizontal">
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                            <XAxis dataKey="name" />
+                            <YAxis tickFormatter={formatCurrency} />
+                            <ChartTooltip content={<ChartTooltipContent />} />
+                            <Legend />
+                            <Bar dataKey="Base" name="Base Salary" stackId="a" fill="#0067D9" />
+                            <Bar dataKey="Bonus" name="Annual Bonus" stackId="a" fill="#FF6B6B" />
+                            <Bar dataKey="Equity" name="Equity (Annual)" stackId="a" fill="#9320E7" />
+                          </BarChart>
+                        </ChartContainer>
+                      </div>
+                      <div className="px-4 pb-4">
+                        <div className="grid grid-cols-3 gap-4 mt-4">
+                          {compensationData.map((employee, idx) => (
+                            <div key={idx} className="flex flex-col items-center p-3 bg-gray-50 rounded-lg border">
+                              <h4 className="font-medium text-sm mb-1">{employee.name}</h4>
+                              <span className="text-xs text-muted-foreground mb-2">{employee.role}</span>
+                              <div className="w-full space-y-1">
+                                <div className="flex justify-between text-xs">
+                                  <span>Base:</span>
+                                  <span className="font-medium">${employee.base.toLocaleString()}</span>
+                                </div>
+                                <div className="flex justify-between text-xs">
+                                  <span>Bonus:</span>
+                                  <span className="font-medium">${employee.bonus.toLocaleString()}</span>
+                                </div>
+                                <div className="flex justify-between text-xs">
+                                  <span>Equity:</span>
+                                  <span className="font-medium">${employee.equity.toLocaleString()}</span>
+                                </div>
+                                <div className="border-t mt-1 pt-1"></div>
+                                <div className="flex justify-between text-xs font-medium">
+                                  <span>Total:</span>
+                                  <span>${employee.total.toLocaleString()}</span>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
