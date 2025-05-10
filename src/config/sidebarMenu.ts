@@ -84,6 +84,12 @@ export const menuItems = [
         className: "text-[#17202A]" 
       },
       { 
+        title: "Demographics", 
+        icon: Users, 
+        path: "/reports/demographics",
+        className: "text-[#17202A]" 
+      },
+      { 
         title: "Compensation Analysis", 
         icon: DollarSign, 
         path: "/reports/compensation-analysis",
