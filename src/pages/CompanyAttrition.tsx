@@ -83,11 +83,12 @@ const CompanyAttrition = () => {
                     <ChartTooltip
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
+                          const data = payload[0].payload;
                           return (
-                            <ChartTooltipContent
-                              className="bg-white border border-[#9b87f5] shadow-md"
-                              formatter={(value) => [`${value}%`, 'Attrition Rate']}
-                            />
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-2 rounded">
+                              <p className="font-medium">{data.department}</p>
+                              <p className="text-[#512888] font-bold">{`${data.attritionRate}%`}</p>
+                            </div>
                           );
                         }
                         return null;
