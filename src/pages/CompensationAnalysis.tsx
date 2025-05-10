@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -317,7 +316,7 @@ const CompensationAnalysis = () => {
                               <div className="font-medium flex items-center">
                                 <div 
                                   className="h-2 w-2 rounded-full mr-2" 
-                                  style={{ backgroundColor: i === 0 ? '#0067D9' : i === 1 ? '#FF6B6B' : '#9320E7' }}
+                                  style={{ backgroundColor: '#4CAF50' }}
                                 ></div>
                                 {item.name}
                               </div>
@@ -328,7 +327,7 @@ const CompensationAnalysis = () => {
                                 className="h-full rounded-full"
                                 style={{ 
                                   width: `${item.percentageOfHighest}%`,
-                                  backgroundColor: i === 0 ? '#0067D9' : i === 1 ? '#FF6B6B' : '#9320E7'
+                                  backgroundColor: '#4CAF50'  // Changed to green
                                 }}
                               ></div>
                             </div>
