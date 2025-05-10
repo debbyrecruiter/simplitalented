@@ -52,17 +52,16 @@ const pieChartsData = compensationData.map(item => {
   };
 });
 
-// Custom pie chart label to show both percentage and dollar amount
-const renderCustomizedLabel = (props) => {
-  const { cx, cy, midAngle, innerRadius, outerRadius, percent, index, payload, name, value, percentage } = props;
+// Custom pie chart label that only shows for segments large enough to contain text
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, value, percentage }) => {
+  // Only show labels for segments that are large enough (e.g., > 10%)
+  if (percentage < 10) return null;
+  
   const RADIAN = Math.PI / 180;
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.6;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
-  
-  // Only show text for segments that are large enough (e.g., > 5%)
-  if (percentage < 5) return null;
-  
+
   return (
     <text 
       x={x} 
@@ -164,53 +163,67 @@ const CompensationAnalysis = () => {
             <CardContent>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                 {pieChartsData.map((item, index) => (
-                  <Card key={index} className="shadow-sm">
-                    <CardHeader className="py-3">
+                  <Card key={index} className="shadow-sm overflow-hidden">
+                    <CardHeader className="py-3 bg-slate-50">
                       <CardTitle className="text-base">{item.name} - {item.role}</CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <div className="h-[200px] flex justify-center">
-                        <PieChart width={200} height={200}>
-                          <Tooltip 
-                            formatter={(value, name, props) => {
-                              return [`$${value.toLocaleString()} (${props.payload.percentage}%)`, name];
-                            }}
-                          />
-                          <Pie
-                            data={item.data}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            label={renderCustomizedLabel}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                          >
-                            {item.data.map((entry, i) => (
-                              <Cell key={`cell-${i}`} fill={entry.color} />
-                            ))}
-                          </Pie>
-                        </PieChart>
+                    <CardContent className="p-0">
+                      <div className="h-[220px] flex justify-center items-center pt-4">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <PieChart>
+                            <Tooltip 
+                              formatter={(value, name) => [`$${value.toLocaleString()}`, name]}
+                              contentStyle={{ 
+                                backgroundColor: 'rgba(255, 255, 255, 0.95)', 
+                                borderRadius: '6px',
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                                border: '1px solid rgba(0,0,0,0.05)',
+                                padding: '8px 12px'
+                              }}
+                            />
+                            <Pie
+                              data={item.data}
+                              cx="50%"
+                              cy="50%"
+                              labelLine={false}
+                              label={renderCustomizedLabel}
+                              outerRadius={75}
+                              fill="#8884d8"
+                              dataKey="value"
+                              animationDuration={800}
+                              animationEasing="ease-out"
+                            >
+                              {item.data.map((entry, i) => (
+                                <Cell 
+                                  key={`cell-${i}`} 
+                                  fill={entry.color} 
+                                  stroke="white" 
+                                  strokeWidth={1}
+                                />
+                              ))}
+                            </Pie>
+                          </PieChart>
+                        </ResponsiveContainer>
                       </div>
-                      <div className="mt-2">
-                        <div className="flex justify-center items-center space-x-4">
-                          {item.data.map((entry, i) => (
-                            <div key={i} className="flex items-center">
-                              <div 
-                                className="h-3 w-3 rounded mr-1" 
-                                style={{ backgroundColor: entry.color }}
-                              ></div>
-                              <span className="text-xs">{entry.name}</span>
-                            </div>
-                          ))}
+                      
+                      <div className="bg-slate-50 p-3 border-t">
+                        <div className="flex justify-between items-center mb-1">
+                          <p className="text-sm font-semibold">Total: ${item.total.toLocaleString()}</p>
                         </div>
-                        <div className="mt-3 text-center">
-                          <span className="text-sm font-semibold">Total: ${item.total.toLocaleString()}</span>
-                        </div>
-                        <div className="mt-1 flex justify-center flex-wrap">
+                        <div className="grid grid-cols-3 gap-2">
                           {item.data.map((entry, i) => (
-                            <div key={i} className="px-2 py-1 text-xs">
-                              ${entry.value.toLocaleString()} ({entry.percentage}%)
+                            <div key={i} className="flex flex-col items-center p-1 rounded bg-white border">
+                              <div className="flex items-center gap-1">
+                                <div 
+                                  className="h-2 w-2 rounded-full" 
+                                  style={{ backgroundColor: entry.color }}
+                                ></div>
+                                <span className="text-xs font-medium">{entry.name}</span>
+                              </div>
+                              <div className="text-xs mt-1 flex flex-col items-center">
+                                <span className="font-medium">${entry.value.toLocaleString()}</span>
+                                <span className="text-muted-foreground">{entry.percentage}%</span>
+                              </div>
                             </div>
                           ))}
                         </div>
