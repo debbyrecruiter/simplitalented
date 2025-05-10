@@ -50,12 +50,16 @@ const CompanyAttrition = () => {
         <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
           <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
           
-          {/* Ensure chart is fully contained in a white background with padding */}
-          <div className="bg-white p-3 rounded-lg w-full">
-            <div className="h-[300px] w-full">
-              <ChartContainer config={chartConfig}>
+          {/* Chart container with white background */}
+          <div className="bg-white rounded-lg w-full h-full">
+            <ChartContainer config={chartConfig}>
+              <div className="h-[300px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={departmentAttritionData} margin={{ top: 5, right: 30, left: 20, bottom: 30 }}>
+                  <BarChart 
+                    data={departmentAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 30 }}
+                    className="bg-white"
+                  >
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     <XAxis 
                       dataKey="department" 
@@ -92,8 +96,8 @@ const CompanyAttrition = () => {
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
-              </ChartContainer>
-            </div>
+              </div>
+            </ChartContainer>
           </div>
         </Card>
         
