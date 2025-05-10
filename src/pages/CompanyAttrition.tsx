@@ -49,7 +49,7 @@ const CompanyAttrition = () => {
         {/* Department breakdown chart */}
         <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
           <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
-          <div className="h-[300px]">
+          <div className="h-[300px] w-full">
             <ChartContainer config={chartConfig}>
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={departmentAttritionData} margin={{ top: 5, right: 30, left: 20, bottom: 30 }}>
@@ -82,7 +82,7 @@ const CompanyAttrition = () => {
                       return null;
                     }}
                   />
-                  <Bar dataKey="attritionRate" name="Attrition Rate">
+                  <Bar dataKey="attritionRate" name="Attrition Rate" radius={[4, 4, 0, 0]}>
                     {departmentAttritionData.map((_, index) => (
                       <Cell key={`cell-${index}`} fill="#9b87f5" />
                     ))}
