@@ -98,24 +98,44 @@ const departmentAttritionData = [
   { department: "Finance", attritionRate: 12 },
 ];
 
+// Performance score attrition data (mock data)
+const performanceScoreData = [
+  { score: "5 - Excellent", count: 42, attritionRate: 5 },
+  { score: "4 - Very Good", count: 78, attritionRate: 12 },
+  { score: "3 - Satisfactory", count: 56, attritionRate: 18 },
+  { score: "2 - Needs Improvement", count: 34, attritionRate: 27 },
+  { score: "1 - Poor", count: 12, attritionRate: 38 },
+];
+
 const overallAttritionRate = 16.5; // Company-wide attrition rate
 
 const WorkforceRetention = () => {
   const navigate = useNavigate();
   const [showManagerAttrition, setShowManagerAttrition] = useState(false);
   const [showCompanyAttrition, setShowCompanyAttrition] = useState(false);
+  const [showPerformanceAttrition, setShowPerformanceAttrition] = useState(false);
 
   const handleManagerCardClick = () => {
     setShowManagerAttrition(!showManagerAttrition);
     if (!showManagerAttrition) {
-      setShowCompanyAttrition(false); // Close company attrition if opening manager attrition
+      setShowCompanyAttrition(false);
+      setShowPerformanceAttrition(false);
     }
   };
 
   const handleCompanyCardClick = () => {
     setShowCompanyAttrition(!showCompanyAttrition);
     if (!showCompanyAttrition) {
-      setShowManagerAttrition(false); // Close manager attrition if opening company attrition
+      setShowManagerAttrition(false);
+      setShowPerformanceAttrition(false);
+    }
+  };
+
+  const handlePerformanceCardClick = () => {
+    setShowPerformanceAttrition(!showPerformanceAttrition);
+    if (!showPerformanceAttrition) {
+      setShowManagerAttrition(false);
+      setShowCompanyAttrition(false);
     }
   };
 
@@ -151,18 +171,19 @@ const WorkforceRetention = () => {
             <div className="flex items-center justify-center mb-3">
               <Briefcase className="h-8 w-8 text-[#512888]" />
             </div>
-            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by&#10;Manager</h3>
+            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by Manager</h3>
           </div>
         </Card>
 
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
+          onClick={handlePerformanceCardClick}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
               <Award className="h-8 w-8 text-[#512888]" />
             </div>
-            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by&#10;Performance Score</h3>
+            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by Performance Score</h3>
           </div>
         </Card>
 
@@ -189,7 +210,7 @@ const WorkforceRetention = () => {
             <div className="flex items-center justify-center mb-3">
               <Badge className="h-8 w-8 text-[#512888]" />
             </div>
-            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by&#10;Recruiter</h3>
+            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by Recruiter</h3>
           </div>
         </Card>
       </div>
@@ -349,6 +370,76 @@ const WorkforceRetention = () => {
           <div className="text-sm text-muted-foreground mt-4">
             <p>* Attrition rates are calculated as the percentage of employees who left each manager's team in the past 12 months, broken down by department.</p>
             <p>* Managers only show data for departments they oversee.</p>
+          </div>
+        </Card>
+      )}
+
+      {/* Performance Score Attrition Chart (shown conditionally) */}
+      {showPerformanceAttrition && (
+        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
+          <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Performance Score</h3>
+          
+          <div className="bg-white rounded-lg w-full h-full">
+            <ChartContainer config={{
+              attrition: { color: "#9b87f5" }
+            }}>
+              <div className="h-[600px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={performanceScoreData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 100 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="score" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 40]}
+                      ticks={yAxisTicks}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-2 rounded">
+                              <p className="font-medium">{data.score}</p>
+                              <p className="text-[#512888] font-bold">{`${data.attritionRate}%`}</p>
+                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar dataKey="attritionRate" name="Attrition Rate" radius={[4, 4, 0, 0]}>
+                      {performanceScoreData.map((_, index) => {
+                        // Color gradient based on performance score (red to green)
+                        const colors = ["#ef4444", "#f97316", "#facc15", "#84cc16", "#22c55e"];
+                        return <Cell key={`cell-${index}`} fill={colors[index]} />;
+                      })}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months, by performance review score.</p>
+            <p>* Performance scores are on a 1-5 scale, with 1 being poor performance and 5 being excellent.</p>
           </div>
         </Card>
       )}
