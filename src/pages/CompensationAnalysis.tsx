@@ -22,6 +22,7 @@ import {
   TableRow, 
   TableCell 
 } from "@/components/ui/table";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 // Filter only direct reports from team members (excluding the first member who is the manager)
 const directReports = teamMembers.filter(member => member.id !== 1);
@@ -388,33 +389,61 @@ const CompensationAnalysis = () => {
         </TabsContent>
         
         <TabsContent value="trends" className="space-y-6">
-          <Card>
+          <Card className="overflow-hidden">
             <CardHeader className="pb-2">
               <CardTitle>Compensation Trends (2021-2024)</CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
-              <div className="h-[300px] w-full"> {/* Reduced height from 400px to 300px */}
+              <div className="h-[250px] w-full"> {/* Further reduced height for better fit */}
                 <ChartContainer config={chartConfig}>
                   <LineChart 
                     data={historicalData}
-                    margin={{ top: 10, right: 10, left: 0, bottom: 10 }} // Added compact margins
+                    margin={{ top: 5, right: 5, left: 0, bottom: 5 }} // More compact margins
                   >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" tick={{ fontSize: 12 }} /> {/* Smaller font */}
-                    <YAxis tick={{ fontSize: 12 }} /> {/* Smaller font */}
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
+                    <XAxis dataKey="year" tick={{ fontSize: 11 }} padding={{ left: 0, right: 0 }} />
+                    <YAxis tick={{ fontSize: 11 }} width={45} />
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '5px' }} /> {/* Smaller legend */}
-                    <Line type="monotone" dataKey="Jamie" stroke="#0067D9" activeDot={{ r: 6 }} strokeWidth={2} /> {/* Smaller dots */}
-                    <Line type="monotone" dataKey="Alex" stroke="#FF6B6B" activeDot={{ r: 6 }} strokeWidth={2} /> {/* Smoaller dots */}
-                    <Line type="monotone" dataKey="Taylor" stroke="#9320E7" activeDot={{ r: 6 }} strokeWidth={2} /> {/* Smaller dots */}
-                    <Line type="monotone" dataKey="benchmark" stroke="#17202A" strokeDasharray="5 5" strokeWidth={1.5} /> {/* Thinner dashed line */}
+                    <Legend 
+                      wrapperStyle={{ fontSize: '11px', paddingTop: '0' }}
+                      iconSize={8}
+                      verticalAlign="top"
+                      height={20}
+                    />
+                    <Line type="monotone" dataKey="Jamie" stroke="#0067D9" activeDot={{ r: 5 }} strokeWidth={1.5} />
+                    <Line type="monotone" dataKey="Alex" stroke="#FF6B6B" activeDot={{ r: 5 }} strokeWidth={1.5} />
+                    <Line type="monotone" dataKey="Taylor" stroke="#9320E7" activeDot={{ r: 5 }} strokeWidth={1.5} />
+                    <Line type="monotone" dataKey="benchmark" stroke="#17202A" strokeDasharray="5 5" strokeWidth={1} />
                   </LineChart>
                 </ChartContainer>
               </div>
-              <div className="mt-2"> {/* Reduced margin top */}
-                <p className="text-xs text-muted-foreground"> {/* Smaller text */}
+              <div className="mt-1">
+                <p className="text-xs text-muted-foreground text-center">
                   The dashed line represents the industry benchmark for similar roles and experience levels.
                 </p>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Additional information card */}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-base">Trend Analysis Overview</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <h4 className="font-medium">Year-over-Year Growth</h4>
+                  <p className="text-muted-foreground">All team members show consistent compensation growth above inflation rates.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Benchmark Comparison</h4>
+                  <p className="text-muted-foreground">Alex and Jamie consistently exceed industry benchmarks, while Taylor is approaching benchmark values.</p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Growth Pattern</h4>
+                  <p className="text-muted-foreground">Compensation increases tend to be higher in Q1 following annual performance reviews.</p>
+                </div>
               </div>
             </CardContent>
           </Card>
