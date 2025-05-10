@@ -36,7 +36,9 @@ export const ReportsSection: React.FC = () => {
           </CardHeader>
           <CardContent>
             <p className="mb-4">Review salary benchmarks, equity distribution, and compensation trends across departments.</p>
-            <Button variant="outline">Coming Soon</Button>
+            <Button asChild>
+              <Link to="/reports/compensation-analysis">View Reports</Link>
+            </Button>
           </CardContent>
         </Card>
         <Card className="p-4 border shadow-sm">
