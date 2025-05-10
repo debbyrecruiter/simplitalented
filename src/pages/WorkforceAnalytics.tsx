@@ -41,17 +41,6 @@ const WorkforceAnalytics = () => {
             <CardHeader>
               <CardTitle>Organizational Structure</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="p-4 text-center">
-                <p className="text-muted-foreground">
-                  Organizational chart visualization coming soon.
-                </p>
-                <p className="mt-4">
-                  This section will include a hierarchical view of the company's structure, 
-                  showing reporting relationships and team compositions.
-                </p>
-              </div>
-            </CardContent>
           </Card>
         );
     }
