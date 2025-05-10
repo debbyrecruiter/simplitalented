@@ -10,7 +10,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { BackButton } from "@/components/ui/back-button";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { MetricCard } from "@/components/MetricCard";
-import { ArrowDownUp, LayoutGrid } from "lucide-react";
+import { ArrowDownUp, LayoutGrid, Users } from "lucide-react";
 
 const retentionData = [
   { name: '0-6 months', rate: 92 },
@@ -25,10 +25,25 @@ const chartConfig = {
 };
 
 const WorkforceAnalytics = () => {
-  const [activeView, setActiveView] = useState<'retention' | 'structure'>('retention');
+  const [activeView, setActiveView] = useState<'demographics' | 'retention' | 'structure'>('retention');
 
   const renderContent = () => {
     switch (activeView) {
+      case 'demographics':
+        return (
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
+            <CardHeader>
+              <CardTitle>Workforce Demographics</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="p-4 text-center">
+                <p className="text-muted-foreground">
+                  Demographics data coming soon.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        );
       case 'retention':
         return (
           <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
@@ -100,7 +115,14 @@ const WorkforceAnalytics = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Analytics</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <MetricCard
+          title="Demographics"
+          value=""
+          icon={Users}
+          onClick={() => setActiveView('demographics')}
+          className={activeView === 'demographics' ? 'ring-4 ring-blue-500' : ''}
+        />
         <MetricCard
           title="Retention"
           value=""
