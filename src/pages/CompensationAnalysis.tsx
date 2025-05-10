@@ -265,23 +265,23 @@ const CompensationAnalysis = () => {
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="flex flex-col gap-6">
-                    {/* Grouped bar chart for comparing components side by side */}
-                    <div className="border rounded-lg p-4 bg-white">
-                      <h3 className="text-sm font-medium text-center mb-4">Compensation Components Comparison</h3>
-                      <div className="h-[200px] w-full">
+                    {/* Grouped bar chart with reduced height */}
+                    <div className="border rounded-lg p-4 bg-white mb-4">
+                      <h3 className="text-sm font-medium text-center mb-2">Compensation Components Comparison</h3>
+                      <div className="h-[160px] w-full">
                         <ChartContainer config={chartConfig}>
                           <BarChart 
                             data={groupedCompData} 
-                            margin={{ top: 10, right: 30, left: 0, bottom: 15 }}
+                            margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
                           >
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" tick={{ fontSize: 12 }} height={40} />
-                            <YAxis tickFormatter={(value) => `$${Math.round(value/1000)}k`} width={50} fontSize={11} />
+                            <XAxis dataKey="name" tick={{ fontSize: 11 }} height={30} />
+                            <YAxis tickFormatter={(value) => `$${Math.round(value/1000)}k`} width={50} fontSize={10} />
                             <ChartTooltip content={<ChartTooltipContent />} />
-                            <Legend wrapperStyle={{ fontSize: '10px', bottom: 0 }} />
-                            <Bar dataKey="Base" fill="#0067D9" radius={[4, 4, 0, 0]} maxBarSize={30} />
-                            <Bar dataKey="Bonus" fill="#FF6B6B" radius={[4, 4, 0, 0]} maxBarSize={30} />
-                            <Bar dataKey="Equity" fill="#9320E7" radius={[4, 4, 0, 0]} maxBarSize={30} />
+                            <Legend wrapperStyle={{ fontSize: '9px', bottom: -5 }} />
+                            <Bar dataKey="Base" fill="#0067D9" radius={[3, 3, 0, 0]} maxBarSize={25} />
+                            <Bar dataKey="Bonus" fill="#FF6B6B" radius={[3, 3, 0, 0]} maxBarSize={25} />
+                            <Bar dataKey="Equity" fill="#9320E7" radius={[3, 3, 0, 0]} maxBarSize={25} />
                           </BarChart>
                         </ChartContainer>
                       </div>
