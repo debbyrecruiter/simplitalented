@@ -23,12 +23,12 @@ const GenderDemographics = () => {
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="border shadow-sm">
+        <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
           <CardHeader>
             <CardTitle>Company Gender Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px]">
+            <div className="h-[300px] bg-white">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
@@ -53,12 +53,12 @@ const GenderDemographics = () => {
           </CardContent>
         </Card>
 
-        <Card className="border shadow-sm">
+        <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
           <CardHeader>
             <CardTitle>Gender Distribution by Department</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px]">
+            <div className="h-[300px] bg-white">
               <ChartContainer config={{
                 male: { label: "Male", theme: { light: "#0067D9", dark: "#0067D9" } },
                 female: { label: "Female", theme: { light: "#FF6B8A", dark: "#FF6B8A" } },
@@ -84,7 +84,7 @@ const GenderDemographics = () => {
       </div>
       
       <div className="grid grid-cols-1">
-        <Card className="border shadow-sm">
+        <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
           <CardHeader>
             <CardTitle>Detailed Department Gender Breakdown</CardTitle>
           </CardHeader>

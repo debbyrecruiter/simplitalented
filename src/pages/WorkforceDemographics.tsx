@@ -109,7 +109,7 @@ const WorkforceDemographics = () => {
 
       {/* Demographics content section */}
       <div className="mt-8">
-        <Card className="border shadow-sm">
+        <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
           <CardHeader>
             <CardTitle>
               {selectedCategory === "gender" && "Gender Demographics"}
