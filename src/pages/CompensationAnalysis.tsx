@@ -264,57 +264,82 @@ const CompensationAnalysis = () => {
                   <CardTitle className="text-base">Comparative View</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <div className="flex flex-col gap-6">
-                    {/* Grouped bar chart with reduced height */}
-                    <div className="border rounded-lg p-4 bg-white mb-4">
-                      <h3 className="text-sm font-medium text-center mb-2">Compensation Components Comparison</h3>
-                      <div className="h-[160px] w-full">
+                  <div className="grid grid-cols-1 xl:grid-cols-6 gap-6">
+                    {/* Segmented total compensation comparison */}
+                    <div className="xl:col-span-2 border rounded-lg p-4 bg-gray-50">
+                      <h3 className="text-sm font-medium text-center mb-4">Total Compensation</h3>
+                      <div className="h-[250px] w-full">
                         <ChartContainer config={chartConfig}>
                           <BarChart 
-                            data={groupedCompData} 
-                            margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
+                            data={totalCompData.sort((a, b) => b.Total - a.Total)} 
+                            layout="vertical"
                           >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" tick={{ fontSize: 11 }} height={30} />
-                            <YAxis tickFormatter={(value) => `$${Math.round(value/1000)}k`} width={50} fontSize={10} />
+                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+                            <XAxis type="number" tickFormatter={formatCurrency} />
+                            <YAxis dataKey="name" type="category" width={80} />
                             <ChartTooltip content={<ChartTooltipContent />} />
-                            <Legend wrapperStyle={{ fontSize: '9px', bottom: -5 }} />
-                            <Bar dataKey="Base" fill="#0067D9" radius={[3, 3, 0, 0]} maxBarSize={25} />
-                            <Bar dataKey="Bonus" fill="#FF6B6B" radius={[3, 3, 0, 0]} maxBarSize={25} />
-                            <Bar dataKey="Equity" fill="#9320E7" radius={[3, 3, 0, 0]} maxBarSize={25} />
+                            <Legend />
+                            <Bar dataKey="Base" stackId="a" fill="#0067D9" />
+                            <Bar dataKey="Bonus" stackId="a" fill="#FF6B6B" />
+                            <Bar dataKey="Equity" stackId="a" fill="#9320E7" />
+                          </BarChart>
+                        </ChartContainer>
+                      </div>
+                      <div className="mt-2 space-y-1 text-xs">
+                        {enhancedCompData.sort((a, b) => b.total - a.total).map((item, i) => (
+                          <div key={i} className="text-center font-medium">
+                            ${item.total.toLocaleString()} - {item.name}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Compensation breakdown */}
+                    <div className="xl:col-span-4 bg-white border rounded-lg">
+                      <div className="h-[300px] w-full">
+                        <ChartContainer config={chartConfig}>
+                          <BarChart data={groupedCompData} layout="horizontal">
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                            <XAxis dataKey="name" />
+                            <YAxis tickFormatter={formatCurrency} />
+                            <ChartTooltip content={<ChartTooltipContent />} />
+                            <Legend />
+                            <Bar dataKey="Base" name="Base Salary" stackId="a" fill="#0067D9" />
+                            <Bar dataKey="Bonus" name="Annual Bonus" stackId="a" fill="#FF6B6B" />
+                            <Bar dataKey="Equity" name="Equity (Annual)" stackId="a" fill="#9320E7" />
                           </BarChart>
                         </ChartContainer>
                       </div>
                     </div>
-                    
-                    {/* Data tables for each employee */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {compensationData.map((employee, idx) => (
-                        <div key={idx} className="flex flex-col p-3 bg-gray-50 rounded-lg border">
-                          <h4 className="font-medium text-sm mb-1">{employee.name}</h4>
-                          <span className="text-xs text-muted-foreground mb-2">{employee.role}</span>
-                          <div className="w-full space-y-1">
-                            <div className="flex justify-between text-xs">
-                              <span>Base:</span>
-                              <span className="font-medium">${employee.base.toLocaleString()}</span>
-                            </div>
-                            <div className="flex justify-between text-xs">
-                              <span>Bonus:</span>
-                              <span className="font-medium">${employee.bonus.toLocaleString()}</span>
-                            </div>
-                            <div className="flex justify-between text-xs">
-                              <span>Equity:</span>
-                              <span className="font-medium">${employee.equity.toLocaleString()}</span>
-                            </div>
-                            <div className="border-t mt-1 pt-1"></div>
-                            <div className="flex justify-between text-xs font-medium">
-                              <span>Total:</span>
-                              <span>${employee.total.toLocaleString()}</span>
-                            </div>
+                  </div>
+                  
+                  {/* Data tables moved below the charts */}
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {compensationData.map((employee, idx) => (
+                      <div key={idx} className="flex flex-col p-3 bg-gray-50 rounded-lg border">
+                        <h4 className="font-medium text-sm mb-1">{employee.name}</h4>
+                        <span className="text-xs text-muted-foreground mb-2">{employee.role}</span>
+                        <div className="w-full space-y-1">
+                          <div className="flex justify-between text-xs">
+                            <span>Base:</span>
+                            <span className="font-medium">${employee.base.toLocaleString()}</span>
+                          </div>
+                          <div className="flex justify-between text-xs">
+                            <span>Bonus:</span>
+                            <span className="font-medium">${employee.bonus.toLocaleString()}</span>
+                          </div>
+                          <div className="flex justify-between text-xs">
+                            <span>Equity:</span>
+                            <span className="font-medium">${employee.equity.toLocaleString()}</span>
+                          </div>
+                          <div className="border-t mt-1 pt-1"></div>
+                          <div className="flex justify-between text-xs font-medium">
+                            <span>Total:</span>
+                            <span>${employee.total.toLocaleString()}</span>
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
