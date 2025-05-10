@@ -60,7 +60,7 @@ const CompanyAttrition = () => {
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart 
                     data={departmentAttritionData} 
-                    margin={{ top: 5, right: 30, left: 20, bottom: 30 }}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 100 }} // Increased bottom margin to accommodate labels
                     className="bg-white"
                   >
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -68,14 +68,16 @@ const CompanyAttrition = () => {
                       dataKey="department" 
                       axisLine={true}
                       tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }} // Increased font size by 50% (from 12 to 18) and added bold (700)
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
                       angle={-45}
                       textAnchor="end"
+                      height={80} // Increased height for the x-axis
+                      dy={20} // Move the labels down a bit
                     />
                     <YAxis
                       axisLine={true}
                       tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }} // Increased font size by 50% (from 12 to 18) and added bold (700)
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
                       tickFormatter={(value) => `${value}%`}
                       domain={[0, 40]}
                       ticks={yAxisTicks}
