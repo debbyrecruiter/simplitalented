@@ -1,6 +1,5 @@
 
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
 import { LayoutGrid, Users, ArrowDownUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -12,38 +11,6 @@ const WorkforceAnalytics = () => {
 
   const navigateToDemographics = () => {
     navigate('/reports/workforce-demographics');
-  };
-
-  const renderContent = () => {
-    switch (activeView) {
-      case 'retention':
-        return (
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Employee Retention</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="p-4 text-center">
-                <p className="text-muted-foreground">
-                  Employee retention visualization coming soon.
-                </p>
-                <p className="mt-4">
-                  This section will include data on employee retention rates across different tenure periods.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        );
-      case 'structure':
-      default:
-        return (
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Organizational Structure</CardTitle>
-            </CardHeader>
-          </Card>
-        );
-    }
   };
 
   return (
@@ -77,8 +44,6 @@ const WorkforceAnalytics = () => {
           className={activeView === 'structure' ? 'ring-4 ring-blue-500' : ''}
         />
       </div>
-      
-      {renderContent()}
     </div>
   );
 };
