@@ -52,14 +52,17 @@ const pieChartsData = compensationData.map(item => {
   };
 });
 
-// Custom pie chart label to show the percentage
+// Custom pie chart label to show both percentage and dollar amount
 const renderCustomizedLabel = (props) => {
   const { cx, cy, midAngle, innerRadius, outerRadius, percent, index, payload, name, value, percentage } = props;
   const RADIAN = Math.PI / 180;
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
+  
+  // Only show text for segments that are large enough (e.g., > 5%)
+  if (percentage < 5) return null;
+  
   return (
     <text 
       x={x} 
@@ -197,12 +200,19 @@ const CompensationAnalysis = () => {
                                 className="h-3 w-3 rounded mr-1" 
                                 style={{ backgroundColor: entry.color }}
                               ></div>
-                              <span className="text-xs">{entry.name}: {entry.percentage}%</span>
+                              <span className="text-xs">{entry.name}</span>
                             </div>
                           ))}
                         </div>
                         <div className="mt-3 text-center">
                           <span className="text-sm font-semibold">Total: ${item.total.toLocaleString()}</span>
+                        </div>
+                        <div className="mt-1 flex justify-center flex-wrap">
+                          {item.data.map((entry, i) => (
+                            <div key={i} className="px-2 py-1 text-xs">
+                              ${entry.value.toLocaleString()} ({entry.percentage}%)
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </CardContent>
