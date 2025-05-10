@@ -381,7 +381,7 @@ const WorkforceRetention = () => {
           
           <div className="bg-white rounded-lg w-full h-full">
             <ChartContainer config={{
-              attrition: { color: "#9b87f5" }
+              attrition: { color: "#D0A3EE" }
             }}>
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -425,11 +425,9 @@ const WorkforceRetention = () => {
                       }}
                     />
                     <Bar dataKey="attritionRate" name="Attrition Rate" radius={[4, 4, 0, 0]}>
-                      {performanceScoreData.map((_, index) => {
-                        // Color gradient based on performance score (red to green)
-                        const colors = ["#ef4444", "#f97316", "#facc15", "#84cc16", "#22c55e"];
-                        return <Cell key={`cell-${index}`} fill={colors[index]} />;
-                      })}
+                      {performanceScoreData.map((_, index) => (
+                        <Cell key={`cell-${index}`} fill="#D0A3EE" />
+                      ))}
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
