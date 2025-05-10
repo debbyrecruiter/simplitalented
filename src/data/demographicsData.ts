@@ -40,6 +40,59 @@ export const departmentGenderData = [
   },
 ];
 
+// Race demographics data
+export const raceData = [
+  { name: 'White', value: 45, color: '#22C55E' },
+  { name: 'Asian', value: 23, color: '#3B82F6' },
+  { name: 'Black', value: 15, color: '#8B5CF6' },
+  { name: 'Hispanic/Latino', value: 12, color: '#EC4899' },
+  { name: 'Other', value: 5, color: '#F59E0B' },
+];
+
+// Department race breakdown
+export const departmentRaceData = [
+  {
+    department: 'Engineering',
+    'White': 40,
+    'Asian': 35,
+    'Black': 10,
+    'Hispanic/Latino': 10,
+    'Other': 5,
+  },
+  {
+    department: 'Sales',
+    'White': 50,
+    'Asian': 15,
+    'Black': 20,
+    'Hispanic/Latino': 12,
+    'Other': 3,
+  },
+  {
+    department: 'Marketing',
+    'White': 48,
+    'Asian': 18,
+    'Black': 15,
+    'Hispanic/Latino': 15,
+    'Other': 4,
+  },
+  {
+    department: 'HR',
+    'White': 45,
+    'Asian': 15,
+    'Black': 25,
+    'Hispanic/Latino': 10,
+    'Other': 5,
+  },
+  {
+    department: 'Product',
+    'White': 42,
+    'Asian': 32,
+    'Black': 12,
+    'Hispanic/Latino': 8,
+    'Other': 6,
+  },
+];
+
 // Age demographics data
 export const ageData = [
   { name: '18-24', value: 15, color: '#22C55E' },

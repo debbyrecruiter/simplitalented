@@ -6,6 +6,7 @@ import { Users } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import GenderDemographics from "@/components/demographics/GenderDemographics";
 import AgeDemographics from "@/components/demographics/AgeDemographics";
+import RaceDemographics from "@/components/demographics/RaceDemographics";
 
 const WorkforceDemographics = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>("gender");
@@ -19,11 +20,7 @@ const WorkforceDemographics = () => {
       case "gender":
         return <GenderDemographics />;
       case "race":
-        return (
-          <div className="text-center p-6">
-            <p className="text-muted-foreground">Race demographics data coming soon.</p>
-          </div>
-        );
+        return <RaceDemographics />;
       case "age":
         return <AgeDemographics />;
       default:
@@ -75,7 +72,7 @@ const WorkforceDemographics = () => {
               </CardHeader>
               <CardContent className="flex items-center justify-center flex-1">
                 <p className="text-muted-foreground text-center">
-                  Race distribution data coming soon.
+                  Click to view race distribution
                 </p>
               </CardContent>
             </Card>
