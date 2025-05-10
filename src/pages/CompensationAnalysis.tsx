@@ -23,7 +23,6 @@ import {
   TableCell 
 } from "@/components/ui/table";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { BackButton } from "@/components/ui/back-button";
 
 // Filter only direct reports from team members (excluding the first member who is the manager)
 const directReports = teamMembers.filter(member => member.id !== 1);
@@ -180,10 +179,6 @@ const CompensationAnalysis = () => {
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
-        <div className="mb-4">
-          <BackButton fallbackPath="/reports" />
-        </div>
-        
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

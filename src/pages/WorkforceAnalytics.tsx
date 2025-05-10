@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -10,7 +11,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Home } from "lucide-react";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
-import { BackButton } from "@/components/ui/back-button";
 
 const demographicsData = [
   { name: 'Engineering', male: 65, female: 35, nonbinary: 10 },
@@ -39,10 +39,6 @@ const WorkforceAnalytics = () => {
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
-        <div className="mb-4">
-          <BackButton fallbackPath="/reports" />
-        </div>
-        
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

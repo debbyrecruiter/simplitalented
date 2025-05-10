@@ -10,7 +10,7 @@ const GoalsTimelinePage = () => {
       <DashboardHeader title="Goals Timeline" />
       <div className="flex-1 p-4 overflow-auto rounded-sm bg-[#DBE1F3]">
         <div className="mb-4">
-          <BackButton fallbackPath="/my-goals" />
+          <BackButton />
         </div>
         
         <div className="max-w-7xl mx-auto">

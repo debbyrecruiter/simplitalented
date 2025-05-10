@@ -17,13 +17,8 @@ export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: Back
       // Use custom click handler if provided
       onClick();
     } else {
-      // Navigate back in history, or to fallbackPath if no history
-      try {
-        navigate(-1);
-      } catch (error) {
-        // If navigation fails, go to fallback path
-        navigate(fallbackPath);
-      }
+      // Navigate back in history
+      navigate(-1);
     }
   };
 
@@ -31,10 +26,14 @@ export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: Back
     <Button
       onClick={handleClick}
       variant="ghost"
-      className="flex items-center gap-1 text-[#9320E7] hover:text-[#9320E7]/80 hover:bg-transparent p-0"
+      className="flex items-center gap-1 text-[#840DD7] hover:text-[#840DD7]/80 hover:bg-transparent p-0"
     >
-      <ChevronLeft className="h-5 w-5 text-[#9b87f5]" />
-      {label && <span>{label}</span>}
+      <div className="flex items-center">
+        <ChevronLeft className="h-5 w-5" />
+        <ChevronLeft className="h-5 w-5 -ml-3" />
+        <ChevronLeft className="h-5 w-5 -ml-3" />
+      </div>
+      {label && <span className="ml-1 text-[1.75rem]">{label}</span>}
     </Button>
   );
 }
