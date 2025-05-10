@@ -1,13 +1,12 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
 import { Users, Award, BarChart2, LineChart, Briefcase, Badge } from "lucide-react";
-import { CompanyAttritionModal } from "@/components/attrition/CompanyAttritionModal";
+import { useNavigate } from "react-router-dom";
 
 const WorkforceRetention = () => {
-  // State for managing dialog visibility
-  const [isCompanyAttritionOpen, setIsCompanyAttritionOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="container p-4 mx-auto">
@@ -20,7 +19,7 @@ const WorkforceRetention = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={() => setIsCompanyAttritionOpen(true)}
+          onClick={() => navigate('/reports/workforce-retention/company-attrition')}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
@@ -35,7 +34,9 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
-        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square">
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
+        >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
               <Briefcase className="h-8 w-8 text-[#512888]" />
@@ -105,12 +106,6 @@ const WorkforceRetention = () => {
           </div>
         </Card>
       </div>
-      
-      {/* Company Attrition Modal */}
-      <CompanyAttritionModal 
-        isOpen={isCompanyAttritionOpen} 
-        onClose={() => setIsCompanyAttritionOpen(false)} 
-      />
     </div>
   );
 };
