@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
-import { LayoutGrid, Users } from "lucide-react";
+import { LayoutGrid, Users, ArrowDownUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { MetricCard } from "@/components/MetricCard";
 
 const WorkforceAnalytics = () => {
-  const [activeView, setActiveView] = useState<'structure'>('structure');
+  const [activeView, setActiveView] = useState<'structure' | 'retention'>('structure');
   const navigate = useNavigate();
 
   const navigateToDemographics = () => {
@@ -16,6 +16,24 @@ const WorkforceAnalytics = () => {
 
   const renderContent = () => {
     switch (activeView) {
+      case 'retention':
+        return (
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
+            <CardHeader>
+              <CardTitle>Employee Retention</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="p-4 text-center">
+                <p className="text-muted-foreground">
+                  Employee retention visualization coming soon.
+                </p>
+                <p className="mt-4">
+                  This section will include data on employee retention rates across different tenure periods.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        );
       case 'structure':
       default:
         return (
@@ -47,13 +65,20 @@ const WorkforceAnalytics = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Analytics</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <MetricCard
           title="Demographics"
           value=""
           icon={Users}
           onClick={navigateToDemographics}
           className=""
+        />
+        <MetricCard
+          title="Retention"
+          value=""
+          icon={ArrowDownUp}
+          onClick={() => setActiveView('retention')}
+          className={activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}
         />
         <MetricCard
           title="Organizational&#10;Structure"
