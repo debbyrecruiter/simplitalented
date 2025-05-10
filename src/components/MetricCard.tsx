@@ -44,24 +44,6 @@ export function MetricCard({
           {title}
         </CardTitle>
         
-        {value && (
-          <div className={cn(
-            "font-bold text-center w-full whitespace-pre-line",
-            isMenuCard ? "text-2xl" : "text-3xl" // Sized appropriately for menu cards
-          )}>
-            {value}
-          </div>
-        )}
-        
-        {description && (
-          <p className={cn(
-            "text-muted-foreground text-center w-full whitespace-pre-line",
-            isMenuCard ? "text-xs" : "text-sm" // Sized appropriately for menu cards
-          )}>
-            {description}
-          </p>
-        )}
-        
         {trend && (
           <div className="flex items-center justify-center mt-1">
             <span

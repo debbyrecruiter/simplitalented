@@ -46,7 +46,6 @@ const CompanyAttrition = () => {
         <Card className="p-6 text-center bg-white border border-[#9b87f5] rounded-lg shadow-sm">
           <h3 className="text-xl font-medium text-[#512888]">Overall Attrition Rate</h3>
           <p className="text-4xl font-bold mt-2 text-[#512888]">{overallAttritionRate}%</p>
-          <p className="text-sm text-muted-foreground mt-1">Company-wide annual attrition</p>
         </Card>
         
         {/* Department breakdown chart */}

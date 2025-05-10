@@ -16,7 +16,6 @@ export const ReportsSection: React.FC = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mb-4">View detailed reports about employee demographics, retention rates, and organizational structure.</p>
           <Button asChild>
             <Link to="/reports/workforce-analytics">View Reports</Link>
           </Button>
@@ -30,7 +29,6 @@ export const ReportsSection: React.FC = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mb-4">Review salary benchmarks, equity distribution, and compensation trends across departments.</p>
           <Button asChild>
             <Link to="/reports/compensation-analysis">View Reports</Link>
           </Button>
@@ -44,7 +42,6 @@ export const ReportsSection: React.FC = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mb-4">Analyze performance review data and identify patterns across teams and departments.</p>
           <Button variant="outline">Coming Soon</Button>
         </CardContent>
       </Card>

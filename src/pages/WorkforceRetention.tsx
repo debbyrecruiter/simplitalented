@@ -140,11 +140,6 @@ const WorkforceRetention = () => {
               <Users className="h-8 w-8 text-[#512888]" />
             </div>
             <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Company Attrition</h3>
-            <CardContent className="p-0 w-full">
-              <div className="h-24 sm:h-32 flex items-center justify-center bg-gray-100 rounded-md mx-4">
-                <p className="text-muted-foreground text-sm px-2 text-center">Company attrition data visualization will appear here</p>
-              </div>
-            </CardContent>
           </div>
         </Card>
 
@@ -157,11 +152,6 @@ const WorkforceRetention = () => {
               <Briefcase className="h-8 w-8 text-[#512888]" />
             </div>
             <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by&#10;Manager</h3>
-            <CardContent className="p-0 w-full">
-              <div className="h-24 sm:h-32 flex items-center justify-center bg-gray-100 rounded-md mx-4">
-                <p className="text-muted-foreground text-sm px-2 text-center">Manager-based attrition data visualization will appear here</p>
-              </div>
-            </CardContent>
           </div>
         </Card>
 
@@ -173,11 +163,6 @@ const WorkforceRetention = () => {
               <Award className="h-8 w-8 text-[#512888]" />
             </div>
             <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by&#10;Performance Score</h3>
-            <CardContent className="p-0 w-full">
-              <div className="h-24 sm:h-32 flex items-center justify-center bg-gray-100 rounded-md mx-4">
-                <p className="text-muted-foreground text-sm px-2 text-center">Performance-based attrition data visualization will appear here</p>
-              </div>
-            </CardContent>
           </div>
         </Card>
 
@@ -187,11 +172,6 @@ const WorkforceRetention = () => {
               <BarChart2 className="h-8 w-8 text-[#512888]" />
             </div>
             <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by Race</h3>
-            <CardContent className="p-0 w-full">
-              <div className="h-24 sm:h-32 flex items-center justify-center bg-gray-100 rounded-md mx-4">
-                <p className="text-muted-foreground text-sm px-2 text-center">Race-based attrition data visualization will appear here</p>
-              </div>
-            </CardContent>
           </div>
         </Card>
 
@@ -201,11 +181,6 @@ const WorkforceRetention = () => {
               <LineChart className="h-8 w-8 text-[#512888]" />
             </div>
             <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by Gender</h3>
-            <CardContent className="p-0 w-full">
-              <div className="h-24 sm:h-32 flex items-center justify-center bg-gray-100 rounded-md mx-4">
-                <p className="text-muted-foreground text-sm px-2 text-center">Gender-based attrition data visualization will appear here</p>
-              </div>
-            </CardContent>
           </div>
         </Card>
 
@@ -215,11 +190,6 @@ const WorkforceRetention = () => {
               <Badge className="h-8 w-8 text-[#512888]" />
             </div>
             <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by&#10;Recruiter</h3>
-            <CardContent className="p-0 w-full">
-              <div className="h-24 sm:h-32 flex items-center justify-center bg-gray-100 rounded-md mx-4">
-                <p className="text-muted-foreground text-sm px-2 text-center">Recruiter-based attrition data visualization will appear here</p>
-              </div>
-            </CardContent>
           </div>
         </Card>
       </div>
