@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -310,36 +309,36 @@ const CompensationAnalysis = () => {
                           </BarChart>
                         </ChartContainer>
                       </div>
-                      <div className="px-4 pb-4">
-                        <div className="grid grid-cols-3 gap-4 mt-4">
-                          {compensationData.map((employee, idx) => (
-                            <div key={idx} className="flex flex-col items-center p-3 bg-gray-50 rounded-lg border">
-                              <h4 className="font-medium text-sm mb-1">{employee.name}</h4>
-                              <span className="text-xs text-muted-foreground mb-2">{employee.role}</span>
-                              <div className="w-full space-y-1">
-                                <div className="flex justify-between text-xs">
-                                  <span>Base:</span>
-                                  <span className="font-medium">${employee.base.toLocaleString()}</span>
-                                </div>
-                                <div className="flex justify-between text-xs">
-                                  <span>Bonus:</span>
-                                  <span className="font-medium">${employee.bonus.toLocaleString()}</span>
-                                </div>
-                                <div className="flex justify-between text-xs">
-                                  <span>Equity:</span>
-                                  <span className="font-medium">${employee.equity.toLocaleString()}</span>
-                                </div>
-                                <div className="border-t mt-1 pt-1"></div>
-                                <div className="flex justify-between text-xs font-medium">
-                                  <span>Total:</span>
-                                  <span>${employee.total.toLocaleString()}</span>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
+                    </div>
+                  </div>
+                  
+                  {/* Data tables moved below the charts */}
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {compensationData.map((employee, idx) => (
+                      <div key={idx} className="flex flex-col p-3 bg-gray-50 rounded-lg border">
+                        <h4 className="font-medium text-sm mb-1">{employee.name}</h4>
+                        <span className="text-xs text-muted-foreground mb-2">{employee.role}</span>
+                        <div className="w-full space-y-1">
+                          <div className="flex justify-between text-xs">
+                            <span>Base:</span>
+                            <span className="font-medium">${employee.base.toLocaleString()}</span>
+                          </div>
+                          <div className="flex justify-between text-xs">
+                            <span>Bonus:</span>
+                            <span className="font-medium">${employee.bonus.toLocaleString()}</span>
+                          </div>
+                          <div className="flex justify-between text-xs">
+                            <span>Equity:</span>
+                            <span className="font-medium">${employee.equity.toLocaleString()}</span>
+                          </div>
+                          <div className="border-t mt-1 pt-1"></div>
+                          <div className="flex justify-between text-xs font-medium">
+                            <span>Total:</span>
+                            <span>${employee.total.toLocaleString()}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
