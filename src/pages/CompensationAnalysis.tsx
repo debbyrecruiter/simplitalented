@@ -389,27 +389,30 @@ const CompensationAnalysis = () => {
         
         <TabsContent value="trends" className="space-y-6">
           <Card>
-            <CardHeader>
+            <CardHeader className="pb-2">
               <CardTitle>Compensation Trends (2021-2024)</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="h-[400px] w-full">
+            <CardContent className="pt-0">
+              <div className="h-[300px] w-full"> {/* Reduced height from 400px to 300px */}
                 <ChartContainer config={chartConfig}>
-                  <LineChart data={historicalData}>
+                  <LineChart 
+                    data={historicalData}
+                    margin={{ top: 10, right: 10, left: 0, bottom: 10 }} // Added compact margins
+                  >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" />
-                    <YAxis />
+                    <XAxis dataKey="year" tick={{ fontSize: 12 }} /> {/* Smaller font */}
+                    <YAxis tick={{ fontSize: 12 }} /> {/* Smaller font */}
                     <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend />
-                    <Line type="monotone" dataKey="Jamie" stroke="#0067D9" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="Alex" stroke="#FF6B6B" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="Taylor" stroke="#9320E7" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="benchmark" stroke="#17202A" strokeDasharray="5 5" />
+                    <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '5px' }} /> {/* Smaller legend */}
+                    <Line type="monotone" dataKey="Jamie" stroke="#0067D9" activeDot={{ r: 6 }} strokeWidth={2} /> {/* Smaller dots */}
+                    <Line type="monotone" dataKey="Alex" stroke="#FF6B6B" activeDot={{ r: 6 }} strokeWidth={2} /> {/* Smoaller dots */}
+                    <Line type="monotone" dataKey="Taylor" stroke="#9320E7" activeDot={{ r: 6 }} strokeWidth={2} /> {/* Smaller dots */}
+                    <Line type="monotone" dataKey="benchmark" stroke="#17202A" strokeDasharray="5 5" strokeWidth={1.5} /> {/* Thinner dashed line */}
                   </LineChart>
                 </ChartContainer>
               </div>
-              <div className="mt-4">
-                <p className="text-sm text-muted-foreground">
+              <div className="mt-2"> {/* Reduced margin top */}
+                <p className="text-xs text-muted-foreground"> {/* Smaller text */}
                   The dashed line represents the industry benchmark for similar roles and experience levels.
                 </p>
               </div>
