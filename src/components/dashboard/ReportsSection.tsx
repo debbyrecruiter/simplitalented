@@ -16,7 +16,7 @@ export const ReportsSection: React.FC = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mb-4">View detailed reports about employee retention rates, and organizational structure.</p>
+          <p className="mb-4">View detailed reports about employee demographics, retention rates, and organizational structure.</p>
           <Button asChild>
             <Link to="/reports/workforce-analytics">View Reports</Link>
           </Button>
@@ -40,14 +40,12 @@ export const ReportsSection: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center">
             <Users className="mr-2 h-5 w-5 text-[#512888]" />
-            Demographics
+            Diversity & Inclusion
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="mb-4">Explore employee demographics by gender, race, and age.</p>
-          <Button asChild>
-            <Link to="/reports/demographics">View Reports</Link>
-          </Button>
+          <p className="mb-4">Monitor diversity metrics and inclusion initiatives throughout the organization.</p>
+          <Button variant="outline">Coming Soon</Button>
         </CardContent>
       </Card>
       <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
