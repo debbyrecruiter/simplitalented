@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -12,7 +13,7 @@ import {
 } from "recharts";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Home, DollarSign, PieChartIcon } from "lucide-react";
+import { Home, DollarSign, PieChartIcon, Table as TableIcon } from "lucide-react";
 import { teamMembers } from "@/data/dashboardData";
 import { 
   Table, 
@@ -267,7 +268,10 @@ const CompensationAnalysis = () => {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Comparative View</CardTitle>
+                  <CardTitle className="text-base flex items-center">
+                    <TableIcon className="mr-2 h-4 w-4 text-[#512888]" />
+                    Compensation Details
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="grid grid-cols-1 xl:grid-cols-6 gap-6">
@@ -301,7 +305,7 @@ const CompensationAnalysis = () => {
                       </div>
                     </div>
                     
-                    {/* Replace Bar Chart with Data Table */}
+                    {/* Updated Data Table with Total column */}
                     <div className="xl:col-span-4 bg-white border rounded-lg p-4">
                       <Table>
                         <TableHeader>
@@ -310,6 +314,7 @@ const CompensationAnalysis = () => {
                             <TableHead className="text-right font-semibold">Base Salary</TableHead>
                             <TableHead className="text-right font-semibold">Bonus (Annual)</TableHead>
                             <TableHead className="text-right font-semibold">Equity (Annual)</TableHead>
+                            <TableHead className="text-right font-semibold">Total</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -319,14 +324,13 @@ const CompensationAnalysis = () => {
                               <TableCell className="text-right">{formatCurrency(employee.base)}</TableCell>
                               <TableCell className="text-right">{formatCurrency(employee.bonus)}</TableCell>
                               <TableCell className="text-right">{formatCurrency(employee.equity)}</TableCell>
+                              <TableCell className="text-right font-medium">{formatCurrency(employee.total)}</TableCell>
                             </TableRow>
                           ))}
                         </TableBody>
                       </Table>
                     </div>
                   </div>
-                  
-                  {/* Remove the data tables section as it's been replaced with the table above */}
                 </CardContent>
               </Card>
             </CardContent>
