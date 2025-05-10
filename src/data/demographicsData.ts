@@ -49,6 +49,13 @@ export const departmentGenderData = [
   },
 ];
 
+// Promotion percentage by gender
+export const genderPromotionData = [
+  { name: 'Male', percentage: 15.2 },
+  { name: 'Female', percentage: 11.8 },
+  { name: 'Nonbinary', percentage: 12.5 },
+];
+
 // Race demographics data
 export const raceData = [
   { name: 'White', value: 45, color: '#22C55E' },
@@ -111,6 +118,15 @@ export const departmentRaceData = [
   },
 ];
 
+// Promotion percentage by race
+export const racePromotionData = [
+  { name: 'White', percentage: 14.5 },
+  { name: 'Asian', percentage: 16.2 },
+  { name: 'Black', percentage: 11.7 },
+  { name: 'Hispanic/Latino', percentage: 12.3 },
+  { name: 'Other', percentage: 10.8 },
+];
+
 // Age demographics data
 export const ageData = [
   { name: '18-24', value: 15, color: '#22C55E' },
@@ -171,4 +187,13 @@ export const departmentAgeData = [
     '45-54': 10,
     '55+': 5,
   },
+];
+
+// Promotion percentage by age
+export const agePromotionData = [
+  { name: '18-24', percentage: 9.8 },
+  { name: '25-34', percentage: 18.5 },
+  { name: '35-44', percentage: 14.2 },
+  { name: '45-54', percentage: 7.6 },
+  { name: '55+', percentage: 3.2 },
 ];

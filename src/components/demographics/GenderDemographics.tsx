@@ -16,7 +16,7 @@ import {
   Line
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { genderData, departmentGenderData, genderHistoricalData } from "@/data/demographicsData";
+import { genderData, departmentGenderData, genderHistoricalData, genderPromotionData } from "@/data/demographicsData";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 const COLORS = ['#0067D9', '#FF6B8A', '#8B5CF6'];
@@ -105,6 +105,33 @@ const GenderDemographics = () => {
                 <Line type="monotone" dataKey="Female" stroke="#FF6B8A" strokeWidth={2} dot={{ r: 4 }} />
                 <Line type="monotone" dataKey="Nonbinary" stroke="#8B5CF6" strokeWidth={2} dot={{ r: 4 }} />
               </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </CardContent>
+      </Card>
+      
+      <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
+        <CardHeader>
+          <CardTitle>Promotion Percentage by Gender</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[300px] bg-white">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={genderPromotionData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }} />
+                <Tooltip formatter={(value) => `${value}%`} />
+                <Legend />
+                <Bar dataKey="percentage" name="Promotion Rate" fill="#9B87F5">
+                  {genderPromotionData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={genderData[index].color} />
+                  ))}
+                </Bar>
+              </BarChart>
             </ResponsiveContainer>
           </div>
         </CardContent>

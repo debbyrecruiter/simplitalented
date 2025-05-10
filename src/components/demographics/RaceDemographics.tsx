@@ -16,7 +16,7 @@ import {
   Line
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { raceData, departmentRaceData, raceHistoricalData } from "@/data/demographicsData";
+import { raceData, departmentRaceData, raceHistoricalData, racePromotionData } from "@/data/demographicsData";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 const COLORS = ['#22C55E', '#3B82F6', '#8B5CF6', '#EC4899', '#F59E0B'];
@@ -111,6 +111,34 @@ const RaceDemographics = () => {
                 <Line type="monotone" dataKey="Hispanic/Latino" stroke="#EC4899" strokeWidth={2} dot={{ r: 4 }} />
                 <Line type="monotone" dataKey="Other" stroke="#F59E0B" strokeWidth={2} dot={{ r: 4 }} />
               </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </CardContent>
+      </Card>
+      
+      <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
+        <CardHeader>
+          <CardTitle>Promotion Percentage by Race</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[300px] bg-white">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={racePromotionData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }} />
+                <Tooltip formatter={(value) => `${value}%`} />
+                <Legend />
+                <Bar dataKey="percentage" name="Promotion Rate" fill="#9B87F5">
+                  {racePromotionData.map((entry, index) => {
+                    const matchingRace = raceData.find(race => race.name === entry.name);
+                    return <Cell key={`cell-${index}`} fill={matchingRace ? matchingRace.color : "#9B87F5"} />;
+                  })}
+                </Bar>
+              </BarChart>
             </ResponsiveContainer>
           </div>
         </CardContent>
