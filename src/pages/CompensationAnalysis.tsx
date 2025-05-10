@@ -394,18 +394,24 @@ const CompensationAnalysis = () => {
               <CardTitle>Compensation Trends (2021-2024)</CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
-              <div className="h-[250px] w-full"> {/* Further reduced height for better fit */}
+              <div className="h-[280px] w-full">
                 <ChartContainer config={chartConfig}>
                   <LineChart 
                     data={historicalData}
-                    margin={{ top: 5, right: 5, left: 0, bottom: 5 }} // More compact margins
+                    margin={{ top: 5, right: 5, left: 5, bottom: 25 }} // Increased bottom margin to ensure axis is visible
                   >
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
-                    <XAxis dataKey="year" tick={{ fontSize: 11 }} padding={{ left: 0, right: 0 }} />
+                    <XAxis 
+                      dataKey="year" 
+                      tick={{ fontSize: 11 }} 
+                      padding={{ left: 0, right: 0 }}
+                      height={30} // Ensure X-axis has enough height
+                      tickMargin={10} // Add margin between ticks and axis line
+                    />
                     <YAxis tick={{ fontSize: 11 }} width={45} />
                     <ChartTooltip content={<ChartTooltipContent />} />
                     <Legend 
-                      wrapperStyle={{ fontSize: '11px', paddingTop: '0' }}
+                      wrapperStyle={{ fontSize: '11px' }}
                       iconSize={8}
                       verticalAlign="top"
                       height={20}
