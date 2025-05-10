@@ -11,10 +11,12 @@ import {
   ResponsiveContainer,
   PieChart,
   Pie,
-  Cell
+  Cell,
+  LineChart,
+  Line
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { genderData, departmentGenderData } from "@/data/demographicsData";
+import { genderData, departmentGenderData, genderHistoricalData } from "@/data/demographicsData";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 const COLORS = ['#0067D9', '#FF6B8A', '#8B5CF6'];
@@ -82,6 +84,31 @@ const GenderDemographics = () => {
           </CardContent>
         </Card>
       </div>
+      
+      <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
+        <CardHeader>
+          <CardTitle>Gender Demographics Year-Over-Year</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[300px] bg-white">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={genderHistoricalData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <XAxis dataKey="year" />
+                <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }} />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="Male" stroke="#0067D9" strokeWidth={2} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="Female" stroke="#FF6B8A" strokeWidth={2} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="Nonbinary" stroke="#8B5CF6" strokeWidth={2} dot={{ r: 4 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </CardContent>
+      </Card>
       
       <div className="grid grid-cols-1">
         <Card className="border-2 border-[#840DD7] bg-white shadow-sm">

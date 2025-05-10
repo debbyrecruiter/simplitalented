@@ -11,10 +11,12 @@ import {
   ResponsiveContainer,
   PieChart,
   Pie,
-  Cell
+  Cell,
+  LineChart,
+  Line
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { raceData, departmentRaceData } from "@/data/demographicsData";
+import { raceData, departmentRaceData, raceHistoricalData } from "@/data/demographicsData";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 const COLORS = ['#22C55E', '#3B82F6', '#8B5CF6', '#EC4899', '#F59E0B'];
@@ -86,6 +88,33 @@ const RaceDemographics = () => {
           </CardContent>
         </Card>
       </div>
+      
+      <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
+        <CardHeader>
+          <CardTitle>Race Demographics Year-Over-Year</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[300px] bg-white">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={raceHistoricalData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <XAxis dataKey="year" />
+                <YAxis label={{ value: 'Percentage (%)', angle: -90, position: 'insideLeft' }} />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="White" stroke="#22C55E" strokeWidth={2} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="Asian" stroke="#3B82F6" strokeWidth={2} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="Black" stroke="#8B5CF6" strokeWidth={2} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="Hispanic/Latino" stroke="#EC4899" strokeWidth={2} dot={{ r: 4 }} />
+                <Line type="monotone" dataKey="Other" stroke="#F59E0B" strokeWidth={2} dot={{ r: 4 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </CardContent>
+      </Card>
       
       <div className="grid grid-cols-1">
         <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
