@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -264,29 +265,29 @@ const CompensationAnalysis = () => {
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="flex flex-col gap-6">
-                    {/* Segmented total compensation chart with reduced height */}
+                    {/* Grouped bar chart for comparing components side by side */}
                     <div className="border rounded-lg p-4 bg-white">
-                      <h3 className="text-sm font-medium text-center mb-4">Total Compensation</h3>
-                      <div className="h-[220px] w-full">
+                      <h3 className="text-sm font-medium text-center mb-4">Compensation Components Comparison</h3>
+                      <div className="h-[200px] w-full">
                         <ChartContainer config={chartConfig}>
                           <BarChart 
-                            data={totalCompData.sort((a, b) => b.Total - a.Total)} 
-                            layout="vertical"
+                            data={groupedCompData} 
+                            margin={{ top: 10, right: 30, left: 0, bottom: 15 }}
                           >
-                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
-                            <XAxis type="number" tickFormatter={formatCurrency} />
-                            <YAxis dataKey="name" type="category" width={80} />
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" tick={{ fontSize: 12 }} height={40} />
+                            <YAxis tickFormatter={(value) => `$${Math.round(value/1000)}k`} width={50} fontSize={11} />
                             <ChartTooltip content={<ChartTooltipContent />} />
-                            <Legend />
-                            <Bar dataKey="Base" stackId="a" fill="#0067D9" />
-                            <Bar dataKey="Bonus" stackId="a" fill="#FF6B6B" />
-                            <Bar dataKey="Equity" stackId="a" fill="#9320E7" />
+                            <Legend wrapperStyle={{ fontSize: '10px', bottom: 0 }} />
+                            <Bar dataKey="Base" fill="#0067D9" radius={[4, 4, 0, 0]} maxBarSize={30} />
+                            <Bar dataKey="Bonus" fill="#FF6B6B" radius={[4, 4, 0, 0]} maxBarSize={30} />
+                            <Bar dataKey="Equity" fill="#9320E7" radius={[4, 4, 0, 0]} maxBarSize={30} />
                           </BarChart>
                         </ChartContainer>
                       </div>
                     </div>
                     
-                    {/* Data tables moved below the stacked bar graph */}
+                    {/* Data tables for each employee */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {compensationData.map((employee, idx) => (
                         <div key={idx} className="flex flex-col p-3 bg-gray-50 rounded-lg border">
