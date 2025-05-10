@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -42,22 +41,7 @@ const WorkforceAnalytics = () => {
     return (
       <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
         <CardContent className="pt-6">
-          <div className="h-[400px] w-full">
-            <ChartContainer config={chartConfig}>
-              <BarChart data={demographicsData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend />
-                <Bar dataKey="male" name="Male" fill="#0067D9" />
-                <Bar dataKey="female" name="Female" fill="#FF6B6B" />
-                <Bar dataKey="nonbinary" name="Non-binary" fill="#9320E7" />
-              </BarChart>
-            </ChartContainer>
-          </div>
-          
-          <div className="mt-6 border rounded-md">
+          <div className="border rounded-md">
             <Table>
               <TableHeader>
                 <TableRow>
