@@ -56,7 +56,7 @@ const CompanyAttrition = () => {
           {/* Chart container with white background */}
           <div className="bg-white rounded-lg w-full h-full">
             <ChartContainer config={chartConfig}>
-              <div className="h-[300px] w-full bg-white">
+              <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart 
                     data={departmentAttritionData} 
