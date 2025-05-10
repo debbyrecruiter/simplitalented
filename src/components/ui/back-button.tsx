@@ -31,7 +31,7 @@ export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: Back
     <Button
       onClick={handleClick}
       variant="ghost"
-      className="flex items-center gap-1 text-[#512888] hover:text-[#512888]/80 hover:bg-transparent p-0"
+      className="flex items-center gap-1 text-[#9320E7] hover:text-[#9320E7]/80 hover:bg-transparent p-0"
     >
       <ChevronLeft className="h-5 w-5" />
       {label && <span>{label}</span>}
