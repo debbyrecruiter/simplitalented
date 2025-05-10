@@ -41,7 +41,7 @@ export function MetricCard({
         isMenuCard ? "pb-0 pt-6" : "pb-0 pt-10" // Adjusted padding for menu cards
       )}>
         <CardTitle className={cn(
-          "font-small text-[#9320E7] truncate",
+          "font-small text-[#9320E7] text-center w-full whitespace-pre-line",
           isMenuCard ? "text-4xl" : "text-6xl" // Sized appropriately for menu cards
         )}>
           {title}
@@ -53,18 +53,18 @@ export function MetricCard({
         )}
       </CardHeader>
       <CardContent className={cn(
-        "flex-1 flex flex-col justify-center text-center",
+        "flex-1 flex flex-col items-center justify-center text-center",
         isMenuCard ? "pt-1" : "p-2" // Adjusted spacing for menu cards
       )}>
         <div className={cn(
-          "font-bold truncate",
+          "font-bold text-center w-full whitespace-pre-line",
           isMenuCard ? "text-2xl" : "text-3xl" // Sized appropriately for menu cards
         )}>
           {value}
         </div>
         {description && (
           <p className={cn(
-            "text-muted-foreground truncate",
+            "text-muted-foreground text-center w-full whitespace-pre-line",
             isMenuCard ? "text-xs" : "text-sm" // Sized appropriately for menu cards
           )}>
             {description}
@@ -74,7 +74,7 @@ export function MetricCard({
           <div className="flex items-center justify-center mt-1">
             <span
               className={cn(
-                "font-small truncate",
+                "font-small text-center whitespace-pre-line",
                 isMenuCard ? "text-xs" : "text-sm", // Sized appropriately for menu cards
                 trend === "up" && "text-green-600",
                 trend === "down" && "text-red-600",

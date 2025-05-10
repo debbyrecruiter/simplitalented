@@ -176,7 +176,7 @@ const WorkforceAnalytics = () => {
           className={activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}
         />
         <MetricCard
-          title="Organizational Structure"
+          title="Organizational&#10;Structure"
           value=""
           icon={LayoutGrid}
           onClick={() => setActiveView('structure')}
