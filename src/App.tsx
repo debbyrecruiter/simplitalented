@@ -12,6 +12,7 @@ import TeamGoalsPage from "./pages/TeamGoalsPage";
 import GoalsTimelinePage from "./pages/GoalsTimelinePage";
 import Reports from "./pages/Reports";
 import WorkforceAnalytics from "./pages/WorkforceAnalytics";
+import CompensationAnalysis from "./pages/CompensationAnalysis";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/my-reviews/timeline" element={<GoalsTimelinePage />} />
             <Route path="/reports" element={<Reports />} />
             <Route path="/reports/workforce-analytics" element={<WorkforceAnalytics />} />
+            <Route path="/reports/compensation-analysis" element={<CompensationAnalysis />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

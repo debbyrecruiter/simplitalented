@@ -12,7 +12,8 @@ import {
   Goal,
   Star,
   ListCheck,
-  FileBarChart
+  FileBarChart,
+  DollarSign
 } from "lucide-react";
 
 export const menuItems = [
@@ -80,6 +81,12 @@ export const menuItems = [
         title: "Workforce Analytics", 
         icon: BarChart2, 
         path: "/reports/workforce-analytics",
+        className: "text-[#17202A]" 
+      },
+      { 
+        title: "Compensation Analysis", 
+        icon: DollarSign, 
+        path: "/reports/compensation-analysis",
         className: "text-[#17202A]" 
       }
     ]
