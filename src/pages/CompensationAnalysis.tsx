@@ -14,6 +14,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Home, DollarSign, PieChartIcon } from "lucide-react";
 import { teamMembers } from "@/data/dashboardData";
+import { 
+  Table, 
+  TableHeader, 
+  TableBody, 
+  TableHead, 
+  TableRow, 
+  TableCell 
+} from "@/components/ui/table";
 
 // Filter only direct reports from team members (excluding the first member who is the manager)
 const directReports = teamMembers.filter(member => member.id !== 1);
@@ -293,53 +301,32 @@ const CompensationAnalysis = () => {
                       </div>
                     </div>
                     
-                    {/* Compensation breakdown */}
-                    <div className="xl:col-span-4 bg-white border rounded-lg">
-                      <div className="h-[300px] w-full">
-                        <ChartContainer config={chartConfig}>
-                          <BarChart data={groupedCompData} layout="horizontal">
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                            <XAxis dataKey="name" />
-                            <YAxis tickFormatter={formatCurrency} />
-                            <ChartTooltip content={<ChartTooltipContent />} />
-                            <Legend />
-                            <Bar dataKey="Base" name="Base Salary" stackId="a" fill="#0067D9" />
-                            <Bar dataKey="Bonus" name="Annual Bonus" stackId="a" fill="#FF6B6B" />
-                            <Bar dataKey="Equity" name="Equity (Annual)" stackId="a" fill="#9320E7" />
-                          </BarChart>
-                        </ChartContainer>
-                      </div>
+                    {/* Replace Bar Chart with Data Table */}
+                    <div className="xl:col-span-4 bg-white border rounded-lg p-4">
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead className="font-semibold">Name</TableHead>
+                            <TableHead className="text-right font-semibold">Base Salary</TableHead>
+                            <TableHead className="text-right font-semibold">Bonus (Annual)</TableHead>
+                            <TableHead className="text-right font-semibold">Equity (Annual)</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {compensationData.map((employee, idx) => (
+                            <TableRow key={idx}>
+                              <TableCell className="font-medium">{employee.name}</TableCell>
+                              <TableCell className="text-right">{formatCurrency(employee.base)}</TableCell>
+                              <TableCell className="text-right">{formatCurrency(employee.bonus)}</TableCell>
+                              <TableCell className="text-right">{formatCurrency(employee.equity)}</TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
                     </div>
                   </div>
                   
-                  {/* Data tables moved below the charts */}
-                  <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {compensationData.map((employee, idx) => (
-                      <div key={idx} className="flex flex-col p-3 bg-gray-50 rounded-lg border">
-                        <h4 className="font-medium text-sm mb-1">{employee.name}</h4>
-                        <span className="text-xs text-muted-foreground mb-2">{employee.role}</span>
-                        <div className="w-full space-y-1">
-                          <div className="flex justify-between text-xs">
-                            <span>Base:</span>
-                            <span className="font-medium">${employee.base.toLocaleString()}</span>
-                          </div>
-                          <div className="flex justify-between text-xs">
-                            <span>Bonus:</span>
-                            <span className="font-medium">${employee.bonus.toLocaleString()}</span>
-                          </div>
-                          <div className="flex justify-between text-xs">
-                            <span>Equity:</span>
-                            <span className="font-medium">${employee.equity.toLocaleString()}</span>
-                          </div>
-                          <div className="border-t mt-1 pt-1"></div>
-                          <div className="flex justify-between text-xs font-medium">
-                            <span>Total:</span>
-                            <span>${employee.total.toLocaleString()}</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  {/* Remove the data tables section as it's been replaced with the table above */}
                 </CardContent>
               </Card>
             </CardContent>
