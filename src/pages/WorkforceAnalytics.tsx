@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
   ChartContainer, 
@@ -7,9 +7,10 @@ import {
   ChartTooltipContent 
 } from "@/components/ui/chart";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BackButton } from "@/components/ui/back-button";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { MetricCard } from "@/components/MetricCard";
+import { Users, ArrowDownUp, LayoutGrid } from "lucide-react";
 
 const demographicsData = [
   { name: 'Engineering', male: 65, female: 35, nonbinary: 10 },
@@ -35,22 +36,12 @@ const chartConfig = {
 };
 
 const WorkforceAnalytics = () => {
-  return (
-    <div className="container p-4 mx-auto">
-      <div className="mb-6">
-        <BackButton fallbackPath="/reports" label="Back" />
-      </div>
-      
-      <h1 className="text-3xl font-bold mb-6">Workforce Analytics</h1>
-      
-      <Tabs defaultValue="demographics" className="w-full">
-        <TabsList className="mb-4">
-          <TabsTrigger value="demographics">Demographics</TabsTrigger>
-          <TabsTrigger value="retention">Retention</TabsTrigger>
-          <TabsTrigger value="structure">Organizational Structure</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="demographics" className="space-y-6">
+  const [activeView, setActiveView] = useState<'demographics' | 'retention' | 'structure'>('demographics');
+
+  const renderContent = () => {
+    switch (activeView) {
+      case 'demographics':
+        return (
           <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
               <CardTitle>Employee Demographics by Department</CardTitle>
@@ -97,9 +88,9 @@ const WorkforceAnalytics = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
-        
-        <TabsContent value="retention" className="space-y-6">
+        );
+      case 'retention':
+        return (
           <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
               <CardTitle>Employee Retention Rates</CardTitle>
@@ -138,9 +129,9 @@ const WorkforceAnalytics = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
-        
-        <TabsContent value="structure" className="space-y-6">
+        );
+      case 'structure':
+        return (
           <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
               <CardTitle>Organizational Structure</CardTitle>
@@ -157,8 +148,43 @@ const WorkforceAnalytics = () => {
               </div>
             </CardContent>
           </Card>
-        </TabsContent>
-      </Tabs>
+        );
+    }
+  };
+
+  return (
+    <div className="container p-4 mx-auto">
+      <div className="mb-6">
+        <BackButton fallbackPath="/reports" label="Back" />
+      </div>
+      
+      <h1 className="text-3xl font-bold mb-6">Workforce Analytics</h1>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <MetricCard
+          title="Demographics"
+          value=""
+          icon={Users}
+          onClick={() => setActiveView('demographics')}
+          className={activeView === 'demographics' ? 'ring-4 ring-blue-500' : ''}
+        />
+        <MetricCard
+          title="Retention"
+          value=""
+          icon={ArrowDownUp}
+          onClick={() => setActiveView('retention')}
+          className={activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}
+        />
+        <MetricCard
+          title="Organizational Structure"
+          value=""
+          icon={LayoutGrid}
+          onClick={() => setActiveView('structure')}
+          className={activeView === 'structure' ? 'ring-4 ring-blue-500' : ''}
+        />
+      </div>
+      
+      {renderContent()}
     </div>
   );
 };
