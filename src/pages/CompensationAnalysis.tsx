@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Home, DollarSign, PieChartIcon, Table as TableIcon } from "lucide-react";
+import { Home, DollarSign, PieChartIcon, Table as TableIcon, Percent } from "lucide-react";
 import { teamMembers } from "@/data/dashboardData";
 import { 
   Table, 
@@ -27,12 +27,39 @@ import {
 // Filter only direct reports from team members (excluding the first member who is the manager)
 const directReports = teamMembers.filter(member => member.id !== 1);
 
-// Sample compensation data
+// Enhanced compensation data with job codes
 const compensationData = [
-  { name: 'Jamie Chen', base: 120000, bonus: 15000, equity: 30000, total: 165000, role: 'Senior Designer', department: 'Design' },
-  { name: 'Alex Morgan', base: 135000, bonus: 20000, equity: 40000, total: 195000, role: 'Tech Lead', department: 'Engineering' },
-  { name: 'Taylor Smith', base: 115000, bonus: 12000, equity: 25000, total: 152000, role: 'QA Engineer', department: 'Engineering' },
+  { name: 'Jamie Chen', base: 120000, bonus: 15000, equity: 30000, total: 165000, role: 'Senior Designer', department: 'Design', jobCode: 'D-42' },
+  { name: 'Alex Morgan', base: 135000, bonus: 20000, equity: 40000, total: 195000, role: 'Tech Lead', department: 'Engineering', jobCode: 'E-33' },
+  { name: 'Taylor Smith', base: 115000, bonus: 12000, equity: 25000, total: 152000, role: 'QA Engineer', department: 'Engineering', jobCode: 'Q-28' },
+  { name: 'Jordan Riley', base: 142000, bonus: 18000, equity: 35000, total: 195000, role: 'Tech Lead', department: 'Engineering', jobCode: 'E-33' },
+  { name: 'Casey Johnson', base: 118000, bonus: 13000, equity: 24000, total: 155000, role: 'QA Engineer', department: 'Engineering', jobCode: 'Q-28' },
 ];
+
+// Calculate averages by job code
+const jobCodeAverages = compensationData.reduce((acc, employee) => {
+  if (!acc[employee.jobCode]) {
+    acc[employee.jobCode] = { totalSum: 0, count: 0 };
+  }
+  acc[employee.jobCode].totalSum += employee.total;
+  acc[employee.jobCode].count += 1;
+  return acc;
+}, {});
+
+Object.keys(jobCodeAverages).forEach(jobCode => {
+  jobCodeAverages[jobCode].average = 
+    jobCodeAverages[jobCode].totalSum / jobCodeAverages[jobCode].count;
+});
+
+// Enhanced compensation data with peer comparison
+const enhancedCompensationData = compensationData.map(employee => {
+  const jobCodeAvg = jobCodeAverages[employee.jobCode].average;
+  const peerDiffPercentage = ((employee.total - jobCodeAvg) / jobCodeAvg) * 100;
+  return {
+    ...employee,
+    peerDiffPercentage: peerDiffPercentage
+  };
+});
 
 // Transform compensation data for the grouped bar chart
 const groupedCompData = compensationData.map(item => ({
@@ -43,7 +70,7 @@ const groupedCompData = compensationData.map(item => ({
 }));
 
 // Transform compensation data for pie charts
-const pieChartsData = compensationData.map(item => {
+const pieChartsData = compensationData.slice(0, 3).map(item => {
   const total = item.total;
   return {
     name: item.name,
@@ -143,6 +170,11 @@ const chartConfig = {
 
 const CompensationAnalysis = () => {
   const formatCurrency = (value: number) => `$${value.toLocaleString()}`;
+  
+  const formatPercentage = (value: number) => {
+    const sign = value > 0 ? '+' : '';
+    return `${sign}${value.toFixed(1)}%`;
+  };
   
   return (
     <div className="container p-4 mx-auto">
@@ -305,26 +337,45 @@ const CompensationAnalysis = () => {
                       </div>
                     </div>
                     
-                    {/* Updated Data Table with Total column */}
+                    {/* Updated Data Table with Total column and Peer Comparison */}
                     <div className="xl:col-span-4 bg-white border rounded-lg p-4">
+                      <div className="mb-3">
+                        <div className="flex items-center gap-2">
+                          <Percent className="h-4 w-4 text-[#512888]" />
+                          <span className="text-sm font-medium">Peer comparison shows how an employee's compensation compares to the average for their job code</span>
+                        </div>
+                      </div>
                       <Table>
                         <TableHeader>
                           <TableRow>
                             <TableHead className="font-semibold">Name</TableHead>
+                            <TableHead className="font-semibold">Job Code</TableHead>
                             <TableHead className="text-right font-semibold">Base Salary</TableHead>
                             <TableHead className="text-right font-semibold">Bonus (Annual)</TableHead>
                             <TableHead className="text-right font-semibold">Equity (Annual)</TableHead>
                             <TableHead className="text-right font-semibold">Total</TableHead>
+                            <TableHead className="text-right font-semibold">vs. Peers</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
-                          {compensationData.map((employee, idx) => (
+                          {enhancedCompensationData.map((employee, idx) => (
                             <TableRow key={idx}>
                               <TableCell className="font-medium">{employee.name}</TableCell>
+                              <TableCell>{employee.jobCode}</TableCell>
                               <TableCell className="text-right">{formatCurrency(employee.base)}</TableCell>
                               <TableCell className="text-right">{formatCurrency(employee.bonus)}</TableCell>
                               <TableCell className="text-right">{formatCurrency(employee.equity)}</TableCell>
                               <TableCell className="text-right font-medium">{formatCurrency(employee.total)}</TableCell>
+                              <TableCell className="text-right">
+                                <span 
+                                  className={`font-medium ${
+                                    employee.peerDiffPercentage > 0 ? 'text-green-600' : 
+                                    employee.peerDiffPercentage < 0 ? 'text-red-600' : 'text-gray-600'
+                                  }`}
+                                >
+                                  {formatPercentage(employee.peerDiffPercentage)}
+                                </span>
+                              </TableCell>
                             </TableRow>
                           ))}
                         </TableBody>
