@@ -49,47 +49,51 @@ const CompanyAttrition = () => {
         {/* Department breakdown chart */}
         <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
           <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
-          <div className="h-[300px] w-full">
-            <ChartContainer config={chartConfig}>
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={departmentAttritionData} margin={{ top: 5, right: 30, left: 20, bottom: 30 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis 
-                    dataKey="department" 
-                    axisLine={true}
-                    tickLine={false}
-                    tick={{ fill: '#512888', fontSize: 12 }}
-                    angle={-45}
-                    textAnchor="end"
-                  />
-                  <YAxis
-                    axisLine={true}
-                    tickLine={false}
-                    tick={{ fill: '#512888', fontSize: 12 }}
-                    tickFormatter={(value) => `${value}%`}
-                    domain={[0, 'dataMax + 5']}
-                  />
-                  <ChartTooltip
-                    content={({ active, payload }) => {
-                      if (active && payload && payload.length) {
-                        return (
-                          <ChartTooltipContent
-                            className="bg-white border border-[#9b87f5] shadow-md"
-                            formatter={(value) => [`${value}%`, 'Attrition Rate']}
-                          />
-                        );
-                      }
-                      return null;
-                    }}
-                  />
-                  <Bar dataKey="attritionRate" name="Attrition Rate" radius={[4, 4, 0, 0]}>
-                    {departmentAttritionData.map((_, index) => (
-                      <Cell key={`cell-${index}`} fill="#9b87f5" />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </ChartContainer>
+          
+          {/* Ensure chart is fully contained in a white background with padding */}
+          <div className="bg-white p-3 rounded-lg w-full">
+            <div className="h-[300px] w-full">
+              <ChartContainer config={chartConfig}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={departmentAttritionData} margin={{ top: 5, right: 30, left: 20, bottom: 30 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="department" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 12 }}
+                      angle={-45}
+                      textAnchor="end"
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 12 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 'dataMax + 5']}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          return (
+                            <ChartTooltipContent
+                              className="bg-white border border-[#9b87f5] shadow-md"
+                              formatter={(value) => [`${value}%`, 'Attrition Rate']}
+                            />
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar dataKey="attritionRate" name="Attrition Rate" radius={[4, 4, 0, 0]}>
+                      {departmentAttritionData.map((_, index) => (
+                        <Cell key={`cell-${index}`} fill="#9b87f5" />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </ChartContainer>
+            </div>
           </div>
         </Card>
         
