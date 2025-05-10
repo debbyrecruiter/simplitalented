@@ -11,7 +11,8 @@ import {
   Search,
   Goal,
   Star,
-  ListCheck
+  ListCheck,
+  FileBarChart
 } from "lucide-react";
 
 export const menuItems = [
@@ -60,6 +61,25 @@ export const menuItems = [
         title: "Transcripts", 
         icon: Search, 
         path: "/past-1-1s/transcript",
+        className: "text-[#17202A]" 
+      }
+    ]
+  },
+  { 
+    title: "Company Reports", 
+    icon: FileBarChart, 
+    path: "/reports",
+    submenu: [
+      { 
+        title: "All Reports", 
+        icon: FileBarChart, 
+        path: "/reports",
+        className: "text-[#17202A]" 
+      },
+      { 
+        title: "Workforce Analytics", 
+        icon: BarChart2, 
+        path: "/reports/workforce-analytics",
         className: "text-[#17202A]" 
       }
     ]
