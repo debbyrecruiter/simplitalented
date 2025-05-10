@@ -5,6 +5,7 @@ import { BackButton } from "@/components/ui/back-button";
 import { Users } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import GenderDemographics from "@/components/demographics/GenderDemographics";
+import AgeDemographics from "@/components/demographics/AgeDemographics";
 
 const WorkforceDemographics = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>("gender");
@@ -24,11 +25,7 @@ const WorkforceDemographics = () => {
           </div>
         );
       case "age":
-        return (
-          <div className="text-center p-6">
-            <p className="text-muted-foreground">Age demographics data coming soon.</p>
-          </div>
-        );
+        return <AgeDemographics />;
       default:
         return null;
     }
@@ -99,7 +96,7 @@ const WorkforceDemographics = () => {
               </CardHeader>
               <CardContent className="flex items-center justify-center flex-1">
                 <p className="text-muted-foreground text-center">
-                  Age distribution data coming soon.
+                  Click to view age distribution
                 </p>
               </CardContent>
             </Card>
