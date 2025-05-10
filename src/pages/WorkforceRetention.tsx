@@ -98,13 +98,43 @@ const departmentAttritionData = [
   { department: "Finance", attritionRate: 12 },
 ];
 
-// Performance score attrition data (mock data)
+// Performance score attrition data - updated with both voluntary and involuntary data
 const performanceScoreData = [
-  { score: "5 - Excellent", count: 42, attritionRate: 5 },
-  { score: "4 - Very Good", count: 78, attritionRate: 12 },
-  { score: "3 - Satisfactory", count: 56, attritionRate: 18 },
-  { score: "2 - Needs Improvement", count: 34, attritionRate: 27 },
-  { score: "1 - Poor", count: 12, attritionRate: 38 },
+  { 
+    score: "5 - Excellent", 
+    count: 42, 
+    attritionRate: 5,
+    voluntaryRate: 3,
+    involuntaryRate: 2 
+  },
+  { 
+    score: "4 - Very Good", 
+    count: 78, 
+    attritionRate: 12,
+    voluntaryRate: 8,
+    involuntaryRate: 4 
+  },
+  { 
+    score: "3 - Satisfactory", 
+    count: 56, 
+    attritionRate: 18,
+    voluntaryRate: 10,
+    involuntaryRate: 8 
+  },
+  { 
+    score: "2 - Needs Improvement", 
+    count: 34, 
+    attritionRate: 27,
+    voluntaryRate: 9,
+    involuntaryRate: 18 
+  },
+  { 
+    score: "1 - Poor", 
+    count: 12, 
+    attritionRate: 38,
+    voluntaryRate: 6,
+    involuntaryRate: 32 
+  },
 ];
 
 const overallAttritionRate = 16.5; // Company-wide attrition rate
@@ -381,7 +411,8 @@ const WorkforceRetention = () => {
           
           <div className="bg-white rounded-lg w-full h-full">
             <ChartContainer config={{
-              attrition: { color: "#D0A3EE" }
+              voluntary: { color: "#D0A3EE" },
+              involuntary: { color: "#A3BAEE" }
             }}>
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -414,9 +445,11 @@ const WorkforceRetention = () => {
                         if (active && payload && payload.length) {
                           const data = payload[0].payload;
                           return (
-                            <div className="bg-white border border-[#9b87f5] shadow-md p-2 rounded">
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
                               <p className="font-medium">{data.score}</p>
-                              <p className="text-[#512888] font-bold">{`${data.attritionRate}%`}</p>
+                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
                               <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
                             </div>
                           );
@@ -424,11 +457,40 @@ const WorkforceRetention = () => {
                         return null;
                       }}
                     />
-                    <Bar dataKey="attritionRate" name="Attrition Rate" radius={[4, 4, 0, 0]}>
-                      {performanceScoreData.map((_, index) => (
-                        <Cell key={`cell-${index}`} fill="#D0A3EE" />
-                      ))}
-                    </Bar>
+                    <Bar 
+                      dataKey="voluntaryRate" 
+                      name="Voluntary" 
+                      stackId="a"
+                      radius={[0, 0, 0, 0]} 
+                      fill="#D0A3EE"
+                    />
+                    <Bar 
+                      dataKey="involuntaryRate" 
+                      name="Involuntary" 
+                      stackId="a"
+                      radius={[4, 4, 0, 0]} 
+                      fill="#A3BAEE"
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          textAnchor="middle" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value}%
+                        </text>
+                      )}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "20px" }}
+                      payload={[
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                      ]}
+                    />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -438,6 +500,7 @@ const WorkforceRetention = () => {
           <div className="text-sm text-muted-foreground mt-4">
             <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months, by performance review score.</p>
             <p>* Performance scores are on a 1-5 scale, with 1 being poor performance and 5 being excellent.</p>
+            <p>* Involuntary terminations are company-initiated, while voluntary terminations are employee-initiated.</p>
           </div>
         </Card>
       )}
