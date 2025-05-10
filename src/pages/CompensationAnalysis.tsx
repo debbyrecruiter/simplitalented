@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Home, DollarSign, PieChart as PieChartIcon } from "lucide-react";
+import { Home, DollarSign, PieChartIcon } from "lucide-react";
 import { 
   Table, TableBody, TableCell, TableHead, TableHeader, TableRow 
 } from "@/components/ui/table";
@@ -164,7 +164,7 @@ const CompensationAnalysis = () => {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                 {pieChartsData.map((item, index) => (
                   <Card key={index} className="shadow-sm overflow-hidden">
-                    <CardHeader className="py-3 bg-slate-50">
+                    <CardHeader className="py-3 bg-white border-b">
                       <CardTitle className="text-base">{item.name} - {item.role}</CardTitle>
                     </CardHeader>
                     <CardContent className="p-0">
@@ -206,7 +206,7 @@ const CompensationAnalysis = () => {
                         </ResponsiveContainer>
                       </div>
                       
-                      <div className="bg-slate-50 p-3 border-t">
+                      <div className="bg-white p-3 border-t">
                         <div className="flex justify-between items-center mb-1">
                           <p className="text-sm font-semibold">Total: ${item.total.toLocaleString()}</p>
                         </div>
