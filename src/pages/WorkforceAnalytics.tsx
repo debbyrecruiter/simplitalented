@@ -1,32 +1,13 @@
 
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  ChartContainer, 
-  ChartTooltip, 
-  ChartTooltipContent 
-} from "@/components/ui/chart";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { BackButton } from "@/components/ui/back-button";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
-import { MetricCard } from "@/components/MetricCard";
-import { ArrowDownUp, LayoutGrid, Users } from "lucide-react";
+import { LayoutGrid, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-const retentionData = [
-  { name: '0-6 months', rate: 92 },
-  { name: '6-12 months', rate: 85 },
-  { name: '1-2 years', rate: 78 },
-  { name: '2-3 years', rate: 72 },
-  { name: '3+ years', rate: 68 },
-];
-
-const chartConfig = {
-  rate: { label: "Retention Rate", theme: { light: "#0067D9", dark: "#0067D9" } }
-};
+import { MetricCard } from "@/components/MetricCard";
 
 const WorkforceAnalytics = () => {
-  const [activeView, setActiveView] = useState<'retention' | 'structure'>('retention');
+  const [activeView, setActiveView] = useState<'structure'>('structure');
   const navigate = useNavigate();
 
   const navigateToDemographics = () => {
@@ -35,48 +16,8 @@ const WorkforceAnalytics = () => {
 
   const renderContent = () => {
     switch (activeView) {
-      case 'retention':
-        return (
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Employee Retention Rates</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[400px] w-full">
-                <ChartContainer config={chartConfig}>
-                  <BarChart data={retentionData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend />
-                    <Bar dataKey="rate" name="Retention Rate (%)" fill="#0067D9" />
-                  </BarChart>
-                </ChartContainer>
-              </div>
-              
-              <div className="mt-6 border rounded-md">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Tenure</TableHead>
-                      <TableHead>Retention Rate (%)</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {retentionData.map((item) => (
-                      <TableRow key={item.name}>
-                        <TableCell className="font-medium">{item.name}</TableCell>
-                        <TableCell>{item.rate}%</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </CardContent>
-          </Card>
-        );
       case 'structure':
+      default:
         return (
           <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
@@ -106,20 +47,13 @@ const WorkforceAnalytics = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Analytics</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         <MetricCard
           title="Demographics"
           value=""
           icon={Users}
           onClick={navigateToDemographics}
           className=""
-        />
-        <MetricCard
-          title="Retention"
-          value=""
-          icon={ArrowDownUp}
-          onClick={() => setActiveView('retention')}
-          className={activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}
         />
         <MetricCard
           title="Organizational&#10;Structure"
