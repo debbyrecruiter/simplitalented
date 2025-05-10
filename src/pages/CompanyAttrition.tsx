@@ -30,6 +30,9 @@ const CompanyAttrition = () => {
     attrition: { color: "#9b87f5" }, // Purple color that matches theme
   };
 
+  // Create an array of tick values in increments of 2 up to 40
+  const yAxisTicks = Array.from({ length: 21 }, (_, index) => index * 2);
+
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
@@ -74,7 +77,8 @@ const CompanyAttrition = () => {
                       tickLine={false}
                       tick={{ fill: '#512888', fontSize: 12 }}
                       tickFormatter={(value) => `${value}%`}
-                      domain={[0, 'dataMax + 5']}
+                      domain={[0, 40]}
+                      ticks={yAxisTicks}
                     />
                     <ChartTooltip
                       content={({ active, payload }) => {
