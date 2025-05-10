@@ -1,10 +1,14 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
 import { Users, Award, BarChart2, LineChart, Briefcase, Badge } from "lucide-react";
+import { CompanyAttritionModal } from "@/components/attrition/CompanyAttritionModal";
 
 const WorkforceRetention = () => {
+  // State for managing dialog visibility
+  const [isCompanyAttritionOpen, setIsCompanyAttritionOpen] = useState(false);
+
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
@@ -14,7 +18,10 @@ const WorkforceRetention = () => {
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square">
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
+          onClick={() => setIsCompanyAttritionOpen(true)}
+        >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
               <Users className="h-8 w-8 text-[#512888]" />
@@ -98,6 +105,12 @@ const WorkforceRetention = () => {
           </div>
         </Card>
       </div>
+      
+      {/* Company Attrition Modal */}
+      <CompanyAttritionModal 
+        isOpen={isCompanyAttritionOpen} 
+        onClose={() => setIsCompanyAttritionOpen(false)} 
+      />
     </div>
   );
 };
