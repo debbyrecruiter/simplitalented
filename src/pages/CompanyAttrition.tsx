@@ -36,18 +36,18 @@ const CompanyAttrition = () => {
         <BackButton fallbackPath="/reports/workforce-retention" label="Back" />
       </div>
       
-      <h1 className="text-3xl font-bold mb-6">Company Attrition Analysis</h1>
+      <h1 className="text-3xl font-bold mb-6 text-[#512888]">Company Attrition Analysis</h1>
       
       <div className="space-y-6 p-4">
         {/* Overall attrition rate card */}
-        <Card className="p-6 text-center border border-[#840DD7] rounded-lg shadow-sm">
+        <Card className="p-6 text-center bg-white border border-[#9b87f5] rounded-lg shadow-sm">
           <h3 className="text-xl font-medium text-[#512888]">Overall Attrition Rate</h3>
-          <p className="text-4xl font-bold mt-2">{overallAttritionRate}%</p>
+          <p className="text-4xl font-bold mt-2 text-[#512888]">{overallAttritionRate}%</p>
           <p className="text-sm text-muted-foreground mt-1">Company-wide annual attrition</p>
         </Card>
         
         {/* Department breakdown chart */}
-        <Card className="p-6 border border-[#840DD7] rounded-lg shadow-sm">
+        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
           <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
           <div className="h-[300px]">
             <ChartContainer config={chartConfig}>
@@ -74,7 +74,7 @@ const CompanyAttrition = () => {
                       if (active && payload && payload.length) {
                         return (
                           <ChartTooltipContent
-                            className="bg-white border border-[#840DD7] shadow-md"
+                            className="bg-white border border-[#9b87f5] shadow-md"
                             formatter={(value) => [`${value}%`, 'Attrition Rate']}
                           />
                         );
