@@ -13,6 +13,7 @@ import GoalsTimelinePage from "./pages/GoalsTimelinePage";
 import Reports from "./pages/Reports";
 import WorkforceAnalytics from "./pages/WorkforceAnalytics";
 import WorkforceDemographics from "./pages/WorkforceDemographics";
+import WorkforceRetention from "./pages/WorkforceRetention";
 import CompensationAnalysis from "./pages/CompensationAnalysis";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/reports" element={<Reports />} />
             <Route path="/reports/workforce-analytics" element={<WorkforceAnalytics />} />
             <Route path="/reports/workforce-demographics" element={<WorkforceDemographics />} />
+            <Route path="/reports/workforce-retention" element={<WorkforceRetention />} />
             <Route path="/reports/compensation-analysis" element={<CompensationAnalysis />} />
           </Route>
           <Route path="*" element={<NotFound />} />

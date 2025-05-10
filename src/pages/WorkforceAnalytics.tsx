@@ -13,6 +13,10 @@ const WorkforceAnalytics = () => {
     navigate('/reports/workforce-demographics');
   };
 
+  const navigateToRetention = () => {
+    navigate('/reports/workforce-retention');
+  };
+
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
@@ -33,7 +37,7 @@ const WorkforceAnalytics = () => {
           title="Retention"
           value=""
           icon={ArrowDownUp}
-          onClick={() => setActiveView('retention')}
+          onClick={navigateToRetention}
           className={activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}
         />
         <MetricCard
