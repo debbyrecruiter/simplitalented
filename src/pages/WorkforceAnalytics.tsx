@@ -41,10 +41,7 @@ const WorkforceAnalytics = () => {
   const renderDemographicsContent = () => {
     return (
       <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-        <CardHeader>
-          <CardTitle>Demographics Overview</CardTitle>
-        </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <div className="h-[400px] w-full">
             <ChartContainer config={chartConfig}>
               <BarChart data={demographicsData}>
