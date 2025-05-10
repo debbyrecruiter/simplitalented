@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -36,102 +37,62 @@ const chartConfig = {
 
 const WorkforceAnalytics = () => {
   const [activeView, setActiveView] = useState<'demographics' | 'retention' | 'structure'>('demographics');
-  const [demographicsSubview, setDemographicsSubview] = useState<'gender' | 'overview'>('gender');
 
   const renderDemographicsContent = () => {
-    switch (demographicsSubview) {
-      case 'gender':
-        return (
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Gender Distribution Overview</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="p-4 text-center">
-                <p className="text-muted-foreground">
-                  Gender distribution visualization coming soon.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        );
-      case 'overview':
-      default:
-        return (
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Demographics Overview</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[400px] w-full">
-                <ChartContainer config={chartConfig}>
-                  <BarChart data={demographicsData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend />
-                    <Bar dataKey="male" name="Male" fill="#0067D9" />
-                    <Bar dataKey="female" name="Female" fill="#FF6B6B" />
-                    <Bar dataKey="nonbinary" name="Non-binary" fill="#9320E7" />
-                  </BarChart>
-                </ChartContainer>
-              </div>
-              
-              <div className="mt-6 border rounded-md">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Department</TableHead>
-                      <TableHead>Male</TableHead>
-                      <TableHead>Female</TableHead>
-                      <TableHead>Non-binary</TableHead>
-                      <TableHead>Total</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {demographicsData.map((dept) => (
-                      <TableRow key={dept.name}>
-                        <TableCell className="font-medium">{dept.name}</TableCell>
-                        <TableCell>{dept.male}</TableCell>
-                        <TableCell>{dept.female}</TableCell>
-                        <TableCell>{dept.nonbinary}</TableCell>
-                        <TableCell>{dept.male + dept.female + dept.nonbinary}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </CardContent>
-          </Card>
-        );
-    }
+    return (
+      <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
+        <CardHeader>
+          <CardTitle>Demographics Overview</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[400px] w-full">
+            <ChartContainer config={chartConfig}>
+              <BarChart data={demographicsData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Legend />
+                <Bar dataKey="male" name="Male" fill="#0067D9" />
+                <Bar dataKey="female" name="Female" fill="#FF6B6B" />
+                <Bar dataKey="nonbinary" name="Non-binary" fill="#9320E7" />
+              </BarChart>
+            </ChartContainer>
+          </div>
+          
+          <div className="mt-6 border rounded-md">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Department</TableHead>
+                  <TableHead>Male</TableHead>
+                  <TableHead>Female</TableHead>
+                  <TableHead>Non-binary</TableHead>
+                  <TableHead>Total</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {demographicsData.map((dept) => (
+                  <TableRow key={dept.name}>
+                    <TableCell className="font-medium">{dept.name}</TableCell>
+                    <TableCell>{dept.male}</TableCell>
+                    <TableCell>{dept.female}</TableCell>
+                    <TableCell>{dept.nonbinary}</TableCell>
+                    <TableCell>{dept.male + dept.female + dept.nonbinary}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </CardContent>
+      </Card>
+    );
   };
 
   const renderContent = () => {
     switch (activeView) {
       case 'demographics':
-        return (
-          <>
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <MetricCard
-                title="By Gender"
-                value=""
-                icon={PieChart}
-                onClick={() => setDemographicsSubview('gender')}
-                className={demographicsSubview === 'gender' ? 'ring-4 ring-blue-500' : ''}
-              />
-              <MetricCard
-                title="Overview"
-                value=""
-                icon={Users}
-                onClick={() => setDemographicsSubview('overview')}
-                className={demographicsSubview === 'overview' ? 'ring-4 ring-blue-500' : ''}
-              />
-            </div>
-            {renderDemographicsContent()}
-          </>
-        );
+        return renderDemographicsContent();
       case 'retention':
         return (
           <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
