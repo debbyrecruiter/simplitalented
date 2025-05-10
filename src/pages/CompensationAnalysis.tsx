@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -106,14 +105,13 @@ const enhancedCompData = compensationData.map(item => {
   };
 });
 
-// Simple bar chart data for total compensation with segmentation
+// Simple bar chart data for total compensation
 const totalCompData = compensationData.map(item => ({
   name: item.name,
   role: item.role,
-  Base: item.base,
-  Bonus: item.bonus,
-  Equity: item.equity,
-  Total: item.total
+  Total: item.total,
+  color: item.name === 'Alex Morgan' ? '#0067D9' : 
+         item.name === 'Jamie Chen' ? '#FF6B6B' : '#9320E7'
 }));
 
 const COLORS = ['#0067D9', '#FF6B6B', '#9320E7'];
@@ -265,30 +263,31 @@ const CompensationAnalysis = () => {
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="grid grid-cols-1 xl:grid-cols-6 gap-6">
-                    {/* Segmented total compensation comparison */}
+                    {/* Simple total compensation comparison */}
                     <div className="xl:col-span-2 border rounded-lg p-4 bg-gray-50">
                       <h3 className="text-sm font-medium text-center mb-4">Total Compensation</h3>
-                      <div className="h-[250px] w-full">
-                        <ChartContainer config={chartConfig}>
-                          <BarChart 
-                            data={totalCompData.sort((a, b) => b.Total - a.Total)} 
-                            layout="vertical"
-                          >
-                            <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
-                            <XAxis type="number" tickFormatter={formatCurrency} />
-                            <YAxis dataKey="name" type="category" width={80} />
-                            <ChartTooltip content={<ChartTooltipContent />} />
-                            <Legend />
-                            <Bar dataKey="Base" stackId="a" fill="#0067D9" />
-                            <Bar dataKey="Bonus" stackId="a" fill="#FF6B6B" />
-                            <Bar dataKey="Equity" stackId="a" fill="#9320E7" />
-                          </BarChart>
-                        </ChartContainer>
-                      </div>
-                      <div className="mt-2 space-y-1 text-xs">
+                      <div className="space-y-4">
                         {enhancedCompData.sort((a, b) => b.total - a.total).map((item, i) => (
-                          <div key={i} className="text-center font-medium">
-                            ${item.total.toLocaleString()} - {item.name}
+                          <div key={i} className="space-y-1">
+                            <div className="flex justify-between items-center text-xs">
+                              <div className="font-medium flex items-center">
+                                <div 
+                                  className="h-2 w-2 rounded-full mr-2" 
+                                  style={{ backgroundColor: i === 0 ? '#0067D9' : i === 1 ? '#FF6B6B' : '#9320E7' }}
+                                ></div>
+                                {item.name}
+                              </div>
+                              <span className="font-mono">${item.total.toLocaleString()}</span>
+                            </div>
+                            <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className="h-full rounded-full"
+                                style={{ 
+                                  width: `${item.percentageOfHighest}%`,
+                                  backgroundColor: i === 0 ? '#0067D9' : i === 1 ? '#FF6B6B' : '#9320E7'
+                                }}
+                              ></div>
+                            </div>
                           </div>
                         ))}
                       </div>
