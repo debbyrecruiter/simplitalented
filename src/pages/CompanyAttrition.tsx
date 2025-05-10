@@ -68,14 +68,14 @@ const CompanyAttrition = () => {
                       dataKey="department" 
                       axisLine={true}
                       tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 12 }}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }} // Increased font size by 50% (from 12 to 18) and added bold (700)
                       angle={-45}
                       textAnchor="end"
                     />
                     <YAxis
                       axisLine={true}
                       tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 12 }}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }} // Increased font size by 50% (from 12 to 18) and added bold (700)
                       tickFormatter={(value) => `${value}%`}
                       domain={[0, 40]}
                       ticks={yAxisTicks}
