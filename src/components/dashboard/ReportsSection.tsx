@@ -8,7 +8,7 @@ import { BarChart2, Users, DollarSign, LineChart } from "lucide-react";
 export const ReportsSection: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <Card className="p-4 border shadow-sm">
+      <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
         <CardHeader>
           <CardTitle className="flex items-center">
             <BarChart2 className="mr-2 h-5 w-5 text-[#512888]" />
@@ -22,7 +22,7 @@ export const ReportsSection: React.FC = () => {
           </Button>
         </CardContent>
       </Card>
-      <Card className="p-4 border shadow-sm">
+      <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
         <CardHeader>
           <CardTitle className="flex items-center">
             <DollarSign className="mr-2 h-5 w-5 text-[#512888]" />
@@ -36,7 +36,7 @@ export const ReportsSection: React.FC = () => {
           </Button>
         </CardContent>
       </Card>
-      <Card className="p-4 border shadow-sm">
+      <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
         <CardHeader>
           <CardTitle className="flex items-center">
             <Users className="mr-2 h-5 w-5 text-[#512888]" />
@@ -48,7 +48,7 @@ export const ReportsSection: React.FC = () => {
           <Button variant="outline">Coming Soon</Button>
         </CardContent>
       </Card>
-      <Card className="p-4 border shadow-sm">
+      <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
         <CardHeader>
           <CardTitle className="flex items-center">
             <LineChart className="mr-2 h-5 w-5 text-[#512888]" />
