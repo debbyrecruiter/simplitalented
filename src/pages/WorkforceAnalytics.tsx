@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -37,7 +38,7 @@ const WorkforceAnalytics = () => {
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
-        <BackButton fallbackPath="/reports" label="Back to Reports" />
+        <BackButton fallbackPath="/reports" label="Back" />
       </div>
       
       <h1 className="text-3xl font-bold mb-6">Workforce Analytics</h1>
@@ -50,7 +51,7 @@ const WorkforceAnalytics = () => {
         </TabsList>
         
         <TabsContent value="demographics" className="space-y-6">
-          <Card>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
               <CardTitle>Employee Demographics by Department</CardTitle>
             </CardHeader>
@@ -99,7 +100,7 @@ const WorkforceAnalytics = () => {
         </TabsContent>
         
         <TabsContent value="retention" className="space-y-6">
-          <Card>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
               <CardTitle>Employee Retention Rates</CardTitle>
             </CardHeader>
@@ -140,7 +141,7 @@ const WorkforceAnalytics = () => {
         </TabsContent>
         
         <TabsContent value="structure" className="space-y-6">
-          <Card>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
               <CardTitle>Organizational Structure</CardTitle>
             </CardHeader>

@@ -11,7 +11,7 @@ import {
   PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar 
 } from "recharts";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { BackButton } from "@/components/ui/back-button";
 import { Home, DollarSign, PieChartIcon, Table as TableIcon, Percent } from "lucide-react";
 import { teamMembers } from "@/data/dashboardData";
 import { 
@@ -179,36 +179,10 @@ const CompensationAnalysis = () => {
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">
-                <Home className="h-4 w-4" />
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/reports">Reports</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Compensation Analysis</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
+        <BackButton fallbackPath="/reports" label="Back" />
       </div>
       
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
-      
-      <div className="p-4 bg-white rounded-lg shadow mb-6">
-        <h2 className="text-xl font-semibold mb-2 flex items-center">
-          <DollarSign className="mr-2 h-5 w-5 text-[#512888]" />
-          Direct Reports Compensation
-        </h2>
-        <p className="text-muted-foreground mb-4">
-          Analyze the compensation breakdown of your direct reports, including base salary, bonus, and equity.
-        </p>
-      </div>
       
       <Tabs defaultValue="breakdown" className="w-full">
         <TabsList className="mb-4">
@@ -218,7 +192,7 @@ const CompensationAnalysis = () => {
         </TabsList>
         
         <TabsContent value="breakdown" className="space-y-6">
-          <Card>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
               <CardTitle className="flex items-center">
                 <PieChartIcon className="mr-2 h-5 w-5 text-[#512888]" />
@@ -228,7 +202,7 @@ const CompensationAnalysis = () => {
             <CardContent>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
                 {pieChartsData.map((item, index) => (
-                  <Card key={index} className="shadow-sm overflow-hidden">
+                  <Card key={index} className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm overflow-hidden">
                     <CardHeader className="py-3 bg-white border-b">
                       <CardTitle className="text-base">{item.name} - {item.role}</CardTitle>
                     </CardHeader>
@@ -298,7 +272,7 @@ const CompensationAnalysis = () => {
                 ))}
               </div>
 
-              <Card>
+              <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
                 <CardHeader>
                   <CardTitle className="text-base flex items-center">
                     <TableIcon className="mr-2 h-4 w-4 text-[#512888]" />
@@ -389,7 +363,7 @@ const CompensationAnalysis = () => {
         </TabsContent>
         
         <TabsContent value="trends" className="space-y-6">
-          <Card className="overflow-hidden">
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm overflow-hidden">
             <CardHeader className="pb-2">
               <CardTitle>Compensation Trends (2021-2024)</CardTitle>
             </CardHeader>
@@ -431,8 +405,7 @@ const CompensationAnalysis = () => {
             </CardContent>
           </Card>
           
-          {/* Additional information card */}
-          <Card>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader className="pb-2">
               <CardTitle className="text-base">Trend Analysis Overview</CardTitle>
             </CardHeader>
@@ -456,7 +429,7 @@ const CompensationAnalysis = () => {
         </TabsContent>
         
         <TabsContent value="market" className="space-y-6">
-          <Card>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
             <CardHeader>
               <CardTitle>Market Rate Comparison</CardTitle>
             </CardHeader>
