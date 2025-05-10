@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -14,9 +13,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Home, DollarSign, PieChartIcon } from "lucide-react";
-import { 
-  Table, TableBody, TableCell, TableHead, TableHeader, TableRow 
-} from "@/components/ui/table";
 import { teamMembers } from "@/data/dashboardData";
 
 // Filter only direct reports from team members (excluding the first member who is the manager)
@@ -254,33 +250,6 @@ const CompensationAnalysis = () => {
                   </div>
                 </CardContent>
               </Card>
-
-              <div className="mt-8">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead>Role</TableHead>
-                      <TableHead className="text-right">Base Salary</TableHead>
-                      <TableHead className="text-right">Bonus</TableHead>
-                      <TableHead className="text-right">Equity</TableHead>
-                      <TableHead className="text-right">Total</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {compensationData.map((employee, i) => (
-                      <TableRow key={i}>
-                        <TableCell className="font-medium">{employee.name}</TableCell>
-                        <TableCell>{employee.role}</TableCell>
-                        <TableCell className="text-right">${employee.base.toLocaleString()}</TableCell>
-                        <TableCell className="text-right">${employee.bonus.toLocaleString()}</TableCell>
-                        <TableCell className="text-right">${employee.equity.toLocaleString()}</TableCell>
-                        <TableCell className="font-medium text-right">${employee.total.toLocaleString()}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
             </CardContent>
           </Card>
         </TabsContent>
