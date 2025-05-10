@@ -11,6 +11,7 @@ import { BackButton } from "@/components/ui/back-button";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import { MetricCard } from "@/components/MetricCard";
 import { ArrowDownUp, LayoutGrid, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const retentionData = [
   { name: '0-6 months', rate: 92 },
@@ -25,25 +26,15 @@ const chartConfig = {
 };
 
 const WorkforceAnalytics = () => {
-  const [activeView, setActiveView] = useState<'demographics' | 'retention' | 'structure'>('retention');
+  const [activeView, setActiveView] = useState<'retention' | 'structure'>('retention');
+  const navigate = useNavigate();
+
+  const navigateToDemographics = () => {
+    navigate('/reports/workforce-demographics');
+  };
 
   const renderContent = () => {
     switch (activeView) {
-      case 'demographics':
-        return (
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Workforce Demographics</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="p-4 text-center">
-                <p className="text-muted-foreground">
-                  Demographics data coming soon.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        );
       case 'retention':
         return (
           <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
@@ -120,8 +111,8 @@ const WorkforceAnalytics = () => {
           title="Demographics"
           value=""
           icon={Users}
-          onClick={() => setActiveView('demographics')}
-          className={activeView === 'demographics' ? 'ring-4 ring-blue-500' : ''}
+          onClick={navigateToDemographics}
+          className=""
         />
         <MetricCard
           title="Retention"
