@@ -10,6 +10,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Home } from "lucide-react";
+import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 
 const demographicsData = [
   { name: 'Engineering', male: 65, female: 35, nonbinary: 10 },
@@ -86,6 +87,31 @@ const WorkforceAnalytics = () => {
                   </BarChart>
                 </ChartContainer>
               </div>
+              
+              <div className="mt-6 border rounded-md">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Department</TableHead>
+                      <TableHead>Male</TableHead>
+                      <TableHead>Female</TableHead>
+                      <TableHead>Non-binary</TableHead>
+                      <TableHead>Total</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {demographicsData.map((dept) => (
+                      <TableRow key={dept.name}>
+                        <TableCell className="font-medium">{dept.name}</TableCell>
+                        <TableCell>{dept.male}</TableCell>
+                        <TableCell>{dept.female}</TableCell>
+                        <TableCell>{dept.nonbinary}</TableCell>
+                        <TableCell>{dept.male + dept.female + dept.nonbinary}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </CardContent>
           </Card>
         </TabsContent>
@@ -107,6 +133,25 @@ const WorkforceAnalytics = () => {
                     <Bar dataKey="rate" name="Retention Rate (%)" fill="#0067D9" />
                   </BarChart>
                 </ChartContainer>
+              </div>
+              
+              <div className="mt-6 border rounded-md">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Tenure</TableHead>
+                      <TableHead>Retention Rate (%)</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {retentionData.map((item) => (
+                      <TableRow key={item.name}>
+                        <TableCell className="font-medium">{item.name}</TableCell>
+                        <TableCell>{item.rate}%</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
               </div>
             </CardContent>
           </Card>
