@@ -264,10 +264,10 @@ const CompensationAnalysis = () => {
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="flex flex-col gap-6">
-                    {/* Segmented total compensation comparison */}
+                    {/* Segmented total compensation chart with reduced height */}
                     <div className="border rounded-lg p-4 bg-white">
                       <h3 className="text-sm font-medium text-center mb-4">Total Compensation</h3>
-                      <div className="h-[300px] w-full">
+                      <div className="h-[220px] w-full">
                         <ChartContainer config={chartConfig}>
                           <BarChart 
                             data={totalCompData.sort((a, b) => b.Total - a.Total)} 
@@ -284,17 +284,10 @@ const CompensationAnalysis = () => {
                           </BarChart>
                         </ChartContainer>
                       </div>
-                      <div className="mt-2 space-y-1 text-xs">
-                        {enhancedCompData.sort((a, b) => b.total - a.total).map((item, i) => (
-                          <div key={i} className="text-center font-medium">
-                            ${item.total.toLocaleString()} - {item.name}
-                          </div>
-                        ))}
-                      </div>
                     </div>
                     
                     {/* Data tables moved below the stacked bar graph */}
-                    <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {compensationData.map((employee, idx) => (
                         <div key={idx} className="flex flex-col p-3 bg-gray-50 rounded-lg border">
                           <h4 className="font-medium text-sm mb-1">{employee.name}</h4>
