@@ -1,4 +1,3 @@
-
 // Gender demographics data
 export const genderData = [
   { name: 'Male', value: 58, color: '#0067D9' },
@@ -338,4 +337,87 @@ export const agePromotionData = [
   { name: '35-44', percentage: 14.2 },
   { name: '45-54', percentage: 7.6 },
   { name: '55+', percentage: 3.2 },
+];
+
+// Recruiter attrition data
+export const recruiterAttritionData = [
+  { 
+    recruiter: "Jessica Martinez", 
+    count: 63, 
+    attritionRate: 21.5,
+    voluntaryRate: 14.2,
+    involuntaryRate: 7.3 
+  },
+  { 
+    recruiter: "Thomas Williams", 
+    count: 84, 
+    attritionRate: 16.8,
+    voluntaryRate: 9.3,
+    involuntaryRate: 7.5 
+  },
+  { 
+    recruiter: "Emily Rodriguez", 
+    count: 71, 
+    attritionRate: 14.7,
+    voluntaryRate: 8.5,
+    involuntaryRate: 6.2 
+  },
+  { 
+    recruiter: "Robert Johnson", 
+    count: 56, 
+    attritionRate: 19.3,
+    voluntaryRate: 10.1,
+    involuntaryRate: 9.2 
+  },
+  { 
+    recruiter: "Michelle Lee", 
+    count: 45, 
+    attritionRate: 12.4,
+    voluntaryRate: 7.5,
+    involuntaryRate: 4.9 
+  },
+];
+
+// Year-over-year recruiter attrition data
+export const recruiterYearOverYearData = [
+  { 
+    year: 2020, 
+    'Jessica': 23.5, 'Jessica-voluntary': 15.2, 'Jessica-involuntary': 8.3,
+    'Thomas': 18.4, 'Thomas-voluntary': 10.2, 'Thomas-involuntary': 8.2,
+    'Emily': 16.3, 'Emily-voluntary': 9.5, 'Emily-involuntary': 6.8,
+    'Robert': 21.5, 'Robert-voluntary': 11.8, 'Robert-involuntary': 9.7,
+    'Michelle': 14.2, 'Michelle-voluntary': 8.3, 'Michelle-involuntary': 5.9
+  },
+  { 
+    year: 2021, 
+    'Jessica': 22.8, 'Jessica-voluntary': 14.7, 'Jessica-involuntary': 8.1,
+    'Thomas': 17.9, 'Thomas-voluntary': 9.8, 'Thomas-involuntary': 8.1,
+    'Emily': 15.9, 'Emily-voluntary': 9.2, 'Emily-involuntary': 6.7,
+    'Robert': 20.8, 'Robert-voluntary': 11.3, 'Robert-involuntary': 9.5,
+    'Michelle': 13.8, 'Michelle-voluntary': 8.0, 'Michelle-involuntary': 5.8
+  },
+  { 
+    year: 2022, 
+    'Jessica': 22.3, 'Jessica-voluntary': 14.5, 'Jessica-involuntary': 7.8,
+    'Thomas': 17.5, 'Thomas-voluntary': 9.6, 'Thomas-involuntary': 7.9,
+    'Emily': 15.4, 'Emily-voluntary': 8.9, 'Emily-involuntary': 6.5,
+    'Robert': 20.2, 'Robert-voluntary': 10.8, 'Robert-involuntary': 9.4,
+    'Michelle': 13.4, 'Michelle-voluntary': 7.8, 'Michelle-involuntary': 5.6
+  },
+  { 
+    year: 2023, 
+    'Jessica': 21.8, 'Jessica-voluntary': 14.3, 'Jessica-involuntary': 7.5,
+    'Thomas': 17.2, 'Thomas-voluntary': 9.5, 'Thomas-involuntary': 7.7,
+    'Emily': 15.0, 'Emily-voluntary': 8.7, 'Emily-involuntary': 6.3,
+    'Robert': 19.7, 'Robert-voluntary': 10.4, 'Robert-involuntary': 9.3,
+    'Michelle': 12.9, 'Michelle-voluntary': 7.6, 'Michelle-involuntary': 5.3
+  },
+  { 
+    year: 2024, 
+    'Jessica': 21.5, 'Jessica-voluntary': 14.2, 'Jessica-involuntary': 7.3,
+    'Thomas': 16.8, 'Thomas-voluntary': 9.3, 'Thomas-involuntary': 7.5,
+    'Emily': 14.7, 'Emily-voluntary': 8.5, 'Emily-involuntary': 6.2,
+    'Robert': 19.3, 'Robert-voluntary': 10.1, 'Robert-involuntary': 9.2,
+    'Michelle': 12.4, 'Michelle-voluntary': 7.5, 'Michelle-involuntary': 4.9
+  }
 ];

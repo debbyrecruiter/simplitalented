@@ -22,7 +22,9 @@ import {
   raceAttritionData, 
   raceYearOverYearData,
   genderAttritionData,
-  genderYearOverYearData
+  genderYearOverYearData,
+  recruiterAttritionData,
+  recruiterYearOverYearData
 } from "@/data/demographicsData";
 
 // Mock data for manager attrition rates
@@ -164,6 +166,7 @@ const WorkforceRetention = () => {
   const [showPerformanceAttrition, setShowPerformanceAttrition] = useState(false);
   const [showRaceAttrition, setShowRaceAttrition] = useState(false);
   const [showGenderAttrition, setShowGenderAttrition] = useState(false);
+  const [showRecruiterAttrition, setShowRecruiterAttrition] = useState(false);
 
   const handleManagerCardClick = () => {
     setShowManagerAttrition(!showManagerAttrition);
@@ -172,6 +175,7 @@ const WorkforceRetention = () => {
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
       setShowGenderAttrition(false);
+      setShowRecruiterAttrition(false);
     }
   };
 
@@ -182,6 +186,7 @@ const WorkforceRetention = () => {
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
       setShowGenderAttrition(false);
+      setShowRecruiterAttrition(false);
     }
   };
 
@@ -192,6 +197,7 @@ const WorkforceRetention = () => {
       setShowCompanyAttrition(false);
       setShowRaceAttrition(false);
       setShowGenderAttrition(false);
+      setShowRecruiterAttrition(false);
     }
   };
 
@@ -202,6 +208,7 @@ const WorkforceRetention = () => {
       setShowCompanyAttrition(false);
       setShowPerformanceAttrition(false);
       setShowGenderAttrition(false);
+      setShowRecruiterAttrition(false);
     }
   };
 
@@ -212,6 +219,18 @@ const WorkforceRetention = () => {
       setShowCompanyAttrition(false);
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
+      setShowRecruiterAttrition(false);
+    }
+  };
+
+  const handleRecruiterCardClick = () => {
+    setShowRecruiterAttrition(!showRecruiterAttrition);
+    if (!showRecruiterAttrition) {
+      setShowManagerAttrition(false);
+      setShowCompanyAttrition(false);
+      setShowPerformanceAttrition(false);
+      setShowRaceAttrition(false);
+      setShowGenderAttrition(false);
     }
   };
 
@@ -287,7 +306,10 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
-        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square">
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
+          onClick={handleRecruiterCardClick}
+        >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
               <Badge className="h-8 w-8 text-[#512888]" />
@@ -1100,6 +1122,246 @@ const WorkforceRetention = () => {
           
           <div className="text-sm text-muted-foreground mt-4">
             <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months, by gender.</p>
+            <p>* Involuntary terminations are company-initiated, while voluntary terminations are employee-initiated.</p>
+          </div>
+        </Card>
+      )}
+
+      {/* Recruiter Attrition Chart (shown conditionally) */}
+      {showRecruiterAttrition && (
+        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
+          <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Recruiter</h3>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              voluntary: { color: "#D0A3EE" },
+              involuntary: { color: "#A3BAEE" }
+            }}>
+              <div className="h-[600px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={recruiterAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 200 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="recruiter" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 40]}
+                      ticks={yAxisTicks}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.recruiter}</p>
+                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="voluntaryRate" 
+                      name="Voluntary" 
+                      stackId="a"
+                      radius={[0, 0, 0, 0]} 
+                      fill="#D0A3EE"
+                    />
+                    <Bar 
+                      dataKey="involuntaryRate" 
+                      name="Involuntary" 
+                      stackId="a"
+                      radius={[4, 4, 0, 0]} 
+                      fill="#A3BAEE"
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          textAnchor="middle" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value}%
+                        </text>
+                      )}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "120px" }}
+                      payload={[
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                      ]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          {/* Year-over-Year Recruiter Attrition Line Chart */}
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Year-over-Year Attrition by Recruiter</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full">
+            <ChartContainer config={{
+              'Jessica': { theme: { light: "#22C55E", dark: "#22C55E" } },
+              'Thomas': { theme: { light: "#3B82F6", dark: "#3B82F6" } },
+              'Emily': { theme: { light: "#8B5CF6", dark: "#8B5CF6" } },
+              'Robert': { theme: { light: "#EC4899", dark: "#EC4899" } },
+              'Michelle': { theme: { light: "#F59E0B", dark: "#F59E0B" } }
+            }}>
+              <div className="h-[400px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart 
+                    data={recruiterYearOverYearData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 30 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="year" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 25]}
+                      ticks={[0, 5, 10, 15, 20, 25]}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          const year = data.year;
+                          
+                          // Group data by recruiter
+                          const recruiterGroups = {};
+                          Object.keys(data).forEach(key => {
+                            if (key !== 'year') {
+                              const parts = key.split('-');
+                              const recruiter = parts[0];
+                              const type = parts.length > 1 ? parts[1] : 'total';
+                              
+                              if (!recruiterGroups[recruiter]) {
+                                recruiterGroups[recruiter] = { total: data[recruiter] };
+                              }
+                              
+                              if (type !== 'total') {
+                                recruiterGroups[recruiter][type] = data[key];
+                              }
+                            }
+                          });
+                          
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded max-w-xs">
+                              <p className="font-medium text-center border-b pb-1 mb-2">{year}</p>
+                              {Object.keys(recruiterGroups).map((recruiter, idx) => {
+                                // Find the matching recruiter color
+                                const recruiterColor = recruiter === 'Jessica' ? "#22C55E" :
+                                              recruiter === 'Thomas' ? "#3B82F6" :
+                                              recruiter === 'Emily' ? "#8B5CF6" :
+                                              recruiter === 'Robert' ? "#EC4899" : "#F59E0B";
+                                
+                                return (
+                                  <div key={idx} className="mb-2 border-b pb-1 last:border-b-0">
+                                    <p style={{color: recruiterColor}} className="font-bold">{recruiter}</p>
+                                    <p className="text-[#512888]">{`Total: ${recruiterGroups[recruiter].total}%`}</p>
+                                    {recruiterGroups[recruiter].voluntary && (
+                                      <p className="text-[#D0A3EE]">{`Voluntary: ${recruiterGroups[recruiter].voluntary}%`}</p>
+                                    )}
+                                    {recruiterGroups[recruiter].involuntary && (
+                                      <p className="text-[#A3BAEE]">{`Involuntary: ${recruiterGroups[recruiter].involuntary}%`}</p>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Jessica" 
+                      name="Jessica Martinez" 
+                      stroke="#22C55E" 
+                      strokeWidth={3}
+                      dot={{ r: 5, fill: "#22C55E" }}
+                      activeDot={{ r: 7 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Thomas" 
+                      name="Thomas Williams" 
+                      stroke="#3B82F6" 
+                      strokeWidth={3}
+                      dot={{ r: 5, fill: "#3B82F6" }}
+                      activeDot={{ r: 7 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Emily" 
+                      name="Emily Rodriguez" 
+                      stroke="#8B5CF6" 
+                      strokeWidth={3}
+                      dot={{ r: 5, fill: "#8B5CF6" }}
+                      activeDot={{ r: 7 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Robert" 
+                      name="Robert Johnson" 
+                      stroke="#EC4899" 
+                      strokeWidth={3}
+                      dot={{ r: 5, fill: "#EC4899" }}
+                      activeDot={{ r: 7 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Michelle" 
+                      name="Michelle Lee" 
+                      stroke="#F59E0B" 
+                      strokeWidth={3}
+                      dot={{ r: 5, fill: "#F59E0B" }}
+                      activeDot={{ r: 7 }}
+                    />
+                    <Legend />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months, by recruiter who hired them.</p>
             <p>* Involuntary terminations are company-initiated, while voluntary terminations are employee-initiated.</p>
           </div>
         </Card>
