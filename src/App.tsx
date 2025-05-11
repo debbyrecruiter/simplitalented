@@ -14,8 +14,8 @@ import Reports from "./pages/Reports";
 import WorkforceAnalytics from "./pages/WorkforceAnalytics";
 import WorkforceDemographics from "./pages/WorkforceDemographics";
 import WorkforceRetention from "./pages/WorkforceRetention";
-import CompensationAnalysis from "./pages/CompensationAnalysis";
 import CompanyAttrition from "./pages/CompanyAttrition";
+import CompensationAnalysis from "./pages/CompensationAnalysis";
 
 const queryClient = new QueryClient();
 
