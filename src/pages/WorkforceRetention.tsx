@@ -162,7 +162,6 @@ const overallAttritionRate = 16.5; // Company-wide attrition rate
 const WorkforceRetention = () => {
   const navigate = useNavigate();
   const [showManagerAttrition, setShowManagerAttrition] = useState(false);
-  const [showCompanyAttrition, setShowCompanyAttrition] = useState(false);
   const [showPerformanceAttrition, setShowPerformanceAttrition] = useState(false);
   const [showRaceAttrition, setShowRaceAttrition] = useState(false);
   const [showGenderAttrition, setShowGenderAttrition] = useState(false);
@@ -171,18 +170,6 @@ const WorkforceRetention = () => {
   const handleManagerCardClick = () => {
     setShowManagerAttrition(!showManagerAttrition);
     if (!showManagerAttrition) {
-      setShowCompanyAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-    }
-  };
-
-  const handleCompanyCardClick = () => {
-    setShowCompanyAttrition(!showCompanyAttrition);
-    if (!showCompanyAttrition) {
-      setShowManagerAttrition(false);
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
       setShowGenderAttrition(false);
@@ -194,7 +181,6 @@ const WorkforceRetention = () => {
     setShowPerformanceAttrition(!showPerformanceAttrition);
     if (!showPerformanceAttrition) {
       setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
       setShowRaceAttrition(false);
       setShowGenderAttrition(false);
       setShowRecruiterAttrition(false);
@@ -205,7 +191,6 @@ const WorkforceRetention = () => {
     setShowRaceAttrition(!showRaceAttrition);
     if (!showRaceAttrition) {
       setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
       setShowPerformanceAttrition(false);
       setShowGenderAttrition(false);
       setShowRecruiterAttrition(false);
@@ -216,7 +201,6 @@ const WorkforceRetention = () => {
     setShowGenderAttrition(!showGenderAttrition);
     if (!showGenderAttrition) {
       setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
       setShowRecruiterAttrition(false);
@@ -227,7 +211,6 @@ const WorkforceRetention = () => {
     setShowRecruiterAttrition(!showRecruiterAttrition);
     if (!showRecruiterAttrition) {
       setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
       setShowGenderAttrition(false);
@@ -246,18 +229,6 @@ const WorkforceRetention = () => {
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={handleCompanyCardClick}
-        >
-          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-            <div className="flex items-center justify-center mb-3">
-              <Users className="h-8 w-8 text-[#512888]" />
-            </div>
-            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Company Attrition</h3>
-          </div>
-        </Card>
-
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
           onClick={handleManagerCardClick}
@@ -318,79 +289,6 @@ const WorkforceRetention = () => {
           </div>
         </Card>
       </div>
-
-      {/* Company Attrition Chart (shown conditionally) */}
-      {showCompanyAttrition && (
-        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
-          <h3 className="text-xl font-medium text-[#512888] mb-4">Company Attrition Analysis</h3>
-          
-          {/* Overall attrition rate card */}
-          <div className="p-4 text-center bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-6">
-            <h3 className="text-xl font-medium text-[#512888]">Overall Attrition Rate</h3>
-            <p className="text-4xl font-bold mt-2 text-[#512888]">{overallAttritionRate}%</p>
-            <p className="text-sm text-muted-foreground mt-1">Company-wide annual attrition</p>
-          </div>
-          
-          <div className="bg-white rounded-lg w-full h-full">
-            <ChartContainer config={{
-              attrition: { color: "#9b87f5" } // Purple color that matches theme
-            }}>
-              <div className="h-[600px] w-full bg-white">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart 
-                    data={departmentAttritionData} 
-                    margin={{ top: 5, right: 30, left: 20, bottom: 100 }} // Increased bottom margin to accommodate labels
-                    className="bg-white"
-                  >
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis 
-                      dataKey="department" 
-                      axisLine={true}
-                      tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
-                      angle={-45}
-                      textAnchor="end"
-                      height={80} // Increased height for the x-axis
-                      dy={20} // Move the labels down a bit
-                    />
-                    <YAxis
-                      axisLine={true}
-                      tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
-                      tickFormatter={(value) => `${value}%`}
-                      domain={[0, 40]}
-                      ticks={yAxisTicks}
-                    />
-                    <ChartTooltip
-                      content={({ active, payload }) => {
-                        if (active && payload && payload.length) {
-                          const data = payload[0].payload;
-                          return (
-                            <div className="bg-white border border-[#9b87f5] shadow-md p-2 rounded">
-                              <p className="font-medium">{data.department}</p>
-                              <p className="text-[#512888] font-bold">{`${data.attritionRate}%`}</p>
-                            </div>
-                          );
-                        }
-                        return null;
-                      }}
-                    />
-                    <Bar dataKey="attritionRate" name="Attrition Rate" radius={[4, 4, 0, 0]}>
-                      {departmentAttritionData.map((_, index) => (
-                        <Cell key={`cell-${index}`} fill="#9b87f5" />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </ChartContainer>
-          </div>
-          
-          <div className="text-sm text-muted-foreground mt-4">
-            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months.</p>
-          </div>
-        </Card>
-      )}
 
       {/* Manager Attrition Chart (shown conditionally) */}
       {showManagerAttrition && (
