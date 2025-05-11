@@ -421,3 +421,98 @@ export const recruiterYearOverYearData = [
     'Michelle': 12.4, 'Michelle-voluntary': 7.5, 'Michelle-involuntary': 4.9
   }
 ];
+
+// Department attrition data
+export const departmentAttritionData = [
+  { 
+    department: "Engineering", 
+    count: 420, 
+    attritionRate: 18,
+    voluntaryRate: 10.5,
+    involuntaryRate: 7.5 
+  },
+  { 
+    department: "Sales", 
+    count: 320, 
+    attritionRate: 22,
+    voluntaryRate: 14.2,
+    involuntaryRate: 7.8 
+  },
+  { 
+    department: "Marketing", 
+    count: 180, 
+    attritionRate: 15,
+    voluntaryRate: 8.3,
+    involuntaryRate: 6.7 
+  },
+  { 
+    department: "HR", 
+    count: 85, 
+    attritionRate: 10,
+    voluntaryRate: 5.5,
+    involuntaryRate: 4.5 
+  },
+  { 
+    department: "Product", 
+    count: 150, 
+    attritionRate: 20,
+    voluntaryRate: 12.8,
+    involuntaryRate: 7.2 
+  },
+  { 
+    department: "Finance", 
+    count: 110, 
+    attritionRate: 12,
+    voluntaryRate: 7.1,
+    involuntaryRate: 4.9 
+  },
+];
+
+// Year-over-year department attrition data
+export const departmentYearOverYearData = [
+  { 
+    year: 2020, 
+    'Engineering': 20.5, 'Engineering-voluntary': 12.0, 'Engineering-involuntary': 8.5,
+    'Sales': 24.5, 'Sales-voluntary': 15.8, 'Sales-involuntary': 8.7,
+    'Marketing': 17.2, 'Marketing-voluntary': 9.5, 'Marketing-involuntary': 7.7,
+    'HR': 12.5, 'HR-voluntary': 7.0, 'HR-involuntary': 5.5,
+    'Product': 22.3, 'Product-voluntary': 14.1, 'Product-involuntary': 8.2,
+    'Finance': 14.2, 'Finance-voluntary': 8.3, 'Finance-involuntary': 5.9
+  },
+  { 
+    year: 2021, 
+    'Engineering': 19.8, 'Engineering-voluntary': 11.6, 'Engineering-involuntary': 8.2,
+    'Sales': 23.8, 'Sales-voluntary': 15.2, 'Sales-involuntary': 8.6,
+    'Marketing': 16.5, 'Marketing-voluntary': 9.1, 'Marketing-involuntary': 7.4,
+    'HR': 11.8, 'HR-voluntary': 6.5, 'HR-involuntary': 5.3,
+    'Product': 21.6, 'Product-voluntary': 13.7, 'Product-involuntary': 7.9,
+    'Finance': 13.5, 'Finance-voluntary': 7.9, 'Finance-involuntary': 5.6
+  },
+  { 
+    year: 2022, 
+    'Engineering': 19.2, 'Engineering-voluntary': 11.2, 'Engineering-involuntary': 8.0,
+    'Sales': 23.2, 'Sales-voluntary': 14.8, 'Sales-involuntary': 8.4,
+    'Marketing': 16.0, 'Marketing-voluntary': 8.8, 'Marketing-involuntary': 7.2,
+    'HR': 11.2, 'HR-voluntary': 6.2, 'HR-involuntary': 5.0,
+    'Product': 21.0, 'Product-voluntary': 13.4, 'Product-involuntary': 7.6,
+    'Finance': 13.0, 'Finance-voluntary': 7.6, 'Finance-involuntary': 5.4
+  },
+  { 
+    year: 2023, 
+    'Engineering': 18.5, 'Engineering-voluntary': 10.8, 'Engineering-involuntary': 7.7,
+    'Sales': 22.6, 'Sales-voluntary': 14.5, 'Sales-involuntary': 8.1,
+    'Marketing': 15.5, 'Marketing-voluntary': 8.5, 'Marketing-involuntary': 7.0,
+    'HR': 10.5, 'HR-voluntary': 5.8, 'HR-involuntary': 4.7,
+    'Product': 20.5, 'Product-voluntary': 13.1, 'Product-involuntary': 7.4,
+    'Finance': 12.5, 'Finance-voluntary': 7.3, 'Finance-involuntary': 5.2
+  },
+  { 
+    year: 2024, 
+    'Engineering': 18.0, 'Engineering-voluntary': 10.5, 'Engineering-involuntary': 7.5,
+    'Sales': 22.0, 'Sales-voluntary': 14.2, 'Sales-involuntary': 7.8,
+    'Marketing': 15.0, 'Marketing-voluntary': 8.3, 'Marketing-involuntary': 6.7,
+    'HR': 10.0, 'HR-voluntary': 5.5, 'HR-involuntary': 4.5,
+    'Product': 20.0, 'Product-voluntary': 12.8, 'Product-involuntary': 7.2,
+    'Finance': 12.0, 'Finance-voluntary': 7.1, 'Finance-involuntary': 4.9
+  }
+];
