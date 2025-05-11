@@ -1,4 +1,3 @@
-
 // Gender demographics data
 export const genderData = [
   { name: 'Male', value: 58, color: '#0067D9' },
@@ -125,6 +124,89 @@ export const racePromotionData = [
   { name: 'Black', percentage: 11.7 },
   { name: 'Hispanic/Latino', percentage: 12.3 },
   { name: 'Other', percentage: 10.8 },
+];
+
+// New race attrition data
+export const raceAttritionData = [
+  { 
+    race: "White", 
+    count: 630, 
+    attritionRate: 14.2,
+    voluntaryRate: 9.5,
+    involuntaryRate: 4.7 
+  },
+  { 
+    race: "Asian", 
+    count: 322, 
+    attritionRate: 13.8,
+    voluntaryRate: 10.1,
+    involuntaryRate: 3.7 
+  },
+  { 
+    race: "Black", 
+    count: 210, 
+    attritionRate: 18.5,
+    voluntaryRate: 11.2,
+    involuntaryRate: 7.3 
+  },
+  { 
+    race: "Hispanic/Latino", 
+    count: 168, 
+    attritionRate: 16.7,
+    voluntaryRate: 10.5,
+    involuntaryRate: 6.2 
+  },
+  { 
+    race: "Other", 
+    count: 70, 
+    attritionRate: 15.3,
+    voluntaryRate: 9.8,
+    involuntaryRate: 5.5 
+  },
+];
+
+// Year-over-year race attrition data
+export const raceYearOverYearData = [
+  { 
+    year: 2020, 
+    'White': 15.8, 'White-voluntary': 10.2, 'White-involuntary': 5.6,
+    'Asian': 14.5, 'Asian-voluntary': 10.5, 'Asian-involuntary': 4.0,
+    'Black': 20.2, 'Black-voluntary': 12.1, 'Black-involuntary': 8.1,
+    'Hispanic/Latino': 18.3, 'Hispanic/Latino-voluntary': 11.5, 'Hispanic/Latino-involuntary': 6.8,
+    'Other': 16.7, 'Other-voluntary': 10.3, 'Other-involuntary': 6.4
+  },
+  { 
+    year: 2021, 
+    'White': 15.2, 'White-voluntary': 9.9, 'White-involuntary': 5.3,
+    'Asian': 14.2, 'Asian-voluntary': 10.3, 'Asian-involuntary': 3.9,
+    'Black': 19.6, 'Black-voluntary': 11.8, 'Black-involuntary': 7.8,
+    'Hispanic/Latino': 17.5, 'Hispanic/Latino-voluntary': 11.0, 'Hispanic/Latino-involuntary': 6.5,
+    'Other': 16.2, 'Other-voluntary': 10.1, 'Other-involuntary': 6.1
+  },
+  { 
+    year: 2022, 
+    'White': 14.8, 'White-voluntary': 9.7, 'White-involuntary': 5.1,
+    'Asian': 14.0, 'Asian-voluntary': 10.2, 'Asian-involuntary': 3.8,
+    'Black': 19.0, 'Black-voluntary': 11.5, 'Black-involuntary': 7.5,
+    'Hispanic/Latino': 17.0, 'Hispanic/Latino-voluntary': 10.8, 'Hispanic/Latino-involuntary': 6.2,
+    'Other': 15.8, 'Other-voluntary': 10.0, 'Other-involuntary': 5.8
+  },
+  { 
+    year: 2023, 
+    'White': 14.5, 'White-voluntary': 9.6, 'White-involuntary': 4.9,
+    'Asian': 13.9, 'Asian-voluntary': 10.2, 'Asian-involuntary': 3.7,
+    'Black': 18.7, 'Black-voluntary': 11.3, 'Black-involuntary': 7.4,
+    'Hispanic/Latino': 16.9, 'Hispanic/Latino-voluntary': 10.6, 'Hispanic/Latino-involuntary': 6.3,
+    'Other': 15.5, 'Other-voluntary': 9.9, 'Other-involuntary': 5.6
+  },
+  { 
+    year: 2024, 
+    'White': 14.2, 'White-voluntary': 9.5, 'White-involuntary': 4.7,
+    'Asian': 13.8, 'Asian-voluntary': 10.1, 'Asian-involuntary': 3.7,
+    'Black': 18.5, 'Black-voluntary': 11.2, 'Black-involuntary': 7.3,
+    'Hispanic/Latino': 16.7, 'Hispanic/Latino-voluntary': 10.5, 'Hispanic/Latino-involuntary': 6.2,
+    'Other': 15.3, 'Other-voluntary': 9.8, 'Other-involuntary': 5.5
+  }
 ];
 
 // Age demographics data
