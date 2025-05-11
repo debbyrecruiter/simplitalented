@@ -1,247 +1,315 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { BackButton } from "@/components/ui/back-button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { 
-  LineChart, 
-  Line, 
+  BarChart, 
+  Bar, 
   XAxis, 
   YAxis, 
   CartesianGrid, 
   Tooltip, 
-  Legend, 
   ResponsiveContainer,
-  BarChart,
-  Bar,
   Cell,
-  TooltipProps
+  LineChart,
+  Line,
+  Legend
 } from "recharts";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { departmentAttritionData, departmentYearOverYearData } from "@/data/demographicsData";
-import { ChartContainer } from "@/components/ui/chart";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const overallAttritionRate = 16.5; // Company-wide attrition rate
 const overallVoluntaryRate = 9.7;   // Company-wide voluntary attrition
 const overallInvoluntaryRate = 6.8; // Company-wide involuntary attrition
 
-// Performance score data - we're creating this as sample data
-const attritionByPerformanceData = [
-  { score: "Exceeds", attritionRate: 7.2, voluntaryRate: 6.5, involuntaryRate: 0.7 },
-  { score: "Meets+", attritionRate: 10.8, voluntaryRate: 8.3, involuntaryRate: 2.5 },
-  { score: "Meets", attritionRate: 14.6, voluntaryRate: 9.2, involuntaryRate: 5.4 },
-  { score: "Needs Improvement", attritionRate: 28.5, voluntaryRate: 12.8, involuntaryRate: 15.7 },
-  { score: "PIP", attritionRate: 65.3, voluntaryRate: 25.4, involuntaryRate: 39.9 }
-];
-
-const chartConfig = {
-  attrition: { label: "Attrition", color: "#840DD7" },
-  voluntary: { label: "Voluntary", color: "#F59E0B" },
-  involuntary: { label: "Involuntary", color: "#EF4444" }
-};
-
-// Custom tooltip component for the bar charts
-const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-white p-4 border border-gray-200 rounded-md shadow-md">
-        <p className="font-bold">{label}</p>
-        {payload.map((entry, index) => (
-          <p key={`item-${index}`} style={{ color: entry.color }}>
-            {entry.name}: {entry.value}%
-          </p>
-        ))}
-      </div>
-    );
-  }
-  return null;
-};
-
 const CompanyAttrition = () => {
+  const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
+  
+  const chartConfig = {
+    attrition: { color: "#9b87f5" },
+    voluntary: { color: "#6E59A5" },
+    involuntary: { color: "#D6BCFA" }
+  };
+
+  // Create an array of tick values in increments of 2 up to 40
+  const yAxisTicks = Array.from({ length: 21 }, (_, index) => index * 2);
+
+  const handleBarClick = (data: any) => {
+    setSelectedDepartment(selectedDepartment === data.department ? null : data.department);
+  };
+
+  // Filter year-over-year data for the selected department or show all departments
+  const filteredYearOverYearData = departmentYearOverYearData.map(yearData => {
+    if (selectedDepartment) {
+      return {
+        year: yearData.year,
+        [selectedDepartment]: yearData[selectedDepartment as keyof typeof yearData],
+        [`${selectedDepartment}-voluntary`]: yearData[`${selectedDepartment}-voluntary` as keyof typeof yearData],
+        [`${selectedDepartment}-involuntary`]: yearData[`${selectedDepartment}-involuntary` as keyof typeof yearData],
+      };
+    }
+    return yearData;
+  });
+
+  const departmentNames = departmentAttritionData.map(item => item.department);
+  const departmentColors = ["#9b87f5", "#7E69AB", "#6E59A5", "#1A1F2C", "#D6BCFA", "#8566FF"];
+
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
         <BackButton fallbackPath="/reports/workforce-retention" label="Back" />
       </div>
       
-      <h1 className="text-3xl font-bold mb-6">Company Attrition Analysis</h1>
+      <h1 className="text-3xl font-bold mb-6 text-[#512888]">Company Attrition Analysis</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Overall Attrition Rate</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-3xl font-bold text-[#840DD7]">{overallAttritionRate}%</p>
-            <p className="text-sm text-muted-foreground">Company-wide annual attrition rate</p>
-          </CardContent>
-        </Card>
+      <div className="space-y-6 p-4">
+        {/* Overall attrition rate cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Card className="p-6 text-center bg-white border border-[#9b87f5] rounded-lg shadow-sm">
+            <h3 className="text-xl font-medium text-[#512888]">Overall Attrition Rate</h3>
+            <p className="text-4xl font-bold mt-2 text-[#512888]">{overallAttritionRate}%</p>
+          </Card>
+          
+          <Card className="p-6 text-center bg-white border border-[#6E59A5] rounded-lg shadow-sm">
+            <h3 className="text-xl font-medium text-[#512888]">Voluntary Attrition</h3>
+            <p className="text-4xl font-bold mt-2 text-[#6E59A5]">{overallVoluntaryRate}%</p>
+          </Card>
+          
+          <Card className="p-6 text-center bg-white border border-[#D6BCFA] rounded-lg shadow-sm">
+            <h3 className="text-xl font-medium text-[#512888]">Involuntary Attrition</h3>
+            <p className="text-4xl font-bold mt-2 text-[#D6BCFA]">{overallInvoluntaryRate}%</p>
+          </Card>
+        </div>
         
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Voluntary Attrition</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-3xl font-bold text-amber-500">{overallVoluntaryRate}%</p>
-            <p className="text-sm text-muted-foreground">Employees who chose to leave</p>
-          </CardContent>
-        </Card>
+        <Tabs defaultValue="breakdown" className="w-full">
+          <TabsList className="grid grid-cols-2 mb-4">
+            <TabsTrigger value="breakdown">Department Breakdown</TabsTrigger>
+            <TabsTrigger value="trends">Historical Trends</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="breakdown">
+            <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
+              <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
+              <p className="mb-4 text-sm text-gray-600">
+                {selectedDepartment ? `Showing detailed data for ${selectedDepartment}. Click the bar again to show all departments.` : 'Click on a department bar to see its historical trend.'}
+              </p>
+              
+              <div className="bg-white rounded-lg w-full h-full">
+                <ChartContainer config={chartConfig}>
+                  <div className="h-[500px] w-full bg-white">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart 
+                        data={departmentAttritionData} 
+                        margin={{ top: 5, right: 30, left: 20, bottom: 100 }}
+                        className="bg-white"
+                        barCategoryGap={20}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis 
+                          dataKey="department" 
+                          axisLine={true}
+                          tickLine={false}
+                          tick={{ fill: '#512888', fontSize: 16, fontWeight: 600 }}
+                          angle={-45}
+                          textAnchor="end"
+                          height={80}
+                          dy={20}
+                        />
+                        <YAxis
+                          axisLine={true}
+                          tickLine={false}
+                          tick={{ fill: '#512888', fontSize: 16, fontWeight: 600 }}
+                          tickFormatter={(value) => `${value}%`}
+                          domain={[0, 40]}
+                          ticks={yAxisTicks}
+                        />
+                        <ChartTooltip
+                          content={({ active, payload }) => {
+                            if (active && payload && payload.length) {
+                              const data = payload[0].payload;
+                              return (
+                                <div className="bg-white border border-[#9b87f5] shadow-md p-4 rounded">
+                                  <p className="font-medium text-lg">{data.department}</p>
+                                  <p className="text-gray-600">Employees: {data.count}</p>
+                                  <div className="mt-2 space-y-1">
+                                    <p className="text-[#9b87f5] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                                    <p className="text-[#6E59A5]">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                                    <p className="text-[#D6BCFA]">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                                  </div>
+                                </div>
+                              );
+                            }
+                            return null;
+                          }}
+                        />
+                        <Bar 
+                          dataKey="involuntaryRate" 
+                          name="Involuntary" 
+                          stackId="a" 
+                          fill="#D6BCFA" 
+                          onClick={handleBarClick}
+                          cursor="pointer"
+                        />
+                        <Bar 
+                          dataKey="voluntaryRate" 
+                          name="Voluntary" 
+                          stackId="a" 
+                          fill="#6E59A5"
+                          onClick={handleBarClick}
+                          cursor="pointer"
+                        />
+                        <Legend 
+                          verticalAlign="top" 
+                          height={36}
+                          iconSize={16}
+                          formatter={(value) => <span className="text-gray-700">{value}</span>}
+                        />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </ChartContainer>
+              </div>
+            </Card>
+          </TabsContent>
+          
+          <TabsContent value="trends">
+            <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
+              <h3 className="text-xl font-medium text-[#512888] mb-4">Department Attrition Trends (2020-2024)</h3>
+              <p className="mb-4 text-sm text-gray-600">
+                {selectedDepartment 
+                  ? `Showing historical trends for ${selectedDepartment}. Click a bar on the Breakdown tab to change department.` 
+                  : 'Showing overall trends. Select a department on the Breakdown tab to see specific trends.'}
+              </p>
+              
+              <div className="bg-white rounded-lg w-full h-full">
+                <ChartContainer config={chartConfig}>
+                  <div className="h-[500px] w-full bg-white">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart 
+                        data={filteredYearOverYearData}
+                        margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis 
+                          dataKey="year" 
+                          axisLine={true}
+                          tickLine={false}
+                          tick={{ fill: '#512888', fontSize: 16, fontWeight: 600 }}
+                        />
+                        <YAxis
+                          axisLine={true}
+                          tickLine={false}
+                          tick={{ fill: '#512888', fontSize: 16, fontWeight: 600 }}
+                          tickFormatter={(value) => `${value}%`}
+                          domain={[0, 40]}
+                          ticks={yAxisTicks}
+                        />
+                        <ChartTooltip
+                          content={({ active, payload, label }) => {
+                            if (active && payload && payload.length) {
+                              return (
+                                <div className="bg-white border border-[#9b87f5] shadow-md p-4 rounded">
+                                  <p className="font-medium text-lg">{label}</p>
+                                  <div className="mt-2 space-y-1">
+                                    {payload.map((entry, index) => {
+                                      const name = entry.name as string;
+                                      // Extract department name without -voluntary/-involuntary suffix
+                                      const displayName = name.includes("-voluntary")
+                                        ? `${name.split("-voluntary")[0]} (Voluntary)`
+                                        : name.includes("-involuntary")
+                                          ? `${name.split("-involuntary")[0]} (Involuntary)`
+                                          : name;
+                                          
+                                      return (
+                                        <p 
+                                          key={`item-${index}`} 
+                                          style={{ color: entry.color }}
+                                          className="font-medium"
+                                        >
+                                          {`${displayName}: ${entry.value}%`}
+                                        </p>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              );
+                            }
+                            return null;
+                          }}
+                        />
+                        
+                        {selectedDepartment ? (
+                          // Show only selected department data with voluntary/involuntary breakdown
+                          <>
+                            <Line
+                              type="monotone"
+                              dataKey={selectedDepartment}
+                              name={selectedDepartment}
+                              stroke="#9b87f5"
+                              strokeWidth={3}
+                              dot={{ r: 4 }}
+                              activeDot={{ r: 6 }}
+                            />
+                            <Line
+                              type="monotone"
+                              dataKey={`${selectedDepartment}-voluntary`}
+                              name={`${selectedDepartment}-voluntary`}
+                              stroke="#6E59A5"
+                              strokeWidth={2}
+                              dot={{ r: 3 }}
+                            />
+                            <Line
+                              type="monotone"
+                              dataKey={`${selectedDepartment}-involuntary`}
+                              name={`${selectedDepartment}-involuntary`}
+                              stroke="#D6BCFA"
+                              strokeWidth={2}
+                              dot={{ r: 3 }}
+                            />
+                          </>
+                        ) : (
+                          // Show all departments
+                          departmentNames.map((dept, index) => (
+                            <Line
+                              key={dept}
+                              type="monotone"
+                              dataKey={dept}
+                              name={dept}
+                              stroke={departmentColors[index % departmentColors.length]}
+                              strokeWidth={2}
+                              dot={{ r: 3 }}
+                              activeDot={{ r: 5 }}
+                            />
+                          ))
+                        )}
+                        <Legend 
+                          verticalAlign="top" 
+                          height={36}
+                          iconSize={16}
+                          formatter={(value) => {
+                            // Format legend labels to be more user-friendly
+                            const displayValue = value.includes("-voluntary") 
+                              ? `${value.split("-voluntary")[0]} (Voluntary)`
+                              : value.includes("-involuntary") 
+                                ? `${value.split("-involuntary")[0]} (Involuntary)`
+                                : value;
+                            return <span className="text-gray-700">{displayValue}</span>;
+                          }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                </ChartContainer>
+              </div>
+            </Card>
+          </TabsContent>
+        </Tabs>
         
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Involuntary Attrition</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-3xl font-bold text-rose-500">{overallInvoluntaryRate}%</p>
-            <p className="text-sm text-muted-foreground">Layoffs and terminations</p>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Year over Year Attrition Trends */}
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>Year-over-Year Attrition Trends</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={departmentYearOverYearData}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="year" />
-                <YAxis domain={[0, 30]} tickFormatter={(value) => `${value}%`} />
-                <Tooltip formatter={(value) => [`${value}%`, "Attrition Rate"]} />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="Engineering"
-                  stroke="#3B82F6"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Sales"
-                  stroke="#F97316"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Marketing"
-                  stroke="#10B981"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="HR"
-                  stroke="#8B5CF6"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Product"
-                  stroke="#EC4899"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="Finance"
-                  stroke="#6B7280"
-                  strokeWidth={2}
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Attrition by Performance Score */}
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>Attrition by Performance Score</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart 
-                data={attritionByPerformanceData}
-                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="score" />
-                <YAxis tickFormatter={(value) => `${value}%`} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend />
-                <Bar dataKey="voluntaryRate" name="Voluntary" fill="#F59E0B" />
-                <Bar dataKey="involuntaryRate" name="Involuntary" fill="#EF4444" stackId="a" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-          <p className="text-sm text-muted-foreground mt-4">
-            Employees with higher performance scores tend to have significantly lower attrition rates,
-            with voluntary departures being the primary cause. Lower performers show higher involuntary attrition.
-          </p>
-        </CardContent>
-      </Card>
-
-      {/* Attrition by Department */}
-      <Card className="mb-8">
-        <CardHeader>
-          <CardTitle>Attrition by Department</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={departmentAttritionData}
-                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="department" />
-                <YAxis tickFormatter={(value) => `${value}%`} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend />
-                <Bar dataKey="voluntaryRate" name="Voluntary" fill="#F59E0B" />
-                <Bar dataKey="involuntaryRate" name="Involuntary" fill="#EF4444" stackId="a" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-          <p className="text-sm text-muted-foreground mt-4">
-            Sales and Product departments show the highest overall attrition rates,
-            while HR has the lowest. Engineering shows balanced voluntary and involuntary rates.
-          </p>
-        </CardContent>
-      </Card>
-      
-      <div className="mb-8">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle>Understanding Attrition Metrics</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-2">
-              <strong>Attrition Rate</strong>: The percentage of employees who leave the organization over a specific period. This includes both voluntary and involuntary departures.
-            </p>
-            <p className="mb-2">
-              <strong>Voluntary Attrition</strong>: Occurs when employees choose to leave the organization on their own accord, such as for a new job opportunity, retirement, or personal reasons.
-            </p>
-            <p>
-              <strong>Involuntary Attrition</strong>: Occurs when the organization initiates the separation, such as through layoffs, terminations for cause, or restructuring.
-            </p>
-          </CardContent>
-        </Card>
+        <div className="text-sm text-muted-foreground mt-2">
+          <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months.</p>
+          <p>* Voluntary attrition refers to employees who resigned. Involuntary attrition refers to terminations.</p>
+        </div>
       </div>
     </div>
   );
