@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
-import { Users, Award, BarChart2, LineChart, Briefcase, Badge } from "lucide-react";
+import { Users, Award, BarChart2, Briefcase, Badge } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { 
   BarChart, 
@@ -14,7 +14,8 @@ import {
   Legend,
   Cell,
   Line,
-  ComposedChart
+  ComposedChart,
+  LineChart
 } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { 
