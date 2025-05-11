@@ -1,3 +1,4 @@
+
 // Gender demographics data
 export const genderData = [
   { name: 'Male', value: 58, color: '#0067D9' },
@@ -53,6 +54,65 @@ export const genderPromotionData = [
   { name: 'Male', percentage: 15.2 },
   { name: 'Female', percentage: 11.8 },
   { name: 'Nonbinary', percentage: 12.5 },
+];
+
+// Gender attrition data
+export const genderAttritionData = [
+  { 
+    gender: "Male", 
+    count: 812, 
+    attritionRate: 17.3,
+    voluntaryRate: 9.8,
+    involuntaryRate: 7.5 
+  },
+  { 
+    gender: "Female", 
+    count: 518, 
+    attritionRate: 15.1,
+    voluntaryRate: 8.2,
+    involuntaryRate: 6.9 
+  },
+  { 
+    gender: "Nonbinary", 
+    count: 70, 
+    attritionRate: 14.2,
+    voluntaryRate: 9.7,
+    involuntaryRate: 4.5 
+  }
+];
+
+// Year-over-year gender attrition data
+export const genderYearOverYearData = [
+  { 
+    year: 2020, 
+    'Male': 18.7, 'Male-voluntary': 10.4, 'Male-involuntary': 8.3,
+    'Female': 16.9, 'Female-voluntary': 9.0, 'Female-involuntary': 7.9,
+    'Nonbinary': 17.5, 'Nonbinary-voluntary': 10.9, 'Nonbinary-involuntary': 6.6
+  },
+  { 
+    year: 2021, 
+    'Male': 18.2, 'Male-voluntary': 10.1, 'Male-involuntary': 8.1,
+    'Female': 16.5, 'Female-voluntary': 8.7, 'Female-involuntary': 7.8,
+    'Nonbinary': 16.8, 'Nonbinary-voluntary': 10.5, 'Nonbinary-involuntary': 6.3
+  },
+  { 
+    year: 2022, 
+    'Male': 17.8, 'Male-voluntary': 10.0, 'Male-involuntary': 7.8,
+    'Female': 16.0, 'Female-voluntary': 8.5, 'Female-involuntary': 7.5,
+    'Nonbinary': 15.7, 'Nonbinary-voluntary': 10.2, 'Nonbinary-involuntary': 5.5
+  },
+  { 
+    year: 2023, 
+    'Male': 17.6, 'Male-voluntary': 9.9, 'Male-involuntary': 7.7,
+    'Female': 15.5, 'Female-voluntary': 8.3, 'Female-involuntary': 7.2,
+    'Nonbinary': 15.0, 'Nonbinary-voluntary': 10.0, 'Nonbinary-involuntary': 5.0
+  },
+  { 
+    year: 2024, 
+    'Male': 17.3, 'Male-voluntary': 9.8, 'Male-involuntary': 7.5,
+    'Female': 15.1, 'Female-voluntary': 8.2, 'Female-involuntary': 6.9,
+    'Nonbinary': 14.2, 'Nonbinary-voluntary': 9.7, 'Nonbinary-involuntary': 4.5
+  }
 ];
 
 // Race demographics data

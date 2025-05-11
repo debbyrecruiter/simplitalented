@@ -20,7 +20,9 @@ import {
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { 
   raceAttritionData, 
-  raceYearOverYearData 
+  raceYearOverYearData,
+  genderAttritionData,
+  genderYearOverYearData
 } from "@/data/demographicsData";
 
 // Mock data for manager attrition rates
@@ -161,6 +163,7 @@ const WorkforceRetention = () => {
   const [showCompanyAttrition, setShowCompanyAttrition] = useState(false);
   const [showPerformanceAttrition, setShowPerformanceAttrition] = useState(false);
   const [showRaceAttrition, setShowRaceAttrition] = useState(false);
+  const [showGenderAttrition, setShowGenderAttrition] = useState(false);
 
   const handleManagerCardClick = () => {
     setShowManagerAttrition(!showManagerAttrition);
@@ -168,6 +171,7 @@ const WorkforceRetention = () => {
       setShowCompanyAttrition(false);
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
+      setShowGenderAttrition(false);
     }
   };
 
@@ -177,6 +181,7 @@ const WorkforceRetention = () => {
       setShowManagerAttrition(false);
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
+      setShowGenderAttrition(false);
     }
   };
 
@@ -186,6 +191,7 @@ const WorkforceRetention = () => {
       setShowManagerAttrition(false);
       setShowCompanyAttrition(false);
       setShowRaceAttrition(false);
+      setShowGenderAttrition(false);
     }
   };
 
@@ -195,6 +201,17 @@ const WorkforceRetention = () => {
       setShowManagerAttrition(false);
       setShowCompanyAttrition(false);
       setShowPerformanceAttrition(false);
+      setShowGenderAttrition(false);
+    }
+  };
+
+  const handleGenderCardClick = () => {
+    setShowGenderAttrition(!showGenderAttrition);
+    if (!showGenderAttrition) {
+      setShowManagerAttrition(false);
+      setShowCompanyAttrition(false);
+      setShowPerformanceAttrition(false);
+      setShowRaceAttrition(false);
     }
   };
 
@@ -258,10 +275,13 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
-        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square">
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
+          onClick={handleGenderCardClick}
+        >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
-              <LineChart className="h-8 w-8 text-[#512888]" />
+              <Users className="h-8 w-8 text-[#512888]" />
             </div>
             <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Attrition by Gender</h3>
           </div>
@@ -862,6 +882,224 @@ const WorkforceRetention = () => {
           
           <div className="text-sm text-muted-foreground mt-4">
             <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months, by race/ethnicity.</p>
+            <p>* Involuntary terminations are company-initiated, while voluntary terminations are employee-initiated.</p>
+          </div>
+        </Card>
+      )}
+
+      {/* Gender Attrition Chart (shown conditionally) */}
+      {showGenderAttrition && (
+        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
+          <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Gender</h3>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              voluntary: { color: "#D0A3EE" },
+              involuntary: { color: "#A3BAEE" }
+            }}>
+              <div className="h-[600px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={genderAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 200 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="gender" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 40]}
+                      ticks={yAxisTicks}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.gender}</p>
+                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="voluntaryRate" 
+                      name="Voluntary" 
+                      stackId="a"
+                      radius={[0, 0, 0, 0]} 
+                      fill="#D0A3EE"
+                    />
+                    <Bar 
+                      dataKey="involuntaryRate" 
+                      name="Involuntary" 
+                      stackId="a"
+                      radius={[4, 4, 0, 0]} 
+                      fill="#A3BAEE"
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          textAnchor="middle" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value}%
+                        </text>
+                      )}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "120px" }}
+                      payload={[
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                      ]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          {/* Year-over-Year Gender Attrition Line Chart */}
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Year-over-Year Attrition by Gender</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full">
+            <ChartContainer config={{
+              'Male': { theme: { light: "#0067D9", dark: "#0067D9" } },
+              'Female': { theme: { light: "#FF6B8A", dark: "#FF6B8A" } },
+              'Nonbinary': { theme: { light: "#8B5CF6", dark: "#8B5CF6" } }
+            }}>
+              <div className="h-[400px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart 
+                    data={genderYearOverYearData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 30 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="year" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 25]}
+                      ticks={[0, 5, 10, 15, 20, 25]}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          const year = data.year;
+                          
+                          // Group data by gender
+                          const genderGroups = {};
+                          Object.keys(data).forEach(key => {
+                            if (key !== 'year') {
+                              const parts = key.split('-');
+                              const gender = parts[0];
+                              const type = parts.length > 1 ? parts[1] : 'total';
+                              
+                              if (!genderGroups[gender]) {
+                                genderGroups[gender] = { total: data[gender] };
+                              }
+                              
+                              if (type !== 'total') {
+                                genderGroups[gender][type] = data[key];
+                              }
+                            }
+                          });
+                          
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded max-w-xs">
+                              <p className="font-medium text-center border-b pb-1 mb-2">{year}</p>
+                              {Object.keys(genderGroups).map((gender, idx) => {
+                                // Find the matching gender color
+                                const genderColor = gender === 'Male' ? "#0067D9" :
+                                              gender === 'Female' ? "#FF6B8A" : "#8B5CF6";
+                                
+                                return (
+                                  <div key={idx} className="mb-2 border-b pb-1 last:border-b-0">
+                                    <p style={{color: genderColor}} className="font-bold">{gender}</p>
+                                    <p className="text-[#512888]">{`Total: ${genderGroups[gender].total}%`}</p>
+                                    {genderGroups[gender].voluntary && (
+                                      <p className="text-[#D0A3EE]">{`Voluntary: ${genderGroups[gender].voluntary}%`}</p>
+                                    )}
+                                    {genderGroups[gender].involuntary && (
+                                      <p className="text-[#A3BAEE]">{`Involuntary: ${genderGroups[gender].involuntary}%`}</p>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Male" 
+                      name="Male" 
+                      stroke="#0067D9" 
+                      strokeWidth={3}
+                      dot={{ r: 5, fill: "#0067D9" }}
+                      activeDot={{ r: 7 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Female" 
+                      name="Female" 
+                      stroke="#FF6B8A" 
+                      strokeWidth={3}
+                      dot={{ r: 5, fill: "#FF6B8A" }}
+                      activeDot={{ r: 7 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Nonbinary" 
+                      name="Nonbinary" 
+                      stroke="#8B5CF6" 
+                      strokeWidth={3}
+                      dot={{ r: 5, fill: "#8B5CF6" }}
+                      activeDot={{ r: 7 }}
+                    />
+                    <Legend />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months, by gender.</p>
             <p>* Involuntary terminations are company-initiated, while voluntary terminations are employee-initiated.</p>
           </div>
         </Card>
