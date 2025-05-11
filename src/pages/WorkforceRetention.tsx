@@ -180,14 +180,7 @@ const WorkforceRetention = () => {
   };
 
   const handleCompanyCardClick = () => {
-    setShowCompanyAttrition(!showCompanyAttrition);
-    if (!showCompanyAttrition) {
-      setShowManagerAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-    }
+    navigate("/reports/company-attrition");
   };
 
   const handlePerformanceCardClick = () => {
