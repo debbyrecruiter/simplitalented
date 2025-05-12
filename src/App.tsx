@@ -15,6 +15,7 @@ import WorkforceAnalytics from "./pages/WorkforceAnalytics";
 import WorkforceDemographics from "./pages/WorkforceDemographics";
 import WorkforceRetention from "./pages/WorkforceRetention";
 import CompensationAnalysis from "./pages/CompensationAnalysis";
+import MyLearningPage from "./pages/MyLearningPage";
 
 const App = () => {
   // Move QueryClient inside the component function
@@ -37,6 +38,7 @@ const App = () => {
               <Route path="/reports/workforce-demographics" element={<WorkforceDemographics />} />
               <Route path="/reports/workforce-retention" element={<WorkforceRetention />} />
               <Route path="/reports/compensation-analysis" element={<CompensationAnalysis />} />
+              <Route path="/me/learning" element={<MyLearningPage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

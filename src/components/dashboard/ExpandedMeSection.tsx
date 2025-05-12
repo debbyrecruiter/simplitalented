@@ -1,5 +1,6 @@
 
 import { MetricCard } from "@/components/MetricCard";
+import { useNavigate } from "react-router-dom";
 
 interface ExpandedMeSectionProps {
   onPast11CardClick: () => void;
@@ -14,6 +15,12 @@ export function ExpandedMeSection({
   onMySkillsClick,
   onToDoListClick // Added this prop
 }: ExpandedMeSectionProps) {
+  const navigate = useNavigate();
+
+  const handleMyLearningClick = () => {
+    navigate("/me/learning");
+  };
+
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -33,6 +40,7 @@ export function ExpandedMeSection({
           title="My Learning"
           value="2 Courses"
           description="In progress"
+          onClick={handleMyLearningClick}
         />
         <MetricCard
           title="My Reviews"

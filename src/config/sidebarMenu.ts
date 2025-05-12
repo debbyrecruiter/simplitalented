@@ -13,7 +13,8 @@ import {
   Star,
   ListCheck,
   FileBarChart,
-  DollarSign
+  DollarSign,
+  Activity
 } from "lucide-react";
 
 export const menuItems = [
@@ -33,6 +34,12 @@ export const menuItems = [
         title: "My To Do",
         icon: ListCheck,
         path: "/me/todo",
+        className: "text-[#17202A]"
+      },
+      {
+        title: "My Learning",
+        icon: Activity,
+        path: "/me/learning",
         className: "text-[#17202A]"
       }
     ]
