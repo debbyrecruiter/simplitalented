@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const CompanyAttrition = () => {
   const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
   
-  // Define color constants to match Attrition by Recruiter graph
+  // Define color constants
   const VIVID_PURPLE = "#8B5CF6";   // For total attrition
   const MAGENTA_PINK = "#D946EF";   // For voluntary attrition
   const BRIGHT_ORANGE = "#F97316";  // For involuntary attrition
@@ -27,7 +27,7 @@ const CompanyAttrition = () => {
       <h1 className="text-3xl font-bold mb-6 text-[#512888]">Company Attrition Analysis</h1>
       
       <div className="space-y-6 p-4">
-        {/* Overall attrition rate cards - updated border colors to match new scheme */}
+        {/* Overall attrition rate cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card className="p-6 text-center bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
             <h3 className="text-xl font-medium text-[#512888]">Overall Attrition Rate</h3>
@@ -60,8 +60,9 @@ const CompanyAttrition = () => {
                   'Select a department to see detailed data.'}
               </p>
               
+              {/* Removed graph placeholder */}
               <div className="bg-white rounded-lg p-8 text-center">
-                <p className="text-lg text-gray-500">Graph removed and will be rebuilt</p>
+                <p className="text-lg text-gray-500">Graphs have been completely removed</p>
               </div>
             </Card>
           </TabsContent>
@@ -75,8 +76,9 @@ const CompanyAttrition = () => {
                   : 'Showing overall trends. Select a department on the Breakdown tab to see specific trends.'}
               </p>
               
+              {/* Removed graph placeholder */}
               <div className="bg-white rounded-lg p-8 text-center">
-                <p className="text-lg text-gray-500">Graph removed and will be rebuilt</p>
+                <p className="text-lg text-gray-500">Graphs have been completely removed</p>
               </div>
             </Card>
           </TabsContent>
