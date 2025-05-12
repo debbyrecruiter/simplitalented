@@ -759,4 +759,359 @@ const WorkforceRetention = () => {
                               <p className="font-medium">{data.year}</p>
                               <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
                               <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="total" 
+                      stroke="#512888" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#512888" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="voluntary" 
+                      stroke="#D0A3EE" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#D0A3EE" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="involuntary" 
+                      stroke="#A3BAEE" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#A3BAEE" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Legend
+                      verticalAlign="bottom"
+                    />
+                  </ComposedChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months</p>
+            <p>* Industry averages based on benchmarking data from similar companies in our sector</p>
+            <p>* Voluntary terminations are employee-initiated, while involuntary terminations are company-initiated</p>
+          </div>
+        </Card>
+      )}
+
+      {/* Race Attrition Chart (shown conditionally) */}
+      {showRaceAttrition && (
+        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
+          <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Race</h3>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              voluntary: { color: "#D0A3EE" },
+              involuntary: { color: "#A3BAEE" }
+            }}>
+              <div className="h-[600px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={raceAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 200 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="race" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 40]}
+                      ticks={yAxisTicks}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.race}</p>
+                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="voluntaryRate" 
+                      name="Voluntary" 
+                      stackId="a"
+                      radius={[0, 0, 0, 0]} 
+                      fill="#D0A3EE"
+                    />
+                    <Bar 
+                      dataKey="involuntaryRate" 
+                      name="Involuntary" 
+                      stackId="a"
+                      radius={[4, 4, 0, 0]} 
+                      fill="#A3BAEE"
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          textAnchor="middle" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value}%
+                        </text>
+                      )}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "120px" }}
+                      payload={[
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                      ]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months</p>
+            <p>* Industry averages based on benchmarking data from similar companies in our sector</p>
+            <p>* Voluntary terminations are employee-initiated, while involuntary terminations are company-initiated</p>
+          </div>
+        </Card>
+      )}
+
+      {/* Gender Attrition Chart (shown conditionally) */}
+      {showGenderAttrition && (
+        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
+          <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Gender</h3>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              voluntary: { color: "#D0A3EE" },
+              involuntary: { color: "#A3BAEE" }
+            }}>
+              <div className="h-[600px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={genderAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 200 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="gender" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 40]}
+                      ticks={yAxisTicks}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.gender}</p>
+                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="voluntaryRate" 
+                      name="Voluntary" 
+                      stackId="a"
+                      radius={[0, 0, 0, 0]} 
+                      fill="#D0A3EE"
+                    />
+                    <Bar 
+                      dataKey="involuntaryRate" 
+                      name="Involuntary" 
+                      stackId="a"
+                      radius={[4, 4, 0, 0]} 
+                      fill="#A3BAEE"
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          textAnchor="middle" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value}%
+                        </text>
+                      )}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "120px" }}
+                      payload={[
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                      ]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months</p>
+            <p>* Industry averages based on benchmarking data from similar companies in our sector</p>
+            <p>* Voluntary terminations are employee-initiated, while involuntary terminations are company-initiated</p>
+          </div>
+        </Card>
+      )}
+
+      {/* Recruiter Attrition Chart (shown conditionally) */}
+      {showRecruiterAttrition && (
+        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
+          <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Recruiter</h3>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              voluntary: { color: "#D0A3EE" },
+              involuntary: { color: "#A3BAEE" }
+            }}>
+              <div className="h-[600px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={recruiterAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 200 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="recruiter" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 40]}
+                      ticks={yAxisTicks}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.recruiter}</p>
+                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="voluntaryRate" 
+                      name="Voluntary" 
+                      stackId="a"
+                      radius={[0, 0, 0, 0]} 
+                      fill="#D0A3EE"
+                    />
+                    <Bar 
+                      dataKey="involuntaryRate" 
+                      name="Involuntary" 
+                      stackId="a"
+                      radius={[4, 4, 0, 0]} 
+                      fill="#A3BAEE"
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          textAnchor="middle" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value}%
+                        </text>
+                      )}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "120px" }}
+                      payload={[
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                      ]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months</p>
+            <p>* Industry averages based on benchmarking data from similar companies in our sector</p>
+            <p>* Voluntary terminations are employee-initiated, while involuntary terminations are company-initiated</p>
+          </div>
+        </Card>
+      )}
+    </div>
+  );
+};
+
+export default WorkforceRetention;
