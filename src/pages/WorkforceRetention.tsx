@@ -170,16 +170,6 @@ const WorkforceRetention = () => {
     }
   };
 
-  const handleCompanyCardClick = () => {
-    setShowCompanyAttrition(!showCompanyAttrition);
-    if (!showCompanyAttrition) {
-      setShowManagerAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-    }
-  };
 
   const handlePerformanceCardClick = () => {
     setShowPerformanceAttrition(!showPerformanceAttrition);
@@ -237,17 +227,7 @@ const WorkforceRetention = () => {
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={handleCompanyCardClick}
-        >
-          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-            <div className="flex items-center justify-center mb-3">
-              <Users className="h-8 w-8 text-[#512888]" />
-            </div>
-            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Company Attrition</h3>
-          </div>
-        </Card>
+    
 
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
