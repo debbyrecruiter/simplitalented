@@ -6,8 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MessageSquare, ThumbsUp, BookOpen, Star } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const MyLearningPage = () => {
+  const { toast } = useToast();
+  
   // Mock data for upcoming training courses
   const upcomingCourses = [
     {
@@ -145,6 +148,10 @@ const MyLearningPage = () => {
 
   const handleScheduleCourse = (courseId: number) => {
     console.log(`Scheduling course with ID: ${courseId}`);
+    toast({
+      title: "Course Scheduled",
+      description: "The course has been added to your calendar.",
+    });
     // In a real application, this would open a scheduling dialog or API call
   };
 
