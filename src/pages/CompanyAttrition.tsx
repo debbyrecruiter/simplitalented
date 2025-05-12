@@ -1,13 +1,11 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { Card } from "@/components/ui/card";
-import { departmentAttritionData, departmentYearOverYearData } from "@/data/demographicsData";
+import { departmentAttritionData } from "@/data/demographicsData";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const CompanyAttrition = () => {
-  const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
-  
   // Define color constants
   const VIVID_PURPLE = "#8B5CF6";   // For total attrition
   const MAGENTA_PINK = "#D946EF";   // For voluntary attrition
@@ -54,15 +52,8 @@ const CompanyAttrition = () => {
           <TabsContent value="breakdown">
             <Card className="p-6 bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
               <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
-              <p className="mb-4 text-gray-600">
-                {selectedDepartment ? 
-                  `Showing detailed data for ${selectedDepartment}. Click the bar again to show all departments.` : 
-                  'Select a department to see detailed data.'}
-              </p>
-              
-              {/* Removed graph placeholder */}
               <div className="bg-white rounded-lg p-8 text-center">
-                <p className="text-lg text-gray-500">Graphs have been completely removed</p>
+                <p className="text-lg text-gray-500">No graphs displayed here</p>
               </div>
             </Card>
           </TabsContent>
@@ -70,15 +61,8 @@ const CompanyAttrition = () => {
           <TabsContent value="trends">
             <Card className="p-6 bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
               <h3 className="text-xl font-medium text-[#512888] mb-4">Department Attrition Trends (2020-2024)</h3>
-              <p className="mb-4 text-gray-600">
-                {selectedDepartment 
-                  ? `Showing historical trends for ${selectedDepartment}. Select a department on the Breakdown tab to change view.` 
-                  : 'Showing overall trends. Select a department on the Breakdown tab to see specific trends.'}
-              </p>
-              
-              {/* Removed graph placeholder */}
               <div className="bg-white rounded-lg p-8 text-center">
-                <p className="text-lg text-gray-500">Graphs have been completely removed</p>
+                <p className="text-lg text-gray-500">No graphs displayed here</p>
               </div>
             </Card>
           </TabsContent>
