@@ -3,7 +3,7 @@ import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BarChart2, DollarSign, LineChart } from "lucide-react";
+import { BarChart2, DollarSign, LineChart, Users } from "lucide-react";
 
 export const ReportsSection: React.FC = () => {
   return (
@@ -43,6 +43,19 @@ export const ReportsSection: React.FC = () => {
         </CardHeader>
         <CardContent>
           <Button variant="outline">Coming Soon</Button>
+        </CardContent>
+      </Card>
+      <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
+        <CardHeader>
+          <CardTitle className="flex items-center">
+            <Users className="mr-2 h-5 w-5 text-[#512888]" />
+            Company Attrition
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Button asChild>
+            <Link to="/reports/workforce-retention/company-attrition">View Reports</Link>
+          </Button>
         </CardContent>
       </Card>
     </div>

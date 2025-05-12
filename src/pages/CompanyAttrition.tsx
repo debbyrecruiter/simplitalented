@@ -19,7 +19,7 @@ const CompanyAttrition = () => {
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
-        <BackButton fallbackPath="/reports/workforce-retention" label="Back" />
+        <BackButton fallbackPath="/reports" label="Back" />
       </div>
       
       <h1 className="text-3xl font-bold mb-6 text-[#512888]">Company Attrition Analysis</h1>
@@ -53,7 +53,7 @@ const CompanyAttrition = () => {
             <Card className="p-6 bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
               <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
               <div className="bg-white rounded-lg p-8 text-center">
-                <p className="text-lg text-gray-500">No graphs displayed here</p>
+                <p className="text-lg text-gray-500">No graphs are displayed in this view</p>
               </div>
             </Card>
           </TabsContent>
@@ -62,7 +62,7 @@ const CompanyAttrition = () => {
             <Card className="p-6 bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
               <h3 className="text-xl font-medium text-[#512888] mb-4">Department Attrition Trends (2020-2024)</h3>
               <div className="bg-white rounded-lg p-8 text-center">
-                <p className="text-lg text-gray-500">No graphs displayed here</p>
+                <p className="text-lg text-gray-500">No graphs are displayed in this view</p>
               </div>
             </Card>
           </TabsContent>
