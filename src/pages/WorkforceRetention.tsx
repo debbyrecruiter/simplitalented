@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
@@ -751,4 +752,71 @@ const WorkforceRetention = () => {
                     <YAxis
                       axisLine={true}
                       tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 1
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 25]}
+                      ticks={[0, 5, 10, 15, 20, 25]}
+                    />
+                    <ChartTooltip />
+                    <Line 
+                      type="monotone" 
+                      dataKey="White" 
+                      stroke="#22C55E" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#22C55E" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Asian" 
+                      stroke="#3B82F6" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#3B82F6" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Black" 
+                      stroke="#8B5CF6" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#8B5CF6" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Hispanic/Latino" 
+                      stroke="#EC4899" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#EC4899" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Other" 
+                      stroke="#F59E0B" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#F59E0B" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Legend
+                      verticalAlign="bottom"
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates are calculated as the percentage of employees who left in each racial demographic over the past 5 years.</p>
+            <p>* Data is based on voluntary self-identification by employees.</p>
+          </div>
+        </Card>
+      )}
+      
+      {/* Add handlers for Gender and Recruiter attrition sections as needed */}
+    </div>
+  );
+};
+
+export default WorkforceRetention;
