@@ -26,10 +26,11 @@ const overallInvoluntaryRate = 6.8; // Company-wide involuntary attrition
 const CompanyAttrition = () => {
   const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
   
+  // Updated chart colors to match Attrition by Recruiter graph
   const chartConfig = {
-    attrition: { color: "#9b87f5" },
-    voluntary: { color: "#6E59A5" },
-    involuntary: { color: "#D6BCFA" }
+    attrition: { color: "#8B5CF6" }, // Updated to Vivid Purple
+    voluntary: { color: "#D946EF" }, // Updated to Magenta Pink
+    involuntary: { color: "#F97316" } // Updated to Bright Orange
   };
 
   // Create an array of tick values in increments of 2 up to 40
@@ -53,7 +54,8 @@ const CompanyAttrition = () => {
   });
 
   const departmentNames = departmentAttritionData.map(item => item.department);
-  const departmentColors = ["#9b87f5", "#7E69AB", "#6E59A5", "#1A1F2C", "#D6BCFA", "#8566FF"];
+  // Updated department colors to be more consistent with new color scheme
+  const departmentColors = ["#8B5CF6", "#D946EF", "#F97316", "#0EA5E9", "#10B981", "#F59E0B"];
 
   return (
     <div className="container p-4 mx-auto">
@@ -64,21 +66,21 @@ const CompanyAttrition = () => {
       <h1 className="text-3xl font-bold mb-6 text-[#512888]">Company Attrition Analysis</h1>
       
       <div className="space-y-6 p-4">
-        {/* Overall attrition rate cards */}
+        {/* Overall attrition rate cards - updated border colors to match new scheme */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="p-6 text-center bg-white border border-[#9b87f5] rounded-lg shadow-sm">
+          <Card className="p-6 text-center bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
             <h3 className="text-xl font-medium text-[#512888]">Overall Attrition Rate</h3>
-            <p className="text-4xl font-bold mt-2 text-[#512888]">{overallAttritionRate}%</p>
+            <p className="text-4xl font-bold mt-2 text-[#8B5CF6]">{overallAttritionRate}%</p>
           </Card>
           
-          <Card className="p-6 text-center bg-white border border-[#6E59A5] rounded-lg shadow-sm">
+          <Card className="p-6 text-center bg-white border border-[#D946EF] rounded-lg shadow-sm">
             <h3 className="text-xl font-medium text-[#512888]">Voluntary Attrition</h3>
-            <p className="text-4xl font-bold mt-2 text-[#6E59A5]">{overallVoluntaryRate}%</p>
+            <p className="text-4xl font-bold mt-2 text-[#D946EF]">{overallVoluntaryRate}%</p>
           </Card>
           
-          <Card className="p-6 text-center bg-white border border-[#D6BCFA] rounded-lg shadow-sm">
+          <Card className="p-6 text-center bg-white border border-[#F97316] rounded-lg shadow-sm">
             <h3 className="text-xl font-medium text-[#512888]">Involuntary Attrition</h3>
-            <p className="text-4xl font-bold mt-2 text-[#D6BCFA]">{overallInvoluntaryRate}%</p>
+            <p className="text-4xl font-bold mt-2 text-[#F97316]">{overallInvoluntaryRate}%</p>
           </Card>
         </div>
         
@@ -89,7 +91,7 @@ const CompanyAttrition = () => {
           </TabsList>
           
           <TabsContent value="breakdown">
-            <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
+            <Card className="p-6 bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
               <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
               <p className="mb-4 text-sm text-gray-600">
                 {selectedDepartment ? `Showing detailed data for ${selectedDepartment}. Click the bar again to show all departments.` : 'Click on a department bar to see its historical trend.'}
@@ -129,13 +131,13 @@ const CompanyAttrition = () => {
                             if (active && payload && payload.length) {
                               const data = payload[0].payload;
                               return (
-                                <div className="bg-white border border-[#9b87f5] shadow-md p-4 rounded">
+                                <div className="bg-white border border-[#8B5CF6] shadow-md p-4 rounded">
                                   <p className="font-medium text-lg">{data.department}</p>
                                   <p className="text-gray-600">Employees: {data.count}</p>
                                   <div className="mt-2 space-y-1">
-                                    <p className="text-[#9b87f5] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                                    <p className="text-[#6E59A5]">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                                    <p className="text-[#D6BCFA]">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                                    <p className="text-[#8B5CF6] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                                    <p className="text-[#D946EF]">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                                    <p className="text-[#F97316]">{`Involuntary: ${data.involuntaryRate}%`}</p>
                                   </div>
                                 </div>
                               );
@@ -147,7 +149,7 @@ const CompanyAttrition = () => {
                           dataKey="involuntaryRate" 
                           name="Involuntary" 
                           stackId="a" 
-                          fill="#D6BCFA" 
+                          fill="#F97316" 
                           onClick={handleBarClick}
                           cursor="pointer"
                         />
@@ -155,7 +157,7 @@ const CompanyAttrition = () => {
                           dataKey="voluntaryRate" 
                           name="Voluntary" 
                           stackId="a" 
-                          fill="#6E59A5"
+                          fill="#D946EF"
                           onClick={handleBarClick}
                           cursor="pointer"
                         />
@@ -174,7 +176,7 @@ const CompanyAttrition = () => {
           </TabsContent>
           
           <TabsContent value="trends">
-            <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
+            <Card className="p-6 bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
               <h3 className="text-xl font-medium text-[#512888] mb-4">Department Attrition Trends (2020-2024)</h3>
               <p className="mb-4 text-sm text-gray-600">
                 {selectedDepartment 
@@ -209,7 +211,7 @@ const CompanyAttrition = () => {
                           content={({ active, payload, label }) => {
                             if (active && payload && payload.length) {
                               return (
-                                <div className="bg-white border border-[#9b87f5] shadow-md p-4 rounded">
+                                <div className="bg-white border border-[#8B5CF6] shadow-md p-4 rounded">
                                   <p className="font-medium text-lg">{label}</p>
                                   <div className="mt-2 space-y-1">
                                     {payload.map((entry, index) => {
@@ -246,7 +248,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={selectedDepartment}
                               name={selectedDepartment}
-                              stroke="#9b87f5"
+                              stroke="#8B5CF6" // Updated to Vivid Purple
                               strokeWidth={3}
                               dot={{ r: 4 }}
                               activeDot={{ r: 6 }}
@@ -255,7 +257,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={`${selectedDepartment}-voluntary`}
                               name={`${selectedDepartment}-voluntary`}
-                              stroke="#6E59A5"
+                              stroke="#D946EF" // Updated to Magenta Pink
                               strokeWidth={2}
                               dot={{ r: 3 }}
                             />
@@ -263,7 +265,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={`${selectedDepartment}-involuntary`}
                               name={`${selectedDepartment}-involuntary`}
-                              stroke="#D6BCFA"
+                              stroke="#F97316" // Updated to Bright Orange
                               strokeWidth={2}
                               dot={{ r: 3 }}
                             />
@@ -316,3 +318,4 @@ const CompanyAttrition = () => {
 };
 
 export default CompanyAttrition;
+
