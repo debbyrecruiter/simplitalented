@@ -158,7 +158,7 @@ const MyLearningPage = () => {
       
       <h1 className="text-3xl font-bold mb-6 text-[#512888]">My Learning</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-18">
         {/* Left Sidebar with Upcoming Training and Recommendations */}
         <div className="space-y-6 md:col-span-1">
           {/* Upcoming Training Section */}
