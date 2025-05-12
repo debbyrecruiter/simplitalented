@@ -5,6 +5,7 @@ import { BackButton } from "@/components/ui/back-button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MessageSquare, ThumbsUp, BookOpen, Star } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 
 const MyLearningPage = () => {
   // Mock data for upcoming training courses
@@ -37,7 +38,6 @@ const MyLearningPage = () => {
     {
       id: 1,
       title: "Strategic Decision Making",
-      match: "98%",
       reason: "Based on your career path",
       platform: "Harvard Online",
       duration: "6 weeks"
@@ -45,7 +45,6 @@ const MyLearningPage = () => {
     {
       id: 2,
       title: "Advanced Data Visualization",
-      match: "95%",
       reason: "Based on your recent skills",
       platform: "Udemy",
       duration: "4 weeks"
@@ -53,7 +52,6 @@ const MyLearningPage = () => {
     {
       id: 3,
       title: "Effective Team Leadership",
-      match: "92%",
       reason: "Based on your role",
       platform: "LinkedIn Learning",
       duration: "3 weeks"
@@ -61,7 +59,6 @@ const MyLearningPage = () => {
     {
       id: 4,
       title: "Negotiation Mastery",
-      match: "87%",
       reason: "Based on peer learning paths",
       platform: "Coursera",
       duration: "5 weeks"
@@ -146,6 +143,11 @@ const MyLearningPage = () => {
       .substring(0, 2);
   };
 
+  const handleScheduleCourse = (courseId: number) => {
+    console.log(`Scheduling course with ID: ${courseId}`);
+    // In a real application, this would open a scheduling dialog or API call
+  };
+
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
@@ -198,19 +200,29 @@ const MyLearningPage = () => {
             <CardContent className="divide-y">
               {recommendedCourses.map((course) => (
                 <div key={course.id} className="py-3 first:pt-0 last:pb-0">
-                  <div className="flex justify-between items-start">
+                  <div>
                     <h3 className="font-medium text-[#512888]">{course.title}</h3>
-                    <Badge className="bg-[#512888]">{course.match}</Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground italic mt-1">{course.reason}</p>
-                  <div className="text-sm text-muted-foreground mt-2">
-                    <div className="flex items-center gap-1">
-                      <BookOpen className="h-3 w-3" />
-                      <span>{course.platform}</span>
+                    <p className="text-sm text-muted-foreground italic mt-1">{course.reason}</p>
+                    <div className="text-sm text-muted-foreground mt-2">
+                      <div className="flex items-center gap-1">
+                        <BookOpen className="h-3 w-3" />
+                        <span>{course.platform}</span>
+                      </div>
+                      <div className="flex items-center gap-1 mt-1">
+                        <Clock className="h-3 w-3" />
+                        <span>{course.duration}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1 mt-1">
-                      <Clock className="h-3 w-3" />
-                      <span>{course.duration}</span>
+                    <div className="mt-3">
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="bg-[#F1F0FB] text-[#512888] hover:bg-[#512888] hover:text-white border-[#9b87f5]"
+                        onClick={() => handleScheduleCourse(course.id)}
+                      >
+                        <Calendar className="mr-1 h-4 w-4" />
+                        Schedule It For Me
+                      </Button>
                     </div>
                   </div>
                 </div>
