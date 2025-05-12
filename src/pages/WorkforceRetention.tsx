@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
@@ -24,7 +25,9 @@ import {
   genderAttritionData,
   genderYearOverYearData,
   recruiterAttritionData,
-  recruiterYearOverYearData
+  recruiterYearOverYearData,
+  departmentAttritionData, // Added the missing import
+  departmentYearOverYearData // Also import the year-over-year data
 } from "@/data/demographicsData";
 
 // Mock data for manager attrition rates
