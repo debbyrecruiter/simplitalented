@@ -15,7 +15,7 @@ import WorkforceAnalytics from "./pages/WorkforceAnalytics";
 import WorkforceDemographics from "./pages/WorkforceDemographics";
 import WorkforceRetention from "./pages/WorkforceRetention";
 import CompensationAnalysis from "./pages/CompensationAnalysis";
-import CompanyAttrition from "./pages/CompanyAttrition";
+// Removed CompanyAttrition import
 
 const queryClient = new QueryClient();
 
@@ -35,7 +35,7 @@ const App = () => (
             <Route path="/reports/workforce-analytics" element={<WorkforceAnalytics />} />
             <Route path="/reports/workforce-demographics" element={<WorkforceDemographics />} />
             <Route path="/reports/workforce-retention" element={<WorkforceRetention />} />
-            <Route path="/reports/workforce-retention/company-attrition" element={<CompanyAttrition />} />
+            {/* Removed the Company Attrition route */}
             <Route path="/reports/compensation-analysis" element={<CompensationAnalysis />} />
           </Route>
           <Route path="*" element={<NotFound />} />

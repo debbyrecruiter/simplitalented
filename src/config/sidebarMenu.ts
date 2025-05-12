@@ -89,6 +89,7 @@ export const menuItems = [
         path: "/reports/compensation-analysis",
         className: "text-[#17202A]" 
       }
+      // Removed Company Attrition submenu item
     ]
   },
   { title: "Settings", icon: Settings, path: "/settings" }
