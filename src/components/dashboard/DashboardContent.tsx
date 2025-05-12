@@ -67,8 +67,6 @@ export const DashboardContent: React.FC = () => {
       
       {expandedSection === "my-skills" && <MySkillsSubmenu />}
       
-      {/* Removed the reviews section rendering */}
-      
       {expandedSection === "todo-list" && <ExpandedToDoSection />}
       
       {expandedSection === "reports" && <ReportsSection />}
