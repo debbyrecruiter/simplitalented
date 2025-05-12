@@ -99,15 +99,6 @@ const departments = [
   { name: "Finance", color: "#F59E0B" }
 ];
 
-// Company attrition data
-const departmentAttritionData = [
-  { department: "Engineering", attritionRate: 18 },
-  { department: "Sales", attritionRate: 22 },
-  { department: "Marketing", attritionRate: 15 },
-  { department: "HR", attritionRate: 10 },
-  { department: "Product", attritionRate: 20 },
-  { department: "Finance", attritionRate: 12 },
-];
 
 // Performance score attrition data - updated with both voluntary and involuntary data
 const performanceScoreData = [
