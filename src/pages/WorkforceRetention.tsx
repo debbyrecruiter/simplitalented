@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
-import { Users, Award, BarChart2, Briefcase, Badge } from "lucide-react";
+import { Users, Award, BarChart2, Briefcase, Badge, TrendingDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { 
   BarChart, 
@@ -26,8 +26,8 @@ import {
   genderYearOverYearData,
   recruiterAttritionData,
   recruiterYearOverYearData,
-  departmentAttritionData, // Added the missing import
-  departmentYearOverYearData // Also import the year-over-year data
+  departmentAttritionData,
+  departmentYearOverYearData
 } from "@/data/demographicsData";
 
 // Mock data for manager attrition rates
@@ -153,6 +153,16 @@ const yearOverYearData = [
 
 const overallAttritionRate = 16.5; // Company-wide attrition rate
 
+// New company-wide attrition data by department
+const companyAttritionData = [
+  { department: "Engineering", attritionRate: 18.7, industryAverage: 15.2, difference: 3.5 },
+  { department: "Sales", attritionRate: 22.3, industryAverage: 20.1, difference: 2.2 },
+  { department: "Marketing", attritionRate: 14.9, industryAverage: 16.8, difference: -1.9 },
+  { department: "HR", attritionRate: 11.2, industryAverage: 12.5, difference: -1.3 },
+  { department: "Product", attritionRate: 17.6, industryAverage: 14.7, difference: 2.9 },
+  { department: "Finance", attritionRate: 13.5, industryAverage: 11.9, difference: 1.6 },
+];
+
 const WorkforceRetention = () => {
   const navigate = useNavigate();
   const [showManagerAttrition, setShowManagerAttrition] = useState(false);
@@ -166,6 +176,17 @@ const WorkforceRetention = () => {
     setShowManagerAttrition(!showManagerAttrition);
     if (!showManagerAttrition) {
       setShowCompanyAttrition(false);
+      setShowPerformanceAttrition(false);
+      setShowRaceAttrition(false);
+      setShowGenderAttrition(false);
+      setShowRecruiterAttrition(false);
+    }
+  };
+
+  const handleCompanyCardClick = () => {
+    setShowCompanyAttrition(!showCompanyAttrition);
+    if (!showCompanyAttrition) {
+      setShowManagerAttrition(false);
       setShowPerformanceAttrition(false);
       setShowRaceAttrition(false);
       setShowGenderAttrition(false);
@@ -230,7 +251,17 @@ const WorkforceRetention = () => {
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-    
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
+          onClick={handleCompanyCardClick}
+        >
+          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
+            <div className="flex items-center justify-center mb-3">
+              <TrendingDown className="h-8 w-8 text-[#512888]" />
+            </div>
+            <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">Companywide Attrition</h3>
+          </div>
+        </Card>
 
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
@@ -293,6 +324,216 @@ const WorkforceRetention = () => {
         </Card>
       </div>
 
+      {/* Companywide Attrition Chart (shown conditionally) */}
+      {showCompanyAttrition && (
+        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
+          <h3 className="text-xl font-medium text-[#512888] mb-4">Companywide Attrition</h3>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <div className="mb-6 flex flex-col md:flex-row justify-between items-center">
+              <div className="text-center md:text-left mb-4 md:mb-0">
+                <p className="text-sm text-muted-foreground">Current Company-wide Attrition Rate</p>
+                <p className="text-4xl font-bold text-[#512888]">{overallAttritionRate}%</p>
+                <p className="text-sm text-muted-foreground mt-1">Last 12 months</p>
+              </div>
+              <div className="text-center md:text-right">
+                <p className="text-sm text-muted-foreground">Industry Average</p>
+                <p className="text-3xl font-semibold text-[#6E59A5]">14.8%</p>
+                <p className="text-sm text-red-500 font-medium mt-1">+1.7% above average</p>
+              </div>
+            </div>
+
+            <ChartContainer config={{
+              company: { color: "#8B5CF6" },
+              industry: { color: "#9b87f5" }
+            }}>
+              <div className="h-[500px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={companyAttritionData} 
+                    margin={{ top: 20, right: 30, left: 20, bottom: 80 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="department" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 16, fontWeight: 600 }}
+                      angle={0}
+                      textAnchor="middle"
+                      height={60}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 500 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 30]}
+                      ticks={[0, 5, 10, 15, 20, 25, 30]}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium text-[#512888] mb-2 text-lg">{data.department}</p>
+                              <p className="font-bold">Company: {data.attritionRate}%</p>
+                              <p className="font-medium">Industry: {data.industryAverage}%</p>
+                              <p className={`font-medium mt-1 text-sm ${data.difference > 0 ? 'text-red-500' : 'text-green-500'}`}>
+                                {data.difference > 0 ? `+${data.difference}%` : `${data.difference}%`} vs industry
+                              </p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="attritionRate" 
+                      name="Company" 
+                      fill="#8B5CF6"
+                      radius={[4, 4, 0, 0]}
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 10} 
+                          textAnchor="middle" 
+                          fontSize={14}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value}%
+                        </text>
+                      )}
+                    />
+                    <Legend
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "40px" }}
+                    />
+                    
+                    {/* Reference Line for Industry Average */}
+                    {companyAttritionData.map((entry, index) => (
+                      <Line
+                        key={`line-${index}`}
+                        type="monotone"
+                        dataKey="industryAverage"
+                        stroke="#6E59A5"
+                        strokeDasharray="5 5"
+                        dot={{
+                          r: 6,
+                          fill: "#6E59A5",
+                          stroke: "#6E59A5"
+                        }}
+                        activeDot={{ r: 8 }}
+                        name="Industry Average"
+                      />
+                    ))}
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          {/* Year-over-Year Attrition Line Chart */}
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Year-over-Year Attrition Trends</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full">
+            <ChartContainer config={{
+              total: { color: "#512888" },
+              voluntary: { color: "#D0A3EE" },
+              involuntary: { color: "#A3BAEE" }
+            }}>
+              <div className="h-[400px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart 
+                    data={yearOverYearData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 30 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="year" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 25]}
+                      ticks={[0, 5, 10, 15, 20, 25]}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.year}</p>
+                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="attritionRate" 
+                      name="Total Attrition" 
+                      stroke="#512888" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#512888" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="voluntaryRate" 
+                      name="Voluntary" 
+                      stroke="#D0A3EE" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#D0A3EE" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="involuntaryRate" 
+                      name="Involuntary" 
+                      stroke="#A3BAEE" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#A3BAEE" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Legend
+                      verticalAlign="bottom"
+                      payload={[
+                        { value: 'Total Attrition', type: 'line', color: '#512888' },
+                        { value: 'Voluntary Terminations', type: 'line', color: '#D0A3EE' },
+                        { value: 'Involuntary Terminations', type: 'line', color: '#A3BAEE' }
+                      ]}
+                    />
+                  </ComposedChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          <div className="text-sm text-muted-foreground mt-4">
+            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months</p>
+            <p>* Industry averages based on benchmarking data from similar companies in our sector</p>
+            <p>* Voluntary terminations are employee-initiated, while involuntary terminations are company-initiated</p>
+          </div>
+        </Card>
+      )}
 
       {/* Manager Attrition Chart (shown conditionally) */}
       {showManagerAttrition && (
