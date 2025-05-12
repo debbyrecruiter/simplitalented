@@ -26,11 +26,15 @@ const overallInvoluntaryRate = 6.8; // Company-wide involuntary attrition
 const CompanyAttrition = () => {
   const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
   
-  // Updated chart colors to match Attrition by Recruiter graph
+  // Define color constants to match Attrition by Recruiter graph
+  const VIVID_PURPLE = "#8B5CF6";   // For total attrition
+  const MAGENTA_PINK = "#D946EF";   // For voluntary attrition
+  const BRIGHT_ORANGE = "#F97316";  // For involuntary attrition
+  
   const chartConfig = {
-    attrition: { color: "#8B5CF6" }, // Vivid Purple
-    voluntary: { color: "#D946EF" }, // Magenta Pink
-    involuntary: { color: "#F97316" } // Bright Orange
+    attrition: { color: VIVID_PURPLE },
+    voluntary: { color: MAGENTA_PINK },
+    involuntary: { color: BRIGHT_ORANGE }
   };
 
   // Create an array of tick values in increments of 2 up to 40
@@ -55,7 +59,7 @@ const CompanyAttrition = () => {
 
   const departmentNames = departmentAttritionData.map(item => item.department);
   // Updated department colors to be more consistent with new color scheme
-  const departmentColors = ["#8B5CF6", "#D946EF", "#F97316", "#0EA5E9", "#10B981", "#F59E0B"];
+  const departmentColors = [VIVID_PURPLE, MAGENTA_PINK, BRIGHT_ORANGE, "#0EA5E9", "#10B981", "#F59E0B"];
 
   return (
     <div className="container p-4 mx-auto">
@@ -68,19 +72,19 @@ const CompanyAttrition = () => {
       <div className="space-y-6 p-4">
         {/* Overall attrition rate cards - updated border colors to match new scheme */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="p-6 text-center bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
+          <Card className={`p-6 text-center bg-white border border-[${VIVID_PURPLE}] rounded-lg shadow-sm`}>
             <h3 className="text-xl font-medium text-[#512888]">Overall Attrition Rate</h3>
-            <p className="text-4xl font-bold mt-2 text-[#8B5CF6]">{overallAttritionRate}%</p>
+            <p className={`text-4xl font-bold mt-2 text-[${VIVID_PURPLE}]`}>{overallAttritionRate}%</p>
           </Card>
           
-          <Card className="p-6 text-center bg-white border border-[#D946EF] rounded-lg shadow-sm">
+          <Card className={`p-6 text-center bg-white border border-[${MAGENTA_PINK}] rounded-lg shadow-sm`}>
             <h3 className="text-xl font-medium text-[#512888]">Voluntary Attrition</h3>
-            <p className="text-4xl font-bold mt-2 text-[#D946EF]">{overallVoluntaryRate}%</p>
+            <p className={`text-4xl font-bold mt-2 text-[${MAGENTA_PINK}]`}>{overallVoluntaryRate}%</p>
           </Card>
           
-          <Card className="p-6 text-center bg-white border border-[#F97316] rounded-lg shadow-sm">
+          <Card className={`p-6 text-center bg-white border border-[${BRIGHT_ORANGE}] rounded-lg shadow-sm`}>
             <h3 className="text-xl font-medium text-[#512888]">Involuntary Attrition</h3>
-            <p className="text-4xl font-bold mt-2 text-[#F97316]">{overallInvoluntaryRate}%</p>
+            <p className={`text-4xl font-bold mt-2 text-[${BRIGHT_ORANGE}]`}>{overallInvoluntaryRate}%</p>
           </Card>
         </div>
         
@@ -91,7 +95,7 @@ const CompanyAttrition = () => {
           </TabsList>
           
           <TabsContent value="breakdown">
-            <Card className="p-6 bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
+            <Card className={`p-6 bg-white border border-[${VIVID_PURPLE}] rounded-lg shadow-sm`}>
               <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Department</h3>
               <p className="mb-4 text-sm text-gray-600">
                 {selectedDepartment ? `Showing detailed data for ${selectedDepartment}. Click the bar again to show all departments.` : 'Click on a department bar to see its historical trend.'}
@@ -131,13 +135,13 @@ const CompanyAttrition = () => {
                             if (active && payload && payload.length) {
                               const data = payload[0].payload;
                               return (
-                                <div className="bg-white border border-[#8B5CF6] shadow-md p-4 rounded">
+                                <div className={`bg-white border border-[${VIVID_PURPLE}] shadow-md p-4 rounded`}>
                                   <p className="font-medium text-lg">{data.department}</p>
                                   <p className="text-gray-600">Employees: {data.count}</p>
                                   <div className="mt-2 space-y-1">
-                                    <p className="text-[#8B5CF6] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                                    <p className="text-[#D946EF]">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                                    <p className="text-[#F97316]">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                                    <p style={{color: VIVID_PURPLE}} className="font-bold">{`Total: ${data.attritionRate}%`}</p>
+                                    <p style={{color: MAGENTA_PINK}}>{`Voluntary: ${data.voluntaryRate}%`}</p>
+                                    <p style={{color: BRIGHT_ORANGE}}>{`Involuntary: ${data.involuntaryRate}%`}</p>
                                   </div>
                                 </div>
                               );
@@ -149,7 +153,7 @@ const CompanyAttrition = () => {
                           dataKey="involuntaryRate" 
                           name="Involuntary" 
                           stackId="a" 
-                          fill="#F97316" 
+                          fill={BRIGHT_ORANGE}
                           onClick={handleBarClick}
                           cursor="pointer"
                         />
@@ -157,7 +161,7 @@ const CompanyAttrition = () => {
                           dataKey="voluntaryRate" 
                           name="Voluntary" 
                           stackId="a" 
-                          fill="#D946EF"
+                          fill={MAGENTA_PINK}
                           onClick={handleBarClick}
                           cursor="pointer"
                         />
@@ -176,7 +180,7 @@ const CompanyAttrition = () => {
           </TabsContent>
           
           <TabsContent value="trends">
-            <Card className="p-6 bg-white border border-[#8B5CF6] rounded-lg shadow-sm">
+            <Card className={`p-6 bg-white border border-[${VIVID_PURPLE}] rounded-lg shadow-sm`}>
               <h3 className="text-xl font-medium text-[#512888] mb-4">Department Attrition Trends (2020-2024)</h3>
               <p className="mb-4 text-sm text-gray-600">
                 {selectedDepartment 
@@ -211,7 +215,7 @@ const CompanyAttrition = () => {
                           content={({ active, payload, label }) => {
                             if (active && payload && payload.length) {
                               return (
-                                <div className="bg-white border border-[#8B5CF6] shadow-md p-4 rounded">
+                                <div className={`bg-white border border-[${VIVID_PURPLE}] shadow-md p-4 rounded`}>
                                   <p className="font-medium text-lg">{label}</p>
                                   <div className="mt-2 space-y-1">
                                     {payload.map((entry, index) => {
@@ -248,7 +252,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={selectedDepartment}
                               name={selectedDepartment}
-                              stroke="#8B5CF6" // Vivid Purple
+                              stroke={VIVID_PURPLE}
                               strokeWidth={3}
                               dot={{ r: 4 }}
                               activeDot={{ r: 6 }}
@@ -257,7 +261,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={`${selectedDepartment}-voluntary`}
                               name={`${selectedDepartment}-voluntary`}
-                              stroke="#D946EF" // Magenta Pink
+                              stroke={MAGENTA_PINK}
                               strokeWidth={2}
                               dot={{ r: 3 }}
                             />
@@ -265,7 +269,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={`${selectedDepartment}-involuntary`}
                               name={`${selectedDepartment}-involuntary`}
-                              stroke="#F97316" // Bright Orange
+                              stroke={BRIGHT_ORANGE}
                               strokeWidth={2}
                               dot={{ r: 3 }}
                             />
