@@ -158,9 +158,9 @@ const MyLearningPage = () => {
       
       <h1 className="text-3xl font-bold mb-6 text-[#512888]">My Learning</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-18">
+      <div className="flex flex-col md:flex-row md:space-x-24">
         {/* Left Sidebar with Upcoming Training and Recommendations */}
-        <div className="space-y-6 md:col-span-1">
+        <div className="w-full md:w-1/3 space-y-6 mb-8 md:mb-0">
           {/* Upcoming Training Section */}
           <Card className="bg-white border border-[#9b87f5] rounded-lg shadow-sm">
             <CardHeader className="bg-[#F1F0FB] border-b border-[#9b87f5]">
@@ -229,7 +229,7 @@ const MyLearningPage = () => {
         </div>
 
         {/* Main Content - Completed Training Feed */}
-        <div className="space-y-6 md:col-span-2">
+        <div className="w-full md:w-2/3 space-y-6">
           <Card className="p-4 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
             <div className="flex justify-between items-center">
               <div>
