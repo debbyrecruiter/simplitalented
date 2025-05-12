@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
@@ -343,6 +342,193 @@ const WorkforceRetention = () => {
               </div>
             </div>
           </div>
+
+          {/* Department Attrition Chart */}
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Attrition by Department</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              voluntary: { color: "#D0A3EE" },
+              involuntary: { color: "#A3BAEE" }
+            }}>
+              <div className="h-[600px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={departmentAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 200 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="department" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 40]}
+                      ticks={yAxisTicks}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.department}</p>
+                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
+                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="voluntaryRate" 
+                      name="Voluntary" 
+                      stackId="a"
+                      radius={[0, 0, 0, 0]} 
+                      fill="#D0A3EE"
+                    />
+                    <Bar 
+                      dataKey="involuntaryRate" 
+                      name="Involuntary" 
+                      stackId="a"
+                      radius={[4, 4, 0, 0]} 
+                      fill="#A3BAEE"
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width / 2} 
+                          y={y - 5} 
+                          textAnchor="middle" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value}%
+                        </text>
+                      )}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "120px" }}
+                      payload={[
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                      ]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+          
+          {/* Year-over-Year Department Attrition Line Chart */}
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Year-over-Year Attrition by Department</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full">
+            <ChartContainer config={{
+              'Engineering': { theme: { light: "#8B5CF6", dark: "#8B5CF6" } },
+              'Sales': { theme: { light: "#EC4899", dark: "#EC4899" } },
+              'Marketing': { theme: { light: "#F97316", dark: "#F97316" } },
+              'HR': { theme: { light: "#0EA5E9", dark: "#0EA5E9" } },
+              'Product': { theme: { light: "#10B981", dark: "#10B981" } },
+              'Finance': { theme: { light: "#F59E0B", dark: "#F59E0B" } }
+            }}>
+              <div className="h-[400px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart 
+                    data={departmentYearOverYearData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 30 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="year" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 25]}
+                      ticks={[0, 5, 10, 15, 20, 25]}
+                    />
+                    <ChartTooltip />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Engineering" 
+                      stroke="#8B5CF6" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#8B5CF6" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Sales" 
+                      stroke="#EC4899" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#EC4899" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Marketing" 
+                      stroke="#F97316" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#F97316" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="HR" 
+                      stroke="#0EA5E9" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#0EA5E9" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Product" 
+                      stroke="#10B981" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#10B981" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="Finance" 
+                      stroke="#F59E0B" 
+                      strokeWidth={3}
+                      dot={{ r: 6, fill: "#F59E0B" }}
+                      activeDot={{ r: 8 }}
+                    />
+                    <Legend
+                      verticalAlign="bottom"
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
           
           <div className="text-sm text-muted-foreground mt-4">
             <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months</p>
@@ -573,250 +759,4 @@ const WorkforceRetention = () => {
                               <p className="font-medium">{data.year}</p>
                               <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
                               <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
-                            </div>
-                          );
-                        }
-                        return null;
-                      }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="attritionRate" 
-                      name="Total Attrition" 
-                      stroke="#512888" 
-                      strokeWidth={3}
-                      dot={{ r: 6, fill: "#512888" }}
-                      activeDot={{ r: 8 }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="voluntaryRate" 
-                      name="Voluntary" 
-                      stroke="#D0A3EE" 
-                      strokeWidth={3}
-                      dot={{ r: 6, fill: "#D0A3EE" }}
-                      activeDot={{ r: 8 }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="involuntaryRate" 
-                      name="Involuntary" 
-                      stroke="#A3BAEE" 
-                      strokeWidth={3}
-                      dot={{ r: 6, fill: "#A3BAEE" }}
-                      activeDot={{ r: 8 }}
-                    />
-                    <Legend
-                      verticalAlign="bottom"
-                      payload={[
-                        { value: 'Total Attrition', type: 'line', color: '#512888' },
-                        { value: 'Voluntary Terminations', type: 'line', color: '#D0A3EE' },
-                        { value: 'Involuntary Terminations', type: 'line', color: '#A3BAEE' }
-                      ]}
-                    />
-                  </ComposedChart>
-                </ResponsiveContainer>
-              </div>
-            </ChartContainer>
-          </div>
-          
-          <div className="text-sm text-muted-foreground mt-4">
-            <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months, by performance review score.</p>
-            <p>* Performance scores are on a 1-5 scale, with 1 being poor performance and 5 being excellent.</p>
-            <p>* Involuntary terminations are company-initiated, while voluntary terminations are employee-initiated.</p>
-          </div>
-        </Card>
-      )}
-
-      {/* Race Attrition Chart (shown conditionally) */}
-      {showRaceAttrition && (
-        <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
-          <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by Race</h3>
-          
-          <div className="bg-white rounded-lg w-full h-full mb-8">
-            <ChartContainer config={{
-              voluntary: { color: "#D0A3EE" },
-              involuntary: { color: "#A3BAEE" }
-            }}>
-              <div className="h-[600px] w-full bg-white">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart 
-                    data={raceAttritionData} 
-                    margin={{ top: 5, right: 30, left: 20, bottom: 200 }}
-                    className="bg-white"
-                  >
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis 
-                      dataKey="race" 
-                      axisLine={true}
-                      tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
-                      angle={-45}
-                      textAnchor="end"
-                      height={80}
-                      dy={20}
-                    />
-                    <YAxis
-                      axisLine={true}
-                      tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
-                      tickFormatter={(value) => `${value}%`}
-                      domain={[0, 40]}
-                      ticks={yAxisTicks}
-                    />
-                    <ChartTooltip
-                      content={({ active, payload }) => {
-                        if (active && payload && payload.length) {
-                          const data = payload[0].payload;
-                          return (
-                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
-                              <p className="font-medium">{data.race}</p>
-                              <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
-                              <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
-                            </div>
-                          );
-                        }
-                        return null;
-                      }}
-                    />
-                    <Bar 
-                      dataKey="voluntaryRate" 
-                      name="Voluntary" 
-                      stackId="a"
-                      radius={[0, 0, 0, 0]} 
-                      fill="#D0A3EE"
-                    />
-                    <Bar 
-                      dataKey="involuntaryRate" 
-                      name="Involuntary" 
-                      stackId="a"
-                      radius={[4, 4, 0, 0]} 
-                      fill="#A3BAEE"
-                      label={({ x, y, width, value }) => (
-                        <text 
-                          x={x + width / 2} 
-                          y={y - 5} 
-                          textAnchor="middle" 
-                          fontSize={12}
-                          fontWeight="bold"
-                          fill="#512888"
-                        >
-                          {value}%
-                        </text>
-                      )}
-                    />
-                    <Legend 
-                      verticalAlign="bottom"
-                      wrapperStyle={{ paddingTop: "120px" }}
-                      payload={[
-                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
-                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
-                      ]}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </ChartContainer>
-          </div>
-          
-          {/* Year-over-Year Race Attrition Line Chart */}
-          <div className="mb-4">
-            <h4 className="text-lg font-medium text-[#512888] mb-3">Year-over-Year Attrition by Race</h4>
-          </div>
-          
-          <div className="bg-white rounded-lg w-full h-full">
-            <ChartContainer config={{
-              'White': { theme: { light: "#22C55E", dark: "#22C55E" } },
-              'Asian': { theme: { light: "#3B82F6", dark: "#3B82F6" } },
-              'Black': { theme: { light: "#8B5CF6", dark: "#8B5CF6" } },
-              'Hispanic/Latino': { theme: { light: "#EC4899", dark: "#EC4899" } },
-              'Other': { theme: { light: "#F59E0B", dark: "#F59E0B" } }
-            }}>
-              <div className="h-[400px] w-full bg-white">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart 
-                    data={raceYearOverYearData} 
-                    margin={{ top: 5, right: 30, left: 20, bottom: 30 }}
-                    className="bg-white"
-                  >
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis 
-                      dataKey="year" 
-                      axisLine={true}
-                      tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
-                    />
-                    <YAxis
-                      axisLine={true}
-                      tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
-                      tickFormatter={(value) => `${value}%`}
-                      domain={[0, 25]}
-                      ticks={[0, 5, 10, 15, 20, 25]}
-                    />
-                    <ChartTooltip />
-                    <Line 
-                      type="monotone" 
-                      dataKey="White" 
-                      stroke="#22C55E" 
-                      strokeWidth={3}
-                      dot={{ r: 6, fill: "#22C55E" }}
-                      activeDot={{ r: 8 }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="Asian" 
-                      stroke="#3B82F6" 
-                      strokeWidth={3}
-                      dot={{ r: 6, fill: "#3B82F6" }}
-                      activeDot={{ r: 8 }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="Black" 
-                      stroke="#8B5CF6" 
-                      strokeWidth={3}
-                      dot={{ r: 6, fill: "#8B5CF6" }}
-                      activeDot={{ r: 8 }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="Hispanic/Latino" 
-                      stroke="#EC4899" 
-                      strokeWidth={3}
-                      dot={{ r: 6, fill: "#EC4899" }}
-                      activeDot={{ r: 8 }}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="Other" 
-                      stroke="#F59E0B" 
-                      strokeWidth={3}
-                      dot={{ r: 6, fill: "#F59E0B" }}
-                      activeDot={{ r: 8 }}
-                    />
-                    <Legend
-                      verticalAlign="bottom"
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </ChartContainer>
-          </div>
-          
-          <div className="text-sm text-muted-foreground mt-4">
-            <p>* Attrition rates are calculated as the percentage of employees who left in each racial demographic over the past 5 years.</p>
-            <p>* Data is based on voluntary self-identification by employees.</p>
-          </div>
-        </Card>
-      )}
-      
-      {/* Add handlers for Gender and Recruiter attrition sections as needed */}
-    </div>
-  );
-};
-
-export default WorkforceRetention;
+                              <p className="text-[#
