@@ -217,7 +217,7 @@ const MyLearningPage = () => {
                       <Button 
                         size="sm" 
                         variant="outline" 
-                        className="bg-[#F1F0FB] text-[#512888] hover:bg-[#512888] hover:text-white border-[#9b87f5]"
+                        className="bg-[#F1F0FB] text-[#2C52AB] hover:bg-[#2C52AB] hover:text-white border-[#2C52AB]"
                         onClick={() => handleScheduleCourse(course.id)}
                       >
                         <Calendar className="mr-1 h-4 w-4" />
