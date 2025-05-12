@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -15,24 +14,21 @@ const MyLearningPage = () => {
       title: "Advanced Project Management",
       date: "June 15, 2025",
       duration: "4 weeks",
-      platform: "Coursera",
-      priority: "High"
+      platform: "Coursera"
     },
     {
       id: 2,
       title: "AI for Business Leaders",
       date: "July 3, 2025",
       duration: "2 days",
-      platform: "Internal Training",
-      priority: "Medium"
+      platform: "Internal Training"
     },
     {
       id: 3,
       title: "Agile Leadership Workshop",
       date: "August 10, 2025",
       duration: "1 week",
-      platform: "LinkedIn Learning",
-      priority: "Low"
+      platform: "LinkedIn Learning"
     }
   ];
 
@@ -172,24 +168,19 @@ const MyLearningPage = () => {
             <CardContent className="divide-y">
               {upcomingCourses.map((course) => (
                 <div key={course.id} className="py-3 first:pt-0 last:pb-0">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-medium text-[#512888]">{course.title}</h3>
-                      <div className="text-sm text-muted-foreground mt-1">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          <span>{course.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1 mt-1">
-                          <Clock className="h-3 w-3" />
-                          <span>{course.duration}</span>
-                        </div>
-                        <div className="mt-1">{course.platform}</div>
+                  <div>
+                    <h3 className="font-medium text-[#512888]">{course.title}</h3>
+                    <div className="text-sm text-muted-foreground mt-1">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="h-3 w-3" />
+                        <span>{course.date}</span>
                       </div>
+                      <div className="flex items-center gap-1 mt-1">
+                        <Clock className="h-3 w-3" />
+                        <span>{course.duration}</span>
+                      </div>
+                      <div className="mt-1">{course.platform}</div>
                     </div>
-                    <Badge variant={course.priority === "High" ? "destructive" : course.priority === "Medium" ? "default" : "secondary"}>
-                      {course.priority}
-                    </Badge>
                   </div>
                 </div>
               ))}
