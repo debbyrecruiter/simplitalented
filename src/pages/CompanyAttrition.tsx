@@ -28,9 +28,9 @@ const CompanyAttrition = () => {
   
   // Updated chart colors to match Attrition by Recruiter graph
   const chartConfig = {
-    attrition: { color: "#8B5CF6" }, // Updated to Vivid Purple
-    voluntary: { color: "#D946EF" }, // Updated to Magenta Pink
-    involuntary: { color: "#F97316" } // Updated to Bright Orange
+    attrition: { color: "#8B5CF6" }, // Vivid Purple
+    voluntary: { color: "#D946EF" }, // Magenta Pink
+    involuntary: { color: "#F97316" } // Bright Orange
   };
 
   // Create an array of tick values in increments of 2 up to 40
@@ -248,7 +248,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={selectedDepartment}
                               name={selectedDepartment}
-                              stroke="#8B5CF6" // Updated to Vivid Purple
+                              stroke="#8B5CF6" // Vivid Purple
                               strokeWidth={3}
                               dot={{ r: 4 }}
                               activeDot={{ r: 6 }}
@@ -257,7 +257,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={`${selectedDepartment}-voluntary`}
                               name={`${selectedDepartment}-voluntary`}
-                              stroke="#D946EF" // Updated to Magenta Pink
+                              stroke="#D946EF" // Magenta Pink
                               strokeWidth={2}
                               dot={{ r: 3 }}
                             />
@@ -265,7 +265,7 @@ const CompanyAttrition = () => {
                               type="monotone"
                               dataKey={`${selectedDepartment}-involuntary`}
                               name={`${selectedDepartment}-involuntary`}
-                              stroke="#F97316" // Updated to Bright Orange
+                              stroke="#F97316" // Bright Orange
                               strokeWidth={2}
                               dot={{ r: 3 }}
                             />
@@ -318,4 +318,3 @@ const CompanyAttrition = () => {
 };
 
 export default CompanyAttrition;
-
