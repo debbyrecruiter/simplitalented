@@ -194,7 +194,7 @@ const performanceScoreData = [
     attritionRate: 38,
     voluntaryRate: 6,
     involuntaryRate: 32 
-  },
+  }
 ];
 
 // Year-over-year attrition data
@@ -203,7 +203,7 @@ const yearOverYearData = [
   { year: 2021, attritionRate: 17.8, voluntaryRate: 10.5, involuntaryRate: 7.3 },
   { year: 2022, attritionRate: 18.3, voluntaryRate: 10.9, involuntaryRate: 7.4 },
   { year: 2023, attritionRate: 17.2, voluntaryRate: 9.7, involuntaryRate: 7.5 },
-  { year: 2024, attritionRate: 16.5, voluntaryRate: 8.9, involuntaryRate: 7.6 },
+  { year: 2024, attritionRate: 16.5, voluntaryRate: 8.9, involuntaryRate: 7.6 }
 ];
 
 const overallAttritionRate = 16.5; // Company-wide attrition rate
@@ -215,8 +215,8 @@ const companyAttritionData = [
   { department: "Marketing", attritionRate: 14.9, industryAverage: 16.8, difference: -1.9 },
   { department: "HR", attritionRate: 11.2, industryAverage: 12.5, difference: -1.3 },
   { department: "Product", attritionRate: 17.6, industryAverage: 14.7, difference: 2.9 },
-  { department: "Finance", attritionRate: 13.5, industryAverage: 11.9, difference: 1.6 },
-};
+  { department: "Finance", attritionRate: 13.5, industryAverage: 11.9, difference: 1.6 }
+];
 
 const WorkforceRetention = () => {
   const navigate = useNavigate();
