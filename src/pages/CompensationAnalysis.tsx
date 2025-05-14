@@ -2,6 +2,7 @@
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 // Enhanced compensation data with job codes
 const compensationData = [
@@ -39,31 +40,47 @@ const enhancedCompensationData = compensationData.map(employee => {
 
 const CompensationAnalysis = () => {
   return (
-    <div className="flex-1 p-4 overflow-auto rounded-sm">
-      <div className="mb-4">
+    <div className="container p-4 mx-auto">
+      <div className="mb-6">
         <BackButton fallbackPath="/reports" label="Back" />
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
-        >
-          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-            <CardTitle className="font-small text-[#9320E7] text-center w-full whitespace-pre-line text-4xl mb-1">
-              Compensation Relative to Performance Analysis
-            </CardTitle>
-          </div>
-        </Card>
+      <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="relative">
+          <AspectRatio ratio={1}>
+            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center">
+              <CardHeader className="text-center pt-8">
+                <CardTitle className="font-small text-[#9320E7] text-center w-full whitespace-pre-line text-4xl mb-1">
+                  Compensation Relative to Performance Analysis
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex items-center justify-center flex-1">
+                <p className="text-muted-foreground text-center">
+                  Click to view analysis
+                </p>
+              </CardContent>
+            </Card>
+          </AspectRatio>
+        </div>
 
-        <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
-        >
-          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-            <CardTitle className="font-small text-[#9320E7] text-center w-full whitespace-pre-line text-4xl mb-1">
-              Performance Relative to Starting PIR Salary
-            </CardTitle>
-          </div>
-        </Card>
+        <div className="relative">
+          <AspectRatio ratio={1}>
+            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center">
+              <CardHeader className="text-center pt-8">
+                <CardTitle className="font-small text-[#9320E7] text-center w-full whitespace-pre-line text-4xl mb-1">
+                  Performance Relative to Starting PIR Salary
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex items-center justify-center flex-1">
+                <p className="text-muted-foreground text-center">
+                  Click to view analysis
+                </p>
+              </CardContent>
+            </Card>
+          </AspectRatio>
+        </div>
       </div>
     </div>
   );
