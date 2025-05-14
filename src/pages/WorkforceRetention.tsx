@@ -216,7 +216,7 @@ const companyAttritionData = [
   { department: "HR", attritionRate: 11.2, industryAverage: 12.5, difference: -1.3 },
   { department: "Product", attritionRate: 17.6, industryAverage: 14.7, difference: 2.9 },
   { department: "Finance", attritionRate: 13.5, industryAverage: 11.9, difference: 1.6 },
-];
+};
 
 const WorkforceRetention = () => {
   const navigate = useNavigate();
@@ -405,8 +405,8 @@ const WorkforceRetention = () => {
           
           <div className="bg-white rounded-lg w-full h-full mb-8">
             <ChartContainer config={{
-              voluntary: { color: "#D0A3EE" },
-              involuntary: { color: "#A3BAEE" }
+              voluntary: { color: "#9b87f5" },
+              involuntary: { color: "#6E59A5" }
             }}>
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -442,8 +442,8 @@ const WorkforceRetention = () => {
                             <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
                               <p className="font-medium">{data.department}</p>
                               <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-[#9b87f5] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#6E59A5] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
                               <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
                             </div>
                           );
@@ -456,14 +456,14 @@ const WorkforceRetention = () => {
                       name="Voluntary" 
                       stackId="a"
                       radius={[0, 0, 0, 0]} 
-                      fill="#D0A3EE"
+                      fill="#9b87f5"
                     />
                     <Bar 
                       dataKey="involuntaryRate" 
                       name="Involuntary" 
                       stackId="a"
                       radius={[4, 4, 0, 0]} 
-                      fill="#A3BAEE"
+                      fill="#6E59A5"
                       label={({ x, y, width, value }) => (
                         <text 
                           x={x + width / 2} 
@@ -481,8 +481,8 @@ const WorkforceRetention = () => {
                       verticalAlign="bottom"
                       wrapperStyle={{ paddingTop: "120px" }}
                       payload={[
-                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
-                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#9b87f5' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#6E59A5' }
                       ]}
                     />
                   </BarChart>
@@ -499,11 +499,11 @@ const WorkforceRetention = () => {
           <div className="bg-white rounded-lg w-full h-full">
             <ChartContainer config={{
               'Engineering': { theme: { light: "#8B5CF6", dark: "#8B5CF6" } },
-              'Sales': { theme: { light: "#EC4899", dark: "#EC4899" } },
-              'Marketing': { theme: { light: "#F97316", dark: "#F97316" } },
-              'HR': { theme: { light: "#0EA5E9", dark: "#0EA5E9" } },
-              'Product': { theme: { light: "#10B981", dark: "#10B981" } },
-              'Finance': { theme: { light: "#F59E0B", dark: "#F59E0B" } }
+              'Sales': { theme: { light: "#9b87f5", dark: "#9b87f5" } },
+              'Marketing': { theme: { light: "#7E69AB", dark: "#7E69AB" } },
+              'HR': { theme: { light: "#6E59A5", dark: "#6E59A5" } },
+              'Product': { theme: { light: "#D6BCFA", dark: "#D6BCFA" } },
+              'Finance': { theme: { light: "#E5DEFF", dark: "#E5DEFF" } }
             }}>
               <div className="h-[400px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -531,49 +531,49 @@ const WorkforceRetention = () => {
                     <Line 
                       type="monotone" 
                       dataKey="Engineering" 
-                      stroke="#8B5CF6" 
+                      stroke="#9b87f5" 
                       strokeWidth={3}
-                      dot={{ r: 6, fill: "#8B5CF6" }}
+                      dot={{ r: 6, fill: "#9b87f5" }}
                       activeDot={{ r: 8 }}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="Sales" 
-                      stroke="#EC4899" 
+                      stroke="#9b87f5" 
                       strokeWidth={3}
-                      dot={{ r: 6, fill: "#EC4899" }}
+                      dot={{ r: 6, fill: "#9b87f5" }}
                       activeDot={{ r: 8 }}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="Marketing" 
-                      stroke="#F97316" 
+                      stroke="#9b87f5" 
                       strokeWidth={3}
-                      dot={{ r: 6, fill: "#F97316" }}
+                      dot={{ r: 6, fill: "#9b87f5" }}
                       activeDot={{ r: 8 }}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="HR" 
-                      stroke="#0EA5E9" 
+                      stroke="#9b87f5" 
                       strokeWidth={3}
-                      dot={{ r: 6, fill: "#0EA5E9" }}
+                      dot={{ r: 6, fill: "#9b87f5" }}
                       activeDot={{ r: 8 }}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="Product" 
-                      stroke="#10B981" 
+                      stroke="#9b87f5" 
                       strokeWidth={3}
-                      dot={{ r: 6, fill: "#10B981" }}
+                      dot={{ r: 6, fill: "#9b87f5" }}
                       activeDot={{ r: 8 }}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="Finance" 
-                      stroke="#F59E0B" 
+                      stroke="#9b87f5" 
                       strokeWidth={3}
-                      dot={{ r: 6, fill: "#F59E0B" }}
+                      dot={{ r: 6, fill: "#9b87f5" }}
                       activeDot={{ r: 8 }}
                     />
                     <Legend
@@ -600,12 +600,12 @@ const WorkforceRetention = () => {
           
           <div className="bg-white rounded-lg w-full h-full">
             <ChartContainer config={{
-              engineering: { color: "#8B5CF6" },
-              sales: { color: "#EC4899" },
-              marketing: { color: "#F97316" },
-              hr: { color: "#0EA5E9" },
-              product: { color: "#10B981" },
-              finance: { color: "#F59E0B" }
+              engineering: { color: "#9b87f5" },
+              sales: { color: "#9b87f5" },
+              marketing: { color: "#9b87f5" },
+              hr: { color: "#9b87f5" },
+              product: { color: "#9b87f5" },
+              finance: { color: "#9b87f5" }
             }}>
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -669,7 +669,7 @@ const WorkforceRetention = () => {
                     />
                     <Bar 
                       dataKey="attrition" 
-                      fill="#8B5CF6" 
+                      fill="#9b87f5" 
                       radius={[0, 4, 4, 0]}
                       label={({ x, y, width, value }) => {
                         if (!value) return null;
@@ -693,7 +693,7 @@ const WorkforceRetention = () => {
                         // Find the department color
                         const dept = managersByDepartmentData.find(d => d.department === entry.parent);
                         const deptIndex = departments.findIndex(d => d.name === entry.parent);
-                        const color = departments[deptIndex]?.color || "#8B5CF6";
+                        const color = "#9b87f5"; // Changed all colors to purple
                         
                         return <Cell key={`cell-${index}`} fill={color} />;
                       })}
@@ -718,8 +718,8 @@ const WorkforceRetention = () => {
           
           <div className="bg-white rounded-lg w-full h-full mb-8">
             <ChartContainer config={{
-              voluntary: { color: "#D0A3EE" },
-              involuntary: { color: "#A3BAEE" }
+              voluntary: { color: "#9b87f5" },
+              involuntary: { color: "#6E59A5" }
             }}>
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -745,7 +745,7 @@ const WorkforceRetention = () => {
                       tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
                       tickFormatter={(value) => `${value}%`}
                       domain={[0, 40]}
-                      ticks={yAxisTicks}
+                      ticks={xAxisTicks}
                     />
                     <ChartTooltip
                       content={({ active, payload }) => {
@@ -755,8 +755,8 @@ const WorkforceRetention = () => {
                             <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
                               <p className="font-medium">{data.score}</p>
                               <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-[#9b87f5] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#6E59A5] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
                               <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
                             </div>
                           );
@@ -769,14 +769,14 @@ const WorkforceRetention = () => {
                       name="Voluntary" 
                       stackId="a"
                       radius={[0, 0, 0, 0]} 
-                      fill="#D0A3EE"
+                      fill="#9b87f5"
                     />
                     <Bar 
                       dataKey="involuntaryRate" 
                       name="Involuntary" 
                       stackId="a"
                       radius={[4, 4, 0, 0]} 
-                      fill="#A3BAEE"
+                      fill="#6E59A5"
                       label={({ x, y, width, value }) => (
                         <text 
                           x={x + width / 2} 
@@ -794,8 +794,8 @@ const WorkforceRetention = () => {
                       verticalAlign="bottom"
                       wrapperStyle={{ paddingTop: "120px" }}
                       payload={[
-                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
-                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#9b87f5' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#6E59A5' }
                       ]}
                     />
                   </BarChart>
@@ -812,8 +812,8 @@ const WorkforceRetention = () => {
           <div className="bg-white rounded-lg w-full h-full">
             <ChartContainer config={{
               total: { color: "#512888" },
-              voluntary: { color: "#D0A3EE" },
-              involuntary: { color: "#A3BAEE" }
+              voluntary: { color: "#9b87f5" },
+              involuntary: { color: "#6E59A5" }
             }}>
               <div className="h-[400px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -845,8 +845,8 @@ const WorkforceRetention = () => {
                             <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
                               <p className="font-medium">{data.year}</p>
                               <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-[#9b87f5] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#6E59A5] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
                               <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
                             </div>
                           );
@@ -865,17 +865,17 @@ const WorkforceRetention = () => {
                     <Line 
                       type="monotone" 
                       dataKey="voluntary" 
-                      stroke="#D0A3EE" 
+                      stroke="#9b87f5" 
                       strokeWidth={3}
-                      dot={{ r: 6, fill: "#D0A3EE" }}
+                      dot={{ r: 6, fill: "#9b87f5" }}
                       activeDot={{ r: 8 }}
                     />
                     <Line 
                       type="monotone" 
                       dataKey="involuntary" 
-                      stroke="#A3BAEE" 
+                      stroke="#6E59A5" 
                       strokeWidth={3}
-                      dot={{ r: 6, fill: "#A3BAEE" }}
+                      dot={{ r: 6, fill: "#6E59A5" }}
                       activeDot={{ r: 8 }}
                     />
                     <Legend
@@ -902,8 +902,8 @@ const WorkforceRetention = () => {
           
           <div className="bg-white rounded-lg w-full h-full mb-8">
             <ChartContainer config={{
-              voluntary: { color: "#D0A3EE" },
-              involuntary: { color: "#A3BAEE" }
+              voluntary: { color: "#9b87f5" },
+              involuntary: { color: "#6E59A5" }
             }}>
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -929,7 +929,7 @@ const WorkforceRetention = () => {
                       tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
                       tickFormatter={(value) => `${value}%`}
                       domain={[0, 40]}
-                      ticks={yAxisTicks}
+                      ticks={xAxisTicks}
                     />
                     <ChartTooltip
                       content={({ active, payload }) => {
@@ -939,8 +939,8 @@ const WorkforceRetention = () => {
                             <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
                               <p className="font-medium">{data.race}</p>
                               <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-[#9b87f5] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#6E59A5] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
                               <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
                             </div>
                           );
@@ -953,14 +953,14 @@ const WorkforceRetention = () => {
                       name="Voluntary" 
                       stackId="a"
                       radius={[0, 0, 0, 0]} 
-                      fill="#D0A3EE"
+                      fill="#9b87f5"
                     />
                     <Bar 
                       dataKey="involuntaryRate" 
                       name="Involuntary" 
                       stackId="a"
                       radius={[4, 4, 0, 0]} 
-                      fill="#A3BAEE"
+                      fill="#6E59A5"
                       label={({ x, y, width, value }) => (
                         <text 
                           x={x + width / 2} 
@@ -978,8 +978,8 @@ const WorkforceRetention = () => {
                       verticalAlign="bottom"
                       wrapperStyle={{ paddingTop: "120px" }}
                       payload={[
-                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
-                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#9b87f5' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#6E59A5' }
                       ]}
                     />
                   </BarChart>
@@ -1003,8 +1003,8 @@ const WorkforceRetention = () => {
           
           <div className="bg-white rounded-lg w-full h-full mb-8">
             <ChartContainer config={{
-              voluntary: { color: "#D0A3EE" },
-              involuntary: { color: "#A3BAEE" }
+              voluntary: { color: "#9b87f5" },
+              involuntary: { color: "#6E59A5" }
             }}>
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -1030,7 +1030,7 @@ const WorkforceRetention = () => {
                       tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
                       tickFormatter={(value) => `${value}%`}
                       domain={[0, 40]}
-                      ticks={yAxisTicks}
+                      ticks={xAxisTicks}
                     />
                     <ChartTooltip
                       content={({ active, payload }) => {
@@ -1040,8 +1040,8 @@ const WorkforceRetention = () => {
                             <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
                               <p className="font-medium">{data.gender}</p>
                               <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-[#9b87f5] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#6E59A5] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
                               <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
                             </div>
                           );
@@ -1054,14 +1054,14 @@ const WorkforceRetention = () => {
                       name="Voluntary" 
                       stackId="a"
                       radius={[0, 0, 0, 0]} 
-                      fill="#D0A3EE"
+                      fill="#9b87f5"
                     />
                     <Bar 
                       dataKey="involuntaryRate" 
                       name="Involuntary" 
                       stackId="a"
                       radius={[4, 4, 0, 0]} 
-                      fill="#A3BAEE"
+                      fill="#6E59A5"
                       label={({ x, y, width, value }) => (
                         <text 
                           x={x + width / 2} 
@@ -1079,8 +1079,8 @@ const WorkforceRetention = () => {
                       verticalAlign="bottom"
                       wrapperStyle={{ paddingTop: "120px" }}
                       payload={[
-                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
-                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#9b87f5' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#6E59A5' }
                       ]}
                     />
                   </BarChart>
@@ -1104,8 +1104,8 @@ const WorkforceRetention = () => {
           
           <div className="bg-white rounded-lg w-full h-full mb-8">
             <ChartContainer config={{
-              voluntary: { color: "#D0A3EE" },
-              involuntary: { color: "#A3BAEE" }
+              voluntary: { color: "#9b87f5" },
+              involuntary: { color: "#6E59A5" }
             }}>
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
@@ -1131,7 +1131,7 @@ const WorkforceRetention = () => {
                       tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
                       tickFormatter={(value) => `${value}%`}
                       domain={[0, 40]}
-                      ticks={yAxisTicks}
+                      ticks={xAxisTicks}
                     />
                     <ChartTooltip
                       content={({ active, payload }) => {
@@ -1141,8 +1141,8 @@ const WorkforceRetention = () => {
                             <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
                               <p className="font-medium">{data.recruiter}</p>
                               <p className="text-[#512888] font-bold">{`Total: ${data.attritionRate}%`}</p>
-                              <p className="text-[#D0A3EE] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
-                              <p className="text-[#A3BAEE] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
+                              <p className="text-[#9b87f5] font-bold">{`Voluntary: ${data.voluntaryRate}%`}</p>
+                              <p className="text-[#6E59A5] font-bold">{`Involuntary: ${data.involuntaryRate}%`}</p>
                               <p className="text-sm text-muted-foreground">{`${data.count} employees`}</p>
                             </div>
                           );
@@ -1155,14 +1155,14 @@ const WorkforceRetention = () => {
                       name="Voluntary" 
                       stackId="a"
                       radius={[0, 0, 0, 0]} 
-                      fill="#D0A3EE"
+                      fill="#9b87f5"
                     />
                     <Bar 
                       dataKey="involuntaryRate" 
                       name="Involuntary" 
                       stackId="a"
                       radius={[4, 4, 0, 0]} 
-                      fill="#A3BAEE"
+                      fill="#6E59A5"
                       label={({ x, y, width, value }) => (
                         <text 
                           x={x + width / 2} 
@@ -1180,8 +1180,8 @@ const WorkforceRetention = () => {
                       verticalAlign="bottom"
                       wrapperStyle={{ paddingTop: "120px" }}
                       payload={[
-                        { value: 'Voluntary Terminations', type: 'rect', color: '#D0A3EE' },
-                        { value: 'Involuntary Terminations', type: 'rect', color: '#A3BAEE' }
+                        { value: 'Voluntary Terminations', type: 'rect', color: '#9b87f5' },
+                        { value: 'Involuntary Terminations', type: 'rect', color: '#6E59A5' }
                       ]}
                     />
                   </BarChart>
