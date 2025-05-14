@@ -29,7 +29,77 @@ import {
   departmentYearOverYearData
 } from "@/data/demographicsData";
 
-// Mock data for manager attrition rates
+// Reorganized data structure to group managers by departments
+const managersByDepartmentData = [
+  {
+    department: "Engineering",
+    managers: [
+      { name: "Sarah Johnson", attrition: 15 },
+      { name: "Michael Chen", attrition: 20 },
+      { name: "David Kim", attrition: 10 }
+    ]
+  },
+  {
+    department: "Sales",
+    managers: [
+      { name: "Michael Chen", attrition: 22 },
+      { name: "Jennifer Wong", attrition: 27 }
+    ]
+  },
+  {
+    department: "Marketing",
+    managers: [
+      { name: "Priya Patel", attrition: 18 },
+      { name: "Jennifer Wong", attrition: 12 }
+    ]
+  },
+  {
+    department: "HR",
+    managers: [
+      { name: "Priya Patel", attrition: 14 }
+    ]
+  },
+  {
+    department: "Product",
+    managers: [
+      { name: "Sarah Johnson", attrition: 12 },
+      { name: "David Kim", attrition: 19 }
+    ]
+  },
+  {
+    department: "Finance",
+    managers: [
+      { name: "David Kim", attrition: 11 }
+    ]
+  }
+];
+
+// Transform data for the horizontal bar chart
+const prepareManagerDepartmentData = () => {
+  const result = [];
+  
+  managersByDepartmentData.forEach(dept => {
+    // Add the department as a category
+    result.push({
+      name: dept.department,
+      isGroup: true,
+      attrition: null
+    });
+    
+    // Add managers under their department
+    dept.managers.forEach(manager => {
+      result.push({
+        name: manager.name,
+        parent: dept.department,
+        attrition: manager.attrition
+      });
+    });
+  });
+  
+  return result;
+};
+
+// Mock data for manager attrition rates (kept for backward compatibility)
 const managerAttritionData = [
   { 
     manager: "Sarah Johnson", 
@@ -78,20 +148,7 @@ const managerAttritionData = [
   }
 ];
 
-// Transform data for recharts
-const transformedData = managerAttritionData.map(item => {
-  return {
-    manager: item.manager,
-    Engineering: item.engineering || null,
-    Sales: item.sales || null,
-    Marketing: item.marketing || null,
-    HR: item.hr || null,
-    Product: item.product || null,
-    Finance: item.finance || null
-  };
-});
-
-// Departments and their colors
+// Departments and their colors (kept for backward compatibility)
 const departments = [
   { name: "Engineering", color: "#8B5CF6" },
   { name: "Sales", color: "#EC4899" },
@@ -100,7 +157,6 @@ const departments = [
   { name: "Product", color: "#10B981" },
   { name: "Finance", color: "#F59E0B" }
 ];
-
 
 // Performance score attrition data - updated with both voluntary and involuntary data
 const performanceScoreData = [
@@ -193,7 +249,6 @@ const WorkforceRetention = () => {
     }
   };
 
-
   const handlePerformanceCardClick = () => {
     setShowPerformanceAttrition(!showPerformanceAttrition);
     if (!showPerformanceAttrition) {
@@ -238,8 +293,8 @@ const WorkforceRetention = () => {
     }
   };
 
-  // Create an array of tick values in increments of 2 up to 40
-  const yAxisTicks = Array.from({ length: 21 }, (_, index) => index * 2);
+  // Create an array of tick values in increments of 5 up to 40 for X axis
+  const xAxisTicks = Array.from({ length: 9 }, (_, index) => index * 5);
 
   return (
     <div className="container p-4 mx-auto">
@@ -377,7 +432,7 @@ const WorkforceRetention = () => {
                       tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
                       tickFormatter={(value) => `${value}%`}
                       domain={[0, 40]}
-                      ticks={yAxisTicks}
+                      ticks={Array.from({ length: 21 }, (_, index) => index * 2)}
                     />
                     <ChartTooltip
                       content={({ active, payload }) => {
@@ -555,62 +610,94 @@ const WorkforceRetention = () => {
               <div className="h-[600px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart 
-                    data={transformedData} 
-                    margin={{ top: 5, right: 30, left: 20, bottom: 100 }}
+                    data={prepareManagerDepartmentData()} 
+                    layout="vertical"
+                    margin={{ top: 5, right: 30, left: 150, bottom: 20 }}
                     className="bg-white"
                   >
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis 
-                      dataKey="manager" 
+                    <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+                    <YAxis 
+                      dataKey="name" 
+                      type="category"
                       axisLine={true}
                       tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
-                      angle={-45}
-                      textAnchor="end"
-                      height={80}
-                      dy={20}
+                      tick={props => {
+                        const { x, y, payload } = props;
+                        const item = prepareManagerDepartmentData().find(d => d.name === payload.value);
+                        
+                        return (
+                          <text 
+                            x={x} 
+                            y={y} 
+                            dy={4} 
+                            textAnchor="end" 
+                            fill={item?.isGroup ? '#512888' : '#666'} 
+                            fontWeight={item?.isGroup ? 700 : 400}
+                            fontSize={item?.isGroup ? 16 : 14}
+                          >
+                            {item?.isGroup ? payload.value : `  ${payload.value}`}
+                          </text>
+                        );
+                      }}
+                      width={140}
                     />
-                    <YAxis
+                    <XAxis
+                      type="number"
                       axisLine={true}
                       tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 18, fontWeight: 700 }}
+                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 700 }}
                       tickFormatter={(value) => `${value}%`}
                       domain={[0, 40]}
-                      ticks={Array.from({ length: 21 }, (_, index) => index * 2)}
+                      ticks={xAxisTicks}
                     />
                     <ChartTooltip
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
-                          const data = payload.filter(p => p.value !== null);
-                          if (data.length === 0) return null;
+                          const data = payload[0].payload;
+                          if (!data.attrition) return null;
                           
                           return (
                             <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
-                              <p className="font-medium text-[#512888] mb-1">{data[0].payload.manager}</p>
-                              {data.map((entry, index) => (
-                                <p key={`item-${index}`} style={{ color: entry.color }} className="font-bold">
-                                  {entry.name}: {entry.value}%
-                                </p>
-                              ))}
+                              <p className="font-medium">{data.name}</p>
+                              <p className="font-medium text-[#512888]">{data.parent}</p>
+                              <p className="font-bold text-[#512888]">{`Attrition: ${data.attrition}%`}</p>
                             </div>
                           );
                         }
                         return null;
                       }}
                     />
-                    {departments.map((dept) => (
-                      <Bar 
-                        key={dept.name} 
-                        dataKey={dept.name} 
-                        stackId="a" 
-                        fill={dept.color} 
-                        radius={[4, 4, 0, 0]}
-                      />
-                    ))}
-                    <Legend 
-                      verticalAlign="bottom"
-                      wrapperStyle={{ paddingTop: "20px" }}
-                    />
+                    <Bar 
+                      dataKey="attrition" 
+                      fill="#8B5CF6" 
+                      radius={[0, 4, 4, 0]}
+                      label={({ x, y, width, value }) => {
+                        if (!value) return null;
+                        return (
+                          <text 
+                            x={x + width + 5} 
+                            y={y + 4} 
+                            textAnchor="start" 
+                            fontSize={12}
+                            fontWeight="bold"
+                            fill="#512888"
+                          >
+                            {value}%
+                          </text>
+                        );
+                      }}
+                    >
+                      {prepareManagerDepartmentData().map((entry, index) => {
+                        if (!entry.attrition) return null;
+                        
+                        // Find the department color
+                        const dept = managersByDepartmentData.find(d => d.department === entry.parent);
+                        const deptIndex = departments.findIndex(d => d.name === entry.parent);
+                        const color = departments[deptIndex]?.color || "#8B5CF6";
+                        
+                        return <Cell key={`cell-${index}`} fill={color} />;
+                      })}
+                    </Bar>
                   </BarChart>
                 </ResponsiveContainer>
               </div>
