@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
@@ -7,12 +8,10 @@ import {
 } from "@/components/ui/chart";
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer, 
-  LineChart, Line, PieChart, Pie, Cell, Tooltip, RadarChart, 
-  PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar 
+  LineChart, Line, PieChart, Pie, Cell, Tooltip
 } from "recharts";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BackButton } from "@/components/ui/back-button";
-import { Home, DollarSign, PieChartIcon, Table as TableIcon, Percent } from "lucide-react";
+import { PieChartIcon, TableIcon, Percent } from "lucide-react";
 import { teamMembers } from "@/data/dashboardData";
 import { 
   Table, 
@@ -22,7 +21,6 @@ import {
   TableRow, 
   TableCell 
 } from "@/components/ui/table";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 // Filter only direct reports from team members (excluding the first member who is the manager)
 const directReports = teamMembers.filter(member => member.id !== 1);
@@ -60,14 +58,6 @@ const enhancedCompensationData = compensationData.map(employee => {
     peerDiffPercentage: peerDiffPercentage
   };
 });
-
-// Transform compensation data for the grouped bar chart
-const groupedCompData = compensationData.map(item => ({
-  name: item.name,
-  Base: item.base,
-  Bonus: item.bonus,
-  Equity: item.equity
-}));
 
 // Transform compensation data for pie charts
 const pieChartsData = compensationData.slice(0, 3).map(item => {
@@ -108,21 +98,6 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-// Sample historical data for trends
-const historicalData = [
-  { year: '2021', Jamie: 142000, Alex: 170000, Taylor: 130000, benchmark: 150000 },
-  { year: '2022', Jamie: 152000, Alex: 180000, Taylor: 138000, benchmark: 157000 },
-  { year: '2023', Jamie: 158000, Alex: 185000, Taylor: 145000, benchmark: 162000 },
-  { year: '2024', Jamie: 165000, Alex: 195000, Taylor: 152000, benchmark: 170000 },
-];
-
-// Sample market comparison data
-const marketComparisonData = [
-  { role: 'Senior Designer', internal: 165000, market: 170000, difference: -5000 },
-  { role: 'Tech Lead', internal: 195000, market: 190000, difference: 5000 },
-  { role: 'QA Engineer', internal: 152000, market: 155000, difference: -3000 },
-];
-
 // Enhanced comparative data for the cleaner view
 const enhancedCompData = compensationData.map(item => {
   const maxValue = Math.max(...compensationData.map(d => d.total));
@@ -141,32 +116,7 @@ const enhancedCompData = compensationData.map(item => {
   };
 });
 
-// Simple bar chart data for total compensation
-const totalCompData = compensationData.map(item => ({
-  name: item.name,
-  role: item.role,
-  Total: item.total,
-  color: item.name === 'Alex Morgan' ? '#0067D9' : 
-         item.name === 'Jamie Chen' ? '#FF6B6B' : '#9320E7'
-}));
-
 const COLORS = ['#0067D9', '#FF6B6B', '#9320E7'];
-
-const chartConfig = {
-  base: { label: "Base Salary", theme: { light: "#0067D9", dark: "#0067D9" } },
-  bonus: { label: "Annual Bonus", theme: { light: "#FF6B6B", dark: "#FF6B6B" } },
-  equity: { label: "Equity (Annual)", theme: { light: "#9320E7", dark: "#9320E7" } },
-  Jamie: { label: "Jamie Chen", theme: { light: "#0067D9", dark: "#0067D9" } },
-  Alex: { label: "Alex Morgan", theme: { light: "#FF6B6B", dark: "#FF6B6B" } },
-  Taylor: { label: "Taylor Smith", theme: { light: "#9320E7", dark: "#9320E7" } },
-  benchmark: { label: "Industry Benchmark", theme: { light: "#17202A", dark: "#17202A" } },
-  internal: { label: "Internal Salary", theme: { light: "#0067D9", dark: "#0067D9" } },
-  market: { label: "Market Rate", theme: { light: "#FF6B6B", dark: "#FF6B6B" } },
-  Base: { label: "Base Salary", theme: { light: "#0067D9", dark: "#0067D9" } },
-  Bonus: { label: "Annual Bonus", theme: { light: "#FF6B6B", dark: "#FF6B6B" } },
-  Equity: { label: "Equity (Annual)", theme: { light: "#9320E7", dark: "#9320E7" } },
-  Total: { label: "Total Compensation", theme: { light: "#512888", dark: "#512888" } }
-};
 
 const CompensationAnalysis = () => {
   const formatCurrency = (value: number) => `$${value.toLocaleString()}`;
@@ -184,336 +134,176 @@ const CompensationAnalysis = () => {
       
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
       
-      <Tabs defaultValue="breakdown" className="w-full">
-        <TabsList className="mb-4">
-          <TabsTrigger value="breakdown">Compensation Breakdown</TabsTrigger>
-          <TabsTrigger value="trends">Historical Trends</TabsTrigger>
-          <TabsTrigger value="market">Market Comparison</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="breakdown" className="space-y-6">
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <PieChartIcon className="mr-2 h-5 w-5 text-[#512888]" />
-                Compensation Components by Team Member
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                {pieChartsData.map((item, index) => (
-                  <Card key={index} className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm overflow-hidden">
-                    <CardHeader className="py-3 bg-white border-b">
-                      <CardTitle className="text-base">{item.name} - {item.role}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                      <div className="h-[220px] flex justify-center items-center pt-4">
-                        <ResponsiveContainer width="100%" height="100%">
-                          <PieChart>
-                            <Tooltip 
-                              formatter={(value, name) => [`$${value.toLocaleString()}`, name]}
-                              contentStyle={{ 
-                                backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                                borderRadius: '6px',
-                                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                                border: '1px solid rgba(0,0,0,0.05)',
-                                padding: '8px 12px'
-                              }}
-                            />
-                            <Pie
-                              data={item.data}
-                              cx="50%"
-                              cy="50%"
-                              labelLine={false}
-                              label={renderCustomizedLabel}
-                              outerRadius={75}
-                              fill="#8884d8"
-                              dataKey="value"
-                              animationDuration={800}
-                              animationEasing="ease-out"
-                            >
-                              {item.data.map((entry, i) => (
-                                <Cell 
-                                  key={`cell-${i}`} 
-                                  fill={entry.color} 
-                                  stroke="white" 
-                                  strokeWidth={1}
-                                />
-                              ))}
-                            </Pie>
-                          </PieChart>
-                        </ResponsiveContainer>
+      <div className="space-y-6">
+        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <PieChartIcon className="mr-2 h-5 w-5 text-[#512888]" />
+              Compensation Components by Team Member
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              {pieChartsData.map((item, index) => (
+                <Card key={index} className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm overflow-hidden">
+                  <CardHeader className="py-3 bg-white border-b">
+                    <CardTitle className="text-base">{item.name} - {item.role}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="h-[220px] flex justify-center items-center pt-4">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Tooltip 
+                            formatter={(value, name) => [`$${value.toLocaleString()}`, name]}
+                            contentStyle={{ 
+                              backgroundColor: 'rgba(255, 255, 255, 0.95)', 
+                              borderRadius: '6px',
+                              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                              border: '1px solid rgba(0,0,0,0.05)',
+                              padding: '8px 12px'
+                            }}
+                          />
+                          <Pie
+                            data={item.data}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            label={renderCustomizedLabel}
+                            outerRadius={75}
+                            fill="#8884d8"
+                            dataKey="value"
+                            animationDuration={800}
+                            animationEasing="ease-out"
+                          >
+                            {item.data.map((entry, i) => (
+                              <Cell 
+                                key={`cell-${i}`} 
+                                fill={entry.color} 
+                                stroke="white" 
+                                strokeWidth={1}
+                              />
+                            ))}
+                          </Pie>
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </div>
+                    
+                    <div className="bg-white p-3 border-t">
+                      <div className="flex justify-between items-center mb-1">
+                        <p className="text-sm font-semibold">Total: ${item.total.toLocaleString()}</p>
                       </div>
-                      
-                      <div className="bg-white p-3 border-t">
-                        <div className="flex justify-between items-center mb-1">
-                          <p className="text-sm font-semibold">Total: ${item.total.toLocaleString()}</p>
-                        </div>
-                        <div className="grid grid-cols-3 gap-2">
-                          {item.data.map((entry, i) => (
-                            <div key={i} className="flex flex-col items-center p-1 rounded bg-white border">
-                              <div className="flex items-center gap-1">
-                                <div 
-                                  className="h-2 w-2 rounded-full" 
-                                  style={{ backgroundColor: entry.color }}
-                                ></div>
-                                <span className="text-xs font-medium">{entry.name}</span>
-                              </div>
-                              <div className="text-xs mt-1 flex flex-col items-center">
-                                <span className="font-medium">${entry.value.toLocaleString()}</span>
-                                <span className="text-muted-foreground">{entry.percentage}%</span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-                <CardHeader>
-                  <CardTitle className="text-base flex items-center">
-                    <TableIcon className="mr-2 h-4 w-4 text-[#512888]" />
-                    Compensation Details
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="grid grid-cols-1 xl:grid-cols-6 gap-6">
-                    {/* Simple total compensation comparison */}
-                    <div className="xl:col-span-2 border rounded-lg p-4 bg-gray-50">
-                      <h3 className="text-sm font-medium text-center mb-4">Total Compensation</h3>
-                      <div className="space-y-4">
-                        {enhancedCompData.sort((a, b) => b.total - a.total).map((item, i) => (
-                          <div key={i} className="space-y-1">
-                            <div className="flex justify-between items-center text-xs">
-                              <div className="font-medium flex items-center">
-                                <div 
-                                  className="h-2 w-2 rounded-full mr-2" 
-                                  style={{ backgroundColor: '#4CAF50' }}
-                                ></div>
-                                {item.name}
-                              </div>
-                              <span className="font-mono">${item.total.toLocaleString()}</span>
-                            </div>
-                            <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                      <div className="grid grid-cols-3 gap-2">
+                        {item.data.map((entry, i) => (
+                          <div key={i} className="flex flex-col items-center p-1 rounded bg-white border">
+                            <div className="flex items-center gap-1">
                               <div 
-                                className="h-full rounded-full"
-                                style={{ 
-                                  width: `${item.percentageOfHighest}%`,
-                                  backgroundColor: '#4CAF50'  // Changed to green
-                                }}
+                                className="h-2 w-2 rounded-full" 
+                                style={{ backgroundColor: entry.color }}
                               ></div>
+                              <span className="text-xs font-medium">{entry.name}</span>
+                            </div>
+                            <div className="text-xs mt-1 flex flex-col items-center">
+                              <span className="font-medium">${entry.value.toLocaleString()}</span>
+                              <span className="text-muted-foreground">{entry.percentage}%</span>
                             </div>
                           </div>
                         ))}
                       </div>
                     </div>
-                    
-                    {/* Updated Data Table with Total column and Peer Comparison */}
-                    <div className="xl:col-span-4 bg-white border rounded-lg p-4">
-                      <div className="mb-3">
-                        <div className="flex items-center gap-2">
-                          <Percent className="h-4 w-4 text-[#512888]" />
-                          <span className="text-sm font-medium">Peer comparison shows how an employee's compensation compares to the average for their job code</span>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
+              <CardHeader>
+                <CardTitle className="text-base flex items-center">
+                  <TableIcon className="mr-2 h-4 w-4 text-[#512888]" />
+                  Compensation Details
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <div className="grid grid-cols-1 xl:grid-cols-6 gap-6">
+                  {/* Simple total compensation comparison */}
+                  <div className="xl:col-span-2 border rounded-lg p-4 bg-gray-50">
+                    <h3 className="text-sm font-medium text-center mb-4">Total Compensation</h3>
+                    <div className="space-y-4">
+                      {enhancedCompData.sort((a, b) => b.total - a.total).map((item, i) => (
+                        <div key={i} className="space-y-1">
+                          <div className="flex justify-between items-center text-xs">
+                            <div className="font-medium flex items-center">
+                              <div 
+                                className="h-2 w-2 rounded-full mr-2" 
+                                style={{ backgroundColor: '#4CAF50' }}
+                              ></div>
+                              {item.name}
+                            </div>
+                            <span className="font-mono">${item.total.toLocaleString()}</span>
+                          </div>
+                          <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full rounded-full"
+                              style={{ 
+                                width: `${item.percentageOfHighest}%`,
+                                backgroundColor: '#4CAF50'  // Changed to green
+                              }}
+                            ></div>
+                          </div>
                         </div>
-                      </div>
-                      <Table>
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead className="font-semibold">Name</TableHead>
-                            <TableHead className="font-semibold">Job Code</TableHead>
-                            <TableHead className="text-right font-semibold">Base Salary</TableHead>
-                            <TableHead className="text-right font-semibold">Bonus (Annual)</TableHead>
-                            <TableHead className="text-right font-semibold">Equity (Annual)</TableHead>
-                            <TableHead className="text-right font-semibold">Total</TableHead>
-                            <TableHead className="text-right font-semibold">vs. Peers</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {enhancedCompensationData.map((employee, idx) => (
-                            <TableRow key={idx}>
-                              <TableCell className="font-medium">{employee.name}</TableCell>
-                              <TableCell>{employee.jobCode}</TableCell>
-                              <TableCell className="text-right">{formatCurrency(employee.base)}</TableCell>
-                              <TableCell className="text-right">{formatCurrency(employee.bonus)}</TableCell>
-                              <TableCell className="text-right">{formatCurrency(employee.equity)}</TableCell>
-                              <TableCell className="text-right font-medium">{formatCurrency(employee.total)}</TableCell>
-                              <TableCell className="text-right">
-                                <span 
-                                  className={`font-medium ${
-                                    employee.peerDiffPercentage > 0 ? 'text-green-600' : 
-                                    employee.peerDiffPercentage < 0 ? 'text-red-600' : 'text-gray-600'
-                                  }`}
-                                >
-                                  {formatPercentage(employee.peerDiffPercentage)}
-                                </span>
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
+                      ))}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="trends" className="space-y-6">
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm overflow-hidden">
-            <CardHeader className="pb-2">
-              <CardTitle>Compensation Trends (2021-2024)</CardTitle>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <div className="h-[280px] w-full">
-                <ChartContainer config={chartConfig}>
-                  <LineChart 
-                    data={historicalData}
-                    margin={{ top: 5, right: 5, left: 5, bottom: 25 }} // Increased bottom margin to ensure axis is visible
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
-                    <XAxis 
-                      dataKey="year" 
-                      tick={{ fontSize: 11 }} 
-                      padding={{ left: 0, right: 0 }}
-                      height={30} // Ensure X-axis has enough height
-                      tickMargin={10} // Add margin between ticks and axis line
-                    />
-                    <YAxis tick={{ fontSize: 11 }} width={45} />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend 
-                      wrapperStyle={{ fontSize: '11px' }}
-                      iconSize={8}
-                      verticalAlign="top"
-                      height={20}
-                    />
-                    <Line type="monotone" dataKey="Jamie" stroke="#0067D9" activeDot={{ r: 5 }} strokeWidth={1.5} />
-                    <Line type="monotone" dataKey="Alex" stroke="#FF6B6B" activeDot={{ r: 5 }} strokeWidth={1.5} />
-                    <Line type="monotone" dataKey="Taylor" stroke="#9320E7" activeDot={{ r: 5 }} strokeWidth={1.5} />
-                    <Line type="monotone" dataKey="benchmark" stroke="#17202A" strokeDasharray="5 5" strokeWidth={1} />
-                  </LineChart>
-                </ChartContainer>
-              </div>
-              <div className="mt-1">
-                <p className="text-xs text-muted-foreground text-center">
-                  The dashed line represents the industry benchmark for similar roles and experience levels.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-          
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-base">Trend Analysis Overview</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                <div>
-                  <h4 className="font-medium">Year-over-Year Growth</h4>
-                  <p className="text-muted-foreground">All team members show consistent compensation growth above inflation rates.</p>
+                  
+                  {/* Updated Data Table with Total column and Peer Comparison */}
+                  <div className="xl:col-span-4 bg-white border rounded-lg p-4">
+                    <div className="mb-3">
+                      <div className="flex items-center gap-2">
+                        <Percent className="h-4 w-4 text-[#512888]" />
+                        <span className="text-sm font-medium">Peer comparison shows how an employee's compensation compares to the average for their job code</span>
+                      </div>
+                    </div>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead className="font-semibold">Name</TableHead>
+                          <TableHead className="font-semibold">Job Code</TableHead>
+                          <TableHead className="text-right font-semibold">Base Salary</TableHead>
+                          <TableHead className="text-right font-semibold">Bonus (Annual)</TableHead>
+                          <TableHead className="text-right font-semibold">Equity (Annual)</TableHead>
+                          <TableHead className="text-right font-semibold">Total</TableHead>
+                          <TableHead className="text-right font-semibold">vs. Peers</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {enhancedCompensationData.map((employee, idx) => (
+                          <TableRow key={idx}>
+                            <TableCell className="font-medium">{employee.name}</TableCell>
+                            <TableCell>{employee.jobCode}</TableCell>
+                            <TableCell className="text-right">{formatCurrency(employee.base)}</TableCell>
+                            <TableCell className="text-right">{formatCurrency(employee.bonus)}</TableCell>
+                            <TableCell className="text-right">{formatCurrency(employee.equity)}</TableCell>
+                            <TableCell className="text-right font-medium">{formatCurrency(employee.total)}</TableCell>
+                            <TableCell className="text-right">
+                              <span 
+                                className={`font-medium ${
+                                  employee.peerDiffPercentage > 0 ? 'text-green-600' : 
+                                  employee.peerDiffPercentage < 0 ? 'text-red-600' : 'text-gray-600'
+                                }`}
+                              >
+                                {formatPercentage(employee.peerDiffPercentage)}
+                              </span>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium">Benchmark Comparison</h4>
-                  <p className="text-muted-foreground">Alex and Jamie consistently exceed industry benchmarks, while Taylor is approaching benchmark values.</p>
-                </div>
-                <div>
-                  <h4 className="font-medium">Growth Pattern</h4>
-                  <p className="text-muted-foreground">Compensation increases tend to be higher in Q1 following annual performance reviews.</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-        
-        <TabsContent value="market" className="space-y-6">
-          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm">
-            <CardHeader>
-              <CardTitle>Market Rate Comparison</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[400px] w-full">
-                <ChartContainer config={chartConfig}>
-                  <BarChart 
-                    data={marketComparisonData}
-                    margin={{ top: 5, right: 30, bottom: 30, left: 20 }}
-                    barGap={10} // Add gap between bars in the same category
-                    barSize={40} // Control the width of the bars
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis 
-                      dataKey="role" 
-                      height={50}
-                      tick={{ fontSize: 12 }}
-                      tickMargin={10}
-                    />
-                    <YAxis />
-                    <ChartTooltip content={<ChartTooltipContent />} />
-                    <Legend wrapperStyle={{ paddingTop: "10px" }} />
-                    <Bar 
-                      dataKey="internal" 
-                      name="Internal Salary" 
-                      fill="#0067D9" 
-                      radius={[4, 4, 0, 0]} 
-                    />
-                    <Bar 
-                      dataKey="market" 
-                      name="Market Rate" 
-                      fill="#FF6B6B" 
-                      radius={[4, 4, 0, 0]} 
-                    />
-                  </BarChart>
-                </ChartContainer>
-              </div>
-              
-              <div className="mt-8 border rounded-md overflow-hidden">
-                <Table>
-                  <TableHeader className="bg-gray-50">
-                    <TableRow>
-                      <TableHead>Role</TableHead>
-                      <TableHead className="text-right">Internal Rate</TableHead>
-                      <TableHead className="text-right">Market Rate</TableHead>
-                      <TableHead className="text-right">Difference</TableHead>
-                      <TableHead className="text-center">Status</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {marketComparisonData.map((item, i) => (
-                      <TableRow key={i}>
-                        <TableCell className="font-medium">{item.role}</TableCell>
-                        <TableCell className="text-right">${item.internal.toLocaleString()}</TableCell>
-                        <TableCell className="text-right">${item.market.toLocaleString()}</TableCell>
-                        <TableCell className="text-right">
-                          <span className={item.difference >= 0 ? "text-green-600" : "text-red-600"}>
-                            {item.difference >= 0 ? "+" : ""}${Math.abs(item.difference).toLocaleString()}
-                          </span>
-                        </TableCell>
-                        <TableCell className="text-center">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            Math.abs(item.difference) < 5000 
-                              ? "bg-green-100 text-green-800" 
-                              : Math.abs(item.difference) < 10000 
-                                ? "bg-yellow-100 text-yellow-800"
-                                : "bg-red-100 text-red-800"
-                          }`}>
-                            {Math.abs(item.difference) < 5000 
-                              ? "Market Aligned" 
-                              : Math.abs(item.difference) < 10000 
-                                ? "Minor Gap"
-                                : "Significant Gap"}
-                          </span>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+              </CardContent>
+            </Card>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
