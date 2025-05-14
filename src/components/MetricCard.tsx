@@ -12,6 +12,7 @@ interface MetricCardProps {
   trendValue?: string;
   className?: string;
   onClick?: () => void;
+  titleClassName?: string; // Added prop for title-specific styling
 }
 
 export function MetricCard({
@@ -22,7 +23,8 @@ export function MetricCard({
   trend,
   trendValue,
   className,
-  onClick
+  onClick,
+  titleClassName // New prop
 }: MetricCardProps) {
   // Determine if this is one of the specific menu items we need to adjust
   const isMenuCard = ["My Goals", "My Learning", "My Reviews", "My Schedule", "Past 1:1s"].includes(title);
@@ -39,7 +41,8 @@ export function MetricCard({
       <div className="flex flex-col items-center justify-center h-full p-4 text-center">
         <CardTitle className={cn(
           "font-small text-[#9320E7] text-center w-full whitespace-pre-line mb-1",
-          isMenuCard ? "text-4xl" : "text-5xl" // Sized appropriately for menu cards
+          isMenuCard ? "text-4xl" : "text-5xl", // Sized appropriately for menu cards
+          titleClassName // Apply title-specific class if provided
         )}>
           {title}
         </CardTitle>
