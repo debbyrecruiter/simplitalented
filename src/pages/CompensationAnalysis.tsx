@@ -51,6 +51,13 @@ const CompensationAnalysis = () => {
           className="md:max-w-xs scale-150 transform origin-center"
           titleClassName="text-[114%]" // Increased from 95% to 114% (20% increase)
         />
+        
+        <MetricCard
+          title="Performance Relative to Starting PIR Salary"
+          value=""
+          className="md:max-w-xs scale-150 transform origin-center"
+          titleClassName="text-[114%]" 
+        />
       </div>
     </div>
   );
