@@ -49,7 +49,7 @@ const CompensationAnalysis = () => {
           title="Compensation Relative to Performance Analysis"
           value=""
           className="md:max-w-xs scale-150 transform origin-center"
-          titleClassName="text-[75%]" // Apply font size reduction only to the title
+          titleClassName="text-[95%]" // Increased from 75% to 95% (20% increase)
         />
       </div>
     </div>
