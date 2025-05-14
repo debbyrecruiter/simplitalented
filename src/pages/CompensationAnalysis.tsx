@@ -1,9 +1,7 @@
 
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
-import { MetricCard } from "@/components/MetricCard";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { DollarSign, BarChart2 } from "lucide-react";
 
 // Enhanced compensation data with job codes
 const compensationData = [
@@ -65,34 +63,6 @@ const CompensationAnalysis = () => {
               Performance Relative to Starting PIR Salary
             </CardTitle>
           </div>
-        </Card>
-        
-        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <BarChart2 className="mr-2 h-5 w-5 text-[#512888]" />
-              Compensation by Department
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              Compare compensation levels across departments
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <DollarSign className="mr-2 h-5 w-5 text-[#512888]" />
-              Compensation Metrics
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-muted-foreground">
-              Review key compensation metrics and trends
-            </p>
-          </CardContent>
         </Card>
       </div>
     </div>
