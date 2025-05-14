@@ -55,7 +55,7 @@ const CompensationAnalysis = () => {
           <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
             <BarChart4 className="h-12 w-12 text-[#9320E7] mb-2" />
             <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-              Performance
+              Compensation Relative to Performance Analysis
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
