@@ -37,24 +37,6 @@ const enhancedCompensationData = compensationData.map(employee => {
   };
 });
 
-// Enhanced comparative data for the cleaner view
-const enhancedCompData = compensationData.map(item => {
-  const maxValue = Math.max(...compensationData.map(d => d.total));
-  const percentageOfHighest = Math.round((item.total / maxValue) * 100);
-  return {
-    name: item.name,
-    role: item.role,
-    base: item.base,
-    bonus: item.bonus,
-    equity: item.equity,
-    total: item.total,
-    percentageOfHighest,
-    basePercentage: Math.round((item.base / item.total) * 100),
-    bonusPercentage: Math.round((item.bonus / item.total) * 100),
-    equityPercentage: Math.round((item.equity / item.total) * 100),
-  };
-});
-
 const CompensationAnalysis = () => {
   return (
     <div className="container p-4 mx-auto">
@@ -65,34 +47,11 @@ const CompensationAnalysis = () => {
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
       
       <div className="space-y-6">
-        {/* Simple total compensation comparison */}
+        {/* Empty page content - all compensation sections have been removed */}
         <Card className="border p-6 rounded-lg shadow-sm">
-          <h3 className="text-lg font-semibold mb-4">Total Compensation</h3>
-          <div className="space-y-4">
-            {enhancedCompData.sort((a, b) => b.total - a.total).map((item, i) => (
-              <div key={i} className="space-y-1">
-                <div className="flex justify-between items-center text-sm">
-                  <div className="font-medium flex items-center">
-                    <div 
-                      className="h-2 w-2 rounded-full mr-2" 
-                      style={{ backgroundColor: '#4CAF50' }}
-                    ></div>
-                    {item.name}
-                  </div>
-                  <span className="font-mono">${item.total.toLocaleString()}</span>
-                </div>
-                <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full rounded-full"
-                    style={{ 
-                      width: `${item.percentageOfHighest}%`,
-                      backgroundColor: '#4CAF50'
-                    }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="text-center text-gray-500 py-10">
+            No compensation data to display.
+          </p>
         </Card>
       </div>
     </div>
