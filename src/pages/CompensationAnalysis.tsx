@@ -1,3 +1,4 @@
+
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { MetricCard } from "@/components/MetricCard";
@@ -46,21 +47,25 @@ const CompensationAnalysis = () => {
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <MetricCard
-          title="Performance"
-          value=""
-          className="cursor-pointer aspect-square"
-          titleClassName="text-6xl"
-          onClick={() => {}}
-        />
+        <div className="aspect-square">
+          <MetricCard
+            title="Performance"
+            value=""
+            className="h-full w-full"
+            titleClassName="text-6xl"
+            onClick={() => {}}
+          />
+        </div>
         
-        <MetricCard
-          title="Salary"
-          value=""
-          className="cursor-pointer aspect-square"
-          titleClassName="text-6xl"
-          onClick={() => {}}
-        />
+        <div className="aspect-square">
+          <MetricCard
+            title="Salary"
+            value=""
+            className="h-full w-full"
+            titleClassName="text-6xl"
+            onClick={() => {}}
+          />
+        </div>
       </div>
     </div>
   );
