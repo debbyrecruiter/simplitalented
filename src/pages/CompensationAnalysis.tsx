@@ -47,11 +47,9 @@ const CompensationAnalysis = () => {
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
       
       <div className="space-y-6">
-        {/* Empty page content - all compensation sections have been removed */}
+        {/* Empty Card - No placeholder message */}
         <Card className="border p-6 rounded-lg shadow-sm">
-          <p className="text-center text-gray-500 py-10">
-            No compensation data to display.
-          </p>
+          
         </Card>
       </div>
     </div>
