@@ -2,6 +2,8 @@
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { MetricCard } from "@/components/MetricCard";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { DollarSign, BarChart2 } from "lucide-react";
 
 // Enhanced compensation data with job codes
 const compensationData = [
@@ -39,25 +41,59 @@ const enhancedCompensationData = compensationData.map(employee => {
 
 const CompensationAnalysis = () => {
   return (
-    <div className="container p-2 mx-auto">
-      <div className="mb-6">
+    <div className="flex-1 p-4 overflow-auto rounded-sm">
+      <div className="mb-4">
         <BackButton fallbackPath="/reports" label="Back" />
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-40">
-        <MetricCard
-          title="Compensation Relative to Performance Analysis"
-          value=""
-          className="md:max-w-xs scale-150 transform origin-center"
-          titleClassName="text-[114%]" // Increased from 95% to 114% (20% increase)
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
+        >
+          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
+            <CardTitle className="font-small text-[#9320E7] text-center w-full whitespace-pre-line text-4xl mb-1">
+              Compensation Relative to Performance Analysis
+            </CardTitle>
+          </div>
+        </Card>
+
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center"
+        >
+          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
+            <CardTitle className="font-small text-[#9320E7] text-center w-full whitespace-pre-line text-4xl mb-1">
+              Performance Relative to Starting PIR Salary
+            </CardTitle>
+          </div>
+        </Card>
         
-        <MetricCard
-          title="Performance Relative to Starting PIR Salary"
-          value=""
-          className="md:max-w-xs scale-150 transform origin-center"
-          titleClassName="text-[114%]" 
-        />
+        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <BarChart2 className="mr-2 h-5 w-5 text-[#512888]" />
+              Compensation by Department
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              Compare compensation levels across departments
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-lg shadow-sm p-4">
+          <CardHeader>
+            <CardTitle className="flex items-center">
+              <DollarSign className="mr-2 h-5 w-5 text-[#512888]" />
+              Compensation Metrics
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              Review key compensation metrics and trends
+            </p>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
