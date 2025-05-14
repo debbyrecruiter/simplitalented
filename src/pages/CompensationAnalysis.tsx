@@ -48,7 +48,7 @@ const CompensationAnalysis = () => {
         <MetricCard
           title="Compensation Relative to Performance Analysis"
           value=""
-          className="md:max-w-xs scale-150 transform origin-center" // Changed from scale-125 to scale-150 for 20% increase
+          className="md:max-w-xs scale-150 transform origin-center text-[75%]" // Added text-[75%] to reduce font size by 25%
         />
       </div>
     </div>
