@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -62,9 +61,6 @@ const CompensationAnalysis = () => {
             <div className="text-3xl font-bold truncate">
               Above Average
             </div>
-            <p className="text-sm text-muted-foreground truncate">
-              Top 25% in your role
-            </p>
           </CardContent>
         </Card>
         
@@ -82,9 +78,6 @@ const CompensationAnalysis = () => {
             <div className="text-3xl font-bold truncate">
               $152,000
             </div>
-            <p className="text-sm text-muted-foreground truncate">
-              +5% vs. peer average
-            </p>
           </CardContent>
         </Card>
       </div>
