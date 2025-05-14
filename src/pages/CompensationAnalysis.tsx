@@ -1,6 +1,7 @@
+
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart4, DollarSign } from "lucide-react";
 
 // Enhanced compensation data with job codes
@@ -57,11 +58,6 @@ const CompensationAnalysis = () => {
               Compensation Relative to Performance Analysis
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-            <div className="text-3xl font-bold truncate">
-              Above Average
-            </div>
-          </CardContent>
         </Card>
         
         <Card 
@@ -74,11 +70,6 @@ const CompensationAnalysis = () => {
               Performance Relative to Starting PIR Salary
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-            <div className="text-3xl font-bold truncate">
-              $152,000
-            </div>
-          </CardContent>
         </Card>
       </div>
     </div>
