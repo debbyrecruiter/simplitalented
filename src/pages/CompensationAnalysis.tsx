@@ -39,7 +39,7 @@ const enhancedCompensationData = compensationData.map(employee => {
 
 const CompensationAnalysis = () => {
   return (
-    <div className="container p-4 mx-auto">
+    <div className="container p-2 mx-auto">
       <div className="mb-6">
         <BackButton fallbackPath="/reports" label="Back" />
       </div>
