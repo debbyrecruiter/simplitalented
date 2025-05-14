@@ -2,7 +2,6 @@
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 // Enhanced compensation data with job codes
 const compensationData = [
@@ -40,47 +39,49 @@ const enhancedCompensationData = compensationData.map(employee => {
 
 const CompensationAnalysis = () => {
   return (
-    <div className="container p-4 mx-auto">
-      <div className="mb-6">
+    <div className="flex-1 p-4 overflow-auto">
+      <div className="mb-4">
         <BackButton fallbackPath="/reports" label="Back" />
       </div>
       
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="relative">
-          <AspectRatio ratio={1}>
-            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center">
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="font-small text-[#9320E7] text-center w-full whitespace-pre-line text-4xl mb-1">
-                  Compensation Relative to Performance Analysis
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center flex-1">
-                <p className="text-muted-foreground text-center">
-                  Click to view analysis
-                </p>
-              </CardContent>
-            </Card>
-          </AspectRatio>
-        </div>
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+        >
+          <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+            <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+              Performance
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+            <div className="text-3xl font-bold truncate">
+              Relative to Compensation
+            </div>
+            <p className="text-sm text-muted-foreground truncate">
+              Click to view analysis
+            </p>
+          </CardContent>
+        </Card>
 
-        <div className="relative">
-          <AspectRatio ratio={1}>
-            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center">
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="font-small text-[#9320E7] text-center w-full whitespace-pre-line text-4xl mb-1">
-                  Performance Relative to Starting PIR Salary
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center flex-1">
-                <p className="text-muted-foreground text-center">
-                  Click to view analysis
-                </p>
-              </CardContent>
-            </Card>
-          </AspectRatio>
-        </div>
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+        >
+          <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+            <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+              Salary
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+            <div className="text-3xl font-bold truncate">
+              PIR Starting Analysis
+            </div>
+            <p className="text-sm text-muted-foreground truncate">
+              Click to view analysis
+            </p>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
