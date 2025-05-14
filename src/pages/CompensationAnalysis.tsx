@@ -1,3 +1,4 @@
+
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { MetricCard } from "@/components/MetricCard";
@@ -49,7 +50,7 @@ const CompensationAnalysis = () => {
         <MetricCard
           title="Compensation Relative to Performance Analysis"
           value=""
-          className="md:max-w-xs"
+          className="md:max-w-xs scale-125 transform origin-center"
         />
       </div>
     </div>
