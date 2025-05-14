@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Card } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
 
 // Enhanced compensation data with job codes
@@ -45,13 +44,6 @@ const CompensationAnalysis = () => {
       </div>
       
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
-      
-      <div className="space-y-6">
-        {/* Empty Card - No placeholder message */}
-        <Card className="border p-6 rounded-lg shadow-sm">
-          
-        </Card>
-      </div>
     </div>
   );
 };
