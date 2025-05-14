@@ -52,9 +52,9 @@ const CompensationAnalysis = () => {
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
           onClick={() => {}}
         >
-          <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+          <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
             <BarChart4 className="h-12 w-12 text-[#9320E7] mb-2" />
-            <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+            <CardTitle className="text-6xl font-small text-[#9320E7] px-8">
               Compensation Relative to Performance Analysis
             </CardTitle>
           </CardHeader>
@@ -64,9 +64,9 @@ const CompensationAnalysis = () => {
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
           onClick={() => {}}
         >
-          <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+          <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
             <DollarSign className="h-12 w-12 text-[#9320E7] mb-2" />
-            <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
+            <CardTitle className="text-6xl font-small text-[#9320E7] px-8">
               Performance Relative to Starting PIR Salary
             </CardTitle>
           </CardHeader>
