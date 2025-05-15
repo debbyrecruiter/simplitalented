@@ -10,7 +10,7 @@ export const ReportsSection: React.FC = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
       <div className="flex justify-center items-center">
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full max-w-md aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-80 h-80 flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
             <BarChart2 className="h-16 w-16 text-[#512888] mb-2" />
@@ -28,7 +28,7 @@ export const ReportsSection: React.FC = () => {
       
       <div className="flex justify-center items-center">
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full max-w-md aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-80 h-80 flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
             <DollarSign className="h-16 w-16 text-[#512888] mb-2" />
@@ -46,7 +46,7 @@ export const ReportsSection: React.FC = () => {
       
       <div className="flex justify-center items-center">
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full max-w-md aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-80 h-80 flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
             <LineChart className="h-16 w-16 text-[#512888] mb-2" />
