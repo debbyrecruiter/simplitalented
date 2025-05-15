@@ -40,12 +40,13 @@ const WorkforceDemographics = () => {
         <div 
           className={`relative cursor-pointer ${selectedCategory === "gender" ? "ring-4 ring-blue-500" : ""}`} 
           onClick={() => handleCardClick("gender")}
+          style={{ width: "125%", maxWidth: "450px", margin: "0 auto" }}
         >
           <AspectRatio ratio={1}>
             <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
               <CardHeader className="text-center pt-8">
                 <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-8 w-8 text-[#512888]" />
+                  <Users className="mb-2 h-10 w-10 text-[#512888]" />
                   Gender
                 </CardTitle>
               </CardHeader>
@@ -61,12 +62,13 @@ const WorkforceDemographics = () => {
         <div 
           className={`relative cursor-pointer ${selectedCategory === "race" ? "ring-4 ring-blue-500" : ""}`}
           onClick={() => handleCardClick("race")}
+          style={{ width: "125%", maxWidth: "450px", margin: "0 auto" }}
         >
           <AspectRatio ratio={1}>
             <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
               <CardHeader className="text-center pt-8">
                 <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-8 w-8 text-[#512888]" />
+                  <Users className="mb-2 h-10 w-10 text-[#512888]" />
                   Race
                 </CardTitle>
               </CardHeader>
@@ -82,12 +84,13 @@ const WorkforceDemographics = () => {
         <div 
           className={`relative cursor-pointer ${selectedCategory === "age" ? "ring-4 ring-blue-500" : ""}`}
           onClick={() => handleCardClick("age")}
+          style={{ width: "125%", maxWidth: "450px", margin: "0 auto" }}
         >
           <AspectRatio ratio={1}>
             <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
               <CardHeader className="text-center pt-8">
                 <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-8 w-8 text-[#512888]" />
+                  <Users className="mb-2 h-10 w-10 text-[#512888]" />
                   Age
                 </CardTitle>
               </CardHeader>

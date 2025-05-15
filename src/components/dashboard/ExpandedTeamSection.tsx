@@ -15,12 +15,12 @@ interface TeamMemberCardProps {
 
 const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCardProps) => {
   return (
-    <div className="flex-shrink-0 w-80 h-80">
+    <div className="flex-shrink-0 w-100 h-100">
       <Card 
         className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full h-full flex flex-col justify-center"
       >
         <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-6">
-          <Avatar className="h-20 w-20 mb-2">
+          <Avatar className="h-24 w-24 mb-3">
             <AvatarImage src={avatarUrl} alt={name} />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
@@ -28,8 +28,8 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
             {name}
           </CardTitle>
           {level === "manager" && (
-            <div className="absolute right-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
-              <UserRound className="h-6 w-6 text-blue-600" />
+            <div className="absolute right-8 h-14 w-14 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
+              <UserRound className="h-7 w-7 text-blue-600" />
             </div>
           )}
         </CardHeader>
