@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -38,12 +39,12 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
   
   // Helper function to update section
   const updateSection = (section: ExpandedSectionType) => {
+    // First update the state
     setExpandedSection(section);
     
-    // Add to browser history without causing navigation
+    // Then update URL without causing navigation
     if (section) {
-      // Use React Router's navigate function with replace: true to avoid adding to history stack
-      navigate(`/?section=${section}`, { replace: true });
+      window.history.replaceState(null, "", `/?section=${section}`);
     }
   };
   
@@ -56,7 +57,7 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
       // Otherwise, go back to the main dashboard
       setExpandedSection(null);
       // Remove query parameters from URL
-      navigate("/", { replace: true });
+      window.history.replaceState(null, "", "/");
     }
   };
 

@@ -22,9 +22,7 @@ export function MainMetricsGrid({
 }: MainMetricsGridProps) {
   
   // Prevent default and stop propagation to avoid any unwanted navigation
-  const handleMeClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleMeClick = () => {
     onMeCardClick();
   };
 
