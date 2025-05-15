@@ -1,7 +1,7 @@
 
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart4, DollarSign } from "lucide-react";
 
 // Enhanced compensation data with job codes
