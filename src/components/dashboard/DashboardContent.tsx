@@ -27,7 +27,7 @@ export const DashboardContent: React.FC = () => {
   const handleReportsClick = () => updateSection("reports");
 
   return (
-    <div className="flex-1 p-4 overflow-auto rounded-sm">
+    <div className="flex-1 px-6 py-4 overflow-auto rounded-sm max-w-[1400px] mx-auto w-full">
       {expandedSection && (
         <div className="mb-4">
           <BackButton onClick={handleBackClick} />

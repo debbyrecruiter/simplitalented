@@ -7,7 +7,7 @@ import { BarChart2, DollarSign, LineChart } from "lucide-react";
 
 export const ReportsSection: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
       <div className="flex justify-center items-center">
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"

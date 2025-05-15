@@ -9,7 +9,7 @@ export default function MainLayout() {
     <SidebarProvider defaultOpen={false}>
       <div className="min-h-screen flex w-full">
         <AppSidebar />
-        <div className="flex-1 relative">
+        <div className="flex-1 relative overflow-x-hidden">
           <Outlet />
         </div>
         <ChatbotButton />
