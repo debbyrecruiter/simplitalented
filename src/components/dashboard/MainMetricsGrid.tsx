@@ -21,8 +21,12 @@ export function MainMetricsGrid({
   onReportsClick
 }: MainMetricsGridProps) {
   
-  // Prevent default and stop propagation to avoid any unwanted navigation
-  const handleMeClick = () => {
+  // Explicitly prevent default behavior and stop propagation
+  const handleMeClick = (e: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     onMeCardClick();
   };
 

@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -37,31 +36,28 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Helper function to update section
+  // Helper function to update section - simplified to avoid navigation issues
   const updateSection = (section: ExpandedSectionType) => {
-    // First update the state
-    setExpandedSection(section);
+    console.log("Updating section to:", section);
     
-    // Then update URL without causing navigation
-    if (section) {
-      window.history.replaceState(null, "", `/?section=${section}`);
-    }
+    // Update state directly without any URL manipulation
+    setExpandedSection(section);
   };
   
   const handleBackClick = () => {
+    console.log("Back button clicked, current section:", expandedSection);
+    
     // If we're in past11s, goals, my-skills, or todo-list submenu, go back to "me" section
     if (expandedSection === "past11s" || expandedSection === "goals" || 
         expandedSection === "my-skills" || expandedSection === "todo-list") {
       updateSection("me");
     } else {
       // Otherwise, go back to the main dashboard
-      setExpandedSection(null);
-      // Remove query parameters from URL
-      window.history.replaceState(null, "", "/");
+      updateSection(null);
     }
   };
 
-  // Check URL params on initial load and when location changes to set the correct section
+  // Check URL params on initial load only, not when location changes
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const sectionParam = searchParams.get('section') as ExpandedSectionType | null;
@@ -69,7 +65,7 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
     if (sectionParam) {
       setExpandedSection(sectionParam);
     }
-  }, [location]);
+  }, []); // Only run on initial mount
   
   return (
     <DashboardContext.Provider 
