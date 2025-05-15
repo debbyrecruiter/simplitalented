@@ -32,16 +32,16 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-[110px] h-[110px] flex flex-col justify-center", 
+        "border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center", 
         onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
       onClick={onClick}
     >
-      <div className="flex flex-col items-center justify-center h-full p-2 text-center">
+      <div className="flex flex-col items-center justify-center h-full p-4 text-center">
         <CardTitle className={cn(
           "font-small text-[#9320E7] text-center w-full whitespace-pre-line mb-1",
-          isMenuCard ? "text-sm" : "text-lg", // Sized appropriately for menu cards
+          isMenuCard ? "text-4xl" : "text-5xl", // Sized appropriately for menu cards
           titleClassName // Apply title-specific class if provided
         )}>
           {title}
@@ -64,8 +64,8 @@ export function MetricCard({
         )}
         
         {Icon && (
-          <div className="absolute right-2 top-2 h-5 w-5 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
-            <Icon className="h-3 w-3 text-blue-600" />
+          <div className="absolute right-6 top-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
+            <Icon className="h-6 w-6 text-blue-600" />
           </div>
         )}
       </div>
