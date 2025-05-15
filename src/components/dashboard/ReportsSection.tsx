@@ -14,7 +14,7 @@ export const ReportsSection: React.FC = () => {
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
             <BarChart2 className="h-6 w-6 text-[#512888] mb-1" />
-            <CardTitle className="text-lg font-small text-[#9320E7] px-2">
+            <CardTitle className="text-sm font-small text-[#9320E7] px-2">
               Workforce Analytics
             </CardTitle>
             <CardContent className="p-1">
@@ -32,7 +32,7 @@ export const ReportsSection: React.FC = () => {
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
             <DollarSign className="h-6 w-6 text-[#512888] mb-1" />
-            <CardTitle className="text-lg font-small text-[#9320E7] px-2">
+            <CardTitle className="text-sm font-small text-[#9320E7] px-2">
               Compensation
             </CardTitle>
             <CardContent className="p-1">
@@ -50,7 +50,7 @@ export const ReportsSection: React.FC = () => {
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
             <LineChart className="h-6 w-6 text-[#512888] mb-1" />
-            <CardTitle className="text-lg font-small text-[#9320E7] px-2">
+            <CardTitle className="text-sm font-small text-[#9320E7] px-2">
               Performance
             </CardTitle>
             <CardContent className="p-1">
