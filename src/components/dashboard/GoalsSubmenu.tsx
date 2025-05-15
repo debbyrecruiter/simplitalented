@@ -1,5 +1,4 @@
 
-import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 
 export function GoalsSubmenu() {
@@ -18,8 +17,7 @@ export function GoalsSubmenu() {
       <div className="flex flex-nowrap gap-6 justify-center mt-8">
         {/* My Goals Circle */}
         <div 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0 cursor-pointer hover:border-blue-600 transition-colors"
-          style={{ width: "546.875px", height: "546.875px" }}
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-[683px] h-[683px] flex flex-col justify-center flex-shrink-0 cursor-pointer hover:border-blue-600 transition-colors"
           onClick={handleMyGoalsClick}
         >
           <div className="flex flex-col items-center justify-center text-center pb-0 pt-6">
@@ -39,8 +37,7 @@ export function GoalsSubmenu() {
 
         {/* Team Goals Circle */}
         <div 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0 cursor-pointer hover:border-blue-600 transition-colors"
-          style={{ width: "546.875px", height: "546.875px" }}
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-[683px] h-[683px] flex flex-col justify-center flex-shrink-0 cursor-pointer hover:border-blue-600 transition-colors"
           onClick={handleTeamGoalsClick}
         >
           <div className="flex flex-col items-center justify-center text-center pb-0 pt-6">
