@@ -1,12 +1,12 @@
 
 import React, { useState } from "react";
 import { BackButton } from "@/components/ui/back-button";
-import { LayoutGrid, Users, ArrowDownUp } from "lucide-react";
+import { Users, ArrowDownUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { MetricCard } from "@/components/MetricCard";
 
 const WorkforceAnalytics = () => {
-  const [activeView, setActiveView] = useState<'structure' | 'retention'>('structure');
+  const [activeView, setActiveView] = useState<'retention'>('retention');
   const navigate = useNavigate();
 
   const navigateToDemographics = () => {
@@ -25,7 +25,7 @@ const WorkforceAnalytics = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Analytics</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         <MetricCard
           title="Demographics"
           value=""
@@ -39,13 +39,6 @@ const WorkforceAnalytics = () => {
           icon={ArrowDownUp}
           onClick={navigateToRetention}
           className={activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}
-        />
-        <MetricCard
-          title="Organizational&#10;Structure"
-          value=""
-          icon={LayoutGrid}
-          onClick={() => setActiveView('structure')}
-          className={activeView === 'structure' ? 'ring-4 ring-blue-500' : ''}
         />
       </div>
     </div>
