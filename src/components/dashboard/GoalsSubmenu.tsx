@@ -14,10 +14,10 @@ export function GoalsSubmenu() {
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
-      <div className="flex flex-nowrap gap-6 justify-center mt-8">
+      <div className="flex flex-wrap md:flex-nowrap gap-6 justify-center mt-8">
         {/* My Goals Circle */}
         <div 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full max-w-md aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           onClick={handleMyGoalsClick}
         >
           <div className="flex flex-col items-center justify-center text-center pb-0 pt-6">
@@ -37,7 +37,7 @@ export function GoalsSubmenu() {
 
         {/* Team Goals Circle */}
         <div 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full max-w-md aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           onClick={handleTeamGoalsClick}
         >
           <div className="flex flex-col items-center justify-center text-center pb-0 pt-6">
