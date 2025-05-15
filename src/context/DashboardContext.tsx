@@ -32,15 +32,13 @@ export const useDashboard = () => {
 };
 
 export const DashboardProvider = ({ children }: { children: React.ReactNode }) => {
+  // Initialize with null (no expanded section)
   const [expandedSection, setExpandedSection] = useState<ExpandedSectionType>(null);
   const location = useLocation();
-  const navigate = useNavigate();
   
-  // Helper function to update section - simplified to avoid navigation issues
+  // Simple update function that just updates state
   const updateSection = (section: ExpandedSectionType) => {
-    console.log("Updating section to:", section);
-    
-    // Update state directly without any URL manipulation
+    console.log("Setting expanded section to:", section);
     setExpandedSection(section);
   };
   
@@ -50,14 +48,14 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
     // If we're in past11s, goals, my-skills, or todo-list submenu, go back to "me" section
     if (expandedSection === "past11s" || expandedSection === "goals" || 
         expandedSection === "my-skills" || expandedSection === "todo-list") {
-      updateSection("me");
+      setExpandedSection("me");
     } else {
       // Otherwise, go back to the main dashboard
-      updateSection(null);
+      setExpandedSection(null);
     }
   };
 
-  // Check URL params on initial load only, not when location changes
+  // Check URL params on mount only
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const sectionParam = searchParams.get('section') as ExpandedSectionType | null;
@@ -65,7 +63,7 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
     if (sectionParam) {
       setExpandedSection(sectionParam);
     }
-  }, []); // Only run on initial mount
+  }, []);
   
   return (
     <DashboardContext.Provider 

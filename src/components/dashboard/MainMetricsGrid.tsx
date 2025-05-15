@@ -1,3 +1,4 @@
+
 import { MetricCard } from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -21,13 +22,22 @@ export function MainMetricsGrid({
   onReportsClick
 }: MainMetricsGridProps) {
   
-  // Explicitly prevent default behavior and stop propagation
+  // Handle Me card click with extra debugging
   const handleMeClick = (e: React.MouseEvent) => {
+    // Log the event
+    console.log("Me card click event triggered");
+    
+    // Prevent the default action
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
+    
+    // Call the passed-in handler
     onMeCardClick();
+    
+    // Log after calling the handler
+    console.log("Me card click handler completed");
   };
 
   return (
@@ -92,8 +102,6 @@ export function MainMetricsGrid({
           </p>
         </CardContent>
       </Card>
-      
-      {/* Removed the Reviews Card */}
       
       {/* New Reports Card with Watermark */}
       <Card 

@@ -1,5 +1,5 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { MainMetricsGrid } from "@/components/dashboard/MainMetricsGrid";
 import { ExpandedMeSection } from "@/components/dashboard/ExpandedMeSection";
@@ -16,9 +16,7 @@ import { ReportsSection } from "@/components/dashboard/ReportsSection";
 export const DashboardContent: React.FC = () => {
   const { expandedSection, updateSection, handleBackClick } = useDashboard();
   
-  useEffect(() => {
-    console.log("Current expanded section:", expandedSection);
-  }, [expandedSection]);
+  console.log("Rendering DashboardContent. Current expanded section:", expandedSection);
   
   const handleMeCardClick = () => {
     console.log("Me card clicked");
