@@ -1,4 +1,3 @@
-
 import { MetricCard } from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -21,11 +20,19 @@ export function MainMetricsGrid({
   onToDoListClick,
   onReportsClick
 }: MainMetricsGridProps) {
+  
+  // Prevent default and stop propagation to avoid any unwanted navigation
+  const handleMeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onMeCardClick();
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       <Card 
         className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
-        onClick={onMeCardClick}
+        onClick={handleMeClick}
       >
         <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
           <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
