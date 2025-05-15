@@ -41,63 +41,57 @@ const WorkforceDemographics = () => {
           className={`relative cursor-pointer ${selectedCategory === "gender" ? "ring-4 ring-blue-500" : ""}`} 
           onClick={() => handleCardClick("gender")}
         >
-          <div className="w-[250px] h-[250px] mx-auto">
-            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-10 w-10 text-[#512888]" />
-                  Gender
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center flex-1">
-                <p className="text-muted-foreground text-center">
-                  Click to view gender distribution
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm w-full aspect-square flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
+            <CardHeader className="text-center pt-8">
+              <CardTitle className="flex flex-col items-center">
+                <Users className="mb-2 h-10 w-10 text-[#512888]" />
+                Gender
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-center justify-center flex-1">
+              <p className="text-muted-foreground text-center">
+                Click to view gender distribution
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         <div 
           className={`relative cursor-pointer ${selectedCategory === "race" ? "ring-4 ring-blue-500" : ""}`}
           onClick={() => handleCardClick("race")}
         >
-          <div className="w-[250px] h-[250px] mx-auto">
-            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-10 w-10 text-[#512888]" />
-                  Race
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center flex-1">
-                <p className="text-muted-foreground text-center">
-                  Click to view race distribution
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm w-full aspect-square flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
+            <CardHeader className="text-center pt-8">
+              <CardTitle className="flex flex-col items-center">
+                <Users className="mb-2 h-10 w-10 text-[#512888]" />
+                Race
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-center justify-center flex-1">
+              <p className="text-muted-foreground text-center">
+                Click to view race distribution
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         <div 
           className={`relative cursor-pointer ${selectedCategory === "age" ? "ring-4 ring-blue-500" : ""}`}
           onClick={() => handleCardClick("age")}
         >
-          <div className="w-[250px] h-[250px] mx-auto">
-            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-10 w-10 text-[#512888]" />
-                  Age
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center flex-1">
-                <p className="text-muted-foreground text-center">
-                  Click to view age distribution
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm w-full aspect-square flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
+            <CardHeader className="text-center pt-8">
+              <CardTitle className="flex flex-col items-center">
+                <Users className="mb-2 h-10 w-10 text-[#512888]" />
+                Age
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-center justify-center flex-1">
+              <p className="text-muted-foreground text-center">
+                Click to view age distribution
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
 

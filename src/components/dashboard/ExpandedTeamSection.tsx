@@ -15,7 +15,7 @@ interface TeamMemberCardProps {
 
 const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCardProps) => {
   return (
-    <div className="w-[125px] h-[125px]">
+    <div className="w-full aspect-square">
       <Card 
         className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full h-full flex flex-col justify-center"
       >
@@ -63,7 +63,7 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
 export const ExpandedTeamSection = () => {
   return (
     <div className="mt-4">
-      <div className="flex flex-nowrap overflow-x-auto gap-6 pb-4 justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-center">
         <TeamMemberCard
           name="Alex Morgan"
           role="Senior Developer"

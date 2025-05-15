@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { Star, Code } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -57,11 +58,10 @@ export function MySkillsSubmenu() {
 
   return (
     <div className="space-y-6 animate-in fade-in-50">
-      
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skills.map((skill) => (
           <div key={skill.name} className="flex justify-center">
-            <div className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-[546px] h-[546px] flex flex-col justify-center p-6 relative">
+            <div className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden w-full aspect-square flex flex-col justify-center p-6 relative">
               <div className="flex items-center justify-center mb-3">
                 {skill.name === "Python" || skill.name === "React" || skill.name === "Scala" || skill.name === "AWS" ? (
                   <Code className="h-9 w-9 text-[#9320E7] mr-2" />
