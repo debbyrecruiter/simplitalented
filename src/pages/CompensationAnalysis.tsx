@@ -28,7 +28,7 @@ const CompensationAnalysis = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {/* First Card */}
           <CompensationCard
-            title="Compensation Relative to Performance Analysis"
+            title="Comp By Job Grade & Performance"
             icon={BarChart4}
             onClick={() => handleCardClick('performance-compensation')}
           />
