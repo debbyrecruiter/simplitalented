@@ -38,8 +38,8 @@ export function PerformanceChart({ data, className }: PerformanceChartProps) {
                   <stop offset="95%" stopColor="#808B96" stopOpacity={0}/>
                 </linearGradient>
                 <linearGradient id="colorAverage" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#F9E79F" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#F9E79F" stopOpacity={0}/>
+                  <stop offset="5%" stopColor="#FFFFFF" stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor="#FFFFFF" stopOpacity={0}/>
                 </linearGradient>
               </defs>
               <XAxis 
