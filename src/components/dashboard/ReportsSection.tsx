@@ -25,49 +25,59 @@ export const ReportsSection: React.FC = () => {
     path?: string; 
     comingSoon?: boolean;
   }) => (
-    <Card 
-      className="h-full border-4 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden cursor-pointer hover:border-blue-600 transition-colors"
-      onClick={() => !comingSoon && path && handleCardClick(path)}
-    >
-      <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-4">
-        <Icon className="h-12 w-12 text-[#512888] mb-2" />
-        <CardTitle className="text-2xl font-medium text-[#9320E7] px-4">
-          {title}
-        </CardTitle>
-        <CardContent className="p-4">
-          <Button variant={comingSoon ? "outline" : "default"}>
-            {comingSoon ? "Coming Soon" : "View Reports"}
-          </Button>
-        </CardContent>
-      </CardHeader>
-    </Card>
+    <div className="w-full h-full">
+      <AspectRatio ratio={1} className="h-full">
+        <Card 
+          className="h-full w-full border-4 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden cursor-pointer hover:border-blue-600 transition-colors"
+          onClick={() => !comingSoon && path && handleCardClick(path)}
+        >
+          <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-4">
+            <Icon className="h-12 w-12 text-[#512888] mb-2" />
+            <CardTitle className="text-2xl font-medium text-[#9320E7] px-4">
+              {title}
+            </CardTitle>
+            <CardContent className="p-4">
+              <Button variant={comingSoon ? "outline" : "default"}>
+                {comingSoon ? "Coming Soon" : "View Reports"}
+              </Button>
+            </CardContent>
+          </CardHeader>
+        </Card>
+      </AspectRatio>
+    </div>
   );
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div className="aspect-square">
-        <ReportCard 
-          title="Workforce Analytics" 
-          icon={BarChart2} 
-          path="/reports/workforce-analytics" 
-        />
-      </div>
-      
-      <div className="aspect-square">
-        <ReportCard 
-          title="Compensation Analysis" 
-          icon={DollarSign} 
-          path="/reports/compensation-analysis" 
-        />
-      </div>
-      
-      <div className="aspect-square">
-        <ReportCard 
-          title="Performance Trends" 
-          icon={LineChart} 
-          comingSoon={true} 
-        />
-      </div>
+      {[
+        {
+          title: "Workforce Analytics",
+          icon: BarChart2,
+          path: "/reports/workforce-analytics",
+          comingSoon: false
+        },
+        {
+          title: "Compensation Analysis",
+          icon: DollarSign,
+          path: "/reports/compensation-analysis",
+          comingSoon: false
+        },
+        {
+          title: "Performance Trends",
+          icon: LineChart,
+          path: "",
+          comingSoon: true
+        }
+      ].map((card, index) => (
+        <div key={index} className="w-full h-full">
+          <ReportCard
+            title={card.title}
+            icon={card.icon}
+            path={card.path}
+            comingSoon={card.comingSoon}
+          />
+        </div>
+      ))}
     </div>
   );
 };

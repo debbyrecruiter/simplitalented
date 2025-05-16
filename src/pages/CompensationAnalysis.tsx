@@ -55,46 +55,42 @@ const CompensationAnalysis = () => {
           <PIRGenderCard onBack={handleBackClick} />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div className="aspect-square">
-            <CompensationCard
-              title="Comp By Job Grade & Performance"
-              icon={BarChart4}
-              onClick={() => handleCardClick('performance-compensation')}
-            />
-          </div>
-          
-          <div className="aspect-square">
-            <CompensationCard
-              title="Performance Relative to Starting PIR Salary"
-              icon={DollarSign}
-              onClick={() => handleCardClick('pir-salary')}
-            />
-          </div>
-          
-          <div className="aspect-square">
-            <CompensationCard
-              title="Performance Relative to Starting PIR by Race & Gender"
-              icon={Users}
-              onClick={() => handleCardClick('pir-race-gender')}
-            />
-          </div>
-          
-          <div className="aspect-square">
-            <CompensationCard
-              title="Starting PIR by Race"
-              icon={BarChart}
-              onClick={() => handleCardClick('pir-race')}
-            />
-          </div>
-          
-          <div className="aspect-square">
-            <CompensationCard
-              title="Starting PIR by Gender"
-              icon={ArrowDownUp}
-              onClick={() => handleCardClick('pir-gender')}
-            />
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {[
+            {
+              title: "Comp By Job Grade & Performance",
+              icon: BarChart4,
+              type: 'performance-compensation'
+            },
+            {
+              title: "Performance Relative to Starting PIR Salary",
+              icon: DollarSign,
+              type: 'pir-salary'
+            },
+            {
+              title: "Performance Relative to Starting PIR by Race & Gender",
+              icon: Users,
+              type: 'pir-race-gender'
+            },
+            {
+              title: "Starting PIR by Race",
+              icon: BarChart,
+              type: 'pir-race'
+            },
+            {
+              title: "Starting PIR by Gender",
+              icon: ArrowDownUp,
+              type: 'pir-gender'
+            }
+          ].map((card, index) => (
+            <div key={index} className="w-full h-full">
+              <CompensationCard
+                title={card.title}
+                icon={card.icon}
+                onClick={() => handleCardClick(card.type)}
+              />
+            </div>
+          ))}
         </div>
       )}
     </div>
