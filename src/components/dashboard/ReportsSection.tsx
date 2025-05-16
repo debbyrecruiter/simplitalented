@@ -4,7 +4,6 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { BarChart2, DollarSign, LineChart } from "lucide-react";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export const ReportsSection: React.FC = () => {
   const navigate = useNavigate();
@@ -25,26 +24,22 @@ export const ReportsSection: React.FC = () => {
     path?: string; 
     comingSoon?: boolean;
   }) => (
-    <div className="w-full h-full">
-      <AspectRatio ratio={1} className="h-full">
-        <Card 
-          className="h-full w-full border-4 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={() => !comingSoon && path && handleCardClick(path)}
-        >
-          <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-4">
-            <Icon className="h-12 w-12 text-[#512888] mb-2" />
-            <CardTitle className="text-2xl font-medium text-[#9320E7] px-4">
-              {title}
-            </CardTitle>
-            <CardContent className="p-4">
-              <Button variant={comingSoon ? "outline" : "default"}>
-                {comingSoon ? "Coming Soon" : "View Reports"}
-              </Button>
-            </CardContent>
-          </CardHeader>
-        </Card>
-      </AspectRatio>
-    </div>
+    <Card 
+      className="h-full w-full aspect-square border-4 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden cursor-pointer hover:border-blue-600 transition-colors"
+      onClick={() => !comingSoon && path && handleCardClick(path)}
+    >
+      <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-4">
+        <Icon className="h-12 w-12 text-[#512888] mb-2" />
+        <CardTitle className="text-2xl font-medium text-[#9320E7] px-4">
+          {title}
+        </CardTitle>
+        <CardContent className="p-4">
+          <Button variant={comingSoon ? "outline" : "default"}>
+            {comingSoon ? "Coming Soon" : "View Reports"}
+          </Button>
+        </CardContent>
+      </CardHeader>
+    </Card>
   );
 
   return (
@@ -69,7 +64,7 @@ export const ReportsSection: React.FC = () => {
           comingSoon: true
         }
       ].map((card, index) => (
-        <div key={index} className="w-full h-full">
+        <div key={index} className="w-full">
           <ReportCard
             title={card.title}
             icon={card.icon}

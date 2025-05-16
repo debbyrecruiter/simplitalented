@@ -83,7 +83,7 @@ const CompensationAnalysis = () => {
               type: 'pir-gender'
             }
           ].map((card, index) => (
-            <div key={index} className="w-full h-full">
+            <div key={index} className="w-full">
               <CompensationCard
                 title={card.title}
                 icon={card.icon}
