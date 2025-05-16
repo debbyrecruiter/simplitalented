@@ -12,7 +12,7 @@ interface MetricCardProps {
   trendValue?: string;
   className?: string;
   onClick?: () => void;
-  titleClassName?: string; // Added prop for title-specific styling
+  titleClassName?: string;
 }
 
 export function MetricCard({
@@ -24,7 +24,7 @@ export function MetricCard({
   trendValue,
   className,
   onClick,
-  titleClassName // New prop
+  titleClassName
 }: MetricCardProps) {
   // Determine if this is one of the specific menu items we need to adjust
   const isMenuCard = ["My Goals", "My Learning", "My Reviews", "My Schedule", "Past 1:1s"].includes(title);
@@ -32,7 +32,7 @@ export function MetricCard({
   return (
     <Card 
       className={cn(
-        "border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center", 
+        "border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden flex flex-col justify-center", 
         onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
@@ -41,8 +41,8 @@ export function MetricCard({
       <div className="flex flex-col items-center justify-center h-full p-4 text-center">
         <CardTitle className={cn(
           "font-small text-[#9320E7] text-center w-full whitespace-pre-line mb-1",
-          isMenuCard ? "text-4xl" : "text-5xl", // Sized appropriately for menu cards
-          titleClassName // Apply title-specific class if provided
+          isMenuCard ? "text-4xl" : "text-5xl",
+          titleClassName
         )}>
           {title}
         </CardTitle>
@@ -52,7 +52,7 @@ export function MetricCard({
             <span
               className={cn(
                 "font-small text-center whitespace-pre-line",
-                isMenuCard ? "text-xs" : "text-sm", // Sized appropriately for menu cards
+                isMenuCard ? "text-xs" : "text-sm",
                 trend === "up" && "text-green-600",
                 trend === "down" && "text-red-600",
                 trend === "neutral" && "text-muted-foreground"

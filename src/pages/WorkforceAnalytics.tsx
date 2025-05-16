@@ -31,14 +31,14 @@ const WorkforceAnalytics = () => {
           value=""
           icon={Users}
           onClick={navigateToDemographics}
-          className=""
+          className="aspect-square"
         />
         <MetricCard
           title="Retention"
           value=""
           icon={ArrowDownUp}
           onClick={navigateToRetention}
-          className={activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}
+          className={`aspect-square ${activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}`}
         />
       </div>
     </div>
