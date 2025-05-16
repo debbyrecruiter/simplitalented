@@ -1,12 +1,11 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { Users, ArrowDownUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { MetricCard } from "@/components/MetricCard";
 
 const WorkforceAnalytics = () => {
-  const [activeView, setActiveView] = useState<'retention'>('retention');
   const navigate = useNavigate();
 
   const navigateToDemographics = () => {
@@ -18,7 +17,7 @@ const WorkforceAnalytics = () => {
   };
 
   return (
-    <div className="container p-4 mx-auto">
+    <div className="container p-4 mx-auto max-w-screen-xl">
       <div className="mb-6">
         <BackButton fallbackPath="/reports" label="Back" />
       </div>
@@ -31,14 +30,14 @@ const WorkforceAnalytics = () => {
           value=""
           icon={Users}
           onClick={navigateToDemographics}
-          className=""
+          className="border-12 border-[#840DD7]"
         />
         <MetricCard
           title="Retention"
           value=""
           icon={ArrowDownUp}
           onClick={navigateToRetention}
-          className={activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}
+          className={`border-12 border-[#840DD7] ${activeView === 'retention' ? 'ring-4 ring-blue-500' : ''}`}
         />
       </div>
     </div>
