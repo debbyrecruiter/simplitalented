@@ -47,65 +47,67 @@ const CompensationAnalysis = () => {
       
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        {/* First Card */}
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
+          className="border-8 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           onClick={() => {}}
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
-            <BarChart4 className="h-12 w-12 text-[#9320E7] mb-2" />
-            <CardTitle className="text-6xl font-small text-[#9320E7] px-8">
+            <BarChart4 className="h-10 w-10 text-[#9320E7] mb-2" />
+            <CardTitle className="text-lg font-small text-[#9320E7] px-4 whitespace-pre-line">
               Compensation Relative to Performance Analysis
             </CardTitle>
           </CardHeader>
         </Card>
         
+        {/* Second Card */}
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
+          className="border-8 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           onClick={() => {}}
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
-            <DollarSign className="h-12 w-12 text-[#9320E7] mb-2" />
-            <CardTitle className="text-6xl font-small text-[#9320E7] px-8">
+            <DollarSign className="h-10 w-10 text-[#9320E7] mb-2" />
+            <CardTitle className="text-lg font-small text-[#9320E7] px-4 whitespace-pre-line">
               Performance Relative to Starting PIR Salary
             </CardTitle>
           </CardHeader>
         </Card>
-      </div>
-      
-      {/* New Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        {/* Third Card */}
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
+          className="border-8 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           onClick={() => {}}
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
-            <Users className="h-12 w-12 text-[#9320E7] mb-2" />
-            <CardTitle className="text-6xl font-small text-[#9320E7] px-8 whitespace-pre-line">
+            <Users className="h-10 w-10 text-[#9320E7] mb-2" />
+            <CardTitle className="text-lg font-small text-[#9320E7] px-4 whitespace-pre-line">
               Performance Relative to Starting PIR by Race & Gender
             </CardTitle>
           </CardHeader>
         </Card>
         
+        {/* Fourth Card */}
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
+          className="border-8 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           onClick={() => {}}
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
-            <BarChart className="h-12 w-12 text-[#9320E7] mb-2" />
-            <CardTitle className="text-6xl font-small text-[#9320E7] px-8 whitespace-pre-line">
+            <BarChart className="h-10 w-10 text-[#9320E7] mb-2" />
+            <CardTitle className="text-lg font-small text-[#9320E7] px-4 whitespace-pre-line">
               Starting PIR by Race
             </CardTitle>
           </CardHeader>
         </Card>
         
+        {/* Fifth Card */}
         <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
+          className="border-8 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           onClick={() => {}}
         >
           <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
-            <ArrowDownUp className="h-12 w-12 text-[#9320E7] mb-2" />
-            <CardTitle className="text-6xl font-small text-[#9320E7] px-8 whitespace-pre-line">
+            <ArrowDownUp className="h-10 w-10 text-[#9320E7] mb-2" />
+            <CardTitle className="text-lg font-small text-[#9320E7] px-4 whitespace-pre-line">
               Starting PIR by Gender
             </CardTitle>
           </CardHeader>
