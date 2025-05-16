@@ -23,8 +23,8 @@ export const CompensationDataTable: React.FC<CompensationDataTableProps> = ({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[200px]">Name</TableHead>
               <TableHead>Job Grade</TableHead>
+              <TableHead className="w-[200px]">Name</TableHead>
               <TableHead>Salary</TableHead>
               <TableHead>PIR</TableHead>
               <TableHead>Performance</TableHead>
@@ -33,8 +33,8 @@ export const CompensationDataTable: React.FC<CompensationDataTableProps> = ({
           <TableBody>
             {salaryPerformanceData.map((employee, index) => (
               <TableRow key={index}>
-                <TableCell className="font-medium">{employee.name}</TableCell>
                 <TableCell>{employee.jobGrade}</TableCell>
+                <TableCell className="font-medium">{employee.name}</TableCell>
                 <TableCell>${employee.salary.toLocaleString()}</TableCell>
                 <TableCell>{employee.pir}%</TableCell>
                 <TableCell>{employee.performance}/5</TableCell>
