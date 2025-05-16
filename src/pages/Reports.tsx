@@ -12,7 +12,7 @@ const Reports = () => {
   };
 
   return (
-    <div className="container p-4 mx-auto">
+    <div className="container p-4 mx-auto max-w-screen-xl">
       <div className="mb-6">
         <BackButton onClick={handleBackClick} label="Back" />
       </div>

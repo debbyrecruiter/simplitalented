@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { BarChart2, DollarSign, LineChart } from "lucide-react";
 
@@ -14,6 +14,7 @@ export const ReportsSection: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* First Card - Workforce Analytics */}
       <div className="flex justify-center items-center">
         <div className="w-full md:w-4/5 h-0 pb-[100%] md:pb-[80%] relative">
           <Card 
@@ -22,7 +23,7 @@ export const ReportsSection: React.FC = () => {
           >
             <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
               <BarChart2 className="h-12 w-12 text-[#512888] mb-2" />
-              <CardTitle className="text-4xl font-small text-[#9320E7] px-8">
+              <CardTitle className="text-3xl font-medium text-[#9320E7] px-4">
                 Workforce Analytics
               </CardTitle>
               <CardContent className="p-4">
@@ -33,6 +34,7 @@ export const ReportsSection: React.FC = () => {
         </div>
       </div>
       
+      {/* Second Card - Compensation Analysis */}
       <div className="flex justify-center items-center">
         <div className="w-full md:w-4/5 h-0 pb-[100%] md:pb-[80%] relative">
           <Card 
@@ -41,7 +43,7 @@ export const ReportsSection: React.FC = () => {
           >
             <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
               <DollarSign className="h-12 w-12 text-[#512888] mb-2" />
-              <CardTitle className="text-4xl font-small text-[#9320E7] px-8">
+              <CardTitle className="text-3xl font-medium text-[#9320E7] px-4">
                 Compensation Analysis
               </CardTitle>
               <CardContent className="p-4">
@@ -52,6 +54,7 @@ export const ReportsSection: React.FC = () => {
         </div>
       </div>
       
+      {/* Third Card - Performance Trends */}
       <div className="flex justify-center items-center">
         <div className="w-full md:w-4/5 h-0 pb-[100%] md:pb-[80%] relative">
           <Card 
@@ -59,7 +62,7 @@ export const ReportsSection: React.FC = () => {
           >
             <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
               <LineChart className="h-12 w-12 text-[#512888] mb-2" />
-              <CardTitle className="text-4xl font-small text-[#9320E7] px-8">
+              <CardTitle className="text-3xl font-medium text-[#9320E7] px-4">
                 Performance Trends
               </CardTitle>
               <CardContent className="p-4">
