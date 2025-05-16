@@ -13,6 +13,10 @@ const CompensationAnalysis = () => {
     setSelectedChart(chartType === selectedChart ? null : chartType);
   };
 
+  const handleBackClick = () => {
+    setSelectedChart(null);
+  };
+
   return (
     <div className="flex-1 p-4 overflow-auto">
       <div className="mb-4">
@@ -23,11 +27,11 @@ const CompensationAnalysis = () => {
       
       {selectedChart === 'performance-compensation' ? (
         <div className="mb-6">
-          <PerformanceCompensationChart onBack={() => setSelectedChart(null)} />
+          <PerformanceCompensationChart onBack={handleBackClick} />
         </div>
       ) : selectedChart === 'pir-salary' ? (
         <div className="mb-6">
-          <PIRSalaryCard onBack={() => setSelectedChart(null)} />
+          <PIRSalaryCard onBack={handleBackClick} />
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
