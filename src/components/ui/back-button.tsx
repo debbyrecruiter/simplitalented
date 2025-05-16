@@ -17,9 +17,9 @@ export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: Back
       // Use custom click handler if provided
       onClick();
     } else {
-      // Simply go back one step in history
-      // This naturally returns to the previous page the user was on
-      navigate(-1);
+      // Instead of using navigate(-1), explicitly navigate to the fallback path
+      // This ensures consistent navigation behavior
+      navigate(fallbackPath);
     }
   };
 
