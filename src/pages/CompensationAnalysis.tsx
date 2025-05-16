@@ -4,6 +4,7 @@ import { BackButton } from "@/components/ui/back-button";
 import { BarChart4, DollarSign, Users, ArrowDownUp, BarChart } from "lucide-react";
 import { CompensationCard } from "@/components/compensation/CompensationCard";
 import { PerformanceCompensationChart } from "@/components/compensation/PerformanceCompensationChart";
+import { PIRSalaryCard } from "@/components/compensation/PIRSalaryCard";
 
 const CompensationAnalysis = () => {
   const [selectedChart, setSelectedChart] = useState<string | null>(null);
@@ -23,6 +24,10 @@ const CompensationAnalysis = () => {
       {selectedChart === 'performance-compensation' ? (
         <div className="mb-6">
           <PerformanceCompensationChart onBack={() => setSelectedChart(null)} />
+        </div>
+      ) : selectedChart === 'pir-salary' ? (
+        <div className="mb-6">
+          <PIRSalaryCard onBack={() => setSelectedChart(null)} />
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
