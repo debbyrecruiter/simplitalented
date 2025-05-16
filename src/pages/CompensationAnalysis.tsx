@@ -5,6 +5,9 @@ import { BarChart4, DollarSign, Users, ArrowDownUp, BarChart } from "lucide-reac
 import { CompensationCard } from "@/components/compensation/CompensationCard";
 import { PerformanceCompensationChart } from "@/components/compensation/PerformanceCompensationChart";
 import { PIRSalaryCard } from "@/components/compensation/PIRSalaryCard";
+import { PIRRaceGenderCard } from "@/components/compensation/PIRRaceGenderCard";
+import { PIRRaceCard } from "@/components/compensation/PIRRaceCard";
+import { PIRGenderCard } from "@/components/compensation/PIRGenderCard";
 import { useNavigate } from "react-router-dom";
 
 const CompensationAnalysis = () => {
@@ -38,6 +41,18 @@ const CompensationAnalysis = () => {
       ) : selectedChart === 'pir-salary' ? (
         <div className="mb-6">
           <PIRSalaryCard onBack={handleBackClick} />
+        </div>
+      ) : selectedChart === 'pir-race-gender' ? (
+        <div className="mb-6">
+          <PIRRaceGenderCard onBack={handleBackClick} />
+        </div>
+      ) : selectedChart === 'pir-race' ? (
+        <div className="mb-6">
+          <PIRRaceCard onBack={handleBackClick} />
+        </div>
+      ) : selectedChart === 'pir-gender' ? (
+        <div className="mb-6">
+          <PIRGenderCard onBack={handleBackClick} />
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
