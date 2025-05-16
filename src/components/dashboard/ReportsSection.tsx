@@ -9,7 +9,7 @@ export const ReportsSection: React.FC = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div className="flex justify-center items-center">
-        <div className="w-4/5 h-0 pb-[80%] relative">
+        <div className="w-full md:w-4/5 h-0 pb-[100%] md:pb-[80%] relative">
           <Card 
             className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden absolute inset-0 flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           >
@@ -29,7 +29,7 @@ export const ReportsSection: React.FC = () => {
       </div>
       
       <div className="flex justify-center items-center">
-        <div className="w-4/5 h-0 pb-[80%] relative">
+        <div className="w-full md:w-4/5 h-0 pb-[100%] md:pb-[80%] relative">
           <Card 
             className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden absolute inset-0 flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           >
@@ -49,7 +49,7 @@ export const ReportsSection: React.FC = () => {
       </div>
       
       <div className="flex justify-center items-center">
-        <div className="w-4/5 h-0 pb-[80%] relative">
+        <div className="w-full md:w-4/5 h-0 pb-[100%] md:pb-[80%] relative">
           <Card 
             className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden absolute inset-0 flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
           >
