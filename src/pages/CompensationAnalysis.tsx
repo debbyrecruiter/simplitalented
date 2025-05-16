@@ -20,7 +20,7 @@ const CompensationAnalysis = () => {
   return (
     <div className="flex-1 p-4 overflow-auto">
       <div className="mb-4">
-        <BackButton fallbackPath="/reports" label="Back" />
+        <BackButton fallbackPath="/reports" />
       </div>
       
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
