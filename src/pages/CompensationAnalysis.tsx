@@ -5,9 +5,11 @@ import { BarChart4, DollarSign, Users, ArrowDownUp, BarChart } from "lucide-reac
 import { CompensationCard } from "@/components/compensation/CompensationCard";
 import { PerformanceCompensationChart } from "@/components/compensation/PerformanceCompensationChart";
 import { PIRSalaryCard } from "@/components/compensation/PIRSalaryCard";
+import { useNavigate } from "react-router-dom";
 
 const CompensationAnalysis = () => {
   const [selectedChart, setSelectedChart] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleCardClick = (chartType: string) => {
     setSelectedChart(chartType === selectedChart ? null : chartType);
@@ -17,10 +19,14 @@ const CompensationAnalysis = () => {
     setSelectedChart(null);
   };
 
+  const handleMainBackClick = () => {
+    navigate("/reports");
+  };
+
   return (
     <div className="flex-1 p-4 overflow-auto">
       <div className="mb-4">
-        <BackButton fallbackPath="/reports" label="Back" />
+        <BackButton onClick={handleMainBackClick} fallbackPath="/reports" label="Back" />
       </div>
       
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>

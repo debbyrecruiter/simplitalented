@@ -8,6 +8,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft } from "lucide-react";
 import { salaryPerformanceData } from "@/data/compensationData";
 
 interface PIRSalaryDataTableProps {
@@ -45,12 +47,13 @@ export const PIRSalaryDataTable: React.FC<PIRSalaryDataTableProps> = ({
           </TableBody>
         </Table>
       </div>
-      <button
-        className="px-4 py-2 bg-[#9320E7] text-white rounded-md hover:bg-[#7D00D2] transition-colors self-start"
+      <Button
         onClick={onBack}
+        className="flex items-center gap-2 bg-[#9320E7] hover:bg-[#7D00D2] text-white"
       >
+        <ChevronLeft className="h-4 w-4" />
         Back to Compensation Cards
-      </button>
+      </Button>
     </div>
   );
 };
