@@ -17,7 +17,8 @@ import {
   Tooltip, 
   ResponsiveContainer,
   Cell,
-  Legend
+  Legend,
+  TooltipProps
 } from "recharts";
 
 // Enhanced compensation data with job codes
@@ -216,8 +217,21 @@ const CompensationAnalysis = () => {
   );
 };
 
-// Custom tooltip component for the scatter chart
-const CustomTooltip = ({ active, payload }) => {
+// Fixed CustomTooltip component with proper TypeScript typing
+interface CustomTooltipProps extends TooltipProps<number, string> {
+  active?: boolean;
+  payload?: Array<{
+    payload: {
+      name: string;
+      jobGrade: string;
+      salary: number;
+      pir: number;
+      performance: number;
+    };
+  }>;
+}
+
+const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
