@@ -2,7 +2,7 @@
 import React from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart4, DollarSign } from "lucide-react";
+import { BarChart4, DollarSign, Users, ArrowDownUp, BarChart } from "lucide-react";
 
 // Enhanced compensation data with job codes
 const compensationData = [
@@ -47,7 +47,7 @@ const CompensationAnalysis = () => {
       
       <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
           onClick={() => {}}
@@ -68,6 +68,45 @@ const CompensationAnalysis = () => {
             <DollarSign className="h-12 w-12 text-[#9320E7] mb-2" />
             <CardTitle className="text-6xl font-small text-[#9320E7] px-8">
               Performance Relative to Starting PIR Salary
+            </CardTitle>
+          </CardHeader>
+        </Card>
+      </div>
+      
+      {/* New Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
+          onClick={() => {}}
+        >
+          <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
+            <Users className="h-12 w-12 text-[#9320E7] mb-2" />
+            <CardTitle className="text-6xl font-small text-[#9320E7] px-8 whitespace-pre-line">
+              Performance Relative to Starting PIR by Race & Gender
+            </CardTitle>
+          </CardHeader>
+        </Card>
+        
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
+          onClick={() => {}}
+        >
+          <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
+            <BarChart className="h-12 w-12 text-[#9320E7] mb-2" />
+            <CardTitle className="text-6xl font-small text-[#9320E7] px-8 whitespace-pre-line">
+              Starting PIR by Race
+            </CardTitle>
+          </CardHeader>
+        </Card>
+        
+        <Card 
+          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors transform origin-center scale-[0.525]"
+          onClick={() => {}}
+        >
+          <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
+            <ArrowDownUp className="h-12 w-12 text-[#9320E7] mb-2" />
+            <CardTitle className="text-6xl font-small text-[#9320E7] px-8 whitespace-pre-line">
+              Starting PIR by Gender
             </CardTitle>
           </CardHeader>
         </Card>
