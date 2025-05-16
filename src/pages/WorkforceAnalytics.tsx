@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { Users, ArrowDownUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -7,12 +7,16 @@ import { MetricCard } from "@/components/MetricCard";
 
 const WorkforceAnalytics = () => {
   const navigate = useNavigate();
+  // Add the missing state variable
+  const [activeView, setActiveView] = useState<'demographics' | 'retention' | null>(null);
 
   const navigateToDemographics = () => {
+    setActiveView('demographics');
     navigate('/reports/workforce-demographics');
   };
 
   const navigateToRetention = () => {
+    setActiveView('retention');
     navigate('/reports/workforce-retention');
   };
 
@@ -30,7 +34,7 @@ const WorkforceAnalytics = () => {
           value=""
           icon={Users}
           onClick={navigateToDemographics}
-          className="border-12 border-[#840DD7]"
+          className={`border-12 border-[#840DD7] ${activeView === 'demographics' ? 'ring-4 ring-blue-500' : ''}`}
         />
         <MetricCard
           title="Retention"
