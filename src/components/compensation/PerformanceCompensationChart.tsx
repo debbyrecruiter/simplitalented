@@ -13,7 +13,7 @@ export const PerformanceCompensationChart: React.FC<PerformanceCompensationChart
   return (
     <Card className="border shadow-sm">
       <CardHeader>
-        <CardTitle className="text-xl text-center">Compensation Relative to Performance Analysis</CardTitle>
+        <CardTitle className="text-xl text-center">Comp By Job Grade & Performance</CardTitle>
       </CardHeader>
       <CardContent>
         <CompensationDataTable onBack={onBack} />
