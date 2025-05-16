@@ -23,9 +23,10 @@ export const PIRSalaryDataTable: React.FC<PIRSalaryDataTableProps> = ({
         <Table>
           <TableHeader>
             <TableRow>
+              <TableHead className="w-[150px]">Job Grade</TableHead>
               <TableHead className="w-[200px]">Name</TableHead>
-              <TableHead>Job Grade</TableHead>
               <TableHead>Starting Salary</TableHead>
+              <TableHead>Current Salary</TableHead>
               <TableHead>PIR</TableHead>
               <TableHead>Performance</TableHead>
             </TableRow>
@@ -33,8 +34,9 @@ export const PIRSalaryDataTable: React.FC<PIRSalaryDataTableProps> = ({
           <TableBody>
             {salaryPerformanceData.map((employee, index) => (
               <TableRow key={index}>
-                <TableCell className="font-medium">{employee.name}</TableCell>
                 <TableCell>{employee.jobGrade}</TableCell>
+                <TableCell className="font-medium">{employee.name}</TableCell>
+                <TableCell>${employee.startingSalary.toLocaleString()}</TableCell>
                 <TableCell>${employee.salary.toLocaleString()}</TableCell>
                 <TableCell>{employee.pir}%</TableCell>
                 <TableCell>{employee.performance}/5</TableCell>

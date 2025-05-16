@@ -10,17 +10,17 @@ export const compensationData = [
 
 // Salary performance data
 export const salaryPerformanceData = [
-  { name: "Ashton English", jobGrade: "SWE-1", salary: 152000, pir: 50, performance: 5 },
-  { name: "Amelie Bartlett", jobGrade: "SWE-1", salary: 178000, pir: 70, performance: 3 },
-  { name: "Kye Richardson", jobGrade: "SWE-2", salary: 212000, pir: 90, performance: 2 },
-  { name: "Halle Caldwell", jobGrade: "SWE-2", salary: 157000, pir: 37, performance: 5 },
-  { name: "Rex Woodward", jobGrade: "SWE-2", salary: 225000, pir: 101, performance: 1 },
-  { name: "Elena Schmidt", jobGrade: "SWE-3", salary: 375000, pir: 115, performance: 3 },
-  { name: "Sabrina White", jobGrade: "SWE-3", salary: 312000, pir: 95, performance: 5 },
-  { name: "Keith Lam", jobGrade: "MKT-1", salary: 170000, pir: 70, performance: 4 },
-  { name: "Madeleine Wu", jobGrade: "MKT-1", salary: 210000, pir: 90, performance: 3 },
-  { name: "Emmy Mckenzie", jobGrade: "SLS-1", salary: 150000, pir: 55, performance: 2 },
-  { name: "Liam Mack", jobGrade: "SLS-1", salary: 175000, pir: 80, performance: 3 },
+  { name: "Ashton English", jobGrade: "SWE-1", startingSalary: 137000, salary: 152000, pir: 50, performance: 5 },
+  { name: "Amelie Bartlett", jobGrade: "SWE-1", startingSalary: 161000, salary: 178000, pir: 70, performance: 3 },
+  { name: "Kye Richardson", jobGrade: "SWE-2", startingSalary: 191000, salary: 212000, pir: 90, performance: 2 },
+  { name: "Halle Caldwell", jobGrade: "SWE-2", startingSalary: 140000, salary: 157000, pir: 37, performance: 5 },
+  { name: "Rex Woodward", jobGrade: "SWE-2", startingSalary: 200000, salary: 225000, pir: 101, performance: 1 },
+  { name: "Elena Schmidt", jobGrade: "SWE-3", startingSalary: 337000, salary: 375000, pir: 115, performance: 3 },
+  { name: "Sabrina White", jobGrade: "SWE-3", startingSalary: 279000, salary: 312000, pir: 95, performance: 5 },
+  { name: "Keith Lam", jobGrade: "MKT-1", startingSalary: 153000, salary: 170000, pir: 70, performance: 4 },
+  { name: "Madeleine Wu", jobGrade: "MKT-1", startingSalary: 189000, salary: 210000, pir: 90, performance: 3 },
+  { name: "Emmy Mckenzie", jobGrade: "SLS-1", startingSalary: 135000, salary: 150000, pir: 55, performance: 2 },
+  { name: "Liam Mack", jobGrade: "SLS-1", startingSalary: 157000, salary: 175000, pir: 80, performance: 3 },
 ];
 
 // Chart color palette
