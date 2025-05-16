@@ -25,47 +25,49 @@ export const ReportsSection: React.FC = () => {
     path?: string; 
     comingSoon?: boolean;
   }) => (
-    <div className="w-full">
-      <AspectRatio ratio={1/1}>
-        <Card 
-          className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden h-full w-full flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={() => !comingSoon && path && handleCardClick(path)}
-        >
-          <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
-            <Icon className="h-12 w-12 text-[#512888] mb-2" />
-            <CardTitle className="text-3xl font-medium text-[#9320E7] px-4">
-              {title}
-            </CardTitle>
-            <CardContent className="p-4">
-              <Button variant={comingSoon ? "outline" : "default"}>
-                {comingSoon ? "Coming Soon" : "View Reports"}
-              </Button>
-            </CardContent>
-          </CardHeader>
-        </Card>
-      </AspectRatio>
-    </div>
+    <Card 
+      className="h-full border-4 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden cursor-pointer hover:border-blue-600 transition-colors"
+      onClick={() => !comingSoon && path && handleCardClick(path)}
+    >
+      <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-4">
+        <Icon className="h-12 w-12 text-[#512888] mb-2" />
+        <CardTitle className="text-2xl font-medium text-[#9320E7] px-4">
+          {title}
+        </CardTitle>
+        <CardContent className="p-4">
+          <Button variant={comingSoon ? "outline" : "default"}>
+            {comingSoon ? "Coming Soon" : "View Reports"}
+          </Button>
+        </CardContent>
+      </CardHeader>
+    </Card>
   );
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <ReportCard 
-        title="Workforce Analytics" 
-        icon={BarChart2} 
-        path="/reports/workforce-analytics" 
-      />
+      <div className="aspect-square">
+        <ReportCard 
+          title="Workforce Analytics" 
+          icon={BarChart2} 
+          path="/reports/workforce-analytics" 
+        />
+      </div>
       
-      <ReportCard 
-        title="Compensation Analysis" 
-        icon={DollarSign} 
-        path="/reports/compensation-analysis" 
-      />
+      <div className="aspect-square">
+        <ReportCard 
+          title="Compensation Analysis" 
+          icon={DollarSign} 
+          path="/reports/compensation-analysis" 
+        />
+      </div>
       
-      <ReportCard 
-        title="Performance Trends" 
-        icon={LineChart} 
-        comingSoon={true} 
-      />
+      <div className="aspect-square">
+        <ReportCard 
+          title="Performance Trends" 
+          icon={LineChart} 
+          comingSoon={true} 
+        />
+      </div>
     </div>
   );
 };

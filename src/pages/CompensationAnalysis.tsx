@@ -9,7 +9,6 @@ import { PIRRaceGenderCard } from "@/components/compensation/PIRRaceGenderCard";
 import { PIRRaceCard } from "@/components/compensation/PIRRaceCard";
 import { PIRGenderCard } from "@/components/compensation/PIRGenderCard";
 import { useNavigate } from "react-router-dom";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const CompensationAnalysis = () => {
   const [selectedChart, setSelectedChart] = useState<string | null>(null);
@@ -57,55 +56,44 @@ const CompensationAnalysis = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {/* Cards with consistent layout - now using AspectRatio */}
-          <div className="w-full">
-            <AspectRatio ratio={1/1} className="h-full">
-              <CompensationCard
-                title="Comp By Job Grade & Performance"
-                icon={BarChart4}
-                onClick={() => handleCardClick('performance-compensation')}
-              />
-            </AspectRatio>
+          <div className="aspect-square">
+            <CompensationCard
+              title="Comp By Job Grade & Performance"
+              icon={BarChart4}
+              onClick={() => handleCardClick('performance-compensation')}
+            />
           </div>
           
-          <div className="w-full">
-            <AspectRatio ratio={1/1} className="h-full">
-              <CompensationCard
-                title="Performance Relative to Starting PIR Salary"
-                icon={DollarSign}
-                onClick={() => handleCardClick('pir-salary')}
-              />
-            </AspectRatio>
+          <div className="aspect-square">
+            <CompensationCard
+              title="Performance Relative to Starting PIR Salary"
+              icon={DollarSign}
+              onClick={() => handleCardClick('pir-salary')}
+            />
           </div>
           
-          <div className="w-full">
-            <AspectRatio ratio={1/1} className="h-full">
-              <CompensationCard
-                title="Performance Relative to Starting PIR by Race & Gender"
-                icon={Users}
-                onClick={() => handleCardClick('pir-race-gender')}
-              />
-            </AspectRatio>
+          <div className="aspect-square">
+            <CompensationCard
+              title="Performance Relative to Starting PIR by Race & Gender"
+              icon={Users}
+              onClick={() => handleCardClick('pir-race-gender')}
+            />
           </div>
           
-          <div className="w-full">
-            <AspectRatio ratio={1/1} className="h-full">
-              <CompensationCard
-                title="Starting PIR by Race"
-                icon={BarChart}
-                onClick={() => handleCardClick('pir-race')}
-              />
-            </AspectRatio>
+          <div className="aspect-square">
+            <CompensationCard
+              title="Starting PIR by Race"
+              icon={BarChart}
+              onClick={() => handleCardClick('pir-race')}
+            />
           </div>
           
-          <div className="w-full">
-            <AspectRatio ratio={1/1} className="h-full">
-              <CompensationCard
-                title="Starting PIR by Gender"
-                icon={ArrowDownUp}
-                onClick={() => handleCardClick('pir-gender')}
-              />
-            </AspectRatio>
+          <div className="aspect-square">
+            <CompensationCard
+              title="Starting PIR by Gender"
+              icon={ArrowDownUp}
+              onClick={() => handleCardClick('pir-gender')}
+            />
           </div>
         </div>
       )}
