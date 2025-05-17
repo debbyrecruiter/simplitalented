@@ -29,6 +29,13 @@ export function MetricCard({
   // Determine if this is one of the specific menu items we need to adjust
   const isMenuCard = ["My Goals", "My Learning", "My Reviews", "My Schedule", "Past 1:1s"].includes(title);
   
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+  
   return (
     <Card 
       className={cn(
@@ -36,7 +43,7 @@ export function MetricCard({
         onClick && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className="flex flex-col items-center justify-center h-full p-4 text-center">
         <CardTitle className={cn(

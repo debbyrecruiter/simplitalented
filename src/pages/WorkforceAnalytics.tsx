@@ -10,10 +10,12 @@ const WorkforceAnalytics = () => {
   const navigate = useNavigate();
 
   const navigateToDemographics = () => {
+    console.log("Navigating to demographics");
     navigate('/reports/workforce-demographics');
   };
 
   const navigateToRetention = () => {
+    console.log("Navigating to retention");
     navigate('/reports/workforce-retention');
   };
 
