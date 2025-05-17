@@ -14,6 +14,7 @@ const CompensationAnalysis = () => {
   };
 
   const handleBackClick = () => {
+    // Explicitly set selectedChart to null to return to the main compensation analysis view
     setSelectedChart(null);
   };
 

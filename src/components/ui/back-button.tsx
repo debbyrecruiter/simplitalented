@@ -12,13 +12,16 @@ interface BackButtonProps {
 export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: BackButtonProps) {
   const navigate = useNavigate();
   
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    // Prevent any default behavior
+    e.preventDefault();
+    e.stopPropagation();
+    
     if (onClick) {
-      // Use custom click handler if provided
+      // Call the provided onClick handler directly
       onClick();
     } else {
-      // Instead of using navigate(-1), explicitly navigate to the fallback path
-      // This ensures consistent navigation behavior
+      // Only use the fallback navigation if no onClick is provided
       navigate(fallbackPath);
     }
   };
