@@ -7,13 +7,25 @@ interface CategoryCardProps {
   title: string;
   icon: LucideIcon;
   onClick: () => void;
+  isActive?: boolean;
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ title, icon: Icon, onClick }) => {
+const CategoryCard: React.FC<CategoryCardProps> = ({ 
+  title, 
+  icon: Icon, 
+  onClick,
+  isActive = false 
+}) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    console.log(`CategoryCard clicked: ${title}`);
+    onClick();
+  };
+
   return (
     <Card 
-      className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-      onClick={onClick}
+      className={`border-12 ${isActive ? 'border-blue-600' : 'border-[#840DD7]'} bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors`}
+      onClick={handleClick}
     >
       <div className="flex flex-col items-center justify-center h-full p-4 text-center">
         <div className="flex items-center justify-center mb-3">

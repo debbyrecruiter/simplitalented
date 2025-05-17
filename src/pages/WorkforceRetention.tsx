@@ -10,7 +10,6 @@ import {
   TrendingDown, 
   UserX 
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import CategoryCard from "@/components/workforce-retention/CategoryCard";
 import CompanyAttritionCard from "@/components/workforce-retention/CompanyAttritionCard";
 import ManagerAttritionCard from "@/components/workforce-retention/ManagerAttritionCard";
@@ -19,119 +18,13 @@ import DemographicAttritionCard from "@/components/workforce-retention/Demograph
 import RegrettableDeparturesCard from "@/components/workforce-retention/RegrettableDeparturesCard";
 
 const WorkforceRetention = () => {
-  const navigate = useNavigate();
-  const [showManagerAttrition, setShowManagerAttrition] = useState(false);
-  const [showCompanyAttrition, setShowCompanyAttrition] = useState(false);
-  const [showPerformanceAttrition, setShowPerformanceAttrition] = useState(false);
-  const [showRaceAttrition, setShowRaceAttrition] = useState(false);
-  const [showGenderAttrition, setShowGenderAttrition] = useState(false);
-  const [showRecruiterAttrition, setShowRecruiterAttrition] = useState(false);
-  const [showRegrettableDepartures, setShowRegrettableDepartures] = useState(false);
+  // Use a single activeCard state instead of multiple boolean states
+  const [activeCard, setActiveCard] = useState<string | null>(null);
 
-  // Improved click handlers
-  const handleCompanyCardClick = () => {
-    console.log("Company card clicked, toggling state");
-    setShowCompanyAttrition(!showCompanyAttrition);
-    
-    // Hide other sections
-    if (!showCompanyAttrition) {
-      setShowManagerAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-      setShowRegrettableDepartures(false);
-    }
-  };
-
-  const handleManagerCardClick = () => {
-    console.log("Manager card clicked, toggling state");
-    setShowManagerAttrition(!showManagerAttrition);
-    
-    // Hide other sections
-    if (!showManagerAttrition) {
-      setShowCompanyAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-      setShowRegrettableDepartures(false);
-    }
-  };
-
-  const handlePerformanceCardClick = () => {
-    console.log("Performance card clicked, toggling state");
-    setShowPerformanceAttrition(!showPerformanceAttrition);
-    
-    // Hide other sections
-    if (!showPerformanceAttrition) {
-      setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-      setShowRegrettableDepartures(false);
-    }
-  };
-
-  const handleRaceCardClick = () => {
-    console.log("Race card clicked, toggling state");
-    setShowRaceAttrition(!showRaceAttrition);
-    
-    // Hide other sections
-    if (!showRaceAttrition) {
-      setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-      setShowRegrettableDepartures(false);
-    }
-  };
-
-  const handleGenderCardClick = () => {
-    console.log("Gender card clicked, toggling state");
-    setShowGenderAttrition(!showGenderAttrition);
-    
-    // Hide other sections
-    if (!showGenderAttrition) {
-      setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowRecruiterAttrition(false);
-      setShowRegrettableDepartures(false);
-    }
-  };
-
-  const handleRecruiterCardClick = () => {
-    console.log("Recruiter card clicked, toggling state");
-    setShowRecruiterAttrition(!showRecruiterAttrition);
-    
-    // Hide other sections
-    if (!showRecruiterAttrition) {
-      setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRegrettableDepartures(false);
-    }
-  };
-
-  const handleRegrettableDeparturesClick = () => {
-    console.log("Regrettable departures card clicked, toggling state");
-    setShowRegrettableDepartures(!showRegrettableDepartures);
-    
-    // Hide other sections
-    if (!showRegrettableDepartures) {
-      setShowManagerAttrition(false);
-      setShowCompanyAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-    }
+  const handleCardClick = (cardName: string) => {
+    console.log(`Card clicked: ${cardName}`);
+    // Toggle the card if it's already active, otherwise set it as active
+    setActiveCard(activeCard === cardName ? null : cardName);
   };
 
   return (
@@ -147,54 +40,61 @@ const WorkforceRetention = () => {
         <CategoryCard 
           title="Companywide Attrition" 
           icon={TrendingDown} 
-          onClick={handleCompanyCardClick} 
+          onClick={() => handleCardClick('company')}
+          isActive={activeCard === 'company'}
         />
         
         <CategoryCard 
           title="Attrition by Manager" 
           icon={Briefcase} 
-          onClick={handleManagerCardClick} 
+          onClick={() => handleCardClick('manager')}
+          isActive={activeCard === 'manager'}
         />
         
         <CategoryCard 
           title="Attrition by Performance Score" 
           icon={Award} 
-          onClick={handlePerformanceCardClick} 
+          onClick={() => handleCardClick('performance')}
+          isActive={activeCard === 'performance'}
         />
         
         <CategoryCard 
           title="Attrition by Race" 
           icon={BarChart2} 
-          onClick={handleRaceCardClick} 
+          onClick={() => handleCardClick('race')}
+          isActive={activeCard === 'race'}
         />
         
         <CategoryCard 
           title="Attrition by Gender" 
           icon={Users} 
-          onClick={handleGenderCardClick} 
+          onClick={() => handleCardClick('gender')}
+          isActive={activeCard === 'gender'}
         />
         
         <CategoryCard 
           title="Attrition by Recruiter" 
           icon={Badge} 
-          onClick={handleRecruiterCardClick} 
+          onClick={() => handleCardClick('recruiter')}
+          isActive={activeCard === 'recruiter'}
         />
         
         <CategoryCard 
           title="Regrettable Departures" 
           icon={UserX} 
-          onClick={handleRegrettableDeparturesClick} 
+          onClick={() => handleCardClick('regrettable')}
+          isActive={activeCard === 'regrettable'}
         />
       </div>
 
-      {/* Display the selected content */}
-      {showCompanyAttrition && <CompanyAttritionCard />}
-      {showManagerAttrition && <ManagerAttritionCard />}
-      {showPerformanceAttrition && <PerformanceAttritionCard />}
-      {showRaceAttrition && <DemographicAttritionCard type="race" title="Race" />}
-      {showGenderAttrition && <DemographicAttritionCard type="gender" title="Gender" />}
-      {showRecruiterAttrition && <DemographicAttritionCard type="recruiter" title="Recruiter" />}
-      {showRegrettableDepartures && <RegrettableDeparturesCard />}
+      {/* Display the selected content using the new activeCard state */}
+      {activeCard === 'company' && <CompanyAttritionCard />}
+      {activeCard === 'manager' && <ManagerAttritionCard />}
+      {activeCard === 'performance' && <PerformanceAttritionCard />}
+      {activeCard === 'race' && <DemographicAttritionCard type="race" title="Race" />}
+      {activeCard === 'gender' && <DemographicAttritionCard type="gender" title="Gender" />}
+      {activeCard === 'recruiter' && <DemographicAttritionCard type="recruiter" title="Recruiter" />}
+      {activeCard === 'regrettable' && <RegrettableDeparturesCard />}
     </div>
   );
 };
