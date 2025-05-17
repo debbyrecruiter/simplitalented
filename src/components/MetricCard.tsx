@@ -1,11 +1,11 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 
 interface MetricCardProps {
   title: string;
-  value: string;
+  value?: string;
   description?: string;
   icon?: LucideIcon;
   trend?: "up" | "down" | "neutral";
@@ -52,6 +52,14 @@ export function MetricCard({
         )}>
           {title}
         </CardTitle>
+        
+        {value && (
+          <div className="mt-2 text-2xl font-bold">{value}</div>
+        )}
+        
+        {description && (
+          <div className="mt-1 text-sm text-muted-foreground">{description}</div>
+        )}
         
         {trend && (
           <div className="flex items-center justify-center mt-1">
