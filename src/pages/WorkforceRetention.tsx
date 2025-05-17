@@ -27,15 +27,16 @@ const WorkforceRetention = () => {
   const handleCardClick = (cardName: string) => {
     console.log(`Card clicked: ${cardName}`);
     
+    // Determine if we're toggling off or on
+    const isTogglingOff = activeCard === cardName;
+    
     // Toggle the card if it's already active, otherwise set it as active
     setActiveCard(prevCard => prevCard === cardName ? null : cardName);
     
     // Show a toast notification to confirm the click was registered
     toast({
       title: `${cardName.charAt(0).toUpperCase() + cardName.slice(1)} data`,
-      description: prevCard => prevCard === cardName 
-        ? "Data hidden" 
-        : "Data displayed",
+      description: isTogglingOff ? "Data hidden" : "Data displayed",
       duration: 2000,
     });
   };
