@@ -11,6 +11,7 @@ import {
 import { salaryPerformanceData } from "@/data/compensationData";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface PIRSalaryDataTableProps {
   onBack: () => void;
@@ -19,11 +20,23 @@ interface PIRSalaryDataTableProps {
 export const PIRSalaryDataTable: React.FC<PIRSalaryDataTableProps> = ({
   onBack,
 }) => {
+  const navigate = useNavigate();
+  
+  const handleBackClick = () => {
+    // First try the onBack function, but if it somehow fails, redirect to compensation analysis
+    try {
+      onBack();
+    } catch (error) {
+      console.error("Error with onBack function:", error);
+      navigate("/reports/compensation-analysis");
+    }
+  };
+  
   return (
     <div className="flex flex-col gap-4">
       <div className="mb-4">
         <Button
-          onClick={onBack}
+          onClick={handleBackClick}
           variant="ghost"
           className="flex items-center gap-1 text-[#840DD7] hover:text-[#840DD7]/80 hover:bg-transparent p-0"
         >
