@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { 
   BarChart, 
@@ -13,6 +13,8 @@ import {
   ComposedChart
 } from "recharts";
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
+import RegrettableDepartureDialog from "./RegrettableDepartureDialog";
+import { regrettableDeparturesByMonth } from "@/data/regrettableDeparturesData";
 
 // Regrettable departures data
 const regrettableDeparturesData = [
@@ -41,6 +43,18 @@ const exitReasonData = [
 ];
 
 const RegrettableDeparturesCard: React.FC = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+  
+  const handleMonthClick = (month: string) => {
+    setSelectedMonth(month);
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
   return (
     <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
       <h3 className="text-xl font-medium text-[#512888] mb-4">Regrettable Departures Analysis</h3>
@@ -63,6 +77,7 @@ const RegrettableDeparturesCard: React.FC = () => {
       {/* Monthly Regrettable Departures Chart */}
       <div className="mb-4">
         <h4 className="text-lg font-medium text-[#512888] mb-3">Monthly Regrettable Departures</h4>
+        <p className="text-sm text-muted-foreground mb-3">Click on any month to see detailed employee information</p>
       </div>
       
       <div className="bg-white rounded-lg w-full h-full mb-8">
@@ -83,6 +98,12 @@ const RegrettableDeparturesCard: React.FC = () => {
                   axisLine={true}
                   tickLine={false}
                   tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                  onClick={(data) => {
+                    if (data && data.value) {
+                      handleMonthClick(data.value.toString());
+                    }
+                  }}
+                  cursor="pointer"
                 />
                 <YAxis
                   yAxisId="left"
@@ -114,6 +135,7 @@ const RegrettableDeparturesCard: React.FC = () => {
                           <p className="text-[#6E59A5] font-bold">{`Total Departures: ${data.count}`}</p>
                           <p className="text-[#9b87f5] font-bold">{`Regrettable: ${data.regrettable}`}</p>
                           <p className="text-[#512888] font-bold">{`Percentage: ${data.percentage}%`}</p>
+                          <p className="text-sm text-[#512888] mt-1 italic">Click to see employee details</p>
                         </div>
                       );
                     }
@@ -126,6 +148,12 @@ const RegrettableDeparturesCard: React.FC = () => {
                   name="Total Departures" 
                   fill="#6E59A5"
                   radius={[4, 4, 0, 0]}
+                  onClick={(data) => {
+                    if (data && data.month) {
+                      handleMonthClick(data.month);
+                    }
+                  }}
+                  cursor="pointer"
                 />
                 <Bar 
                   yAxisId="left"
@@ -133,6 +161,12 @@ const RegrettableDeparturesCard: React.FC = () => {
                   name="Regrettable Departures" 
                   fill="#9b87f5"
                   radius={[4, 4, 0, 0]}
+                  onClick={(data) => {
+                    if (data && data.month) {
+                      handleMonthClick(data.month);
+                    }
+                  }}
+                  cursor="pointer"
                 />
                 <Line 
                   yAxisId="right"
@@ -231,6 +265,16 @@ const RegrettableDeparturesCard: React.FC = () => {
         <p>* Data is collected from exit interviews and manager feedback</p>
         <p>* Industry averages based on benchmarking data from similar companies in our sector</p>
       </div>
+
+      {/* Dialog for displaying employee details */}
+      {selectedMonth && (
+        <RegrettableDepartureDialog
+          isOpen={dialogOpen}
+          onClose={handleCloseDialog}
+          month={selectedMonth}
+          employees={regrettableDeparturesByMonth[selectedMonth] || []}
+        />
+      )}
     </Card>
   );
 };
