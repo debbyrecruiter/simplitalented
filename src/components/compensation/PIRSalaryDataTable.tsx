@@ -9,7 +9,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { salaryPerformanceData } from "@/data/compensationData";
-import { BackButton } from "@/components/ui/back-button";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft } from "lucide-react";
 
 interface PIRSalaryDataTableProps {
   onBack: () => void;
@@ -21,7 +22,18 @@ export const PIRSalaryDataTable: React.FC<PIRSalaryDataTableProps> = ({
   return (
     <div className="flex flex-col gap-4">
       <div className="mb-4">
-        <BackButton onClick={onBack} label="Back to Compensation Analysis" />
+        <Button
+          onClick={onBack}
+          variant="ghost"
+          className="flex items-center gap-1 text-[#840DD7] hover:text-[#840DD7]/80 hover:bg-transparent p-0"
+        >
+          <div className="flex items-center">
+            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-5 w-5 -ml-3" />
+            <ChevronLeft className="h-5 w-5 -ml-3" />
+          </div>
+          <span className="ml-1 text-[1.75rem]">Back to Compensation Analysis</span>
+        </Button>
       </div>
       <div className="border rounded-lg overflow-hidden">
         <Table>
