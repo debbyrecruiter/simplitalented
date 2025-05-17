@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BackButton } from "@/components/ui/back-button";
 import { 
   Users, 
@@ -16,16 +16,34 @@ import ManagerAttritionCard from "@/components/workforce-retention/ManagerAttrit
 import PerformanceAttritionCard from "@/components/workforce-retention/PerformanceAttritionCard";
 import DemographicAttritionCard from "@/components/workforce-retention/DemographicAttritionCard";
 import RegrettableDeparturesCard from "@/components/workforce-retention/RegrettableDeparturesCard";
+import { useToast } from "@/hooks/use-toast";
 
 const WorkforceRetention = () => {
   // Use a single activeCard state instead of multiple boolean states
   const [activeCard, setActiveCard] = useState<string | null>(null);
+  const { toast } = useToast();
 
+  // Function to handle card clicks
   const handleCardClick = (cardName: string) => {
     console.log(`Card clicked: ${cardName}`);
+    
     // Toggle the card if it's already active, otherwise set it as active
-    setActiveCard(activeCard === cardName ? null : cardName);
+    setActiveCard(prevCard => prevCard === cardName ? null : cardName);
+    
+    // Show a toast notification to confirm the click was registered
+    toast({
+      title: `${cardName.charAt(0).toUpperCase() + cardName.slice(1)} data`,
+      description: prevCard => prevCard === cardName 
+        ? "Data hidden" 
+        : "Data displayed",
+      duration: 2000,
+    });
   };
+
+  // Log state changes to help debug
+  useEffect(() => {
+    console.log(`Active card changed to: ${activeCard}`);
+  }, [activeCard]);
 
   return (
     <div className="container p-4 mx-auto">
@@ -87,14 +105,16 @@ const WorkforceRetention = () => {
         />
       </div>
 
-      {/* Display the selected content using the new activeCard state */}
-      {activeCard === 'company' && <CompanyAttritionCard />}
-      {activeCard === 'manager' && <ManagerAttritionCard />}
-      {activeCard === 'performance' && <PerformanceAttritionCard />}
-      {activeCard === 'race' && <DemographicAttritionCard type="race" title="Race" />}
-      {activeCard === 'gender' && <DemographicAttritionCard type="gender" title="Gender" />}
-      {activeCard === 'recruiter' && <DemographicAttritionCard type="recruiter" title="Recruiter" />}
-      {activeCard === 'regrettable' && <RegrettableDeparturesCard />}
+      {/* Display the selected content based on activeCard state */}
+      <div className="mt-8">
+        {activeCard === 'company' && <CompanyAttritionCard />}
+        {activeCard === 'manager' && <ManagerAttritionCard />}
+        {activeCard === 'performance' && <PerformanceAttritionCard />}
+        {activeCard === 'race' && <DemographicAttritionCard type="race" title="Race" />}
+        {activeCard === 'gender' && <DemographicAttritionCard type="gender" title="Gender" />}
+        {activeCard === 'recruiter' && <DemographicAttritionCard type="recruiter" title="Recruiter" />}
+        {activeCard === 'regrettable' && <RegrettableDeparturesCard />}
+      </div>
     </div>
   );
 };
