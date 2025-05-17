@@ -30,12 +30,12 @@ const RegrettableDepartureDialog: React.FC<RegrettableDepartureDialogProps> = ({
   month,
   employees,
 }) => {
-  // Helper function to render performance ratings with stars
+  // Helper function to render performance ratings with purple stars
   const renderRatingStars = (rating: number) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= rating) {
-        stars.push(<span key={i} className="text-yellow-400">★</span>);
+        stars.push(<span key={i} className="text-[#9b87f5]">★</span>);
       } else {
         stars.push(<span key={i} className="text-gray-300">★</span>);
       }
@@ -45,7 +45,7 @@ const RegrettableDepartureDialog: React.FC<RegrettableDepartureDialogProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[800px] max-h-[80vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[800px] max-h-[80vh] overflow-y-auto border-2 border-[#9b87f5]">
         <DialogHeader>
           <DialogTitle className="text-[#512888] font-bold text-xl">
             Regrettable Departures - {month} 2024
