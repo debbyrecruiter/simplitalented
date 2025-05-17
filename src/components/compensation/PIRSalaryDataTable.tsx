@@ -45,12 +45,6 @@ export const PIRSalaryDataTable: React.FC<PIRSalaryDataTableProps> = ({
           </TableBody>
         </Table>
       </div>
-      <button
-        className="px-4 py-2 bg-[#9320E7] text-white rounded-md hover:bg-[#7D00D2] transition-colors self-start"
-        onClick={onBack}
-      >
-        Back to Compensation Cards
-      </button>
     </div>
   );
 };
