@@ -24,14 +24,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
   return (
     <Card 
-      className={`border-12 ${isActive ? 'border-blue-600' : 'border-[#840DD7]'} bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors`}
+      className={`border-2 ${isActive ? 'border-blue-600' : 'border-[#840DD7]'} bg-[#FFFFFF] rounded-lg shadow-sm overflow-hidden cursor-pointer hover:border-blue-600 transition-colors`}
       onClick={handleClick}
     >
-      <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-        <div className="flex items-center justify-center mb-3">
-          <Icon className="h-8 w-8 text-[#512888]" />
+      <div className="flex flex-col items-center justify-center p-2 text-center h-full">
+        <div className="flex items-center justify-center mb-1">
+          <Icon className="h-6 w-6 text-[#512888]" />
         </div>
-        <h3 className="text-2xl font-semibold text-[#512888] mb-3 px-4">{title}</h3>
+        <h3 className="text-sm font-semibold text-[#512888] leading-tight">{title}</h3>
       </div>
     </Card>
   );

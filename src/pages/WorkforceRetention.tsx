@@ -54,7 +54,7 @@ const WorkforceRetention = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-7 gap-2 mb-8">
         {/* Category cards */}
         <CategoryCard 
           title="Companywide Attrition" 
