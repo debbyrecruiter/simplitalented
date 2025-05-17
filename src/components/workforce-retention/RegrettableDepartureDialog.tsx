@@ -8,6 +8,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { RegrettableDeparture } from "@/data/regrettableDeparturesData";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface RegrettableDepartureDialogProps {
   isOpen: boolean;
@@ -22,6 +30,19 @@ const RegrettableDepartureDialog: React.FC<RegrettableDepartureDialogProps> = ({
   month,
   employees,
 }) => {
+  // Helper function to render performance ratings with stars
+  const renderRatingStars = (rating: number) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(<span key={i} className="text-yellow-400">★</span>);
+      } else {
+        stars.push(<span key={i} className="text-gray-300">★</span>);
+      }
+    }
+    return <div className="flex">{stars} <span className="ml-1 text-sm">({rating}/5)</span></div>;
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[800px] max-h-[80vh] overflow-y-auto">
@@ -35,30 +56,30 @@ const RegrettableDepartureDialog: React.FC<RegrettableDepartureDialogProps> = ({
         </DialogHeader>
 
         <div className="mt-4">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-[#f0ebff] text-[#512888]">
-                <th className="p-3 text-left font-semibold border-b-2 border-[#9b87f5]">Employee</th>
-                <th className="p-3 text-left font-semibold border-b-2 border-[#9b87f5]">Department</th>
-                <th className="p-3 text-left font-semibold border-b-2 border-[#9b87f5]">Manager</th>
-                <th className="p-3 text-left font-semibold border-b-2 border-[#9b87f5]">Departure Date</th>
-                <th className="p-3 text-left font-semibold border-b-2 border-[#9b87f5]">Reason</th>
-                <th className="p-3 text-left font-semibold border-b-2 border-[#9b87f5]">Performance</th>
-              </tr>
-            </thead>
-            <tbody>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="bg-[#f0ebff] text-[#512888] font-semibold">Employee</TableHead>
+                <TableHead className="bg-[#f0ebff] text-[#512888] font-semibold">Department</TableHead>
+                <TableHead className="bg-[#f0ebff] text-[#512888] font-semibold">Manager</TableHead>
+                <TableHead className="bg-[#f0ebff] text-[#512888] font-semibold">Manager Rating</TableHead>
+                <TableHead className="bg-[#f0ebff] text-[#512888] font-semibold">Reason</TableHead>
+                <TableHead className="bg-[#f0ebff] text-[#512888] font-semibold">Performance</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
               {employees.map((employee) => (
-                <tr key={employee.id} className="border-b border-[#e5e7eb] hover:bg-[#f9f7ff]">
-                  <td className="p-3 font-medium">{employee.name}</td>
-                  <td className="p-3">{employee.department}</td>
-                  <td className="p-3">{employee.manager}</td>
-                  <td className="p-3">{employee.departureDate}</td>
-                  <td className="p-3">{employee.reason}</td>
-                  <td className="p-3 font-medium text-[#512888]">{employee.performanceScore}</td>
-                </tr>
+                <TableRow key={employee.id} className="border-b hover:bg-[#f9f7ff]">
+                  <TableCell className="font-medium">{employee.name}</TableCell>
+                  <TableCell>{employee.department}</TableCell>
+                  <TableCell>{employee.manager}</TableCell>
+                  <TableCell>{renderRatingStars(employee.managerRating)}</TableCell>
+                  <TableCell>{employee.reason}</TableCell>
+                  <TableCell>{renderRatingStars(employee.performanceScore)}</TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
+            </TableBody>
+          </Table>
         </div>
       </DialogContent>
     </Dialog>
