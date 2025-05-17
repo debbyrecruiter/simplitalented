@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
@@ -217,7 +216,7 @@ const companyAttritionData = [
   { department: "HR", attritionRate: 11.2, industryAverage: 12.5, difference: -1.3 },
   { department: "Product", attritionRate: 17.6, industryAverage: 14.7, difference: 2.9 },
   { department: "Finance", attritionRate: 13.5, industryAverage: 11.9, difference: 1.6 }
-];
+};
 
 // Regrettable departures data
 const regrettableDeparturesData = [
@@ -255,23 +254,12 @@ const WorkforceRetention = () => {
   const [showRecruiterAttrition, setShowRecruiterAttrition] = useState(false);
   const [showRegrettableDepartures, setShowRegrettableDepartures] = useState(false);
 
-  // Fixed click handlers - added console.logs to help with debugging
-  const handleManagerCardClick = () => {
-    console.log("Manager card clicked, current state:", !showManagerAttrition);
-    setShowManagerAttrition(!showManagerAttrition);
-    if (!showManagerAttrition) {
-      setShowCompanyAttrition(false);
-      setShowPerformanceAttrition(false);
-      setShowRaceAttrition(false);
-      setShowGenderAttrition(false);
-      setShowRecruiterAttrition(false);
-      setShowRegrettableDepartures(false);
-    }
-  };
-
+  // Modified click handlers with improved implementation
   const handleCompanyCardClick = () => {
-    console.log("Company card clicked, current state:", !showCompanyAttrition);
+    console.log("Company card clicked, toggling state");
     setShowCompanyAttrition(!showCompanyAttrition);
+    
+    // Hide other sections
     if (!showCompanyAttrition) {
       setShowManagerAttrition(false);
       setShowPerformanceAttrition(false);
@@ -282,9 +270,26 @@ const WorkforceRetention = () => {
     }
   };
 
+  const handleManagerCardClick = () => {
+    console.log("Manager card clicked, toggling state");
+    setShowManagerAttrition(!showManagerAttrition);
+    
+    // Hide other sections
+    if (!showManagerAttrition) {
+      setShowCompanyAttrition(false);
+      setShowPerformanceAttrition(false);
+      setShowRaceAttrition(false);
+      setShowGenderAttrition(false);
+      setShowRecruiterAttrition(false);
+      setShowRegrettableDepartures(false);
+    }
+  };
+
   const handlePerformanceCardClick = () => {
-    console.log("Performance card clicked, current state:", !showPerformanceAttrition);
+    console.log("Performance card clicked, toggling state");
     setShowPerformanceAttrition(!showPerformanceAttrition);
+    
+    // Hide other sections
     if (!showPerformanceAttrition) {
       setShowManagerAttrition(false);
       setShowCompanyAttrition(false);
@@ -296,8 +301,10 @@ const WorkforceRetention = () => {
   };
 
   const handleRaceCardClick = () => {
-    console.log("Race card clicked, current state:", !showRaceAttrition);
+    console.log("Race card clicked, toggling state");
     setShowRaceAttrition(!showRaceAttrition);
+    
+    // Hide other sections
     if (!showRaceAttrition) {
       setShowManagerAttrition(false);
       setShowCompanyAttrition(false);
@@ -309,8 +316,10 @@ const WorkforceRetention = () => {
   };
 
   const handleGenderCardClick = () => {
-    console.log("Gender card clicked, current state:", !showGenderAttrition);
+    console.log("Gender card clicked, toggling state");
     setShowGenderAttrition(!showGenderAttrition);
+    
+    // Hide other sections
     if (!showGenderAttrition) {
       setShowManagerAttrition(false);
       setShowCompanyAttrition(false);
@@ -322,8 +331,10 @@ const WorkforceRetention = () => {
   };
 
   const handleRecruiterCardClick = () => {
-    console.log("Recruiter card clicked, current state:", !showRecruiterAttrition);
+    console.log("Recruiter card clicked, toggling state");
     setShowRecruiterAttrition(!showRecruiterAttrition);
+    
+    // Hide other sections
     if (!showRecruiterAttrition) {
       setShowManagerAttrition(false);
       setShowCompanyAttrition(false);
@@ -335,8 +346,10 @@ const WorkforceRetention = () => {
   };
 
   const handleRegrettableDeparturesClick = () => {
-    console.log("Regrettable departures card clicked, current state:", !showRegrettableDepartures);
+    console.log("Regrettable departures card clicked, toggling state");
     setShowRegrettableDepartures(!showRegrettableDepartures);
+    
+    // Hide other sections
     if (!showRegrettableDepartures) {
       setShowManagerAttrition(false);
       setShowCompanyAttrition(false);
@@ -359,12 +372,10 @@ const WorkforceRetention = () => {
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {/* Fixed Card 1: CompanyWide Attrition */}
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={(e) => {
-            e.preventDefault();
-            handleCompanyCardClick();
-          }}
+          onClick={handleCompanyCardClick}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
@@ -374,12 +385,10 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
+        {/* Fixed Card 2: Attrition by Manager */}
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={(e) => {
-            e.preventDefault();
-            handleManagerCardClick();
-          }}
+          onClick={handleManagerCardClick}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
@@ -389,12 +398,10 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
+        {/* Fixed Card 3: Attrition by Performance Score */}
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={(e) => {
-            e.preventDefault();
-            handlePerformanceCardClick();
-          }}
+          onClick={handlePerformanceCardClick}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
@@ -404,12 +411,10 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
+        {/* Fixed Card 4: Attrition by Race */}
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={(e) => {
-            e.preventDefault();
-            handleRaceCardClick();
-          }}
+          onClick={handleRaceCardClick}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
@@ -419,12 +424,10 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
+        {/* Fixed Card 5: Attrition by Gender */}
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={(e) => {
-            e.preventDefault();
-            handleGenderCardClick();
-          }}
+          onClick={handleGenderCardClick}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
@@ -434,12 +437,10 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
+        {/* Fixed Card 6: Attrition by Recruiter */}
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={(e) => {
-            e.preventDefault();
-            handleRecruiterCardClick();
-          }}
+          onClick={handleRecruiterCardClick}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
@@ -449,13 +450,10 @@ const WorkforceRetention = () => {
           </div>
         </Card>
 
-        {/* Regrettable Departures Card */}
+        {/* Fixed Card 7: Regrettable Departures */}
         <Card 
           className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square cursor-pointer hover:border-blue-600 transition-colors"
-          onClick={(e) => {
-            e.preventDefault();
-            handleRegrettableDeparturesClick();
-          }}
+          onClick={handleRegrettableDeparturesClick}
         >
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
             <div className="flex items-center justify-center mb-3">
@@ -596,7 +594,7 @@ const WorkforceRetention = () => {
               <div className="h-[400px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart 
-                    data={departmentYearOverYearData} 
+                    data={yearOverYearData} 
                     margin={{ top: 5, right: 30, left: 20, bottom: 30 }}
                     className="bg-white"
                   >
