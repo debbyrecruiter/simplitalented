@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { salaryPerformanceData } from "@/data/compensationData";
+import { BackButton } from "@/components/ui/back-button";
 
 interface PIRSalaryDataTableProps {
   onBack: () => void;
@@ -19,6 +20,9 @@ export const PIRSalaryDataTable: React.FC<PIRSalaryDataTableProps> = ({
 }) => {
   return (
     <div className="flex flex-col gap-4">
+      <div className="mb-4">
+        <BackButton onClick={onBack} label="Back to Compensation Analysis" />
+      </div>
       <div className="border rounded-lg overflow-hidden">
         <Table>
           <TableHeader>
