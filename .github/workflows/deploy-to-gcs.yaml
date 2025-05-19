@@ -1,0 +1,35 @@
+name: Website Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to GCS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up environment variables
+        run: |
+          echo "DEPLOY_BUCKET=simpli_vc" >> $GITHUB_ENV
+          echo "DEPLOY_DIRECTORY=www.simplitalented.com" >> $GITHUB_ENV
+      - uses: actions/checkout@v4
+        name: Checkout
+      - uses: actions/setup-node@v4
+        name: Setup NodeJS
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+      - name: Build project
+        run: npm run build
+
+      - uses: google-github-actions/auth@v2
+        name: Authenticate with GCP
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+      - uses: google-github-actions/upload-cloud-storage@v1
+        name: Upload to GCS
+        with:
+          path: dist
+          destination: ${{ env.DEPLOY_BUCKET }}/${{ env.DEPLOY_DIRECTORY }}
+          parent: false
+          process_gcloudignore: false
