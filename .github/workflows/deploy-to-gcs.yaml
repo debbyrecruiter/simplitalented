@@ -26,6 +26,6 @@ jobs:
         name: Upload to GCS
         with:
           path: dist
-          destination: gs://simpli_vc/
+          destination: simpli_vc/
           parent: false
           process_gcloudignore: false
