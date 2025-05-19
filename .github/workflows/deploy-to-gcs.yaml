@@ -9,9 +9,6 @@ jobs:
     name: Deploy to GCS
     runs-on: ubuntu-latest
     steps:
-      - name: Set up environment variables
-        run: |
-          echo "DEPLOY_BUCKET=simpli_vc" >> $GITHUB_ENV
       - uses: actions/checkout@v4
         name: Checkout
       - uses: actions/setup-node@v4
