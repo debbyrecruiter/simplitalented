@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -41,6 +40,62 @@ const exitInterviews: ExitInterview[] = [
     date: new Date(2025, 1, 5), // February 5, 2025
     status: 'completed',
     manager: 'Robert Kim'
+  },
+  {
+    id: '5',
+    employeeName: 'Alex Thompson',
+    date: new Date(2025, 0, 29), // January 29, 2025
+    status: 'pending',
+    manager: 'Maria Garcia'
+  },
+  {
+    id: '6',
+    employeeName: 'Jessica Lee',
+    date: new Date(2025, 0, 31), // January 31, 2025
+    status: 'completed',
+    manager: 'James Rodriguez'
+  },
+  {
+    id: '7',
+    employeeName: 'Ryan Wilson',
+    date: new Date(2025, 1, 1), // February 1, 2025
+    status: 'pending',
+    manager: 'Amanda Foster'
+  },
+  {
+    id: '8',
+    employeeName: 'Nicole Martinez',
+    date: new Date(2025, 1, 4), // February 4, 2025
+    status: 'completed',
+    manager: 'Kevin Park'
+  },
+  {
+    id: '9',
+    employeeName: 'Daniel Cooper',
+    date: new Date(2025, 1, 6), // February 6, 2025
+    status: 'pending',
+    manager: 'Linda Chen'
+  },
+  {
+    id: '10',
+    employeeName: 'Ashley White',
+    date: new Date(2025, 1, 7), // February 7, 2025
+    status: 'completed',
+    manager: 'Mark Johnson'
+  },
+  {
+    id: '11',
+    employeeName: 'Chris Anderson',
+    date: new Date(2025, 1, 10), // February 10, 2025
+    status: 'pending',
+    manager: 'Rachel Davis'
+  },
+  {
+    id: '12',
+    employeeName: 'Megan Taylor',
+    date: new Date(2025, 1, 12), // February 12, 2025
+    status: 'completed',
+    manager: 'Steven Miller'
   }
 ];
 
