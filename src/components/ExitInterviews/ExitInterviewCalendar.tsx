@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 interface ExitInterview {
@@ -349,25 +349,12 @@ export function ExitInterviewCalendar() {
 
   return (
     <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Exit Interview Calendar</CardTitle>
-        <div className="flex gap-4 text-sm">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-primary rounded-full"></div>
-            <span>Pending</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-muted rounded-full"></div>
-            <span>Completed</span>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         <Calendar
           mode="single"
           selected={selectedDate}
           onSelect={setSelectedDate}
-          className="rounded-md border-2 border-primary bg-white w-full"
+          className="rounded-md bg-white w-full"
           classNames={{
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 w-full",
             month: "space-y-4 w-full",
@@ -382,6 +369,17 @@ export function ExitInterviewCalendar() {
             DayContent: ({ date }) => dayContent(date)
           }}
         />
+        
+        <div className="flex gap-4 text-sm mt-4 justify-center">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-primary rounded-full"></div>
+            <span>Pending</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-muted rounded-full"></div>
+            <span>Completed</span>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
