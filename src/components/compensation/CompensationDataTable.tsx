@@ -23,25 +23,25 @@ export const CompensationDataTable: React.FC<CompensationDataTableProps> = ({
       <div className="mb-4">
         <BackButton onClick={onBack} label="Back to Compensation Analysis" />
       </div>
-      <div className="border rounded-lg overflow-hidden">
+      <div className="border-2 border-[#840DD7] bg-white rounded-lg overflow-hidden">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>Job Grade</TableHead>
-              <TableHead className="w-[200px]">Name</TableHead>
-              <TableHead>Salary</TableHead>
-              <TableHead>PIR</TableHead>
-              <TableHead>Performance</TableHead>
+            <TableRow className="bg-white border-b border-[#840DD7]">
+              <TableHead className="text-[#512888] font-semibold">Job Grade</TableHead>
+              <TableHead className="w-[200px] text-[#512888] font-semibold">Name</TableHead>
+              <TableHead className="text-[#512888] font-semibold">Salary</TableHead>
+              <TableHead className="text-[#512888] font-semibold">PIR</TableHead>
+              <TableHead className="text-[#512888] font-semibold">Performance</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className="bg-white">
             {salaryPerformanceData.map((employee, index) => (
-              <TableRow key={index}>
-                <TableCell>{employee.jobGrade}</TableCell>
-                <TableCell className="font-medium">{employee.name}</TableCell>
-                <TableCell>${employee.salary.toLocaleString()}</TableCell>
-                <TableCell>{employee.pir}%</TableCell>
-                <TableCell>{employee.performance}/5</TableCell>
+              <TableRow key={index} className="border-b border-[#840DD7]/30 hover:bg-[#F0F0FF]">
+                <TableCell className="text-[#512888]">{employee.jobGrade}</TableCell>
+                <TableCell className="font-medium text-[#512888]">{employee.name}</TableCell>
+                <TableCell className="text-[#512888]">${employee.salary.toLocaleString()}</TableCell>
+                <TableCell className="text-[#512888]">{employee.pir}%</TableCell>
+                <TableCell className="text-[#512888]">{employee.performance}/5</TableCell>
               </TableRow>
             ))}
           </TableBody>

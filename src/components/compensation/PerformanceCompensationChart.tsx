@@ -11,9 +11,9 @@ export const PerformanceCompensationChart: React.FC<PerformanceCompensationChart
   onBack
 }) => {
   return (
-    <Card className="border shadow-sm">
+    <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
       <CardHeader>
-        <CardTitle className="text-xl text-center">Comp By Job Grade & Performance</CardTitle>
+        <CardTitle className="text-xl text-center text-[#512888]">Comp By Job Grade & Performance</CardTitle>
       </CardHeader>
       <CardContent>
         <CompensationDataTable onBack={onBack} />

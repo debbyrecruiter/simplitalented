@@ -11,9 +11,9 @@ export const PIRSalaryCard: React.FC<PIRSalaryCardProps> = ({
   onBack
 }) => {
   return (
-    <Card className="border shadow-sm">
+    <Card className="border-2 border-[#840DD7] bg-white shadow-sm">
       <CardHeader>
-        <CardTitle className="text-xl text-center">Performance Relative to Starting PIR Salary</CardTitle>
+        <CardTitle className="text-xl text-center text-[#512888]">Performance Relative to Starting PIR Salary</CardTitle>
       </CardHeader>
       <CardContent>
         <PIRSalaryDataTable onBack={onBack} />
