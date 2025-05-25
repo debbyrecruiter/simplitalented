@@ -534,3 +534,43 @@ export const recruiterTimeToHireData = [
   { recruiter: "Robert Johnson", averageTimeToHire: 52 },
   { recruiter: "Michelle Lee", averageTimeToHire: 35 },
 ];
+
+// Manager-gender attrition breakdown
+export const managerGenderAttritionData = [
+  {
+    manager: "Sarah Johnson",
+    maleAttrition: 18.2,
+    femaleAttrition: 14.5,
+    nonbinaryAttrition: 12.8
+  },
+  {
+    manager: "Michael Chen",
+    maleAttrition: 16.7,
+    femaleAttrition: 15.2,
+    nonbinaryAttrition: 13.4
+  },
+  {
+    manager: "Lisa Rodriguez",
+    maleAttrition: 19.1,
+    femaleAttrition: 16.8,
+    nonbinaryAttrition: 15.2
+  },
+  {
+    manager: "David Kim",
+    maleAttrition: 15.9,
+    femaleAttrition: 13.7,
+    nonbinaryAttrition: 11.5
+  },
+  {
+    manager: "Jennifer Williams",
+    maleAttrition: 17.4,
+    femaleAttrition: 14.9,
+    nonbinaryAttrition: 13.8
+  },
+  {
+    manager: "Robert Martinez",
+    maleAttrition: 20.3,
+    femaleAttrition: 18.1,
+    nonbinaryAttrition: 16.7
+  }
+];

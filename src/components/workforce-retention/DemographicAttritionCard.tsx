@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { 
@@ -16,7 +15,8 @@ import {
   genderAttritionData,
   recruiterAttritionData,
   recruiterTenureData,
-  recruiterTimeToHireData
+  recruiterTimeToHireData,
+  managerGenderAttritionData
 } from "@/data/demographicsData";
 
 interface DemographicAttritionCardProps {
@@ -148,6 +148,95 @@ const DemographicAttritionCard: React.FC<DemographicAttritionCardProps> = ({ typ
           </div>
         </ChartContainer>
       </div>
+
+      {/* Gender by Manager breakdown */}
+      {type === "gender" && (
+        <>
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Attrition by Gender and Manager</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              maleAttrition: { color: "#0067D9" },
+              femaleAttrition: { color: "#FF6B8A" },
+              nonbinaryAttrition: { color: "#8B5CF6" }
+            }}>
+              <div className="h-[400px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={managerGenderAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 100 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="manager" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 12, fontWeight: 600 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 25]}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.manager}</p>
+                              <p className="text-[#0067D9] font-bold">{`Male: ${data.maleAttrition}%`}</p>
+                              <p className="text-[#FF6B8A] font-bold">{`Female: ${data.femaleAttrition}%`}</p>
+                              <p className="text-[#8B5CF6] font-bold">{`Nonbinary: ${data.nonbinaryAttrition}%`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="maleAttrition" 
+                      name="Male" 
+                      fill="#0067D9"
+                      radius={[0, 0, 0, 0]}
+                    />
+                    <Bar 
+                      dataKey="femaleAttrition" 
+                      name="Female" 
+                      fill="#FF6B8A"
+                      radius={[0, 0, 0, 0]}
+                    />
+                    <Bar 
+                      dataKey="nonbinaryAttrition" 
+                      name="Nonbinary" 
+                      fill="#8B5CF6"
+                      radius={[4, 4, 0, 0]}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "20px" }}
+                      payload={[
+                        { value: 'Male', type: 'rect', color: '#0067D9' },
+                        { value: 'Female', type: 'rect', color: '#FF6B8A' },
+                        { value: 'Nonbinary', type: 'rect', color: '#8B5CF6' }
+                      ]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+        </>
+      )}
 
       {/* Combined Tenure and Time to Hire chart for recruiter type */}
       {type === "recruiter" && (
