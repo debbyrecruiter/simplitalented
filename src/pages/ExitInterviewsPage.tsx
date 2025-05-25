@@ -4,6 +4,7 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { ChatbotButton } from "@/components/Simpli/ChatbotButton";
 import { useState } from "react";
 import { ChatbotDialog } from "@/components/Simpli/ChatbotDialog";
+import { ExitInterviewCalendar } from "@/components/ExitInterviews/ExitInterviewCalendar";
 
 const ExitInterviewsPage = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -18,10 +19,14 @@ const ExitInterviewsPage = () => {
       <DashboardHeader title="Exit Interviews" />
       <div className="flex-1 p-4 overflow-auto">
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-[#512888]">Exit Interview Scheduling</h2>
-          <p className="text-muted-foreground">
-            Simpli AI will help you schedule and conduct exit interviews for departing team members.
-          </p>
+          <div>
+            <h2 className="text-2xl font-bold text-[#512888]">Exit Interview Scheduling</h2>
+            <p className="text-muted-foreground">
+              Simpli AI will help you schedule and conduct exit interviews for departing team members.
+            </p>
+          </div>
+          
+          <ExitInterviewCalendar />
         </div>
       </div>
       
