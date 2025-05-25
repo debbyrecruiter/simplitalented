@@ -40,6 +40,27 @@ const exitReasonData = [
   { reason: "Work/Life Balance", percentage: 7 }
 ];
 
+// Calculate regrettable departures by manager from the data
+const calculateRegrettableDeparturesByManager = () => {
+  const managerCounts: Record<string, number> = {};
+  
+  Object.values(regrettableDeparturesByMonth).forEach(employees => {
+    employees.forEach(employee => {
+      if (managerCounts[employee.manager]) {
+        managerCounts[employee.manager]++;
+      } else {
+        managerCounts[employee.manager] = 1;
+      }
+    });
+  });
+
+  return Object.entries(managerCounts)
+    .map(([manager, count]) => ({ manager, count }))
+    .sort((a, b) => b.count - a.count);
+};
+
+const regrettableDeparturesByManagerData = calculateRegrettableDeparturesByManager();
+
 const RegrettableDeparturesCard: React.FC = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
@@ -181,6 +202,76 @@ const RegrettableDeparturesCard: React.FC = () => {
                   wrapperStyle={{ paddingTop: "20px" }}
                 />
               </ComposedChart>
+            </ResponsiveContainer>
+          </div>
+        </ChartContainer>
+      </div>
+
+      {/* Regrettable Departures by Manager Chart */}
+      <div className="mb-4">
+        <h4 className="text-lg font-medium text-[#512888] mb-3">Regrettable Departures by Manager</h4>
+      </div>
+      
+      <div className="bg-white rounded-lg w-full h-full mb-8">
+        <ChartContainer config={{
+          count: { color: "#9b87f5" }
+        }}>
+          <div className="h-[400px] w-full bg-white">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart 
+                data={regrettableDeparturesByManagerData} 
+                layout="vertical"
+                margin={{ top: 5, right: 30, left: 150, bottom: 20 }}
+                className="bg-white"
+              >
+                <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+                <YAxis 
+                  dataKey="manager" 
+                  type="category"
+                  axisLine={true}
+                  tickLine={false}
+                  tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                  width={140}
+                />
+                <XAxis
+                  type="number"
+                  axisLine={true}
+                  tickLine={false}
+                  tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                  domain={[0, 'dataMax']}
+                />
+                <ChartTooltip
+                  content={({ active, payload }) => {
+                    if (active && payload && payload.length) {
+                      const data = payload[0].payload;
+                      return (
+                        <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                          <p className="font-medium">{data.manager}</p>
+                          <p className="font-bold text-[#512888]">{`Regrettable Departures: ${data.count}`}</p>
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
+                <Bar 
+                  dataKey="count" 
+                  fill="#9b87f5" 
+                  radius={[0, 4, 4, 0]}
+                  label={({ x, y, width, value }) => (
+                    <text 
+                      x={x + width + 5} 
+                      y={y + 4} 
+                      textAnchor="start" 
+                      fontSize={12}
+                      fontWeight="bold"
+                      fill="#512888"
+                    >
+                      {value}
+                    </text>
+                  )}
+                />
+              </BarChart>
             </ResponsiveContainer>
           </div>
         </ChartContainer>
