@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { 
@@ -16,7 +17,8 @@ import {
   recruiterAttritionData,
   recruiterTenureData,
   recruiterTimeToHireData,
-  managerGenderAttritionData
+  managerGenderAttritionData,
+  managerRaceAttritionData
 } from "@/data/demographicsData";
 
 interface DemographicAttritionCardProps {
@@ -228,6 +230,113 @@ const DemographicAttritionCard: React.FC<DemographicAttritionCardProps> = ({ typ
                         { value: 'Male', type: 'rect', color: '#0067D9' },
                         { value: 'Female', type: 'rect', color: '#FF6B8A' },
                         { value: 'Nonbinary', type: 'rect', color: '#8B5CF6' }
+                      ]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+        </>
+      )}
+
+      {/* Race by Manager breakdown */}
+      {type === "race" && (
+        <>
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Attrition by Race and Manager</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              whiteAttrition: { color: "#22C55E" },
+              asianAttrition: { color: "#3B82F6" },
+              blackAttrition: { color: "#8B5CF6" },
+              hispanicAttrition: { color: "#EC4899" },
+              otherAttrition: { color: "#F59E0B" }
+            }}>
+              <div className="h-[400px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={managerRaceAttritionData} 
+                    margin={{ top: 5, right: 30, left: 20, bottom: 100 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis 
+                      dataKey="manager" 
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 12, fontWeight: 600 }}
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      dy={20}
+                    />
+                    <YAxis
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                      tickFormatter={(value) => `${value}%`}
+                      domain={[0, 25]}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.manager}</p>
+                              <p className="text-[#22C55E] font-bold">{`White: ${data.whiteAttrition}%`}</p>
+                              <p className="text-[#3B82F6] font-bold">{`Asian: ${data.asianAttrition}%`}</p>
+                              <p className="text-[#8B5CF6] font-bold">{`Black: ${data.blackAttrition}%`}</p>
+                              <p className="text-[#EC4899] font-bold">{`Hispanic/Latino: ${data.hispanicAttrition}%`}</p>
+                              <p className="text-[#F59E0B] font-bold">{`Other: ${data.otherAttrition}%`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="whiteAttrition" 
+                      name="White" 
+                      fill="#22C55E"
+                      radius={[0, 0, 0, 0]}
+                    />
+                    <Bar 
+                      dataKey="asianAttrition" 
+                      name="Asian" 
+                      fill="#3B82F6"
+                      radius={[0, 0, 0, 0]}
+                    />
+                    <Bar 
+                      dataKey="blackAttrition" 
+                      name="Black" 
+                      fill="#8B5CF6"
+                      radius={[0, 0, 0, 0]}
+                    />
+                    <Bar 
+                      dataKey="hispanicAttrition" 
+                      name="Hispanic/Latino" 
+                      fill="#EC4899"
+                      radius={[0, 0, 0, 0]}
+                    />
+                    <Bar 
+                      dataKey="otherAttrition" 
+                      name="Other" 
+                      fill="#F59E0B"
+                      radius={[4, 4, 0, 0]}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "20px" }}
+                      payload={[
+                        { value: 'White', type: 'rect', color: '#22C55E' },
+                        { value: 'Asian', type: 'rect', color: '#3B82F6' },
+                        { value: 'Black', type: 'rect', color: '#8B5CF6' },
+                        { value: 'Hispanic/Latino', type: 'rect', color: '#EC4899' },
+                        { value: 'Other', type: 'rect', color: '#F59E0B' }
                       ]}
                     />
                   </BarChart>

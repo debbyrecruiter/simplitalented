@@ -574,3 +574,55 @@ export const managerGenderAttritionData = [
     nonbinaryAttrition: 16.7
   }
 ];
+
+// Manager-race attrition breakdown
+export const managerRaceAttritionData = [
+  {
+    manager: "Sarah Johnson",
+    whiteAttrition: 13.5,
+    asianAttrition: 12.8,
+    blackAttrition: 16.2,
+    hispanicAttrition: 15.1,
+    otherAttrition: 14.3
+  },
+  {
+    manager: "Michael Chen",
+    whiteAttrition: 14.2,
+    asianAttrition: 13.1,
+    blackAttrition: 17.8,
+    hispanicAttrition: 16.4,
+    otherAttrition: 15.7
+  },
+  {
+    manager: "Lisa Rodriguez",
+    whiteAttrition: 15.8,
+    asianAttrition: 14.5,
+    blackAttrition: 19.3,
+    hispanicAttrition: 17.9,
+    otherAttrition: 16.2
+  },
+  {
+    manager: "David Kim",
+    whiteAttrition: 12.9,
+    asianAttrition: 12.2,
+    blackAttrition: 15.6,
+    hispanicAttrition: 14.8,
+    otherAttrition: 13.5
+  },
+  {
+    manager: "Jennifer Williams",
+    whiteAttrition: 14.7,
+    asianAttrition: 13.9,
+    blackAttrition: 18.1,
+    hispanicAttrition: 16.8,
+    otherAttrition: 15.4
+  },
+  {
+    manager: "Robert Martinez",
+    whiteAttrition: 16.5,
+    asianAttrition: 15.2,
+    blackAttrition: 20.7,
+    hispanicAttrition: 19.1,
+    otherAttrition: 17.8
+  }
+];
