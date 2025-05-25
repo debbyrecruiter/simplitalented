@@ -1,4 +1,3 @@
-
 import { MetricCard } from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -174,11 +173,8 @@ export function MainMetricsGrid({
         </CardHeader>
         <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
           <div className="text-3xl font-bold truncate">
-            L&D Programs
+            Companywide L&D
           </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Training & Skills
-          </p>
         </CardContent>
       </Card>
     </div>
