@@ -12,9 +12,11 @@ import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
 import { ExpandedToDoSection } from "@/components/dashboard/ExpandedToDoListSection";
 import { useDashboard, ExpandedSectionType } from "@/context/DashboardContext";
 import { ReportsSection } from "@/components/dashboard/ReportsSection";
+import { useNavigate } from "react-router-dom";
 
 export const DashboardContent: React.FC = () => {
   const { expandedSection, updateSection, handleBackClick } = useDashboard();
+  const navigate = useNavigate();
   
   console.log("Rendering DashboardContent. Current expanded section:", expandedSection);
   
@@ -31,7 +33,7 @@ export const DashboardContent: React.FC = () => {
   const handleMySkillsClick = () => updateSection("my-skills");
   const handleToDoListClick = () => updateSection("todo-list");
   const handleReportsClick = () => updateSection("reports");
-  const handleExitInterviewsClick = () => updateSection("exit-interviews");
+  const handleExitInterviewsClick = () => navigate("/exit-interviews");
 
   return (
     <div className="flex-1 p-4 overflow-auto rounded-sm">
@@ -78,13 +80,6 @@ export const DashboardContent: React.FC = () => {
       {expandedSection === "todo-list" && <ExpandedToDoSection />}
       
       {expandedSection === "reports" && <ReportsSection />}
-      
-      {expandedSection === "exit-interviews" && (
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-[#512888]">Exit Interviews</h2>
-          <p className="text-muted-foreground">Feedback insights and departure analysis section coming soon.</p>
-        </div>
-      )}
     </div>
   );
 };

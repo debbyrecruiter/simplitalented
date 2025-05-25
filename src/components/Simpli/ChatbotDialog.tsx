@@ -1,22 +1,29 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 
 interface ChatbotDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  initialMessage?: string;
 }
 
-export function ChatbotDialog({ open, onOpenChange }: ChatbotDialogProps) {
-  const [messages, setMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([
-    {
+export function ChatbotDialog({ open, onOpenChange, initialMessage }: ChatbotDialogProps) {
+  const [messages, setMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
+
+  // Initialize messages with either the initial message or default greeting
+  useEffect(() => {
+    const defaultMessage = "Hi there! I'm Simpli, your AI assistant. How can I help you today with talent management?";
+    const messageToShow = initialMessage || defaultMessage;
+    
+    setMessages([{
       role: "assistant",
-      content: "Hi there! I'm Simpli, your AI assistant. How can I help you today with talent management?"
-    }
-  ]);
+      content: messageToShow
+    }]);
+  }, [initialMessage]);
 
   const handleSendMessage = (message: string) => {
     if (!message.trim()) return;
@@ -31,7 +38,9 @@ export function ChatbotDialog({ open, onOpenChange }: ChatbotDialogProps) {
         "I can suggest personalized development plans for your team members.",
         "Let me know if you need assistance with scheduling performance reviews.",
         "I can analyze team productivity trends based on your data.",
-        "Need help with setting employee goals? I can provide templates and suggestions."
+        "Need help with setting employee goals? I can provide templates and suggestions.",
+        "I can help you schedule exit interviews and prepare the necessary documentation.",
+        "Let me guide you through the exit interview process step by step."
       ];
       const randomResponse = responses[Math.floor(Math.random() * responses.length)];
       
