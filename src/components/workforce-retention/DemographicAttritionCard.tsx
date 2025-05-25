@@ -45,6 +45,18 @@ const DemographicAttritionCard: React.FC<DemographicAttritionCardProps> = ({ typ
   // Create an array of tick values in increments of 5 up to 40 for X axis
   const xAxisTicks = Array.from({ length: 9 }, (_, index) => index * 5);
 
+  // Combine tenure and time to hire data for recruiter type
+  const getCombinedRecruiterData = () => {
+    return recruiterTenureData.map(tenureItem => {
+      const timeToHireItem = recruiterTimeToHireData.find(item => item.recruiter === tenureItem.recruiter);
+      return {
+        recruiter: tenureItem.recruiter,
+        averageTenure: tenureItem.averageTenure,
+        averageTimeToHire: timeToHireItem ? timeToHireItem.averageTimeToHire : 0
+      };
+    });
+  };
+
   return (
     <Card className="p-6 bg-white border border-[#9b87f5] rounded-lg shadow-sm mb-8">
       <h3 className="text-xl font-medium text-[#512888] mb-4">Attrition by {title}</h3>
@@ -137,94 +149,22 @@ const DemographicAttritionCard: React.FC<DemographicAttritionCardProps> = ({ typ
         </ChartContainer>
       </div>
 
-      {/* Additional charts for recruiter type */}
+      {/* Combined Tenure and Time to Hire chart for recruiter type */}
       {type === "recruiter" && (
         <>
-          {/* Average Tenure by Recruiter Chart */}
           <div className="mb-4">
-            <h4 className="text-lg font-medium text-[#512888] mb-3">Average Tenure of Hires by Recruiter</h4>
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Average Tenure vs Time to Hire by Recruiter</h4>
           </div>
           
           <div className="bg-white rounded-lg w-full h-full mb-8">
             <ChartContainer config={{
-              averageTenure: { color: "#9b87f5" }
-            }}>
-              <div className="h-[400px] w-full bg-white">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart 
-                    data={recruiterTenureData} 
-                    layout="vertical"
-                    margin={{ top: 5, right: 30, left: 150, bottom: 20 }}
-                    className="bg-white"
-                  >
-                    <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
-                    <YAxis 
-                      dataKey="recruiter" 
-                      type="category"
-                      axisLine={true}
-                      tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
-                      width={140}
-                    />
-                    <XAxis
-                      type="number"
-                      axisLine={true}
-                      tickLine={false}
-                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
-                      tickFormatter={(value) => `${value} mo`}
-                      domain={[0, 35]}
-                      ticks={[0, 5, 10, 15, 20, 25, 30, 35]}
-                    />
-                    <ChartTooltip
-                      content={({ active, payload }) => {
-                        if (active && payload && payload.length) {
-                          const data = payload[0].payload;
-                          return (
-                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
-                              <p className="font-medium">{data.recruiter}</p>
-                              <p className="font-bold text-[#512888]">{`Average Tenure: ${data.averageTenure} months`}</p>
-                            </div>
-                          );
-                        }
-                        return null;
-                      }}
-                    />
-                    <Bar 
-                      dataKey="averageTenure" 
-                      fill="#9b87f5" 
-                      radius={[0, 4, 4, 0]}
-                      label={({ x, y, width, value }) => (
-                        <text 
-                          x={x + width + 5} 
-                          y={y + 4} 
-                          textAnchor="start" 
-                          fontSize={12}
-                          fontWeight="bold"
-                          fill="#512888"
-                        >
-                          {value} mo
-                        </text>
-                      )}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </ChartContainer>
-          </div>
-
-          {/* Average Time to Hire by Recruiter Chart */}
-          <div className="mb-4">
-            <h4 className="text-lg font-medium text-[#512888] mb-3">Average Time to Hire by Recruiter</h4>
-          </div>
-          
-          <div className="bg-white rounded-lg w-full h-full mb-8">
-            <ChartContainer config={{
+              averageTenure: { color: "#9b87f5" },
               averageTimeToHire: { color: "#6E59A5" }
             }}>
               <div className="h-[400px] w-full bg-white">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart 
-                    data={recruiterTimeToHireData} 
+                    data={getCombinedRecruiterData()} 
                     layout="vertical"
                     margin={{ top: 5, right: 30, left: 150, bottom: 20 }}
                     className="bg-white"
@@ -243,7 +183,6 @@ const DemographicAttritionCard: React.FC<DemographicAttritionCardProps> = ({ typ
                       axisLine={true}
                       tickLine={false}
                       tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
-                      tickFormatter={(value) => `${value} days`}
                       domain={[0, 60]}
                       ticks={[0, 10, 20, 30, 40, 50, 60]}
                     />
@@ -254,7 +193,8 @@ const DemographicAttritionCard: React.FC<DemographicAttritionCardProps> = ({ typ
                           return (
                             <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
                               <p className="font-medium">{data.recruiter}</p>
-                              <p className="font-bold text-[#512888]">{`Average Time to Hire: ${data.averageTimeToHire} days`}</p>
+                              <p className="font-bold text-[#9b87f5]">{`Average Tenure: ${data.averageTenure} months`}</p>
+                              <p className="font-bold text-[#6E59A5]">{`Average Time to Hire: ${data.averageTimeToHire} days`}</p>
                             </div>
                           );
                         }
@@ -262,21 +202,24 @@ const DemographicAttritionCard: React.FC<DemographicAttritionCardProps> = ({ typ
                       }}
                     />
                     <Bar 
+                      dataKey="averageTenure" 
+                      name="Average Tenure (months)"
+                      fill="#9b87f5" 
+                      radius={[0, 4, 4, 0]}
+                    />
+                    <Bar 
                       dataKey="averageTimeToHire" 
+                      name="Average Time to Hire (days)"
                       fill="#6E59A5" 
                       radius={[0, 4, 4, 0]}
-                      label={({ x, y, width, value }) => (
-                        <text 
-                          x={x + width + 5} 
-                          y={y + 4} 
-                          textAnchor="start" 
-                          fontSize={12}
-                          fontWeight="bold"
-                          fill="#512888"
-                        >
-                          {value} days
-                        </text>
-                      )}
+                    />
+                    <Legend 
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: "20px" }}
+                      payload={[
+                        { value: 'Average Tenure (months)', type: 'rect', color: '#9b87f5' },
+                        { value: 'Average Time to Hire (days)', type: 'rect', color: '#6E59A5' }
+                      ]}
                     />
                   </BarChart>
                 </ResponsiveContainer>
