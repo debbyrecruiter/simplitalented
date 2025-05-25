@@ -11,9 +11,11 @@ interface ScheduleEvent {
   type: 'training' | 'one-on-one' | 'coaching';
   manager?: string;
   description?: string;
+  platform?: string;
+  duration?: string;
 }
 
-// Sample data for development schedule events
+// Sample data for development schedule events (including training from My Learning page)
 const scheduleEvents: ScheduleEvent[] = [
   // January 2025
   {
@@ -21,7 +23,9 @@ const scheduleEvents: ScheduleEvent[] = [
     title: 'Advanced Project Management',
     date: new Date(2025, 0, 27), // January 27, 2025
     type: 'training',
-    description: 'Coursera course kickoff'
+    description: 'Coursera course kickoff',
+    platform: 'Coursera',
+    duration: '4 weeks'
   },
   {
     id: '2',
@@ -121,7 +125,9 @@ const scheduleEvents: ScheduleEvent[] = [
     title: 'Agile Leadership Workshop',
     date: new Date(2025, 2, 5), // March 5, 2025
     type: 'training',
-    description: 'LinkedIn Learning course'
+    description: 'LinkedIn Learning course',
+    platform: 'LinkedIn Learning',
+    duration: '1 week'
   },
   {
     id: '16',
@@ -285,6 +291,36 @@ const scheduleEvents: ScheduleEvent[] = [
     date: new Date(2025, 4, 28), // May 28, 2025
     type: 'one-on-one',
     manager: 'Sarah Wilson'
+  },
+  // Training from My Learning page - June 2025
+  {
+    id: '39',
+    title: 'Advanced Project Management',
+    date: new Date(2025, 5, 15), // June 15, 2025
+    type: 'training',
+    platform: 'Coursera',
+    duration: '4 weeks',
+    description: 'Advanced project management techniques'
+  },
+  // July 2025
+  {
+    id: '40',
+    title: 'AI for Business Leaders',
+    date: new Date(2025, 6, 3), // July 3, 2025
+    type: 'training',
+    platform: 'Internal Training',
+    duration: '2 days',
+    description: 'Executive training on AI implementation'
+  },
+  // August 2025
+  {
+    id: '41',
+    title: 'Agile Leadership Workshop',
+    date: new Date(2025, 7, 10), // August 10, 2025
+    type: 'training',
+    platform: 'LinkedIn Learning',
+    duration: '1 week',
+    description: 'Agile methodologies for leaders'
   }
 ];
 
@@ -448,6 +484,14 @@ export function DevelopmentScheduleCalendar() {
                         Completion Deadline: {formatDate(getCompletionDeadline(training.date))}
                       </span>
                     </div>
+                    {training.platform && (
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-sm text-gray-500">Platform: {training.platform}</span>
+                        {training.duration && (
+                          <span className="text-sm text-gray-500">• Duration: {training.duration}</span>
+                        )}
+                      </div>
+                    )}
                   </div>
                   <Badge variant="default" className="bg-primary text-primary-foreground">
                     Training
