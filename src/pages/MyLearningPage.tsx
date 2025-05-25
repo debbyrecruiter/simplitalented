@@ -1,9 +1,9 @@
+
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BackButton } from "@/components/ui/back-button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, ThumbsUp, BookOpen, Star } from "lucide-react";
+import { Calendar, Clock, MessageSquare, ThumbsUp, BookOpen, Star, ChevronLeft } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -158,13 +158,25 @@ const MyLearningPage = () => {
   };
 
   const handleBackClick = () => {
+    console.log("Back button clicked, navigating back");
     navigate(-1);
   };
 
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
-        <BackButton onClick={handleBackClick} />
+        <Button
+          onClick={handleBackClick}
+          variant="ghost"
+          className="flex items-center gap-1 text-[#840DD7] hover:text-[#840DD7]/80 hover:bg-transparent p-0"
+        >
+          <div className="flex items-center">
+            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-5 w-5 -ml-3" />
+            <ChevronLeft className="h-5 w-5 -ml-3" />
+          </div>
+          <span className="ml-1 text-[1.75rem]">Back</span>
+        </Button>
       </div>
 
       <div className="flex flex-col md:flex-row md:space-x-24">
