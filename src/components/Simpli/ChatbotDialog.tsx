@@ -13,6 +13,7 @@ interface ChatbotDialogProps {
 
 export function ChatbotDialog({ open, onOpenChange, initialMessage }: ChatbotDialogProps) {
   const [messages, setMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
+  const [messageCount, setMessageCount] = useState(0);
 
   // Initialize messages with either the initial message or default greeting
   useEffect(() => {
@@ -23,6 +24,7 @@ export function ChatbotDialog({ open, onOpenChange, initialMessage }: ChatbotDia
       role: "assistant",
       content: messageToShow
     }]);
+    setMessageCount(0);
   }, [initialMessage]);
 
   const handleSendMessage = (message: string) => {
@@ -30,6 +32,7 @@ export function ChatbotDialog({ open, onOpenChange, initialMessage }: ChatbotDia
     
     // Add user message
     setMessages((prev) => [...prev, { role: "user", content: message }]);
+    setMessageCount((prev) => prev + 1);
     
     // Simulate AI response after a short delay
     setTimeout(() => {
@@ -38,7 +41,13 @@ export function ChatbotDialog({ open, onOpenChange, initialMessage }: ChatbotDia
       
       let response;
       if (isExitInterviewContext) {
-        response = "Who should I schedule my exit interview with and what is their last day?";
+        if (messageCount === 0) {
+          response = "Who should I schedule my exit interview with and what is their last day?";
+        } else if (messageCount === 1) {
+          response = "Got it. I will put myself on their calendar for an exit interview before their last day. Once it's confirmed, I will put it on the calendar so that you know that it's been confirmed and I will mark it as done once we've had our chat.";
+        } else {
+          response = "Is there anything else I can help you with regarding the exit interview process?";
+        }
       } else {
         const responses = [
           "I can help you review employee performance metrics.",
