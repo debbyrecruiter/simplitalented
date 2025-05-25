@@ -33,18 +33,26 @@ export function ChatbotDialog({ open, onOpenChange, initialMessage }: ChatbotDia
     
     // Simulate AI response after a short delay
     setTimeout(() => {
-      const responses = [
-        "I can help you review employee performance metrics.",
-        "I can suggest personalized development plans for your team members.",
-        "Let me know if you need assistance with scheduling performance reviews.",
-        "I can analyze team productivity trends based on your data.",
-        "Need help with setting employee goals? I can provide templates and suggestions.",
-        "I can help you schedule exit interviews and prepare the necessary documentation.",
-        "Let me guide you through the exit interview process step by step."
-      ];
-      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      // Check if this is an exit interview context based on the initial message
+      const isExitInterviewContext = initialMessage?.includes("exit interview");
       
-      setMessages((prev) => [...prev, { role: "assistant", content: randomResponse }]);
+      let response;
+      if (isExitInterviewContext) {
+        response = "Who should I schedule my exit interview with and what is their last day?";
+      } else {
+        const responses = [
+          "I can help you review employee performance metrics.",
+          "I can suggest personalized development plans for your team members.",
+          "Let me know if you need assistance with scheduling performance reviews.",
+          "I can analyze team productivity trends based on your data.",
+          "Need help with setting employee goals? I can provide templates and suggestions.",
+          "I can help you schedule exit interviews and prepare the necessary documentation.",
+          "Let me guide you through the exit interview process step by step."
+        ];
+        response = responses[Math.floor(Math.random() * responses.length)];
+      }
+      
+      setMessages((prev) => [...prev, { role: "assistant", content: response }]);
     }, 1000);
   };
 
