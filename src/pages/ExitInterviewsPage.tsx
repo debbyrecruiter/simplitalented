@@ -26,7 +26,9 @@ const ExitInterviewsPage = () => {
             </p>
           </div>
           
-          <ExitInterviewCalendar />
+          <div className="w-full">
+            <ExitInterviewCalendar />
+          </div>
         </div>
       </div>
       
