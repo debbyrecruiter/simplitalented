@@ -1,6 +1,7 @@
+
 import React, { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 interface ScheduleEvent {
@@ -297,6 +298,31 @@ export function DevelopmentScheduleCalendar() {
     );
   };
 
+  // Get upcoming training sessions (training events that haven't passed yet)
+  const getUpcomingTraining = () => {
+    const now = new Date();
+    return scheduleEvents
+      .filter(event => event.type === 'training' && event.date >= now)
+      .sort((a, b) => a.date.getTime() - b.date.getTime())
+      .slice(0, 10); // Show next 10 upcoming training sessions
+  };
+
+  // Calculate completion deadline (60 days after training date)
+  const getCompletionDeadline = (trainingDate: Date) => {
+    const deadline = new Date(trainingDate);
+    deadline.setDate(deadline.getDate() + 60);
+    return deadline;
+  };
+
+  // Format date for display
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+  };
+
   // Get badge color based on event type
   const getBadgeVariant = (type: string) => {
     switch (type) {
@@ -353,45 +379,89 @@ export function DevelopmentScheduleCalendar() {
     );
   };
 
+  const upcomingTraining = getUpcomingTraining();
+
   return (
-    <Card className="w-full">
-      <CardContent className="pt-6">
-        <Calendar
-          mode="single"
-          selected={selectedDate}
-          onSelect={setSelectedDate}
-          className="rounded-md bg-white w-full"
-          disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
-          classNames={{
-            months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 w-full",
-            month: "space-y-4 w-full",
-            table: "w-full border-collapse space-y-1",
-            head_row: "flex w-full",
-            head_cell: "text-muted-foreground rounded-md w-full font-normal text-[0.8rem] flex-1",
-            row: "flex w-full mt-2",
-            cell: "h-24 w-full text-center text-sm p-1 relative flex-1 border-r border-b border-muted [&:nth-child(6)]:hidden [&:nth-child(7)]:hidden",
-            day: "h-full w-full p-1 font-normal flex flex-col items-center justify-start hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-          }}
-          components={{
-            DayContent: ({ date }) => dayContent(date)
-          }}
-        />
-        
-        <div className="flex gap-4 text-sm mt-4 justify-center">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-primary rounded-full"></div>
-            <span>Training</span>
+    <div className="space-y-6">
+      <Card className="w-full">
+        <CardContent className="pt-6">
+          <Calendar
+            mode="single"
+            selected={selectedDate}
+            onSelect={setSelectedDate}
+            className="rounded-md bg-white w-full"
+            disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
+            classNames={{
+              months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 w-full",
+              month: "space-y-4 w-full",
+              table: "w-full border-collapse space-y-1",
+              head_row: "flex w-full",
+              head_cell: "text-muted-foreground rounded-md w-full font-normal text-[0.8rem] flex-1 [&:nth-child(6)]:hidden [&:nth-child(7)]:hidden",
+              row: "flex w-full mt-2",
+              cell: "h-24 w-full text-center text-sm p-1 relative flex-1 border-r border-b border-muted [&:nth-child(6)]:hidden [&:nth-child(7)]:hidden",
+              day: "h-full w-full p-1 font-normal flex flex-col items-center justify-start hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            }}
+            components={{
+              DayContent: ({ date }) => dayContent(date)
+            }}
+          />
+          
+          <div className="flex gap-4 text-sm mt-4 justify-center">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-primary rounded-full"></div>
+              <span>Training</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 bg-muted rounded-full"></div>
+              <span>1:1 Meetings</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 border border-purple-500 rounded-full"></div>
+              <span>Simpli AI Coaching</span>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-muted rounded-full"></div>
-            <span>1:1 Meetings</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 border border-purple-500 rounded-full"></div>
-            <span>Simpli AI Coaching</span>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+
+      {/* Upcoming Training List */}
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle className="text-lg font-semibold text-[#512888]">
+            Upcoming Training Sessions
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {upcomingTraining.length > 0 ? (
+            <div className="space-y-4">
+              {upcomingTraining.map((training) => (
+                <div key={training.id} className="flex items-center justify-between p-4 border rounded-lg bg-slate-50">
+                  <div className="flex-1">
+                    <h4 className="font-medium text-gray-900">{training.title}</h4>
+                    {training.description && (
+                      <p className="text-sm text-gray-600 mt-1">{training.description}</p>
+                    )}
+                    <div className="flex items-center gap-4 mt-2">
+                      <span className="text-sm text-gray-500">
+                        Training Date: {formatDate(training.date)}
+                      </span>
+                      <span className="text-sm text-red-600 font-medium">
+                        Completion Deadline: {formatDate(getCompletionDeadline(training.date))}
+                      </span>
+                    </div>
+                  </div>
+                  <Badge variant="default" className="bg-primary text-primary-foreground">
+                    Training
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500 text-center py-8">
+              No upcoming training sessions scheduled.
+            </p>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 }
