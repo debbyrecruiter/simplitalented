@@ -69,8 +69,8 @@ export function ExitInterviewCalendar() {
                 variant={interview.status === 'pending' ? 'default' : 'secondary'}
                 className={`text-xs px-1 py-0 h-4 w-full justify-center ${
                   interview.status === 'pending' 
-                    ? 'bg-green-500 hover:bg-green-600 text-white' 
-                    : 'bg-red-500 hover:bg-red-600 text-white'
+                    ? 'bg-primary hover:bg-primary/80 text-primary-foreground' 
+                    : 'bg-muted hover:bg-muted/80 text-muted-foreground'
                 }`}
               >
                 {interview.employeeName.split(' ')[0]}
@@ -88,11 +88,11 @@ export function ExitInterviewCalendar() {
         <CardTitle>Exit Interview Calendar</CardTitle>
         <div className="flex gap-4 text-sm">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-primary rounded-full"></div>
             <span>Pending</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <div className="w-3 h-3 bg-muted rounded-full"></div>
             <span>Completed</span>
           </div>
         </div>
