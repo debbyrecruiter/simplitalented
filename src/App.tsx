@@ -9,6 +9,7 @@ import MyLearningPage from "./pages/MyLearningPage";
 import ExitInterviewsPage from "./pages/ExitInterviewsPage";
 import DevelopmentSchedulePage from "./pages/DevelopmentSchedulePage";
 import NotFound from "./pages/NotFound";
+import MainLayout from "./layouts/MainLayout";
 
 const queryClient = new QueryClient();
 
@@ -19,11 +20,13 @@ const App = () => (
         <Toaster />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/me/learning" element={<MyLearningPage />} />
-            <Route path="/exit-interviews" element={<ExitInterviewsPage />} />
-            <Route path="/development-schedule" element={<DevelopmentSchedulePage />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<Index />} />
+              <Route path="me/learning" element={<MyLearningPage />} />
+              <Route path="exit-interviews" element={<ExitInterviewsPage />} />
+              <Route path="development-schedule" element={<DevelopmentSchedulePage />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
