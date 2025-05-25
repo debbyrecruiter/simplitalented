@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -158,8 +157,8 @@ const MyLearningPage = () => {
   };
 
   const handleBackClick = () => {
-    console.log("Back button clicked, navigating back");
-    navigate(-1);
+    console.log("Back button clicked, navigating back to Me section");
+    navigate("/?section=me");
   };
 
   return (
