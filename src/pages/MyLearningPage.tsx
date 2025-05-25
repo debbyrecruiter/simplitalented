@@ -158,10 +158,8 @@ const MyLearningPage = () => {
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
-        <BackButton fallbackPath="/" label="Back to Dashboard" />
+        <BackButton />
       </div>
-      
-      <h1 className="text-3xl font-bold mb-6 text-[#512888]">My Learning</h1>
 
       <div className="flex flex-col md:flex-row md:space-x-24">
         {/* Left Sidebar with Upcoming Training and Recommendations */}
@@ -239,6 +237,7 @@ const MyLearningPage = () => {
 
         {/* Main Content - Completed Training Feed */}
         <div className="w-full md:w-2/3 space-y-6">
+          {/* Learning Summary card */}
           <Card className="p-4 bg-white border border-[#9b87f5] rounded-lg shadow-sm">
             <div className="flex justify-between items-center">
               <div>
@@ -255,6 +254,7 @@ const MyLearningPage = () => {
           <h2 className="text-2xl font-bold text-[#512888] mt-4 mb-2">Completed Learning</h2>
           <Separator className="my-4 bg-[#9b87f5]" />
           
+          {/* completed courses section */}
           <div className="space-y-6">
             {completedCourses.map((course) => (
               <Card 
