@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { 
@@ -34,12 +33,11 @@ const regrettableDeparturesData = [
 
 // Exit interview reasons data for regrettable departures
 const exitReasonData = [
-  { reason: "Better Compensation", percentage: 32 },
-  { reason: "Career Growth", percentage: 28 },
-  { reason: "Work-Life Balance", percentage: 18 },
-  { reason: "Management Issues", percentage: 12 },
-  { reason: "Company Culture", percentage: 7 },
-  { reason: "Other", percentage: 3 }
+  { reason: "Career Growth", percentage: 35 },
+  { reason: "Management Issues", percentage: 28 },
+  { reason: "Better Compensation", percentage: 18 },
+  { reason: "Toxic Work Culture", percentage: 12 },
+  { reason: "Work/Life Balance", percentage: 7 }
 ];
 
 const RegrettableDeparturesCard: React.FC = () => {
