@@ -14,13 +14,6 @@ const LearningDevelopmentPage = () => {
             <BackButton fallbackPath="/" />
           </div>
           
-          <div>
-            <h2 className="text-2xl font-bold text-[#512888]">Learning & Development Dashboard</h2>
-            <p className="text-muted-foreground">
-              Manage company-wide learning and development programs.
-            </p>
-          </div>
-          
           <div className="flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
               <Card 
