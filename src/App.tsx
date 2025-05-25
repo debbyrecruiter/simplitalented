@@ -1,54 +1,34 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+
+import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
+import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import MyGoalsPage from "./pages/MyGoalsPage";
-import TeamGoalsPage from "./pages/TeamGoalsPage";
-import GoalsTimelinePage from "./pages/GoalsTimelinePage";
-import Reports from "./pages/Reports";
-import WorkforceAnalytics from "./pages/WorkforceAnalytics";
-import WorkforceDemographics from "./pages/WorkforceDemographics";
-import WorkforceRetention from "./pages/WorkforceRetention";
-import CompensationAnalysis from "./pages/CompensationAnalysis";
 import MyLearningPage from "./pages/MyLearningPage";
 import ExitInterviewsPage from "./pages/ExitInterviewsPage";
-import LearningDevelopmentPage from "./pages/LearningDevelopmentPage";
+import DevelopmentSchedulePage from "./pages/DevelopmentSchedulePage";
+import NotFound from "./pages/NotFound";
 
-const App = () => {
-  // Move QueryClient inside the component function
-  const queryClient = new QueryClient();
-  
-  return (
-    <QueryClientProvider client={queryClient}>
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
       <TooltipProvider>
         <Toaster />
-        <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<Index />} />
-              <Route path="/my-goals" element={<MyGoalsPage />} />
-              <Route path="/team-goals" element={<TeamGoalsPage />} />
-              <Route path="/my-reviews/timeline" element={<GoalsTimelinePage />} />
-              <Route path="/reports" element={<Reports />} />
-              <Route path="/reports/workforce-analytics" element={<WorkforceAnalytics />} />
-              <Route path="/reports/workforce-demographics" element={<WorkforceDemographics />} />
-              <Route path="/reports/workforce-retention" element={<WorkforceRetention />} />
-              <Route path="/reports/compensation-analysis" element={<CompensationAnalysis />} />
-              <Route path="/me/learning" element={<MyLearningPage />} />
-              <Route path="/exit-interviews" element={<ExitInterviewsPage />} />
-              <Route path="/learning-development" element={<LearningDevelopmentPage />} />
-            </Route>
+            <Route path="/" element={<Index />} />
+            <Route path="/me/learning" element={<MyLearningPage />} />
+            <Route path="/exit-interviews" element={<ExitInterviewsPage />} />
+            <Route path="/development-schedule" element={<DevelopmentSchedulePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
-    </QueryClientProvider>
-  );
-};
+    </ThemeProvider>
+  </QueryClientProvider>
+);
 
 export default App;

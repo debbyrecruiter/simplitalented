@@ -1,3 +1,4 @@
+
 import { MetricCard } from "@/components/MetricCard";
 import { useNavigate } from "react-router-dom";
 
@@ -5,19 +6,23 @@ interface ExpandedMeSectionProps {
   onPast11CardClick: () => void;
   onGoalsCardClick: () => void;
   onMySkillsClick: () => void;
-  onToDoListClick: () => void; // Added this prop
+  onToDoListClick: () => void;
 }
 
 export function ExpandedMeSection({ 
   onPast11CardClick, 
   onGoalsCardClick,
   onMySkillsClick,
-  onToDoListClick // Added this prop
+  onToDoListClick
 }: ExpandedMeSectionProps) {
   const navigate = useNavigate();
 
   const handleMyLearningClick = () => {
     navigate("/me/learning");
+  };
+
+  const handleDevelopmentScheduleClick = () => {
+    navigate("/development-schedule");
   };
 
   return (
@@ -51,6 +56,7 @@ export function ExpandedMeSection({
           value="Today: 3 meetings"
           description="Upcoming events"
           titleClassName="text-3xl"
+          onClick={handleDevelopmentScheduleClick}
         />
         <MetricCard
           title="Past 1:1s"
