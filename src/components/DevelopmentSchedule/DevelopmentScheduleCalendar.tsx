@@ -362,7 +362,6 @@ export function DevelopmentScheduleCalendar() {
           onSelect={setSelectedDate}
           className="rounded-md bg-white w-full"
           disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
-          hideWeekdayRow={false}
           classNames={{
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 w-full",
             month: "space-y-4 w-full",
