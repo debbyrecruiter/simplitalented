@@ -1,4 +1,3 @@
-
 import { MetricCard } from "@/components/MetricCard";
 import { useNavigate } from "react-router-dom";
 
@@ -51,6 +50,7 @@ export function ExpandedMeSection({
           title="My Development Schedule"
           value="Today: 3 meetings"
           description="Upcoming events"
+          titleClassName="text-3xl"
         />
         <MetricCard
           title="Past 1:1s"
@@ -58,7 +58,6 @@ export function ExpandedMeSection({
           description="Meeting history"
           onClick={onPast11CardClick}
         />
-        {/* Added To Do List card */}
         <MetricCard
           title="My To Do"
           value="Daily Tasks"
