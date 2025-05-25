@@ -1,3 +1,4 @@
+
 import { MetricCard } from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -152,6 +153,31 @@ export function MainMetricsGrid({
           </div>
           <p className="text-sm text-muted-foreground truncate">
             For Scheduling by Simpli
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Learning & Development Card with Watermark */}
+      <Card 
+        className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
+      >
+        {/* Watermark for Learning & Development card */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+          <p className="text-4xl font-bold text-purple-500/40 transform -rotate-12 select-none">
+            People Team View Only
+          </p>
+        </div>
+        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+          <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
+            Learning &<br />Development
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+          <div className="text-3xl font-bold truncate">
+            L&D Programs
+          </div>
+          <p className="text-sm text-muted-foreground truncate">
+            Training & Skills
           </p>
         </CardContent>
       </Card>
