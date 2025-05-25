@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -361,7 +362,7 @@ export function ExitInterviewCalendar() {
             month: "space-y-4 w-full",
             table: "w-full border-collapse space-y-1",
             head_row: "flex w-full",
-            head_cell: "text-muted-foreground rounded-md w-full font-normal text-[0.8rem] flex-1",
+            head_cell: "text-muted-foreground rounded-md w-full font-normal text-[0.8rem] flex-1 [&:nth-child(6)]:hidden [&:nth-child(7)]:hidden",
             row: "flex w-full mt-2",
             cell: "h-24 w-full text-center text-sm p-1 relative flex-1 border-r border-b border-muted [&:nth-child(6)]:hidden [&:nth-child(7)]:hidden",
             day: "h-full w-full p-1 font-normal flex flex-col items-center justify-start hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
