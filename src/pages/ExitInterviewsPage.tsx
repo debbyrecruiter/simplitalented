@@ -5,6 +5,7 @@ import { ChatbotButton } from "@/components/Simpli/ChatbotButton";
 import { useState } from "react";
 import { ChatbotDialog } from "@/components/Simpli/ChatbotDialog";
 import { ExitInterviewCalendar } from "@/components/ExitInterviews/ExitInterviewCalendar";
+import { BackButton } from "@/components/ui/back-button";
 
 const ExitInterviewsPage = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -19,6 +20,10 @@ const ExitInterviewsPage = () => {
       <DashboardHeader title="Exit Interviews" />
       <div className="flex-1 p-4 overflow-auto">
         <div className="space-y-6">
+          <div className="mb-6">
+            <BackButton fallbackPath="/" />
+          </div>
+          
           <div>
             <h2 className="text-2xl font-bold text-[#512888]">Exit Interview Scheduling</h2>
             <p className="text-muted-foreground">
