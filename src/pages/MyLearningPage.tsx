@@ -7,9 +7,11 @@ import { Calendar, Clock, MessageSquare, ThumbsUp, BookOpen, Star } from "lucide
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const MyLearningPage = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   // Mock data for upcoming training courses
   const upcomingCourses = [
@@ -155,10 +157,14 @@ const MyLearningPage = () => {
     // In a real application, this would open a scheduling dialog or API call
   };
 
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="container p-4 mx-auto">
       <div className="mb-6">
-        <BackButton />
+        <BackButton onClick={handleBackClick} />
       </div>
 
       <div className="flex flex-col md:flex-row md:space-x-24">
