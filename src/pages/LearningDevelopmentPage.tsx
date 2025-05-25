@@ -21,42 +21,44 @@ const LearningDevelopmentPage = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-            <Card 
-              className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
-            >
-              <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-                <CardTitle className="text-5xl font-small text-[#9320E7] leading-tight">
-                  Learning &<br />Development<br />Activity
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-                <div className="text-2xl font-bold truncate">
-                  View Progress
-                </div>
-                <p className="text-sm text-muted-foreground truncate">
-                  Track learning metrics
-                </p>
-              </CardContent>
-            </Card>
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+              <Card 
+                className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+              >
+                <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+                  <CardTitle className="text-5xl font-small text-[#9320E7] leading-tight">
+                    Learning &<br />Development<br />Activity
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+                  <div className="text-2xl font-bold truncate">
+                    View Progress
+                  </div>
+                  <p className="text-sm text-muted-foreground truncate">
+                    Track learning metrics
+                  </p>
+                </CardContent>
+              </Card>
 
-            <Card 
-              className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
-            >
-              <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-                <CardTitle className="text-5xl font-small text-[#9320E7] leading-tight">
-                  Assign<br />Training
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-                <div className="text-2xl font-bold truncate">
-                  Manage Training
-                </div>
-                <p className="text-sm text-muted-foreground truncate">
-                  Assign courses to employees
-                </p>
-              </CardContent>
-            </Card>
+              <Card 
+                className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+              >
+                <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
+                  <CardTitle className="text-5xl font-small text-[#9320E7] leading-tight">
+                    Assign<br />Training
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
+                  <div className="text-2xl font-bold truncate">
+                    Manage Training
+                  </div>
+                  <p className="text-sm text-muted-foreground truncate">
+                    Assign courses to employees
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
