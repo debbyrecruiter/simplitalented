@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +16,7 @@ import WorkforceRetention from "./pages/WorkforceRetention";
 import CompensationAnalysis from "./pages/CompensationAnalysis";
 import MyLearningPage from "./pages/MyLearningPage";
 import ExitInterviewsPage from "./pages/ExitInterviewsPage";
+import LearningDevelopmentPage from "./pages/LearningDevelopmentPage";
 
 const App = () => {
   // Move QueryClient inside the component function
@@ -41,6 +41,7 @@ const App = () => {
               <Route path="/reports/compensation-analysis" element={<CompensationAnalysis />} />
               <Route path="/me/learning" element={<MyLearningPage />} />
               <Route path="/exit-interviews" element={<ExitInterviewsPage />} />
+              <Route path="/learning-development" element={<LearningDevelopmentPage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

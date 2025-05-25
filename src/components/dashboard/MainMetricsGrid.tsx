@@ -1,5 +1,7 @@
+
 import { MetricCard } from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 interface MainMetricsGridProps {
   onMeCardClick: () => void;
@@ -22,6 +24,7 @@ export function MainMetricsGrid({
   onReportsClick,
   onExitInterviewsClick
 }: MainMetricsGridProps) {
+  const navigate = useNavigate();
   
   // Handle Me card click with extra debugging
   const handleMeClick = (e: React.MouseEvent) => {
@@ -39,6 +42,10 @@ export function MainMetricsGrid({
     
     // Log after calling the handler
     console.log("Me card click handler completed");
+  };
+
+  const handleLearningDevelopmentClick = () => {
+    navigate("/learning-development");
   };
 
   return (
@@ -159,6 +166,7 @@ export function MainMetricsGrid({
       {/* Learning & Development Card with Watermark */}
       <Card 
         className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
+        onClick={handleLearningDevelopmentClick}
       >
         {/* Watermark for Learning & Development card */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
