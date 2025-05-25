@@ -14,7 +14,9 @@ import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import { 
   raceAttritionData, 
   genderAttritionData,
-  recruiterAttritionData
+  recruiterAttritionData,
+  recruiterTenureData,
+  recruiterTimeToHireData
 } from "@/data/demographicsData";
 
 interface DemographicAttritionCardProps {
@@ -134,11 +136,166 @@ const DemographicAttritionCard: React.FC<DemographicAttritionCardProps> = ({ typ
           </div>
         </ChartContainer>
       </div>
+
+      {/* Additional charts for recruiter type */}
+      {type === "recruiter" && (
+        <>
+          {/* Average Tenure by Recruiter Chart */}
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Average Tenure of Hires by Recruiter</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              averageTenure: { color: "#9b87f5" }
+            }}>
+              <div className="h-[400px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={recruiterTenureData} 
+                    layout="vertical"
+                    margin={{ top: 5, right: 30, left: 150, bottom: 20 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+                    <YAxis 
+                      dataKey="recruiter" 
+                      type="category"
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                      width={140}
+                    />
+                    <XAxis
+                      type="number"
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                      tickFormatter={(value) => `${value} mo`}
+                      domain={[0, 35]}
+                      ticks={[0, 5, 10, 15, 20, 25, 30, 35]}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.recruiter}</p>
+                              <p className="font-bold text-[#512888]">{`Average Tenure: ${data.averageTenure} months`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="averageTenure" 
+                      fill="#9b87f5" 
+                      radius={[0, 4, 4, 0]}
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width + 5} 
+                          y={y + 4} 
+                          textAnchor="start" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value} mo
+                        </text>
+                      )}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+
+          {/* Average Time to Hire by Recruiter Chart */}
+          <div className="mb-4">
+            <h4 className="text-lg font-medium text-[#512888] mb-3">Average Time to Hire by Recruiter</h4>
+          </div>
+          
+          <div className="bg-white rounded-lg w-full h-full mb-8">
+            <ChartContainer config={{
+              averageTimeToHire: { color: "#6E59A5" }
+            }}>
+              <div className="h-[400px] w-full bg-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart 
+                    data={recruiterTimeToHireData} 
+                    layout="vertical"
+                    margin={{ top: 5, right: 30, left: 150, bottom: 20 }}
+                    className="bg-white"
+                  >
+                    <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
+                    <YAxis 
+                      dataKey="recruiter" 
+                      type="category"
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                      width={140}
+                    />
+                    <XAxis
+                      type="number"
+                      axisLine={true}
+                      tickLine={false}
+                      tick={{ fill: '#512888', fontSize: 14, fontWeight: 600 }}
+                      tickFormatter={(value) => `${value} days`}
+                      domain={[0, 60]}
+                      ticks={[0, 10, 20, 30, 40, 50, 60]}
+                    />
+                    <ChartTooltip
+                      content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                          const data = payload[0].payload;
+                          return (
+                            <div className="bg-white border border-[#9b87f5] shadow-md p-3 rounded">
+                              <p className="font-medium">{data.recruiter}</p>
+                              <p className="font-bold text-[#512888]">{`Average Time to Hire: ${data.averageTimeToHire} days`}</p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Bar 
+                      dataKey="averageTimeToHire" 
+                      fill="#6E59A5" 
+                      radius={[0, 4, 4, 0]}
+                      label={({ x, y, width, value }) => (
+                        <text 
+                          x={x + width + 5} 
+                          y={y + 4} 
+                          textAnchor="start" 
+                          fontSize={12}
+                          fontWeight="bold"
+                          fill="#512888"
+                        >
+                          {value} days
+                        </text>
+                      )}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </ChartContainer>
+          </div>
+        </>
+      )}
       
       <div className="text-sm text-muted-foreground mt-4">
         <p>* Attrition rates calculated as the percentage of employees who left the company in the past 12 months</p>
         <p>* Industry averages based on benchmarking data from similar companies in our sector</p>
         <p>* Voluntary terminations are employee-initiated, while involuntary terminations are company-initiated</p>
+        {type === "recruiter" && (
+          <>
+            <p>* Average tenure measured from hire date to departure date for employees who have left</p>
+            <p>* Time to hire measured from job posting date to offer acceptance date</p>
+          </>
+        )}
       </div>
     </Card>
   );

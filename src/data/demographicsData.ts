@@ -516,3 +516,21 @@ export const departmentYearOverYearData = [
     'Finance': 12.0, 'Finance-voluntary': 7.1, 'Finance-involuntary': 4.9
   }
 ];
+
+// Average tenure of hires by recruiter (in months)
+export const recruiterTenureData = [
+  { recruiter: "Jessica Martinez", averageTenure: 18.5 },
+  { recruiter: "Thomas Williams", averageTenure: 24.2 },
+  { recruiter: "Emily Rodriguez", averageTenure: 28.7 },
+  { recruiter: "Robert Johnson", averageTenure: 16.3 },
+  { recruiter: "Michelle Lee", averageTenure: 31.8 },
+];
+
+// Average time to hire by recruiter (in days)
+export const recruiterTimeToHireData = [
+  { recruiter: "Jessica Martinez", averageTimeToHire: 45 },
+  { recruiter: "Thomas Williams", averageTimeToHire: 38 },
+  { recruiter: "Emily Rodriguez", averageTimeToHire: 42 },
+  { recruiter: "Robert Johnson", averageTimeToHire: 52 },
+  { recruiter: "Michelle Lee", averageTimeToHire: 35 },
+];
