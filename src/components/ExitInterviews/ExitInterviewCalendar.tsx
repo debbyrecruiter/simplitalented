@@ -102,7 +102,7 @@ export function ExitInterviewCalendar() {
           mode="single"
           selected={selectedDate}
           onSelect={setSelectedDate}
-          className="rounded-md border w-full"
+          className="rounded-md border-2 border-primary bg-white w-full"
           classNames={{
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 w-full",
             month: "space-y-4 w-full",
