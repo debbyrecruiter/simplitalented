@@ -48,7 +48,7 @@ export function ExpandedMeSection({
           description="Performance review"
         />
         <MetricCard
-          title="My Schedule"
+          title="My Development Schedule"
           value="Today: 3 meetings"
           description="Upcoming events"
         />
