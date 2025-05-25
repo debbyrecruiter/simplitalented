@@ -148,10 +148,10 @@ export function MainMetricsGrid({
         </CardHeader>
         <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
           <div className="text-3xl font-bold truncate">
-            Feedback insights
+            Upcoming Exits
           </div>
           <p className="text-sm text-muted-foreground truncate">
-            Departure analysis
+            For Scheduling by Simpli
           </p>
         </CardContent>
       </Card>
