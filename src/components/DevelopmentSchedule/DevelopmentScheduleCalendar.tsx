@@ -362,6 +362,8 @@ export function DevelopmentScheduleCalendar() {
           selected={selectedDate}
           onSelect={setSelectedDate}
           className="rounded-md bg-white w-full"
+          disabled={(date) => date.getDay() === 0 || date.getDay() === 6}
+          hideWeekdayRow={false}
           classNames={{
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 w-full",
             month: "space-y-4 w-full",
@@ -369,8 +371,10 @@ export function DevelopmentScheduleCalendar() {
             head_row: "flex w-full",
             head_cell: "text-muted-foreground rounded-md w-full font-normal text-[0.8rem] flex-1",
             row: "flex w-full mt-2",
-            cell: "h-24 w-full text-center text-sm p-1 relative flex-1 border-r border-b border-muted",
+            cell: "h-24 w-full text-center text-sm p-1 relative flex-1 border-r border-b border-muted [&:nth-child(6)]:hidden [&:nth-child(7)]:hidden",
             day: "h-full w-full p-1 font-normal flex flex-col items-center justify-start hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            head_cell_saturday: "hidden",
+            head_cell_sunday: "hidden",
           }}
           components={{
             DayContent: ({ date }) => dayContent(date)
