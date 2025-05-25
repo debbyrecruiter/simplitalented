@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -373,8 +372,6 @@ export function DevelopmentScheduleCalendar() {
             row: "flex w-full mt-2",
             cell: "h-24 w-full text-center text-sm p-1 relative flex-1 border-r border-b border-muted [&:nth-child(6)]:hidden [&:nth-child(7)]:hidden",
             day: "h-full w-full p-1 font-normal flex flex-col items-center justify-start hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            head_cell_saturday: "hidden",
-            head_cell_sunday: "hidden",
           }}
           components={{
             DayContent: ({ date }) => dayContent(date)
