@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { format } from "date-fns";
 
 interface ExitInterview {
   id: string;
@@ -55,90 +54,70 @@ export function ExitInterviewCalendar() {
     );
   };
 
-  // Get all interview dates for highlighting
-  const interviewDates = exitInterviews.map(interview => interview.date);
-
-  // Custom day content to show colored dots for interviews
+  // Custom day content to show interview summaries
   const dayContent = (date: Date) => {
     const dayInterviews = getInterviewsForDate(date);
-    if (dayInterviews.length === 0) return null;
-
-    const hasPending = dayInterviews.some(interview => interview.status === 'pending');
-    const hasCompleted = dayInterviews.some(interview => interview.status === 'completed');
+    if (dayInterviews.length === 0) return <span>{date.getDate()}</span>;
 
     return (
-      <div className="flex justify-center items-center gap-1 mt-1">
-        {hasPending && <div className="w-2 h-2 bg-green-500 rounded-full"></div>}
-        {hasCompleted && <div className="w-2 h-2 bg-red-500 rounded-full"></div>}
+      <div className="w-full h-full flex flex-col items-center justify-start p-1">
+        <span className="text-sm font-medium mb-1">{date.getDate()}</span>
+        <div className="space-y-1 w-full">
+          {dayInterviews.map((interview) => (
+            <div key={interview.id} className="text-xs">
+              <Badge 
+                variant={interview.status === 'pending' ? 'default' : 'secondary'}
+                className={`text-xs px-1 py-0 h-4 w-full justify-center ${
+                  interview.status === 'pending' 
+                    ? 'bg-green-500 hover:bg-green-600 text-white' 
+                    : 'bg-red-500 hover:bg-red-600 text-white'
+                }`}
+              >
+                {interview.employeeName.split(' ')[0]}
+              </Badge>
+            </div>
+          ))}
+        </div>
       </div>
     );
   };
 
-  const selectedDateInterviews = selectedDate ? getInterviewsForDate(selectedDate) : [];
-
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Exit Interview Calendar</CardTitle>
-          <div className="flex gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <span>Pending</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <span>Completed</span>
-            </div>
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>Exit Interview Calendar</CardTitle>
+        <div className="flex gap-4 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span>Pending</span>
           </div>
-        </CardHeader>
-        <CardContent>
-          <Calendar
-            mode="single"
-            selected={selectedDate}
-            onSelect={setSelectedDate}
-            className="rounded-md border"
-            components={{
-              DayContent: ({ date }) => (
-                <div className="relative w-full h-full flex flex-col items-center justify-center">
-                  <span>{date.getDate()}</span>
-                  {dayContent(date)}
-                </div>
-              )
-            }}
-          />
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            {selectedDate ? `Interviews on ${format(selectedDate, 'MMMM d, yyyy')}` : 'Select a date'}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {selectedDateInterviews.length > 0 ? (
-            <div className="space-y-3">
-              {selectedDateInterviews.map((interview) => (
-                <div key={interview.id} className="flex items-center justify-between p-3 border rounded-lg">
-                  <div>
-                    <h4 className="font-medium">{interview.employeeName}</h4>
-                    <p className="text-sm text-muted-foreground">Manager: {interview.manager}</p>
-                  </div>
-                  <Badge 
-                    variant={interview.status === 'pending' ? 'default' : 'secondary'}
-                    className={interview.status === 'pending' ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600 text-white'}
-                  >
-                    {interview.status === 'pending' ? 'Pending' : 'Completed'}
-                  </Badge>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-muted-foreground">No interviews scheduled for this date.</p>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+            <span>Completed</span>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <Calendar
+          mode="single"
+          selected={selectedDate}
+          onSelect={setSelectedDate}
+          className="rounded-md border w-full"
+          classNames={{
+            months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 w-full",
+            month: "space-y-4 w-full",
+            table: "w-full border-collapse space-y-1",
+            head_row: "flex w-full",
+            head_cell: "text-muted-foreground rounded-md w-full font-normal text-[0.8rem] flex-1",
+            row: "flex w-full mt-2",
+            cell: "h-24 w-full text-center text-sm p-1 relative flex-1 border-r border-b border-muted",
+            day: "h-full w-full p-1 font-normal flex flex-col items-center justify-start hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          }}
+          components={{
+            DayContent: ({ date }) => dayContent(date)
+          }}
+        />
+      </CardContent>
+    </Card>
   );
 }
