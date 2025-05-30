@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import MyLearningPage from "./pages/MyLearningPage";
 import ExitInterviewsPage from "./pages/ExitInterviewsPage";
 import DevelopmentSchedulePage from "./pages/DevelopmentSchedulePage";
+import Reports from "./pages/Reports";
+import WorkforceAnalytics from "./pages/WorkforceAnalytics";
+import CompensationAnalysis from "./pages/CompensationAnalysis";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
 
@@ -25,6 +28,9 @@ const App = () => (
               <Route path="me/learning" element={<MyLearningPage />} />
               <Route path="exit-interviews" element={<ExitInterviewsPage />} />
               <Route path="development-schedule" element={<DevelopmentSchedulePage />} />
+              <Route path="reports" element={<Reports />} />
+              <Route path="reports/workforce-analytics" element={<WorkforceAnalytics />} />
+              <Route path="reports/compensation-analysis" element={<CompensationAnalysis />} />
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
