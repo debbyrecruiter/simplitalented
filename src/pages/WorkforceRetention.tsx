@@ -55,8 +55,8 @@ const WorkforceRetention = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
-      <div className="grid grid-cols-8 gap-2 mb-8">
-        {/* Category cards */}
+      <div className="grid grid-cols-4 gap-6 mb-8">
+        {/* First row */}
         <CategoryCard 
           title="Companywide Attrition" 
           icon={TrendingDown} 
@@ -85,6 +85,7 @@ const WorkforceRetention = () => {
           isActive={activeCard === 'race'}
         />
         
+        {/* Second row */}
         <CategoryCard 
           title="Attrition by Gender" 
           icon={Users} 
