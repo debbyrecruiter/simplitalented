@@ -17,6 +17,7 @@ import ManagerAttritionCard from "@/components/workforce-retention/ManagerAttrit
 import PerformanceAttritionCard from "@/components/workforce-retention/PerformanceAttritionCard";
 import DemographicAttritionCard from "@/components/workforce-retention/DemographicAttritionCard";
 import RegrettableDeparturesCard from "@/components/workforce-retention/RegrettableDeparturesCard";
+import CostAnalysisCard from "@/components/workforce-retention/CostAnalysisCard";
 import { useToast } from "@/hooks/use-toast";
 
 const WorkforceRetention = () => {
@@ -124,7 +125,7 @@ const WorkforceRetention = () => {
         {activeCard === 'gender' && <DemographicAttritionCard type="gender" title="Gender" />}
         {activeCard === 'recruiter' && <DemographicAttritionCard type="recruiter" title="Recruiter" />}
         {activeCard === 'regrettable' && <RegrettableDeparturesCard />}
-        {activeCard === 'cost' && <div className="p-6 border rounded-lg"><h2 className="text-xl font-semibold mb-4">Cost Analysis</h2><p className="text-gray-600">Cost analysis data coming soon...</p></div>}
+        {activeCard === 'cost' && <CostAnalysisCard />}
       </div>
     </div>
   );
