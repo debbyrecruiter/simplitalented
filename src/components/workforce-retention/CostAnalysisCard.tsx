@@ -1,11 +1,22 @@
-
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { DollarSign, TrendingUp, Users, AlertTriangle } from "lucide-react";
+import DateRangeSelector, { DateRange, DateRangeType } from "./DateRangeSelector";
 
 const CostAnalysisCard = () => {
+  const [selectedRange, setSelectedRange] = useState<DateRangeType>("YTD");
+  const [customDateRange, setCustomDateRange] = useState<DateRange | null>(null);
+
+  const handleRangeSelect = (range: DateRangeType, customRange?: DateRange) => {
+    setSelectedRange(range);
+    if (customRange) {
+      setCustomDateRange(customRange);
+    }
+    console.log(`Date range selected: ${range}`, customRange);
+  };
+
   // Attrition cost data
   const attritionCosts = [
     { department: "Engineering", departures: 12, avgSalary: 120000, recruitmentCost: 25000, trainingCost: 15000, totalCost: 1920000 },
@@ -54,6 +65,17 @@ const CostAnalysisCard = () => {
 
   return (
     <div className="space-y-6">
+      {/* Date Range Selector */}
+      <Card className="border-2 border-purple-200">
+        <CardContent className="p-4">
+          <DateRangeSelector
+            selectedRange={selectedRange}
+            customDateRange={customDateRange}
+            onRangeSelect={handleRangeSelect}
+          />
+        </CardContent>
+      </Card>
+
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="border-2 border-red-200">
