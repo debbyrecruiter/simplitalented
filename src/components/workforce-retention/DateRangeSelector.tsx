@@ -41,7 +41,10 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
 
   const handleRangeSelect = (range: DateRangeType) => {
     if (range === "Custom Range") {
-      setIsCustomRangeOpen(true);
+      // Use setTimeout to ensure the dropdown closes first, then open the custom range popup
+      setTimeout(() => {
+        setIsCustomRangeOpen(true);
+      }, 100);
     } else {
       onRangeSelect(range);
     }
@@ -52,6 +55,13 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
       onRangeSelect("Custom Range", { from: tempFromDate, to: tempToDate });
       setIsCustomRangeOpen(false);
     }
+  };
+
+  const handleCustomRangeCancel = () => {
+    setIsCustomRangeOpen(false);
+    // Reset temp dates to current custom range or undefined
+    setTempFromDate(customDateRange?.from);
+    setTempToDate(customDateRange?.to);
   };
 
   const formatCustomRange = () => {
@@ -92,12 +102,12 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
         </DropdownMenu>
       </div>
 
-      {/* Custom Range Date Picker */}
+      {/* Custom Range Date Picker - Now completely separate from dropdown */}
       <Popover open={isCustomRangeOpen} onOpenChange={setIsCustomRangeOpen}>
         <PopoverTrigger asChild>
-          <div />
+          <div style={{ display: 'none' }} />
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0 bg-white border shadow-lg z-50" align="start">
+        <PopoverContent className="w-auto p-0 bg-white border shadow-lg z-[60]" align="start">
           <div className="p-4 space-y-4">
             <h4 className="font-medium text-sm">Select Custom Date Range</h4>
             
@@ -117,13 +127,13 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
                       {tempFromDate ? format(tempFromDate, "MMM dd, yyyy") : "Pick a date"}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-white z-50" align="start">
+                  <PopoverContent className="w-auto p-0 bg-white z-[70]" align="start">
                     <CalendarComponent
                       mode="single"
                       selected={tempFromDate}
                       onSelect={setTempFromDate}
                       initialFocus
-                      className="pointer-events-auto"
+                      className="p-3 pointer-events-auto"
                     />
                   </PopoverContent>
                 </Popover>
@@ -144,13 +154,13 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
                       {tempToDate ? format(tempToDate, "MMM dd, yyyy") : "Pick a date"}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-white z-50" align="start">
+                  <PopoverContent className="w-auto p-0 bg-white z-[70]" align="start">
                     <CalendarComponent
                       mode="single"
                       selected={tempToDate}
                       onSelect={setTempToDate}
                       initialFocus
-                      className="pointer-events-auto"
+                      className="p-3 pointer-events-auto"
                     />
                   </PopoverContent>
                 </Popover>
@@ -161,7 +171,7 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setIsCustomRangeOpen(false)}
+                onClick={handleCustomRangeCancel}
               >
                 Cancel
               </Button>
