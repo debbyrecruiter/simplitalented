@@ -9,6 +9,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -35,16 +42,13 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
   customDateRange,
   onRangeSelect,
 }) => {
-  const [isCustomRangeOpen, setIsCustomRangeOpen] = useState(false);
+  const [isCustomDialogOpen, setIsCustomDialogOpen] = useState(false);
   const [tempFromDate, setTempFromDate] = useState<Date | undefined>(customDateRange?.from);
   const [tempToDate, setTempToDate] = useState<Date | undefined>(customDateRange?.to);
 
   const handleRangeSelect = (range: DateRangeType) => {
     if (range === "Custom Range") {
-      // Use setTimeout to ensure the dropdown closes first, then open the custom range popup
-      setTimeout(() => {
-        setIsCustomRangeOpen(true);
-      }, 100);
+      setIsCustomDialogOpen(true);
     } else {
       onRangeSelect(range);
     }
@@ -53,12 +57,12 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
   const handleCustomRangeApply = () => {
     if (tempFromDate && tempToDate) {
       onRangeSelect("Custom Range", { from: tempFromDate, to: tempToDate });
-      setIsCustomRangeOpen(false);
+      setIsCustomDialogOpen(false);
     }
   };
 
   const handleCustomRangeCancel = () => {
-    setIsCustomRangeOpen(false);
+    setIsCustomDialogOpen(false);
     // Reset temp dates to current custom range or undefined
     setTempFromDate(customDateRange?.from);
     setTempToDate(customDateRange?.to);
@@ -102,15 +106,16 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
         </DropdownMenu>
       </div>
 
-      {/* Custom Range Date Picker - Now completely separate from dropdown */}
-      <Popover open={isCustomRangeOpen} onOpenChange={setIsCustomRangeOpen}>
-        <PopoverTrigger asChild>
+      {/* Custom Range Dialog - Completely separate from dropdown */}
+      <Dialog open={isCustomDialogOpen} onOpenChange={setIsCustomDialogOpen}>
+        <DialogTrigger asChild>
           <div style={{ display: 'none' }} />
-        </PopoverTrigger>
-        <PopoverContent className="w-auto p-0 bg-white border shadow-lg z-[60]" align="start">
-          <div className="p-4 space-y-4">
-            <h4 className="font-medium text-sm">Select Custom Date Range</h4>
-            
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Select Custom Date Range</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-xs font-medium text-gray-600">From Date</label>
@@ -127,7 +132,7 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
                       {tempFromDate ? format(tempFromDate, "MMM dd, yyyy") : "Pick a date"}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-white z-[70]" align="start">
+                  <PopoverContent className="w-auto p-0 bg-white z-[100]" align="start">
                     <CalendarComponent
                       mode="single"
                       selected={tempFromDate}
@@ -154,7 +159,7 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
                       {tempToDate ? format(tempToDate, "MMM dd, yyyy") : "Pick a date"}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0 bg-white z-[70]" align="start">
+                  <PopoverContent className="w-auto p-0 bg-white z-[100]" align="start">
                     <CalendarComponent
                       mode="single"
                       selected={tempToDate}
@@ -167,7 +172,7 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
               </div>
             </div>
 
-            <div className="flex justify-end gap-2 pt-2">
+            <div className="flex justify-end gap-2 pt-4">
               <Button
                 variant="outline"
                 size="sm"
@@ -184,8 +189,8 @@ const DateRangeSelector: React.FC<DateRangeSelectorProps> = ({
               </Button>
             </div>
           </div>
-        </PopoverContent>
-      </Popover>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
