@@ -8,7 +8,8 @@ import {
   Briefcase, 
   Badge, 
   TrendingDown, 
-  UserX 
+  UserX,
+  DollarSign
 } from "lucide-react";
 import CategoryCard from "@/components/workforce-retention/CategoryCard";
 import CompanyAttritionCard from "@/components/workforce-retention/CompanyAttritionCard";
@@ -54,7 +55,7 @@ const WorkforceRetention = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
-      <div className="grid grid-cols-7 gap-2 mb-8">
+      <div className="grid grid-cols-8 gap-2 mb-8">
         {/* Category cards */}
         <CategoryCard 
           title="Companywide Attrition" 
@@ -104,6 +105,13 @@ const WorkforceRetention = () => {
           onClick={() => handleCardClick('regrettable')}
           isActive={activeCard === 'regrettable'}
         />
+
+        <CategoryCard 
+          title="Cost Analysis" 
+          icon={DollarSign} 
+          onClick={() => handleCardClick('cost')}
+          isActive={activeCard === 'cost'}
+        />
       </div>
 
       {/* Display the selected content based on activeCard state */}
@@ -115,6 +123,7 @@ const WorkforceRetention = () => {
         {activeCard === 'gender' && <DemographicAttritionCard type="gender" title="Gender" />}
         {activeCard === 'recruiter' && <DemographicAttritionCard type="recruiter" title="Recruiter" />}
         {activeCard === 'regrettable' && <RegrettableDeparturesCard />}
+        {activeCard === 'cost' && <div className="p-6 border rounded-lg"><h2 className="text-xl font-semibold mb-4">Cost Analysis</h2><p className="text-gray-600">Cost analysis data coming soon...</p></div>}
       </div>
     </div>
   );
