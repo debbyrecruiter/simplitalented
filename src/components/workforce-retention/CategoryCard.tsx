@@ -39,12 +39,9 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
   return (
     <Card 
-      className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px] ${isActive ? 'ring-4 ring-white/50' : ''}`}
+      className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px] h-32 ${isActive ? 'ring-4 ring-white/50' : ''}`}
       onClick={handleClick}
-      style={{
-        ...gradientStyle,
-        aspectRatio: '16/9'
-      }}
+      style={gradientStyle}
     >
       <div className="flex flex-row items-start justify-between p-4 h-full">
         <div className="flex flex-col">
