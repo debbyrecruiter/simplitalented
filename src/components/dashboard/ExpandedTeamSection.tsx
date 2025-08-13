@@ -45,6 +45,16 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
           </Avatar>
         </div>
       </CardHeader>
+      <CardContent className="p-4 pt-0">
+        <div className="flex gap-2 justify-end">
+          <Button size="sm" variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+            Review
+          </Button>
+          <Button size="sm" variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+            Endorse
+          </Button>
+        </div>
+      </CardContent>
     </Card>
   );
 };
