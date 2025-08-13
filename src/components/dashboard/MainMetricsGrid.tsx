@@ -55,13 +55,14 @@ export function MainMetricsGrid({
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
       {/* Me Card */}
       <Card 
-        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 transform rotate-1 hover:rotate-0"
         style={{ 
           background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))',
-          aspectRatio: '16/9'
+          aspectRatio: '16/9',
+          marginTop: '0px'
         }}
         onClick={handleMeClick}
       >
@@ -82,10 +83,11 @@ export function MainMetricsGrid({
 
       {/* Team Card */}
       <Card 
-        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 transform -rotate-1 hover:rotate-0"
         style={{ 
           background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))',
-          aspectRatio: '16/9'
+          aspectRatio: '16/9',
+          marginTop: '16px'
         }}
         onClick={onTeamCardClick}
       >
@@ -106,10 +108,11 @@ export function MainMetricsGrid({
 
       {/* Direct Reports Card */}
       <Card 
-        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 transform rotate-2 hover:rotate-0"
         style={{ 
           background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))',
-          aspectRatio: '16/9'
+          aspectRatio: '16/9',
+          marginTop: '-8px'
         }}
         onClick={onDirectReportsClick}
       >
@@ -136,10 +139,11 @@ export function MainMetricsGrid({
       
       {/* Reports Card */}
       <Card 
-        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 transform -rotate-2 hover:rotate-0"
         style={{ 
           background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))',
-          aspectRatio: '16/9'
+          aspectRatio: '16/9',
+          marginTop: '24px'
         }}
         onClick={handleReportsClick}
       >
@@ -166,10 +170,11 @@ export function MainMetricsGrid({
 
       {/* Exit Interviews Card */}
       <Card 
-        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 transform rotate-1 hover:rotate-0"
         style={{ 
           background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))',
-          aspectRatio: '16/9'
+          aspectRatio: '16/9',
+          marginTop: '8px'
         }}
         onClick={onExitInterviewsClick}
       >
@@ -196,10 +201,11 @@ export function MainMetricsGrid({
 
       {/* Learning & Development Card */}
       <Card 
-        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 transform -rotate-1 hover:rotate-0"
         style={{ 
           background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
-          aspectRatio: '16/9'
+          aspectRatio: '16/9',
+          marginTop: '-12px'
         }}
         onClick={handleLearningDevelopmentClick}
       >
