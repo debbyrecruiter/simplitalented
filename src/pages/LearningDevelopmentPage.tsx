@@ -17,37 +17,43 @@ const LearningDevelopmentPage = () => {
           <div className="flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
               <Card 
-                className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+                className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
+                style={{ background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' }}
               >
-                <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-                  <CardTitle className="text-5xl font-small text-[#9320E7] leading-tight">
-                    Learning &<br />Development<br />Activity
+                <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
+                  <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
+                    <svg className="h-12 w-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <CardTitle className="text-xl font-bold text-white mb-2">
+                    Learning & Development Activity
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-                  <div className="text-2xl font-bold truncate">
-                    View Progress
-                  </div>
-                  <p className="text-sm text-muted-foreground truncate">
-                    Track learning metrics
+                <CardContent className="px-4 pb-6 flex-1 flex flex-col justify-center text-center">
+                  <p className="text-white/80 text-sm">
+                    Track learning progress and development metrics across the organization
                   </p>
                 </CardContent>
               </Card>
 
               <Card 
-                className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+                className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
+                style={{ background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' }}
               >
-                <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-                  <CardTitle className="text-5xl font-small text-[#9320E7] leading-tight">
-                    Assign<br />Training
+                <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
+                  <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
+                    <svg className="h-12 w-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                  </div>
+                  <CardTitle className="text-xl font-bold text-white mb-2">
+                    Assign Training
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-                  <div className="text-2xl font-bold truncate">
-                    Manage Training
-                  </div>
-                  <p className="text-sm text-muted-foreground truncate">
-                    Assign courses to employees
+                <CardContent className="px-4 pb-6 flex-1 flex flex-col justify-center text-center">
+                  <p className="text-white/80 text-sm">
+                    Manage and assign training courses to employees across departments
                   </p>
                 </CardContent>
               </Card>
