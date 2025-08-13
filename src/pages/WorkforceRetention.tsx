@@ -57,9 +57,7 @@ const WorkforceRetention = () => {
           <BackButton fallbackPath="/reports/workforce-analytics" label="Back" />
         </div>
         
-        <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
-      
-      {/* Custom layout: 3-2-3 rows */}
+        {/* Custom layout: 3-2-3 rows */}
       <div className="space-y-4 mb-8">
         {/* First row - 3 cards */}
         <div className="flex flex-wrap gap-4 justify-center">
