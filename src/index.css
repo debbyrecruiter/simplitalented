@@ -44,17 +44,17 @@
     --sidebar-border: 214 32% 91%;
     --sidebar-ring: 252 75% 70%;
 
-    /* Card gradient color schemes */
-    --gradient-green-start: #22c55e;
-    --gradient-green-end: #16a34a;
-    --gradient-pink-start: #ec4899;
-    --gradient-pink-end: #be185d;
-    --gradient-blue-start: #3b82f6;
-    --gradient-blue-end: #1d4ed8;
-    --gradient-orange-start: #f97316;
+    /* Card gradient color schemes - Enhanced 25% more vibrant */
+    --gradient-green-start: #10d876;
+    --gradient-green-end: #059f3d;
+    --gradient-pink-start: #f338a3;
+    --gradient-pink-end: #a30e4a;
+    --gradient-blue-start: #2563eb;
+    --gradient-blue-end: #1e40af;
+    --gradient-orange-start: #ff8c42;
     --gradient-orange-end: #ea580c;
-    --gradient-purple-start: #9b87f5;
-    --gradient-purple-end: #7c3aed;
+    --gradient-purple-start: #a855f7;
+    --gradient-purple-end: #7c2d12;
   }
 
   .dark {
