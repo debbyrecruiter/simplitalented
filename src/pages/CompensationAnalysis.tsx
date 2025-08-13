@@ -36,42 +36,52 @@ const CompensationAnalysis = () => {
           <PIRSalaryCard onBack={handleBackClick} />
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-6">
           {/* First row - 2 cards */}
           <div className="flex flex-wrap gap-4 justify-center">
-            <CompensationCard
-              title="Comp By Job Grade & Performance"
-              icon={BarChart4}
-              onClick={() => handleCardClick('performance-compensation')}
-            />
-            <CompensationCard
-              title="Performance Relative to Starting PIR Salary"
-              icon={DollarSign}
-              onClick={() => handleCardClick('pir-salary')}
-            />
+            <div className="w-[300px]">
+              <CompensationCard
+                title="Comp By Job Grade & Performance"
+                icon={BarChart4}
+                onClick={() => handleCardClick('performance-compensation')}
+              />
+            </div>
+            <div className="w-[300px]">
+              <CompensationCard
+                title="Performance Relative to Starting PIR Salary"
+                icon={DollarSign}
+                onClick={() => handleCardClick('pir-salary')}
+              />
+            </div>
           </div>
           
           {/* Second row - 1 card centered */}
           <div className="flex justify-center">
-            <CompensationCard
-              title="Performance Relative to Starting PIR by Race & Gender"
-              icon={Users}
-              onClick={() => handleCardClick('pir-race-gender')}
-            />
+            <div className="w-[300px]">
+              <CompensationCard
+                title="Performance Relative to Starting PIR by Race & Gender"
+                icon={Users}
+                onClick={() => handleCardClick('pir-race-gender')}
+              />
+            </div>
           </div>
           
           {/* Third row - 2 cards */}
           <div className="flex flex-wrap gap-4 justify-center">
-            <CompensationCard
-              title="Starting PIR by Race"
-              icon={BarChart}
-              onClick={() => handleCardClick('pir-race')}
-            />
-            <CompensationCard
-              title="Starting PIR by Gender"
-              icon={ArrowDownUp}
-              onClick={() => handleCardClick('pir-gender')}
-            />
+            <div className="w-[300px]">
+              <CompensationCard
+                title="Starting PIR by Race"
+                icon={BarChart}
+                onClick={() => handleCardClick('pir-race')}
+              />
+            </div>
+            <div className="w-[300px]">
+              <CompensationCard
+                title="Starting PIR by Gender"
+                icon={ArrowDownUp}
+                onClick={() => handleCardClick('pir-gender')}
+              />
+            </div>
           </div>
         </div>
       )}
