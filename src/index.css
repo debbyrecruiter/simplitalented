@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 84.3%; /* Changed to #D7D7D7 */
+    --background: 0 0% 89%; /* Changed to #E2E2E2 */
     --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%; /* Changed from yellow to white */
@@ -64,7 +64,7 @@
   }
 
   .dark {
-    --background: 0 0% 84.3%; /* Changed to #D7D7D7 for dark mode too */
+    --background: 0 0% 89%; /* Changed to #E2E2E2 for dark mode too */
     --foreground: 0 0% 98%;
 
     --card: 0 0% 100%; /* Changed from yellow to white for dark mode too */
@@ -111,6 +111,21 @@
     position: relative;
   }
 
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/lovable-uploads/54144249-e83c-47c0-bf55-01045d2dd543.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    filter: brightness(1.5);
+    z-index: -1;
+  }
 
   /* Modern card styling inspired by the reference */
   .card-modern {
