@@ -14,43 +14,48 @@ interface TeamMemberCardProps {
 }
 
 const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCardProps) => {
+  const gradientStyle = level === "manager" 
+    ? { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' }
+    : { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
+
   return (
     <Card 
-      className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
+      className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 aspect-square flex flex-col justify-center flex-shrink-0"
+      style={gradientStyle}
     >
       <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-6">
-        <Avatar className="h-20 w-20 mb-2">
+        <Avatar className="h-20 w-20 mb-2 shadow-md">
           <AvatarImage src={avatarUrl} alt={name} />
-          <AvatarFallback>{initials}</AvatarFallback>
+          <AvatarFallback className="bg-white text-primary font-bold">{initials}</AvatarFallback>
         </Avatar>
-        <CardTitle className="text-4xl font-small text-[#9320E7] truncate">
+        <CardTitle className="text-xl font-bold text-white truncate">
           {name}
         </CardTitle>
         {level === "manager" && (
-          <div className="absolute right-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
-            <UserRound className="h-6 w-6 text-blue-600" />
+          <div className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
+            <UserRound className="h-5 w-5 text-blue-600" />
           </div>
         )}
       </CardHeader>
       <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-        <div className="flex justify-center space-x-4 mb-4">
+        <div className="flex justify-center space-x-2 mb-4">
           <Button 
             size="sm" 
-            className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white"
+            className="bg-white/20 hover:bg-white/30 text-white border border-white/30"
           >
             Endorse
           </Button>
           <Button 
             size="sm" 
-            className="bg-[#001BC4] hover:bg-[#001BC4]/80 text-white"
+            className="bg-white/20 hover:bg-white/30 text-white border border-white/30"
           >
             Review
           </Button>
         </div>
-        <div className="text-3xl font-bold truncate">
+        <div className="text-lg font-bold text-white/90 truncate">
           {role}
         </div>
-        <p className="text-sm text-muted-foreground truncate">
+        <p className="text-sm text-white/70 truncate">
           {level === "manager" ? "Team Manager" : "Direct Report"}
         </p>
       </CardContent>
