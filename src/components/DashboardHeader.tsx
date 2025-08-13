@@ -41,7 +41,7 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
           <Input
             type="search"
             placeholder="Search..."
-            className="pl-8 bg-background"
+            className="pl-8 bg-white"
           />
         </div>
         <Button size="icon" variant="ghost" className="relative aspect-square">
