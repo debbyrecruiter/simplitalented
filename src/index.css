@@ -91,4 +91,9 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+
+  /* Force all cards to be square */
+  [data-card="true"], .border.shadow-sm, .border-2.shadow-sm, .border-4.shadow-sm, .border-12.shadow-sm {
+    aspect-ratio: 1 / 1 !important;
+  }
 }
