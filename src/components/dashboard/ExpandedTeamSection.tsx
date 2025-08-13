@@ -20,7 +20,7 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
 
   return (
     <Card 
-      className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 aspect-square flex flex-col flex-shrink-0"
+      className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-60 flex flex-col flex-shrink-0"
       style={gradientStyle}
     >
       <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
