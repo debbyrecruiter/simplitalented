@@ -57,7 +57,7 @@ const MyGoalsPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <DashboardHeader title="My Goals" />
-      <div className="flex-1 p-4 overflow-auto rounded-sm bg-[#DBE1F3]">
+      <div className="flex-1 p-4 overflow-auto rounded-sm bg-background">
         <div className="mb-4">
           <BackButton />
         </div>
