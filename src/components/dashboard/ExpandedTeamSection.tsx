@@ -20,10 +20,10 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
 
   return (
     <Card 
-      className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 aspect-square flex flex-col justify-center flex-shrink-0"
+      className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 aspect-square flex flex-col flex-shrink-0"
       style={gradientStyle}
     >
-      <CardHeader className="flex flex-col items-center justify-center text-center pb-2 pt-8">
+      <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
         <Avatar className="h-16 w-16 mb-3 shadow-md">
           <AvatarImage src={avatarUrl} alt={name} />
           <AvatarFallback className="bg-white text-primary font-bold">{initials}</AvatarFallback>
@@ -37,25 +37,25 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
           </div>
         )}
       </CardHeader>
-      <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-        <div className="flex justify-center space-x-2 mb-4">
+      <CardContent className="px-4 pb-4 flex-1 flex flex-col justify-end text-center">
+        <div className="flex justify-center space-x-2 mb-3">
           <Button 
             size="sm" 
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/30"
+            className="bg-white/20 hover:bg-white/30 text-white border border-white/30 text-xs px-3"
           >
             Endorse
           </Button>
           <Button 
             size="sm" 
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/30"
+            className="bg-white/20 hover:bg-white/30 text-white border border-white/30 text-xs px-3"
           >
             Review
           </Button>
         </div>
-        <div className="text-lg font-bold text-white/90 truncate">
+        <div className="text-base font-bold text-white/90 truncate mb-1">
           {role}
         </div>
-        <p className="text-sm text-white/70 truncate">
+        <p className="text-xs text-white/70 truncate">
           {level === "manager" ? "Team Manager" : "Direct Report"}
         </p>
       </CardContent>
