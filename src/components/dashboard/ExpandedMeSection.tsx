@@ -27,10 +27,10 @@ export function ExpandedMeSection({
 
   return (
     <div className="p-4">
-      {/* Brick pattern layout using flexbox */}
-      <div className="flex flex-wrap gap-4">
-        {/* First row */}
-        <div className="flex flex-wrap gap-4 w-full">
+      {/* Custom layout: 3-2-1-1 rows */}
+      <div className="space-y-4">
+        {/* First row - 3 cards */}
+        <div className="flex flex-wrap gap-4 justify-center">
           {/* My Goals Card */}
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
@@ -104,11 +104,8 @@ export function ExpandedMeSection({
           </Card>
         </div>
 
-        {/* Second row - offset for brick pattern */}
-        <div 
-          className="flex flex-wrap gap-4 w-full"
-          style={{ marginLeft: 'calc(33.333% + 0.5rem)' }}
-        >
+        {/* Second row - 2 cards */}
+        <div className="flex flex-wrap gap-4 justify-center">
           {/* My Reviews Card */}
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
@@ -155,7 +152,10 @@ export function ExpandedMeSection({
               </div>
             </CardHeader>
           </Card>
+        </div>
 
+        {/* Third row - 1 card */}
+        <div className="flex flex-wrap gap-4 justify-center">
           {/* Past 1:1s Card */}
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
@@ -181,8 +181,8 @@ export function ExpandedMeSection({
           </Card>
         </div>
 
-        {/* Third row - normal alignment */}
-        <div className="flex flex-wrap gap-4 w-full">
+        {/* Fourth row - 1 card */}
+        <div className="flex flex-wrap gap-4 justify-center">
           {/* My To Do Card */}
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
