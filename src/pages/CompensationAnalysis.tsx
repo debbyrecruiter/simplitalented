@@ -27,9 +27,7 @@ const CompensationAnalysis = () => {
           <BackButton fallbackPath="/reports" />
         </div>
         
-        <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
-      
-      {selectedChart === 'performance-compensation' ? (
+        {selectedChart === 'performance-compensation' ? (
         <div className="mb-6">
           <PerformanceCompensationChart onBack={handleBackClick} />
         </div>
