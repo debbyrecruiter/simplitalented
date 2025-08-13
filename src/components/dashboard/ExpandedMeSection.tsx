@@ -157,7 +157,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
             style={{ 
-              background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
+              background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))',
               aspectRatio: '16/9'
             }}
             onClick={onPast11CardClick}
@@ -172,7 +172,7 @@ export function ExpandedMeSection({
                 </div>
               </div>
               <div className="bg-white rounded-full p-2 shadow-md">
-                <MessageSquare className="h-6 w-6 text-cyan-600" />
+                <MessageSquare className="h-6 w-6 text-yellow-600" />
               </div>
             </CardHeader>
           </Card>

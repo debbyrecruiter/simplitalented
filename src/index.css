@@ -55,6 +55,8 @@
     --gradient-orange-end: #5c2317;
     --gradient-purple-start: #a855f7;
     --gradient-purple-end: #7c2d12;
+    --gradient-teal-start: #f4e87c;
+    --gradient-teal-end: #2d3b1f;
   }
 
   .dark {
