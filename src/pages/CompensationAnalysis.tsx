@@ -39,14 +39,14 @@ const CompensationAnalysis = () => {
         <div className="space-y-6">
           {/* First row - 2 cards */}
           <div className="flex flex-wrap gap-4 justify-center">
-            <div className="w-[300px]">
+            <div className="flex-1 min-w-[300px] max-w-[400px]">
               <CompensationCard
                 title="Comp By Job Grade & Performance"
                 icon={BarChart4}
                 onClick={() => handleCardClick('performance-compensation')}
               />
             </div>
-            <div className="w-[300px]">
+            <div className="flex-1 min-w-[300px] max-w-[400px]">
               <CompensationCard
                 title="Performance Relative to Starting PIR Salary"
                 icon={DollarSign}
@@ -57,7 +57,7 @@ const CompensationAnalysis = () => {
           
           {/* Second row - 1 card centered */}
           <div className="flex justify-center">
-            <div className="w-[300px]">
+            <div className="min-w-[300px] max-w-[400px]">
               <CompensationCard
                 title="Performance Relative to Starting PIR by Race & Gender"
                 icon={Users}
@@ -68,14 +68,14 @@ const CompensationAnalysis = () => {
           
           {/* Third row - 2 cards */}
           <div className="flex flex-wrap gap-4 justify-center">
-            <div className="w-[300px]">
+            <div className="flex-1 min-w-[300px] max-w-[400px]">
               <CompensationCard
                 title="Starting PIR by Race"
                 icon={BarChart}
                 onClick={() => handleCardClick('pir-race')}
               />
             </div>
-            <div className="w-[300px]">
+            <div className="flex-1 min-w-[300px] max-w-[400px]">
               <CompensationCard
                 title="Starting PIR by Gender"
                 icon={ArrowDownUp}
