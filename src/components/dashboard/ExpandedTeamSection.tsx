@@ -20,70 +20,91 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
 
   return (
     <Card 
-      className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-60 flex flex-col flex-shrink-0"
-      style={gradientStyle}
+      className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
+      style={{
+        ...gradientStyle,
+        aspectRatio: '16/9'
+      }}
     >
-      <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
-        <Avatar className="h-16 w-16 mb-3 shadow-md">
-          <AvatarImage src={avatarUrl} alt={name} />
-          <AvatarFallback className="bg-white text-primary font-bold">{initials}</AvatarFallback>
-        </Avatar>
-        <CardTitle className="text-lg font-bold text-white truncate">
-          {name}
-        </CardTitle>
-        {level === "manager" && (
-          <div className="absolute top-2 right-2 bg-white rounded-full p-1.5 shadow-md">
-            <UserRound className="h-4 w-4 text-blue-600" />
+      <CardHeader className="flex flex-row items-start justify-between p-4">
+        <div className="flex flex-col">
+          <CardTitle className="text-white text-xl font-bold">
+            {name}
+          </CardTitle>
+          <div className="text-white text-sm opacity-90">
+            {role}
           </div>
-        )}
+          <div className="text-white text-xs opacity-75 mt-1">
+            {level === "manager" ? "Team Manager" : "Direct Report"}
+          </div>
+        </div>
+        <div className="bg-white rounded-full p-2 shadow-md">
+          <Avatar className="h-8 w-8">
+            <AvatarImage src={avatarUrl} alt={name} />
+            <AvatarFallback className="bg-primary text-white font-bold text-sm">{initials}</AvatarFallback>
+          </Avatar>
+        </div>
       </CardHeader>
-      <CardContent className="px-4 pb-5 flex-1 flex flex-col justify-end text-center">
-        <div className="flex justify-center space-x-2 mb-3">
-          <Button 
-            size="sm" 
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/30 text-xs px-3"
-          >
-            Endorse
-          </Button>
-          <Button 
-            size="sm" 
-            className="bg-white/20 hover:bg-white/30 text-white border border-white/30 text-xs px-3"
-          >
-            Review
-          </Button>
-        </div>
-        <div className="text-base font-bold text-white/90 truncate mb-1">
-          {role}
-        </div>
-        <p className="text-xs text-white/70 truncate">
-          {level === "manager" ? "Team Manager" : "Direct Report"}
-        </p>
-      </CardContent>
     </Card>
   );
 };
 
 export const ExpandedTeamSection = () => {
   return (
-    <div className="mt-4">
-      <div className="flex flex-nowrap overflow-x-auto gap-6 pb-4 justify-center">
-        <TeamMemberCard
-          name="Alex Morgan"
-          role="Senior Developer"
-          level="manager"
-          avatarUrl={teamMembers[0].avatarUrl}
-          initials={teamMembers[0].initials}
-        />
-        {teamMembers.slice(1).map((member) => (
+    <div className="p-4">
+      {/* Brick pattern layout using flexbox */}
+      <div className="flex flex-wrap gap-4">
+        {/* First row */}
+        <div className="flex flex-wrap gap-4 w-full">
           <TeamMemberCard
-            key={member.id}
-            name={member.name}
-            role={member.role}
-            level="direct-report"
-            avatarUrl={member.avatarUrl}
-            initials={member.initials}
+            name="Alex Morgan"
+            role="Senior Developer"
+            level="manager"
+            avatarUrl={teamMembers[0].avatarUrl}
+            initials={teamMembers[0].initials}
           />
-        ))}
+          {teamMembers.slice(1, 3).map((member) => (
+            <TeamMemberCard
+              key={member.id}
+              name={member.name}
+              role={member.role}
+              level="direct-report"
+              avatarUrl={member.avatarUrl}
+              initials={member.initials}
+            />
+          ))}
+        </div>
+
+        {/* Second row - offset for brick pattern */}
+        <div 
+          className="flex flex-wrap gap-4 w-full"
+          style={{ marginLeft: 'calc(33.333% + 0.5rem)' }}
+        >
+          {teamMembers.slice(3, 6).map((member) => (
+            <TeamMemberCard
+              key={member.id}
+              name={member.name}
+              role={member.role}
+              level="direct-report"
+              avatarUrl={member.avatarUrl}
+              initials={member.initials}
+            />
+          ))}
+        </div>
+
+        {/* Third row - normal alignment */}
+        <div className="flex flex-wrap gap-4 w-full">
+          {teamMembers.slice(6).map((member) => (
+            <TeamMemberCard
+              key={member.id}
+              name={member.name}
+              role={member.role}
+              level="direct-report"
+              avatarUrl={member.avatarUrl}
+              initials={member.initials}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
