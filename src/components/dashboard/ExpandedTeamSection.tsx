@@ -16,8 +16,7 @@ interface TeamMemberCardProps {
 const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCardProps) => {
   return (
     <Card 
-      className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
-      style={{ width: "380.5px", height: "437.5px" }}
+      className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center flex-shrink-0"
     >
       <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-6">
         <Avatar className="h-20 w-20 mb-2">
