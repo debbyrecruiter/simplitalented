@@ -16,7 +16,7 @@ export const CompensationCard: React.FC<CompensationCardProps> = ({
 }) => {
   return (
     <Card 
-      className="border-4 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+      className="border-4 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
       onClick={onClick}
     >
       <CardHeader className="flex flex-col items-center justify-center h-full text-center pb-0 pt-0">
