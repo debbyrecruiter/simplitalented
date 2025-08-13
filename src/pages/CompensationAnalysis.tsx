@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
 import { BarChart4, DollarSign, Users, ArrowDownUp, BarChart } from "lucide-react";
 import { CompensationCard } from "@/components/compensation/CompensationCard";
@@ -19,12 +20,14 @@ const CompensationAnalysis = () => {
   };
 
   return (
-    <div className="flex-1 p-4 overflow-auto">
-      <div className="mb-4">
-        <BackButton fallbackPath="/reports" />
-      </div>
-      
-      <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
+    <div className="flex flex-col h-screen">
+      <DashboardHeader title="Compensation Analysis" />
+      <div className="flex-1 p-4 overflow-auto bg-background">
+        <div className="mb-4">
+          <BackButton fallbackPath="/reports" />
+        </div>
+        
+        <h1 className="text-3xl font-bold mb-6">Compensation Analysis</h1>
       
       {selectedChart === 'performance-compensation' ? (
         <div className="mb-6">
@@ -72,6 +75,7 @@ const CompensationAnalysis = () => {
           />
         </div>
       )}
+      </div>
     </div>
   );
 };
