@@ -43,7 +43,7 @@ export function ExpandedMeSection({
             <CardHeader className="flex flex-row items-start justify-between p-4">
               <div className="flex flex-col">
                 <CardTitle className="text-white text-xl font-bold">
-                  My Goals
+                  Goals
                 </CardTitle>
                 <div className="text-white text-sm opacity-90">
                   3 Active • Track your progress
