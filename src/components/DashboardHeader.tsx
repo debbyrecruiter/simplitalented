@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSidebar } from "@/components/ui/sidebar";
+import { useNavigate } from "react-router-dom";
 
 interface DashboardHeaderProps {
   title: string;
@@ -11,6 +12,11 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ title }: DashboardHeaderProps) {
   const { toggleSidebar } = useSidebar();
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
 
   return (
     <div className="flex flex-col gap-4 md:flex-row md:items-center justify-between py-4 px-6 border-b">
@@ -24,7 +30,7 @@ export function DashboardHeader({ title }: DashboardHeaderProps) {
           <AlignJustify className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
-        <h1 className="text-3xl font-comfortaa">
+        <h1 className="text-3xl font-comfortaa cursor-pointer" onClick={handleLogoClick}>
           <span className="text-[#A171E5] font-bold italic">Simpli</span>
           <span className="text-black">Talented</span>
         </h1>
