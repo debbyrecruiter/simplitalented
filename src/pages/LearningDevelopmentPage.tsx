@@ -17,7 +17,7 @@ const LearningDevelopmentPage = () => {
           <div className="flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
               <Card 
-                className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+                className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
               >
                 <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
                   <CardTitle className="text-5xl font-small text-[#9320E7] leading-tight">
@@ -35,7 +35,7 @@ const LearningDevelopmentPage = () => {
               </Card>
 
               <Card 
-                className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+                className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
               >
                 <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
                   <CardTitle className="text-5xl font-small text-[#9320E7] leading-tight">
