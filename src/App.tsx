@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import MyLearningPage from "./pages/MyLearningPage";
+import MyGoalsPage from "./pages/MyGoalsPage";
 import ExitInterviewsPage from "./pages/ExitInterviewsPage";
 import DevelopmentSchedulePage from "./pages/DevelopmentSchedulePage";
 import Reports from "./pages/Reports";
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/" element={<MainLayout />}>
               <Route index element={<Index />} />
               <Route path="me/learning" element={<MyLearningPage />} />
+              <Route path="my-goals" element={<MyGoalsPage />} />
               <Route path="exit-interviews" element={<ExitInterviewsPage />} />
               <Route path="development-schedule" element={<DevelopmentSchedulePage />} />
               <Route path="reports" element={<Reports />} />
