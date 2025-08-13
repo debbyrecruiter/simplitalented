@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { DashboardHeader } from "@/components/DashboardHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BackButton } from "@/components/ui/back-button";
 import { Users } from "lucide-react";
@@ -29,12 +30,14 @@ const WorkforceDemographics = () => {
   };
 
   return (
-    <div className="container p-4 mx-auto">
-      <div className="mb-6">
-        <BackButton fallbackPath="/reports/workforce-analytics" label="Back" />
-      </div>
-      
-      <h1 className="text-3xl font-bold mb-6">Workforce Demographics</h1>
+    <div className="flex flex-col h-screen">
+      <DashboardHeader title="Workforce Demographics" />
+      <div className="flex-1 p-4 overflow-auto bg-background">
+        <div className="mb-6">
+          <BackButton fallbackPath="/reports/workforce-analytics" label="Back" />
+        </div>
+        
+        <h1 className="text-3xl font-bold mb-6">Workforce Demographics</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <Card 
@@ -112,6 +115,7 @@ const WorkforceDemographics = () => {
             {renderDemographicSection()}
           </CardContent>
         </Card>
+      </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
 import { 
   Users, 
@@ -49,12 +50,14 @@ const WorkforceRetention = () => {
   }, [activeCard]);
 
   return (
-    <div className="container p-4 mx-auto">
-      <div className="mb-6">
-        <BackButton fallbackPath="/reports/workforce-analytics" label="Back" />
-      </div>
-      
-      <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
+    <div className="flex flex-col h-screen">
+      <DashboardHeader title="Workforce Retention" />
+      <div className="flex-1 p-4 overflow-auto bg-background">
+        <div className="mb-6">
+          <BackButton fallbackPath="/reports/workforce-analytics" label="Back" />
+        </div>
+        
+        <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
       {/* Custom layout: 3-2-3 rows */}
       <div className="space-y-4 mb-8">
@@ -134,6 +137,7 @@ const WorkforceRetention = () => {
         {activeCard === 'recruiter' && <DemographicAttritionCard type="recruiter" title="Recruiter" />}
         {activeCard === 'regrettable' && <RegrettableDeparturesCard />}
         {activeCard === 'cost' && <CostAnalysisCard />}
+      </div>
       </div>
     </div>
   );
