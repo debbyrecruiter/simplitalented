@@ -57,6 +57,10 @@
     --gradient-purple-end: #7c2d12;
     --gradient-teal-start: #f4e87c;
     --gradient-teal-end: #2d3b1f;
+    --gradient-red-start: #ef4444;
+    --gradient-red-end: #7f1d1d;
+    --gradient-yellow-start: #eab308;
+    --gradient-yellow-end: #713f12;
   }
 
   .dark {
