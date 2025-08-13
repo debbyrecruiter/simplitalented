@@ -37,9 +37,7 @@ const WorkforceDemographics = () => {
           <BackButton fallbackPath="/reports/workforce-analytics" label="Back" />
         </div>
         
-        <h1 className="text-3xl font-bold mb-6">Workforce Demographics</h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <Card 
           className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "gender" ? "ring-4 ring-white/50" : ""}`}
           onClick={() => handleCardClick("gender")}
