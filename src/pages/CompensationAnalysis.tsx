@@ -36,41 +36,43 @@ const CompensationAnalysis = () => {
           <PIRSalaryCard onBack={handleBackClick} />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-          {/* First Card */}
-          <CompensationCard
-            title="Comp By Job Grade & Performance"
-            icon={BarChart4}
-            onClick={() => handleCardClick('performance-compensation')}
-          />
+        <div className="space-y-4">
+          {/* First row - 2 cards */}
+          <div className="flex flex-wrap gap-4 justify-center">
+            <CompensationCard
+              title="Comp By Job Grade & Performance"
+              icon={BarChart4}
+              onClick={() => handleCardClick('performance-compensation')}
+            />
+            <CompensationCard
+              title="Performance Relative to Starting PIR Salary"
+              icon={DollarSign}
+              onClick={() => handleCardClick('pir-salary')}
+            />
+          </div>
           
-          {/* Second Card */}
-          <CompensationCard
-            title="Performance Relative to Starting PIR Salary"
-            icon={DollarSign}
-            onClick={() => handleCardClick('pir-salary')}
-          />
+          {/* Second row - 1 card centered */}
+          <div className="flex justify-center">
+            <CompensationCard
+              title="Performance Relative to Starting PIR by Race & Gender"
+              icon={Users}
+              onClick={() => handleCardClick('pir-race-gender')}
+            />
+          </div>
           
-          {/* Third Card */}
-          <CompensationCard
-            title="Performance Relative to Starting PIR by Race & Gender"
-            icon={Users}
-            onClick={() => handleCardClick('pir-race-gender')}
-          />
-          
-          {/* Fourth Card */}
-          <CompensationCard
-            title="Starting PIR by Race"
-            icon={BarChart}
-            onClick={() => handleCardClick('pir-race')}
-          />
-          
-          {/* Fifth Card */}
-          <CompensationCard
-            title="Starting PIR by Gender"
-            icon={ArrowDownUp}
-            onClick={() => handleCardClick('pir-gender')}
-          />
+          {/* Third row - 2 cards */}
+          <div className="flex flex-wrap gap-4 justify-center">
+            <CompensationCard
+              title="Starting PIR by Race"
+              icon={BarChart}
+              onClick={() => handleCardClick('pir-race')}
+            />
+            <CompensationCard
+              title="Starting PIR by Gender"
+              icon={ArrowDownUp}
+              onClick={() => handleCardClick('pir-gender')}
+            />
+          </div>
         </div>
       )}
       </div>
