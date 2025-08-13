@@ -27,13 +27,13 @@ export function ExpandedMeSection({
 
   return (
     <div className="p-4">
-      {/* Brick-style layout with offset rows */}
-      <div className="space-y-4">
-        {/* First row - normal alignment */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Brick pattern layout using flexbox */}
+      <div className="flex flex-wrap gap-4">
+        {/* First row */}
+        <div className="flex flex-wrap gap-4 w-full">
           {/* My Goals Card */}
           <Card 
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 flex-1 min-w-[280px]"
             style={{ 
               background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))',
               aspectRatio: '16/9'
@@ -57,7 +57,7 @@ export function ExpandedMeSection({
 
           {/* My Skills Card */}
           <Card 
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 flex-1 min-w-[280px]"
             style={{ 
               background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))',
               aspectRatio: '16/9'
@@ -81,7 +81,7 @@ export function ExpandedMeSection({
 
           {/* My Learning Card */}
           <Card 
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 flex-1 min-w-[280px]"
             style={{ 
               background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))',
               aspectRatio: '16/9'
@@ -104,11 +104,14 @@ export function ExpandedMeSection({
           </Card>
         </div>
 
-        {/* Second row - offset by half card width (brick pattern) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:pl-[calc(50%+0.5rem)] lg:pl-[calc(33.333%+0.667rem)]">
+        {/* Second row - offset for brick pattern */}
+        <div 
+          className="flex flex-wrap gap-4 w-full"
+          style={{ marginLeft: 'calc(33.333% + 0.5rem)' }}
+        >
           {/* My Reviews Card */}
           <Card 
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 flex-1 min-w-[280px]"
             style={{ 
               background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))',
               aspectRatio: '16/9'
@@ -131,7 +134,7 @@ export function ExpandedMeSection({
 
           {/* My Development Schedule Card */}
           <Card 
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 flex-1 min-w-[280px]"
             style={{ 
               background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))',
               aspectRatio: '16/9'
@@ -155,7 +158,7 @@ export function ExpandedMeSection({
 
           {/* Past 1:1s Card */}
           <Card 
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 flex-1 min-w-[280px]"
             style={{ 
               background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))',
               aspectRatio: '16/9'
@@ -179,10 +182,10 @@ export function ExpandedMeSection({
         </div>
 
         {/* Third row - normal alignment */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="flex flex-wrap gap-4 w-full">
           {/* My To Do Card */}
           <Card 
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 flex-1 min-w-[280px]"
             style={{ 
               background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))',
               aspectRatio: '16/9'
