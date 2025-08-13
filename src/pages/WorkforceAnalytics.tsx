@@ -28,9 +28,7 @@ const WorkforceAnalytics = () => {
           <BackButton fallbackPath="/reports" label="Back" />
         </div>
         
-        <h1 className="text-3xl font-bold mb-6">Workforce Analytics</h1>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         <MetricCard
           title="Demographics"
           value=""
