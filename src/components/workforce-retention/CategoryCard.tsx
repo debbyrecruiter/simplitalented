@@ -39,15 +39,25 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
   return (
     <Card 
-      className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 aspect-square w-full flex flex-col ${isActive ? 'ring-4 ring-white/50' : ''}`}
+      className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px] ${isActive ? 'ring-4 ring-white/50' : ''}`}
       onClick={handleClick}
-      style={gradientStyle}
+      style={{
+        ...gradientStyle,
+        aspectRatio: '16/9'
+      }}
     >
-      <div className="flex flex-col items-center justify-center p-4 text-center h-full">
-        <div className="bg-white/20 rounded-full p-3 mb-3 shadow-md">
-          <Icon className="h-8 w-8 text-white" />
+      <div className="flex flex-row items-start justify-between p-4 h-full">
+        <div className="flex flex-col">
+          <h3 className="text-white text-xl font-bold">
+            {title}
+          </h3>
+          <div className="text-white text-sm opacity-90 mt-1">
+            View analytics data
+          </div>
         </div>
-        <h3 className="text-sm font-semibold text-white leading-tight px-2">{title}</h3>
+        <div className="bg-white rounded-full p-2 shadow-md">
+          <Icon className="h-6 w-6 text-primary" />
+        </div>
       </div>
     </Card>
   );

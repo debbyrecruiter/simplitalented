@@ -56,64 +56,75 @@ const WorkforceRetention = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+      {/* Brick pattern layout using flexbox */}
+      <div className="flex flex-wrap gap-4 mb-8">
         {/* First row */}
-        <CategoryCard 
-          title="Companywide Attrition" 
-          icon={TrendingDown} 
-          onClick={() => handleCardClick('company')}
-          isActive={activeCard === 'company'}
-        />
+        <div className="flex flex-wrap gap-4 w-full">
+          <CategoryCard 
+            title="Companywide Attrition" 
+            icon={TrendingDown} 
+            onClick={() => handleCardClick('company')}
+            isActive={activeCard === 'company'}
+          />
+          
+          <CategoryCard 
+            title="Attrition by Manager" 
+            icon={Briefcase} 
+            onClick={() => handleCardClick('manager')}
+            isActive={activeCard === 'manager'}
+          />
+          
+          <CategoryCard 
+            title="Attrition by Performance Score" 
+            icon={Award} 
+            onClick={() => handleCardClick('performance')}
+            isActive={activeCard === 'performance'}
+          />
+        </div>
         
-        <CategoryCard 
-          title="Attrition by Manager" 
-          icon={Briefcase} 
-          onClick={() => handleCardClick('manager')}
-          isActive={activeCard === 'manager'}
-        />
+        {/* Second row - offset for brick pattern */}
+        <div 
+          className="flex flex-wrap gap-4 w-full"
+          style={{ marginLeft: 'calc(33.333% + 0.5rem)' }}
+        >
+          <CategoryCard 
+            title="Attrition by Race" 
+            icon={BarChart2} 
+            onClick={() => handleCardClick('race')}
+            isActive={activeCard === 'race'}
+          />
+          
+          <CategoryCard 
+            title="Attrition by Gender" 
+            icon={Users} 
+            onClick={() => handleCardClick('gender')}
+            isActive={activeCard === 'gender'}
+          />
+          
+          <CategoryCard 
+            title="Attrition by Recruiter" 
+            icon={Badge} 
+            onClick={() => handleCardClick('recruiter')}
+            isActive={activeCard === 'recruiter'}
+          />
+        </div>
         
-        <CategoryCard 
-          title="Attrition by Performance Score" 
-          icon={Award} 
-          onClick={() => handleCardClick('performance')}
-          isActive={activeCard === 'performance'}
-        />
-        
-        <CategoryCard 
-          title="Attrition by Race" 
-          icon={BarChart2} 
-          onClick={() => handleCardClick('race')}
-          isActive={activeCard === 'race'}
-        />
-        
-        {/* Second row */}
-        <CategoryCard 
-          title="Attrition by Gender" 
-          icon={Users} 
-          onClick={() => handleCardClick('gender')}
-          isActive={activeCard === 'gender'}
-        />
-        
-        <CategoryCard 
-          title="Attrition by Recruiter" 
-          icon={Badge} 
-          onClick={() => handleCardClick('recruiter')}
-          isActive={activeCard === 'recruiter'}
-        />
-        
-        <CategoryCard 
-          title="Regrettable Departures" 
-          icon={UserX} 
-          onClick={() => handleCardClick('regrettable')}
-          isActive={activeCard === 'regrettable'}
-        />
+        {/* Third row - normal alignment */}
+        <div className="flex flex-wrap gap-4 w-full">
+          <CategoryCard 
+            title="Regrettable Departures" 
+            icon={UserX} 
+            onClick={() => handleCardClick('regrettable')}
+            isActive={activeCard === 'regrettable'}
+          />
 
-        <CategoryCard 
-          title="Cost Analysis" 
-          icon={DollarSign} 
-          onClick={() => handleCardClick('cost')}
-          isActive={activeCard === 'cost'}
-        />
+          <CategoryCard 
+            title="Cost Analysis" 
+            icon={DollarSign} 
+            onClick={() => handleCardClick('cost')}
+            isActive={activeCard === 'cost'}
+          />
+        </div>
       </div>
 
       {/* Display the selected content based on activeCard state */}
