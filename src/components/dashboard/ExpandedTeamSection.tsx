@@ -37,7 +37,7 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
           </div>
         )}
       </CardHeader>
-      <CardContent className="px-4 pb-6 flex-1 flex flex-col justify-center text-center">
+      <CardContent className="px-4 pb-5 flex-1 flex flex-col justify-end text-center">
         <div className="flex justify-center space-x-2 mb-3">
           <Button 
             size="sm" 
