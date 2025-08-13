@@ -56,10 +56,10 @@ const WorkforceRetention = () => {
       
       <h1 className="text-3xl font-bold mb-6">Workforce Retention</h1>
       
-      {/* Brick pattern layout using flexbox */}
-      <div className="flex flex-wrap gap-4 mb-8">
-        {/* First row */}
-        <div className="flex flex-wrap gap-4 w-full">
+      {/* Custom layout: 3-2-3 rows */}
+      <div className="space-y-4 mb-8">
+        {/* First row - 3 cards */}
+        <div className="flex flex-wrap gap-4 justify-center">
           <CategoryCard 
             title="Companywide Attrition" 
             icon={TrendingDown} 
@@ -82,11 +82,8 @@ const WorkforceRetention = () => {
           />
         </div>
         
-        {/* Second row - offset for brick pattern */}
-        <div 
-          className="flex flex-wrap gap-4 w-full"
-          style={{ marginLeft: 'calc(33.333% + 0.5rem)' }}
-        >
+        {/* Second row - 2 cards */}
+        <div className="flex flex-wrap gap-4 justify-center">
           <CategoryCard 
             title="Attrition by Race" 
             icon={BarChart2} 
@@ -100,17 +97,17 @@ const WorkforceRetention = () => {
             onClick={() => handleCardClick('gender')}
             isActive={activeCard === 'gender'}
           />
-          
+        </div>
+        
+        {/* Third row - 3 cards */}
+        <div className="flex flex-wrap gap-4 justify-center">
           <CategoryCard 
             title="Attrition by Recruiter" 
             icon={Badge} 
             onClick={() => handleCardClick('recruiter')}
             isActive={activeCard === 'recruiter'}
           />
-        </div>
-        
-        {/* Third row - normal alignment */}
-        <div className="flex flex-wrap gap-4 w-full">
+          
           <CategoryCard 
             title="Regrettable Departures" 
             icon={UserX} 
