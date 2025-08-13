@@ -37,68 +37,56 @@ const WorkforceDemographics = () => {
       <h1 className="text-3xl font-bold mb-6">Workforce Demographics</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div 
-          className={`relative cursor-pointer ${selectedCategory === "gender" ? "ring-4 ring-blue-500" : ""}`} 
+        <Card 
+          className={`border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors ${selectedCategory === "gender" ? "ring-4 ring-blue-500" : ""}`}
           onClick={() => handleCardClick("gender")}
         >
-          <AspectRatio ratio={1}>
-            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-8 w-8 text-[#512888]" />
-                  Gender
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center flex-1">
-                <p className="text-muted-foreground text-center">
-                  Click to view gender distribution
-                </p>
-              </CardContent>
-            </Card>
-          </AspectRatio>
-        </div>
+          <CardHeader className="text-center">
+            <CardTitle className="flex flex-col items-center">
+              <Users className="mb-2 h-8 w-8 text-[#512888]" />
+              Gender
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex items-center justify-center">
+            <p className="text-muted-foreground text-center">
+              Click to view gender distribution
+            </p>
+          </CardContent>
+        </Card>
 
-        <div 
-          className={`relative cursor-pointer ${selectedCategory === "race" ? "ring-4 ring-blue-500" : ""}`}
+        <Card 
+          className={`border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors ${selectedCategory === "race" ? "ring-4 ring-blue-500" : ""}`}
           onClick={() => handleCardClick("race")}
         >
-          <AspectRatio ratio={1}>
-            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-8 w-8 text-[#512888]" />
-                  Race
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center flex-1">
-                <p className="text-muted-foreground text-center">
-                  Click to view race distribution
-                </p>
-              </CardContent>
-            </Card>
-          </AspectRatio>
-        </div>
+          <CardHeader className="text-center">
+            <CardTitle className="flex flex-col items-center">
+              <Users className="mb-2 h-8 w-8 text-[#512888]" />
+              Race
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex items-center justify-center">
+            <p className="text-muted-foreground text-center">
+              Click to view race distribution
+            </p>
+          </CardContent>
+        </Card>
 
-        <div 
-          className={`relative cursor-pointer ${selectedCategory === "age" ? "ring-4 ring-blue-500" : ""}`}
+        <Card 
+          className={`border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors ${selectedCategory === "age" ? "ring-4 ring-blue-500" : ""}`}
           onClick={() => handleCardClick("age")}
         >
-          <AspectRatio ratio={1}>
-            <Card className="border-12 border-[#840DD7] bg-[#FFFFFF] rounded-full shadow-sm h-full w-full flex flex-col items-center justify-center hover:border-blue-600 transition-colors">
-              <CardHeader className="text-center pt-8">
-                <CardTitle className="flex flex-col items-center">
-                  <Users className="mb-2 h-8 w-8 text-[#512888]" />
-                  Age
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex items-center justify-center flex-1">
-                <p className="text-muted-foreground text-center">
-                  Click to view age distribution
-                </p>
-              </CardContent>
-            </Card>
-          </AspectRatio>
-        </div>
+          <CardHeader className="text-center">
+            <CardTitle className="flex flex-col items-center">
+              <Users className="mb-2 h-8 w-8 text-[#512888]" />
+              Age
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="flex items-center justify-center">
+            <p className="text-muted-foreground text-center">
+              Click to view age distribution
+            </p>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Demographics content section */}
