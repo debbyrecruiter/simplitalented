@@ -22,16 +22,32 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
     onClick();
   };
 
+  // Define gradient styles based on card type
+  const getGradientStyle = () => {
+    if (title.includes("Companywide")) return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
+    if (title.includes("Manager")) return { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' };
+    if (title.includes("Performance")) return { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
+    if (title.includes("Race")) return { background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))' };
+    if (title.includes("Gender")) return { background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))' };
+    if (title.includes("Recruiter")) return { background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))' };
+    if (title.includes("Regrettable")) return { background: 'linear-gradient(135deg, var(--gradient-red-start), var(--gradient-red-end))' };
+    if (title.includes("Cost")) return { background: 'linear-gradient(135deg, var(--gradient-yellow-start), var(--gradient-yellow-end))' };
+    return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
+  };
+
+  const gradientStyle = getGradientStyle();
+
   return (
     <Card 
-      className={`border-4 ${isActive ? 'border-blue-600' : 'border-[#840DD7]'} bg-[#FFFFFF] shadow-sm overflow-hidden cursor-pointer hover:border-blue-600 transition-colors aspect-square w-full`}
+      className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 aspect-square w-full flex flex-col ${isActive ? 'ring-4 ring-white/50' : ''}`}
       onClick={handleClick}
+      style={gradientStyle}
     >
-      <div className="flex flex-col items-center justify-center p-3 text-center h-full">
-        <div className="flex items-center justify-center mb-2">
-          <Icon className="h-8 w-8 text-[#512888]" />
+      <div className="flex flex-col items-center justify-center p-4 text-center h-full">
+        <div className="bg-white/20 rounded-full p-3 mb-3 shadow-md">
+          <Icon className="h-8 w-8 text-white" />
         </div>
-        <h3 className="text-sm font-semibold text-[#512888] leading-tight px-2">{title}</h3>
+        <h3 className="text-sm font-semibold text-white leading-tight px-2">{title}</h3>
       </div>
     </Card>
   );
