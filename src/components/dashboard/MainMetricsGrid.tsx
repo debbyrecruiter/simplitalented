@@ -1,7 +1,7 @@
-
 import { MetricCard } from "@/components/MetricCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { User, Users, FileText, UserCheck, MessageSquare, GraduationCap } from "lucide-react";
 
 interface MainMetricsGridProps {
   onMeCardClick: () => void;
@@ -48,142 +48,180 @@ export function MainMetricsGrid({
     navigate("/learning-development");
   };
 
+  const handleReportsClick = () => {
+    if (onReportsClick) {
+      onReportsClick();
+    }
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      {/* Me Card */}
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        style={{ 
+          background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))',
+          aspectRatio: '16/9'
+        }}
         onClick={handleMeClick}
       >
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-            Me
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Your metrics
+        <CardHeader className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-xl font-bold">
+              Me
+            </CardTitle>
+            <div className="text-white text-sm opacity-90">
+              Personal dashboard
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Personal dashboard
-          </p>
-        </CardContent>
+          <div className="bg-white rounded-full p-2 shadow-md">
+            <User className="h-6 w-6 text-green-600" />
+          </div>
+        </CardHeader>
       </Card>
+
+      {/* Team Card */}
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        style={{ 
+          background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))',
+          aspectRatio: '16/9'
+        }}
         onClick={onTeamCardClick}
       >
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] truncate">
-            Team
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Team overview
+        <CardHeader className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-xl font-bold">
+              Team
+            </CardTitle>
+            <div className="text-white text-sm opacity-90">
+              Team overview
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Performance metrics
-          </p>
-        </CardContent>
+          <div className="bg-white rounded-full p-2 shadow-md">
+            <Users className="h-6 w-6 text-blue-600" />
+          </div>
+        </CardHeader>
       </Card>
+
+      {/* Direct Reports Card */}
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        style={{ 
+          background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))',
+          aspectRatio: '16/9'
+        }}
         onClick={onDirectReportsClick}
       >
         {/* Watermark for Direct Reports card */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-          <p className="text-4xl font-bold text-purple-500/40 transform -rotate-12 select-none">
+          <p className="text-2xl font-bold text-white/20 transform -rotate-12 select-none">
             Manager View Only
           </p>
         </div>
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
-            Direct<br />Reports
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Team members
+        <CardHeader className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-xl font-bold">
+              Direct Reports
+            </CardTitle>
+            <div className="text-white text-sm opacity-90">
+              Team members
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Individual performance
-          </p>
-        </CardContent>
+          <div className="bg-white rounded-full p-2 shadow-md">
+            <UserCheck className="h-6 w-6 text-purple-600" />
+          </div>
+        </CardHeader>
       </Card>
       
-      {/* Reports Card with Watermark */}
+      {/* Reports Card */}
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
-        onClick={onReportsClick}
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        style={{ 
+          background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))',
+          aspectRatio: '16/9'
+        }}
+        onClick={handleReportsClick}
       >
         {/* Watermark for Reports card */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-          <p className="text-4xl font-bold text-purple-500/40 transform -rotate-12 select-none">
+          <p className="text-2xl font-bold text-white/20 transform -rotate-12 select-none">
             People Team View Only
           </p>
         </div>
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
-            Reports
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            HR Analytics
+        <CardHeader className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-xl font-bold">
+              Reports
+            </CardTitle>
+            <div className="text-white text-sm opacity-90">
+              HR Analytics
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground truncate">
-            Company-wide metrics
-          </p>
-        </CardContent>
+          <div className="bg-white rounded-full p-2 shadow-md">
+            <FileText className="h-6 w-6 text-pink-600" />
+          </div>
+        </CardHeader>
       </Card>
 
-      {/* Exit Interviews Card with Watermark */}
+      {/* Exit Interviews Card */}
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        style={{ 
+          background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))',
+          aspectRatio: '16/9'
+        }}
         onClick={onExitInterviewsClick}
       >
         {/* Watermark for Exit Interviews card */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-          <p className="text-4xl font-bold text-purple-500/40 transform -rotate-12 select-none">
+          <p className="text-2xl font-bold text-white/20 transform -rotate-12 select-none">
             People Team View Only
           </p>
         </div>
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
-            Exit<br />Interviews
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Upcoming Exits
+        <CardHeader className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-xl font-bold">
+              Exit Interviews
+            </CardTitle>
+            <div className="text-white text-sm opacity-90">
+              Upcoming Exits
+            </div>
           </div>
-          <p className="text-sm text-muted-foreground truncate">
-            For Scheduling by Simpli
-          </p>
-        </CardContent>
+          <div className="bg-white rounded-full p-2 shadow-md">
+            <MessageSquare className="h-6 w-6 text-orange-600" />
+          </div>
+        </CardHeader>
       </Card>
 
-      {/* Learning & Development Card with Watermark */}
+      {/* Learning & Development Card */}
       <Card 
-        className="border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden aspect-square flex flex-col justify-center cursor-pointer hover:border-blue-600 transition-colors relative"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-transform"
+        style={{ 
+          background: 'linear-gradient(135deg, #06b6d4, #0891b2)',
+          aspectRatio: '16/9'
+        }}
         onClick={handleLearningDevelopmentClick}
       >
         {/* Watermark for Learning & Development card */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-          <p className="text-4xl font-bold text-purple-500/40 transform -rotate-12 select-none">
+          <p className="text-2xl font-bold text-white/20 transform -rotate-12 select-none">
             People Team View Only
           </p>
         </div>
-        <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-10">
-          <CardTitle className="text-6xl font-small text-[#9320E7] leading-tight">
-            Learning &<br />Development
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6 flex-1 flex flex-col justify-center text-center">
-          <div className="text-3xl font-bold truncate">
-            Companywide L&D
+        <CardHeader className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-xl font-bold">
+              Learning & Development
+            </CardTitle>
+            <div className="text-white text-sm opacity-90">
+              Companywide L&D
+            </div>
           </div>
-        </CardContent>
+          <div className="bg-white rounded-full p-2 shadow-md">
+            <GraduationCap className="h-6 w-6 text-cyan-600" />
+          </div>
+        </CardHeader>
       </Card>
     </div>
   );

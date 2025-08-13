@@ -43,6 +43,18 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 214 32% 91%;
     --sidebar-ring: 252 75% 70%;
+
+    /* Card gradient color schemes */
+    --gradient-green-start: #22c55e;
+    --gradient-green-end: #16a34a;
+    --gradient-pink-start: #ec4899;
+    --gradient-pink-end: #be185d;
+    --gradient-blue-start: #3b82f6;
+    --gradient-blue-end: #1d4ed8;
+    --gradient-orange-start: #f97316;
+    --gradient-orange-end: #ea580c;
+    --gradient-purple-start: #9b87f5;
+    --gradient-purple-end: #7c3aed;
   }
 
   .dark {
@@ -97,8 +109,19 @@
     background-repeat: no-repeat;
   }
 
-  /* Force all cards to be square */
-  div[class*="border"][class*="shadow"] {
-    aspect-ratio: 1 / 1 !important;
+  /* Modern card styling inspired by the reference */
+  .card-modern {
+    @apply rounded-2xl shadow-lg border-0 overflow-hidden;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, var(--card-gradient-start, #9B87F5), var(--card-gradient-end, #7C3AED));
+  }
+  
+  .card-modern .card-icon {
+    @apply bg-white rounded-full p-2 shadow-md;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
