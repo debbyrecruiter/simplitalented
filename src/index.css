@@ -111,9 +111,23 @@
 
   /* Modern card styling inspired by the reference */
   .card-modern {
-    @apply rounded-2xl shadow-lg border-0 overflow-hidden;
+    @apply rounded-2xl border-0 overflow-hidden;
     aspect-ratio: 16 / 9;
     background: linear-gradient(135deg, var(--card-gradient-start, #9B87F5), var(--card-gradient-end, #7C3AED));
+    box-shadow: 
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 20px 40px -10px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-modern:hover {
+    transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) translateY(-8px);
+    box-shadow: 
+      0 20px 40px -5px rgba(0, 0, 0, 0.2),
+      0 30px 60px -10px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   }
   
   .card-modern .card-icon {
@@ -123,5 +137,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 }
