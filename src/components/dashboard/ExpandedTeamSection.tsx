@@ -23,17 +23,17 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
       className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 aspect-square flex flex-col justify-center flex-shrink-0"
       style={gradientStyle}
     >
-      <CardHeader className="flex flex-col items-center justify-center text-center pb-0 pt-6">
-        <Avatar className="h-20 w-20 mb-2 shadow-md">
+      <CardHeader className="flex flex-col items-center justify-center text-center pb-2 pt-8">
+        <Avatar className="h-16 w-16 mb-3 shadow-md">
           <AvatarImage src={avatarUrl} alt={name} />
           <AvatarFallback className="bg-white text-primary font-bold">{initials}</AvatarFallback>
         </Avatar>
-        <CardTitle className="text-xl font-bold text-white truncate">
+        <CardTitle className="text-lg font-bold text-white truncate">
           {name}
         </CardTitle>
         {level === "manager" && (
-          <div className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md">
-            <UserRound className="h-5 w-5 text-blue-600" />
+          <div className="absolute top-2 right-2 bg-white rounded-full p-1.5 shadow-md">
+            <UserRound className="h-4 w-4 text-blue-600" />
           </div>
         )}
       </CardHeader>
