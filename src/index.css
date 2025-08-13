@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 219 100% 86%; /* Updated to #B5CAFF */
+    --background: 0 0% 89%; /* Changed to #E2E2E2 */
     --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%; /* Changed from yellow to white */
@@ -46,7 +46,7 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 89%; /* Changed to #E2E2E2 for dark mode too */
     --foreground: 0 0% 98%;
 
     --card: 0 0% 100%; /* Changed from yellow to white for dark mode too */
