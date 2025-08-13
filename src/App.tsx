@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import MyLearningPage from "./pages/MyLearningPage";
 import MyGoalsPage from "./pages/MyGoalsPage";
+import TeamGoalsPage from "./pages/TeamGoalsPage";
 import LearningDevelopmentPage from "./pages/LearningDevelopmentPage";
 import ExitInterviewsPage from "./pages/ExitInterviewsPage";
 import DevelopmentSchedulePage from "./pages/DevelopmentSchedulePage";
@@ -31,6 +32,7 @@ const App = () => (
               <Route index element={<Index />} />
               <Route path="me/learning" element={<MyLearningPage />} />
               <Route path="my-goals" element={<MyGoalsPage />} />
+              <Route path="team-goals" element={<TeamGoalsPage />} />
               <Route path="learning-development" element={<LearningDevelopmentPage />} />
               <Route path="exit-interviews" element={<ExitInterviewsPage />} />
               <Route path="development-schedule" element={<DevelopmentSchedulePage />} />
