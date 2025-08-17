@@ -1,4 +1,3 @@
-
 import { Card, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
@@ -28,6 +27,7 @@ export function MetricCard({
 }: MetricCardProps) {
   // Determine if this is one of the specific menu items we need to adjust
   const isMenuCard = ["My Goals", "My Learning", "My Reviews", "My Schedule", "Past 1:1s"].includes(title);
+  const isPast11sCard = ["Video", "Transcripts"].includes(title);
   
   // Determine gradient based on title for workforce analytics cards
   const getGradientStyle = () => {
@@ -36,6 +36,18 @@ export function MetricCard({
     }
     if (title === "Retention") {
       return { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
+    }
+    if (title === "Video") {
+      return { 
+        '--card-gradient-start': 'var(--gradient-blue-start)',
+        '--card-gradient-end': 'var(--gradient-blue-end)'
+      };
+    }
+    if (title === "Transcripts") {
+      return { 
+        '--card-gradient-start': 'var(--gradient-teal-start)',
+        '--card-gradient-end': 'var(--gradient-teal-end)'
+      };
     }
     return undefined;
   };
@@ -54,8 +66,10 @@ export function MetricCard({
       className={cn(
         isWorkforceCard 
           ? "shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
+          : isPast11sCard
+          ? "card-modern cursor-pointer"
           : "border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden flex flex-col justify-center aspect-square",
-        onClick && !isWorkforceCard && "cursor-pointer hover:border-blue-600 transition-colors",
+        onClick && !isWorkforceCard && !isPast11sCard && "cursor-pointer hover:border-blue-600 transition-colors",
         className
       )}
       onClick={handleClick}
@@ -82,6 +96,34 @@ export function MetricCard({
             </p>
           </div>
         </>
+      ) : isPast11sCard ? (
+        <div className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-lg font-bold">
+              {title}
+            </CardTitle>
+            {value && (
+              <div className="text-white text-xl font-semibold mb-1">
+                {value}
+              </div>
+            )}
+            {description && (
+              <div className="text-white text-xs opacity-80">
+                {description}
+              </div>
+            )}
+            {trendValue && (
+              <div className="text-white text-xs opacity-70 mt-1">
+                {trendValue}
+              </div>
+            )}
+          </div>
+          {Icon && (
+            <div className="card-icon">
+              <Icon className="h-5 w-5 text-primary" />
+            </div>
+          )}
+        </div>
       ) : (
         <div className="flex flex-col items-center justify-center h-full p-4 text-center">
           <CardTitle className={cn(
