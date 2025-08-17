@@ -3,7 +3,7 @@ import { Video, Search } from "lucide-react";
 
 export const Past11sSubmenu = () => {
   return (
-    <div className="col-span-full grid gap-0 grid-cols-2 mt-4 animate-fade-in">
+    <div className="col-span-full flex justify-center gap-2 mt-4 animate-fade-in">
       <MetricCard
         title="Video"
         value="8 Recordings"
@@ -11,7 +11,7 @@ export const Past11sSubmenu = () => {
         icon={Video}
         trend="neutral"
         trendValue="Latest: 2 days ago"
-        className="transform origin-center scale-75"
+        className="w-48 h-32"
       />
       <MetricCard
         title="Transcripts"
@@ -20,7 +20,7 @@ export const Past11sSubmenu = () => {
         icon={Search}
         trend="neutral"
         trendValue="Updated daily"
-        className="transform origin-center scale-75"
+        className="w-48 h-32"
       />
     </div>
   );
