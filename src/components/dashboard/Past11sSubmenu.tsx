@@ -6,7 +6,7 @@ export const Past11sSubmenu = () => {
   return (
     <div className="col-span-full grid gap-4 grid-cols-2 mt-4 animate-fade-in">
       <Card 
-        className="card-modern cursor-pointer"
+        className="card-modern cursor-pointer transform scale-[0.4] origin-center"
         style={{ 
           '--card-gradient-start': 'var(--gradient-blue-start)',
           '--card-gradient-end': 'var(--gradient-blue-end)'
@@ -34,7 +34,7 @@ export const Past11sSubmenu = () => {
       </Card>
       
       <Card 
-        className="card-modern cursor-pointer"
+        className="card-modern cursor-pointer transform scale-[0.4] origin-center"
         style={{ 
           '--card-gradient-start': 'var(--gradient-teal-start)',
           '--card-gradient-end': 'var(--gradient-teal-end)'
