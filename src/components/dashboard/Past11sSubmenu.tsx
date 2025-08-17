@@ -1,28 +1,65 @@
 
-import { MetricCard } from "@/components/MetricCard";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Video, Search } from "lucide-react";
 
 export const Past11sSubmenu = () => {
   return (
-    <div className="col-span-full grid gap-4 grid-cols-2 mt-4 animate-in fade-in-50">
-      <MetricCard
-        title="Video"
-        value="8 Recordings"
-        description="From last month"
-        icon={Video}
-        trend="neutral"
-        trendValue="Latest: 2 days ago"
-        className="transform origin-center scale-75"
-      />
-      <MetricCard
-        title="Transcripts"
-        value="12 Documents"
-        description="All meetings"
-        icon={Search}
-        trend="neutral"
-        trendValue="Updated daily"
-        className="transform origin-center scale-75"
-      />
+    <div className="col-span-full grid gap-4 grid-cols-2 mt-4 animate-fade-in">
+      <Card 
+        className="card-modern cursor-pointer"
+        style={{ 
+          '--card-gradient-start': 'var(--gradient-blue-start)',
+          '--card-gradient-end': 'var(--gradient-blue-end)'
+        } as React.CSSProperties}
+      >
+        <CardHeader className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-lg font-bold">
+              Video
+            </CardTitle>
+            <div className="text-white text-xl font-semibold mb-1">
+              8 Recordings
+            </div>
+            <div className="text-white text-xs opacity-80">
+              From last month
+            </div>
+            <div className="text-white text-xs opacity-70 mt-1">
+              Latest: 2 days ago
+            </div>
+          </div>
+          <div className="card-icon">
+            <Video className="h-5 w-5 text-primary" />
+          </div>
+        </CardHeader>
+      </Card>
+      
+      <Card 
+        className="card-modern cursor-pointer"
+        style={{ 
+          '--card-gradient-start': 'var(--gradient-teal-start)',
+          '--card-gradient-end': 'var(--gradient-teal-end)'
+        } as React.CSSProperties}
+      >
+        <CardHeader className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-lg font-bold">
+              Transcripts
+            </CardTitle>
+            <div className="text-white text-xl font-semibold mb-1">
+              12 Documents
+            </div>
+            <div className="text-white text-xs opacity-80">
+              All meetings
+            </div>
+            <div className="text-white text-xs opacity-70 mt-1">
+              Updated daily
+            </div>
+          </div>
+          <div className="card-icon">
+            <Search className="h-5 w-5 text-primary" />
+          </div>
+        </CardHeader>
+      </Card>
     </div>
   );
 }
