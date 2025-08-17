@@ -62,11 +62,11 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Me Card */}
             <Card 
-              className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
+              className="card-modern cursor-pointer w-full"
               style={{ 
-                background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))',
-                aspectRatio: '16/9'
-              }}
+                '--card-gradient-start': 'var(--gradient-green-start)',
+                '--card-gradient-end': 'var(--gradient-green-end)'
+              } as React.CSSProperties}
               onClick={handleMeClick}
             >
               <CardHeader className="flex flex-row items-start justify-between p-4">
@@ -78,8 +78,8 @@ export function MainMetricsGrid({
                     Personal dashboard
                   </div>
                 </div>
-                <div className="bg-white rounded-full p-2 shadow-md">
-                  <User className="h-6 w-6 text-green-600" />
+                <div className="card-icon">
+                  <User className="h-6 w-6 text-primary" />
                 </div>
               </CardHeader>
             </Card>
@@ -88,11 +88,11 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Team Card */}
             <Card 
-              className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
+              className="card-modern cursor-pointer w-full"
               style={{ 
-                background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))',
-                aspectRatio: '16/9'
-              }}
+                '--card-gradient-start': 'var(--gradient-blue-start)',
+                '--card-gradient-end': 'var(--gradient-blue-end)'
+              } as React.CSSProperties}
               onClick={onTeamCardClick}
             >
               <CardHeader className="flex flex-row items-start justify-between p-4">
@@ -104,8 +104,8 @@ export function MainMetricsGrid({
                     Team overview
                   </div>
                 </div>
-                <div className="bg-white rounded-full p-2 shadow-md">
-                  <Users className="h-6 w-6 text-blue-600" />
+                <div className="card-icon">
+                  <Users className="h-6 w-6 text-primary" />
                 </div>
               </CardHeader>
             </Card>
@@ -114,11 +114,11 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Direct Reports Card */}
             <Card 
-              className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
+              className="card-modern cursor-pointer w-full"
               style={{ 
-                background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))',
-                aspectRatio: '16/9'
-              }}
+                '--card-gradient-start': 'var(--gradient-purple-start)',
+                '--card-gradient-end': 'var(--gradient-purple-end)'
+              } as React.CSSProperties}
               onClick={onDirectReportsClick}
             >
               {/* Watermark for Direct Reports card */}
@@ -136,8 +136,8 @@ export function MainMetricsGrid({
                     Team members
                   </div>
                 </div>
-                <div className="bg-white rounded-full p-2 shadow-md">
-                  <UserCheck className="h-6 w-6 text-purple-600" />
+                <div className="card-icon">
+                  <UserCheck className="h-6 w-6 text-primary" />
                 </div>
               </CardHeader>
             </Card>
@@ -150,11 +150,11 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Reports Card */}
             <Card 
-              className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
+              className="card-modern cursor-pointer w-full"
               style={{ 
-                background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))',
-                aspectRatio: '16/9'
-              }}
+                '--card-gradient-start': 'var(--gradient-pink-start)',
+                '--card-gradient-end': 'var(--gradient-pink-end)'
+              } as React.CSSProperties}
               onClick={handleReportsClick}
             >
               {/* Watermark for Reports card */}
@@ -172,8 +172,8 @@ export function MainMetricsGrid({
                     HR Analytics
                   </div>
                 </div>
-                <div className="bg-white rounded-full p-2 shadow-md">
-                  <FileText className="h-6 w-6 text-pink-600" />
+                <div className="card-icon">
+                  <FileText className="h-6 w-6 text-primary" />
                 </div>
               </CardHeader>
             </Card>
@@ -182,11 +182,11 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Exit Interviews Card */}
             <Card 
-              className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
+              className="card-modern cursor-pointer w-full"
               style={{ 
-                background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))',
-                aspectRatio: '16/9'
-              }}
+                '--card-gradient-start': 'var(--gradient-orange-start)',
+                '--card-gradient-end': 'var(--gradient-orange-end)'
+              } as React.CSSProperties}
               onClick={onExitInterviewsClick}
             >
               {/* Watermark for Exit Interviews card */}
@@ -204,8 +204,8 @@ export function MainMetricsGrid({
                     Upcoming Exits
                   </div>
                 </div>
-                <div className="bg-white rounded-full p-2 shadow-md">
-                  <MessageSquare className="h-6 w-6 text-orange-600" />
+                <div className="card-icon">
+                  <MessageSquare className="h-6 w-6 text-primary" />
                 </div>
               </CardHeader>
             </Card>
@@ -214,11 +214,11 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Learning & Development Card */}
             <Card 
-              className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
+              className="card-modern cursor-pointer w-full"
               style={{ 
-                background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))',
-                aspectRatio: '16/9'
-              }}
+                '--card-gradient-start': 'var(--gradient-teal-start)',
+                '--card-gradient-end': 'var(--gradient-teal-end)'
+              } as React.CSSProperties}
               onClick={handleLearningDevelopmentClick}
             >
               {/* Watermark for Learning & Development card */}
@@ -236,8 +236,8 @@ export function MainMetricsGrid({
                     Companywide L&D
                   </div>
                 </div>
-                <div className="bg-white rounded-full p-2 shadow-md">
-                  <GraduationCap className="h-6 w-6 text-yellow-600" />
+                <div className="card-icon">
+                  <GraduationCap className="h-6 w-6 text-primary" />
                 </div>
               </CardHeader>
             </Card>
