@@ -4,7 +4,7 @@ import { Video, Search } from "lucide-react";
 
 export const Past11sSubmenu = () => {
   return (
-    <div className="col-span-full grid gap-1 grid-cols-2 mt-4 animate-fade-in">
+    <div className="col-span-full grid gap-4 grid-cols-2 mt-4 animate-fade-in -mx-8">
       <Card 
         className="card-modern cursor-pointer transform scale-[0.4] origin-center"
         style={{ 
