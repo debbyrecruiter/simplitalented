@@ -99,21 +99,21 @@ export function MetricCard({
       ) : isPast11sCard ? (
         <div className="flex flex-row items-start justify-between p-4">
           <div className="flex flex-col">
-            <CardTitle className="text-white text-2xl font-bold">
+            <CardTitle className="text-white text-3xl font-bold">
               {title}
             </CardTitle>
             {value && (
-              <div className="text-white text-3xl font-semibold mb-1">
+              <div className="text-white text-4xl font-semibold mb-1">
                 {value}
               </div>
             )}
             {description && (
-              <div className="text-white text-sm opacity-80">
+              <div className="text-white text-base opacity-80">
                 {description}
               </div>
             )}
             {trendValue && (
-              <div className="text-white text-sm opacity-70 mt-1">
+              <div className="text-white text-base opacity-70 mt-1">
                 {trendValue}
               </div>
             )}
