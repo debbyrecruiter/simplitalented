@@ -11,7 +11,7 @@ export const Past11sSubmenu = () => {
         icon={Video}
         trend="neutral"
         trendValue="Latest: 2 days ago"
-        className="transform origin-center scale-75"
+        className="transform origin-center scale-75 -mx-4"
       />
       <MetricCard
         title="Transcripts"
@@ -20,7 +20,7 @@ export const Past11sSubmenu = () => {
         icon={Search}
         trend="neutral"
         trendValue="Updated daily"
-        className="transform origin-center scale-75"
+        className="transform origin-center scale-75 -mx-4"
       />
     </div>
   );
