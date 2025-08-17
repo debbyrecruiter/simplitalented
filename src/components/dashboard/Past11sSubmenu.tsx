@@ -3,7 +3,7 @@ import { Video, Search } from "lucide-react";
 
 export const Past11sSubmenu = () => {
   return (
-    <div className="col-span-full grid gap-4 grid-cols-2 mt-4 animate-fade-in">
+    <div className="col-span-full grid gap-2 grid-cols-2 mt-4 animate-fade-in">
       <MetricCard
         title="Video"
         value="8 Recordings"
