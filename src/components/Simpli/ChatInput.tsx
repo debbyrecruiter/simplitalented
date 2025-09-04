@@ -6,9 +6,10 @@ import { SendHorizonal } from "lucide-react";
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
+  isLoading?: boolean;
 }
 
-export function ChatInput({ onSendMessage }: ChatInputProps) {
+export function ChatInput({ onSendMessage, isLoading = false }: ChatInputProps) {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -26,8 +27,9 @@ export function ChatInput({ onSendMessage }: ChatInputProps) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         className="flex-1"
+        disabled={isLoading}
       />
-      <Button type="submit" size="icon" disabled={!message.trim()}>
+      <Button type="submit" size="icon" disabled={!message.trim() || isLoading}>
         <SendHorizonal className="h-4 w-4" />
       </Button>
     </form>
