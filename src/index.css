@@ -44,13 +44,16 @@
     --sidebar-border: 214 32% 91%;
     --sidebar-ring: 252 75% 70%;
 
-    /* Card gradient color schemes - Enhanced 25% more vibrant */
+    /* Card gradient color schemes - Custom user gradients */
+    --gradient-green: linear-gradient(197deg, rgb(114, 43, 54) 0.00%, rgb(238, 178, 123) 68.33%);
     --gradient-green-start: #a8b5a0;
     --gradient-green-end: #2d4a22;
+    --gradient-pink: linear-gradient(199deg, rgb(2, 108, 223) 0.00%, rgb(0, 246, 253) 53.91%);
     --gradient-pink-start: #f338a3;
     --gradient-pink-end: #a30e4a;
     --gradient-blue-start: #4a9eff;
     --gradient-blue-end: #1a2332;
+    --gradient-orange: linear-gradient(346deg, rgb(249, 202, 120) 0.00%, rgb(212, 206, 169) 35.72%, rgb(172, 192, 191) 65.66%);
     --gradient-orange-start: #ffb366;
     --gradient-orange-end: #5c2317;
     --gradient-purple-start: #a855f7;

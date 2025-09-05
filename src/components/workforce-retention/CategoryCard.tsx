@@ -26,10 +26,10 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   const getGradientStyle = () => {
     if (title.includes("Companywide")) return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
     if (title.includes("Manager")) return { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' };
-    if (title.includes("Performance")) return { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
+    if (title.includes("Performance")) return { background: 'var(--gradient-green)' };
     if (title.includes("Race")) return { background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))' };
-    if (title.includes("Gender")) return { background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))' };
-    if (title.includes("Recruiter")) return { background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))' };
+    if (title.includes("Gender")) return { background: 'var(--gradient-pink)' };
+    if (title.includes("Recruiter")) return { background: 'var(--gradient-orange)' };
     if (title.includes("Regrettable")) return { background: 'linear-gradient(135deg, var(--gradient-red-start), var(--gradient-red-end))' };
     if (title.includes("Cost")) return { background: 'linear-gradient(135deg, var(--gradient-yellow-start), var(--gradient-yellow-end))' };
     return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
