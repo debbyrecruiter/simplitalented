@@ -52,7 +52,7 @@ const MyGoalsPage = () => {
       <DashboardHeader title="My Goals" />
       <div className="flex-1 p-4 overflow-auto rounded-sm bg-background">
         <div className="mb-4">
-          <BackButton />
+          <BackButton fallbackPath="/?section=me" />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-24 max-w-7xl mx-auto">
