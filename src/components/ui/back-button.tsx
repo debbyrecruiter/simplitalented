@@ -17,14 +17,22 @@ export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: Back
     e.preventDefault();
     e.stopPropagation();
     
+    console.log("BackButton clicked");
+    console.log("onClick prop:", onClick);
+    console.log("window.history.length:", window.history.length);
+    console.log("fallbackPath:", fallbackPath);
+    
     if (onClick) {
       // Call the provided onClick handler directly
+      console.log("Using custom onClick handler");
       onClick();
     } else {
       // Go back one page in browser history, or fallback if no history
       if (window.history.length > 1) {
+        console.log("Going back in history with navigate(-1)");
         navigate(-1);
       } else {
+        console.log("No history, using fallback path:", fallbackPath);
         navigate(fallbackPath);
       }
     }
