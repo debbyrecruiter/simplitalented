@@ -85,54 +85,55 @@ export function MySkillsSubmenu() {
         </Button>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 -mx-12">
+      <div className="flex flex-wrap justify-center gap-y-0">
         {skills.map((skill, index) => (
-          <Card 
-            key={skill.name}
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 mx-12"
-            style={{ 
-              background: gradients[index % gradients.length],
-              aspectRatio: '16/9',
-              transform: 'scale(0.7)',
-              transformOrigin: 'center'
-            }}
-          >
-            <div className="p-4 h-full flex flex-col justify-between">
-              <div className="flex flex-row items-start justify-between">
-                <div className="flex flex-col">
-                  <div className="flex items-center mb-2">
-                    {skill.name === "Python" || skill.name === "React" || skill.name === "Scala" || skill.name === "AWS" ? (
-                      <Code className="h-6 w-6 text-white mr-2" />
-                    ) : (
-                      <Star className="h-6 w-6 text-white mr-2" />
-                    )}
-                    <h3 className="text-xl font-bold text-white">{skill.name}</h3>
-                  </div>
-                  <p className="text-white text-sm opacity-90 mb-3">{skill.description}</p>
-                </div>
-              </div>
-              
-              <div className="mt-auto">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-white font-medium">Endorsements</span>
-                  <span className="text-white opacity-90">{skill.endorsements.length}</span>
-                </div>
-                <div className="flex justify-start -space-x-2">
-                  {skill.endorsements.slice(0, 3).map((endorser, idx) => (
-                    <Avatar key={`${skill.name}-${endorser.name}-${idx}`} className="border-2 border-white w-8 h-8">
-                      <AvatarImage src={endorser.avatarUrl} alt={endorser.name} />
-                      <AvatarFallback className="text-xs bg-white text-gray-800">{endorser.initials}</AvatarFallback>
-                    </Avatar>
-                  ))}
-                  {skill.endorsements.length > 3 && (
-                    <div className="w-8 h-8 rounded-full bg-white/20 border-2 border-white flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">+{skill.endorsements.length - 3}</span>
+          <div key={skill.name} className="w-1/3 px-2">
+            <Card 
+              className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
+              style={{ 
+                background: gradients[index % gradients.length],
+                aspectRatio: '16/9',
+                transform: 'scale(0.7)',
+                transformOrigin: 'center'
+              }}
+            >
+              <div className="p-4 h-full flex flex-col justify-between">
+                <div className="flex flex-row items-start justify-between">
+                  <div className="flex flex-col">
+                    <div className="flex items-center mb-2">
+                      {skill.name === "Python" || skill.name === "React" || skill.name === "Scala" || skill.name === "AWS" ? (
+                        <Code className="h-6 w-6 text-white mr-2" />
+                      ) : (
+                        <Star className="h-6 w-6 text-white mr-2" />
+                      )}
+                      <h3 className="text-xl font-bold text-white">{skill.name}</h3>
                     </div>
-                  )}
+                    <p className="text-white text-sm opacity-90 mb-3">{skill.description}</p>
+                  </div>
+                </div>
+                
+                <div className="mt-auto">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-white font-medium">Endorsements</span>
+                    <span className="text-white opacity-90">{skill.endorsements.length}</span>
+                  </div>
+                  <div className="flex justify-start -space-x-2">
+                    {skill.endorsements.slice(0, 3).map((endorser, idx) => (
+                      <Avatar key={`${skill.name}-${endorser.name}-${idx}`} className="border-2 border-white w-8 h-8">
+                        <AvatarImage src={endorser.avatarUrl} alt={endorser.name} />
+                        <AvatarFallback className="text-xs bg-white text-gray-800">{endorser.initials}</AvatarFallback>
+                      </Avatar>
+                    ))}
+                    {skill.endorsements.length > 3 && (
+                      <div className="w-8 h-8 rounded-full bg-white/20 border-2 border-white flex items-center justify-center">
+                        <span className="text-white text-xs font-medium">+{skill.endorsements.length - 3}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         ))}
       </div>
       
