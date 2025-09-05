@@ -2,12 +2,19 @@
 import { useState } from "react";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
+import { useNavigate } from "react-router-dom";
 import { GoalTracker } from "@/components/GoalTracker";
 import { Button } from "@/components/ui/button";
 import { ListCheck, PlusCircle } from "lucide-react";
 import { GoalsFeed } from "@/components/goals/GoalsFeed";
 
 const MyGoalsPage = () => {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate("/?section=me");
+  };
+
   // Sample goals data for the tracker
   const goals = [
     {
@@ -52,7 +59,7 @@ const MyGoalsPage = () => {
       <DashboardHeader title="My Goals" />
       <div className="flex-1 p-4 overflow-auto rounded-sm bg-background">
         <div className="mb-4">
-          <BackButton fallbackPath="/?section=me" />
+          <BackButton onClick={handleBackClick} />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-24 max-w-7xl mx-auto">
