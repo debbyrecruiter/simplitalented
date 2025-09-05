@@ -22,7 +22,7 @@ export function GoalsSubmenu() {
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
             style={{ 
-              background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))',
+              background: 'var(--gradient-1)',
               aspectRatio: '16/9'
             }}
             onClick={handleMyGoalsClick}
@@ -46,7 +46,7 @@ export function GoalsSubmenu() {
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
             style={{ 
-              background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))',
+              background: 'var(--gradient-5)',
               aspectRatio: '16/9'
             }}
             onClick={handleTeamGoalsClick}
