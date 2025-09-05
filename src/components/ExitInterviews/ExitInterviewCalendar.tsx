@@ -336,8 +336,8 @@ export function ExitInterviewCalendar() {
                 variant={interview.status === 'pending' ? 'default' : 'secondary'}
                 className={`text-xs px-1 py-0 h-4 w-full justify-center ${
                   interview.status === 'pending' 
-                    ? 'bg-primary hover:bg-primary/100 text-primary-foreground' 
-                    : 'bg-muted hover:bg-muted/100 text-muted-foreground'
+                    ? 'bg-primary hover:bg-primary/80 text-primary-foreground' 
+                    : 'bg-muted hover:bg-muted/80 text-muted-foreground'
                 }`}
               >
                 {interview.employeeName.split(' ')[0]}

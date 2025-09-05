@@ -135,7 +135,7 @@ function FeedItem({ item }: FeedItemProps) {
               className="rounded-md w-full h-48 object-cover"
             />
             <div className="absolute inset-0 bg-black bg-opacity-30 rounded-md flex items-center justify-center group-hover:bg-opacity-40 transition-opacity">
-              <div className="h-12 w-12 rounded-full bg-white bg-opacity-100 flex items-center justify-center">
+              <div className="h-12 w-12 rounded-full bg-white bg-opacity-80 flex items-center justify-center">
                 <Video className="h-6 w-6 text-[#512888]" />
               </div>
             </div>

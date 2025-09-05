@@ -79,7 +79,7 @@ export function MetricCard({
         <>
           <div className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             {Icon && (
-              <div className="bg-white/28 rounded-full p-4 mb-4 shadow-md">
+              <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
                 <Icon className="h-12 w-12 text-white" />
               </div>
             )}
@@ -108,12 +108,12 @@ export function MetricCard({
               </div>
             )}
             {description && (
-              <div className="text-white text-xs opacity-100">
+              <div className="text-white text-xs opacity-80">
                 {description}
               </div>
             )}
             {trendValue && (
-              <div className="text-white text-xs opacity-98 mt-1">
+              <div className="text-white text-xs opacity-70 mt-1">
                 {trendValue}
               </div>
             )}
@@ -159,7 +159,7 @@ export function MetricCard({
           )}
           
           {Icon && !isWorkforceCard && (
-            <div className="absolute right-6 top-6 h-12 w-12 rounded-full bg-[#FAFFCB]/70 flex items-center justify-center">
+            <div className="absolute right-6 top-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
               <Icon className="h-6 w-6 text-blue-600" />
             </div>
           )}

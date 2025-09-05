@@ -14,7 +14,7 @@ export const ReportsSection: React.FC = () => {
           style={{ background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
-            <div className="bg-white/28 rounded-full p-4 mb-4 shadow-md">
+            <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
               <BarChart2 className="h-12 w-12 text-white" />
             </div>
             <CardTitle className="text-xl font-bold text-white mb-2">
@@ -35,7 +35,7 @@ export const ReportsSection: React.FC = () => {
           style={{ background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
-            <div className="bg-white/28 rounded-full p-4 mb-4 shadow-md">
+            <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
               <DollarSign className="h-12 w-12 text-white" />
             </div>
             <CardTitle className="text-xl font-bold text-white mb-2">
@@ -51,11 +51,11 @@ export const ReportsSection: React.FC = () => {
       </Link>
 
       <Card 
-        className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 opacity-84"
+        className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 opacity-60"
         style={{ background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))' }}
       >
         <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
-          <div className="bg-white/28 rounded-full p-4 mb-4 shadow-md">
+          <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
             <FileText className="h-12 w-12 text-white" />
           </div>
           <CardTitle className="text-xl font-bold text-white mb-2">

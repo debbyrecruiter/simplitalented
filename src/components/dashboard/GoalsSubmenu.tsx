@@ -32,7 +32,7 @@ export function GoalsSubmenu() {
                 <CardTitle className="text-white text-xl font-bold">
                   My Goals
                 </CardTitle>
-                <div className="text-white text-sm opacity-100">
+                <div className="text-white text-sm opacity-90">
                   Your Goals • Track your progress
                 </div>
               </div>
@@ -56,7 +56,7 @@ export function GoalsSubmenu() {
                 <CardTitle className="text-white text-xl font-bold">
                   Team Goals
                 </CardTitle>
-                <div className="text-white text-sm opacity-100">
+                <div className="text-white text-sm opacity-90">
                   Team Performance • Progress overview
                 </div>
               </div>

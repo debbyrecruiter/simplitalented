@@ -34,10 +34,10 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: T
           <CardTitle className="text-white text-xl font-bold">
             {name}
           </CardTitle>
-          <div className="text-white text-sm opacity-100">
+          <div className="text-white text-sm opacity-90">
             {role}
           </div>
-          <div className="text-white text-xs opacity-100 mt-1">
+          <div className="text-white text-xs opacity-75 mt-1">
             {level === "manager" ? "Team Manager" : "Direct Report"}
           </div>
         </div>
@@ -50,13 +50,13 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: T
       </CardHeader>
       <CardContent className="p-4 pt-0">
         <div className="flex gap-2 justify-end">
-          <Button size="sm" variant="outline" className="bg-white/14 border-white/28 text-white hover:bg-white/28">
+          <Button size="sm" variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
             Review
           </Button>
           <Button 
             size="sm" 
             variant="outline" 
-            className="bg-white/14 border-white/28 text-white hover:bg-white/28"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
             onClick={() => onEndorse(name)}
           >
             Endorse

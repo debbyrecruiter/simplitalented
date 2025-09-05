@@ -48,7 +48,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
           <h3 className="text-white text-xl font-bold">
             {title}
           </h3>
-          <div className="text-white text-sm opacity-100 mt-1">
+          <div className="text-white text-sm opacity-90 mt-1">
             View analytics data
           </div>
         </div>

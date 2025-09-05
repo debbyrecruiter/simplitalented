@@ -33,7 +33,7 @@ export const CompensationCard: React.FC<CompensationCardProps> = ({
       style={gradientStyle}
     >
       <div className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
-        <div className="bg-white/28 rounded-full p-4 mb-4 shadow-md">
+        <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
           <Icon className="h-10 w-10 text-white" />
         </div>
         <CardTitle className="text-lg font-bold text-white px-4 whitespace-pre-line leading-tight">

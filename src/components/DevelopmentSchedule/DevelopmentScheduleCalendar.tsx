@@ -395,9 +395,9 @@ export function DevelopmentScheduleCalendar() {
                 variant={getBadgeVariant(event.type)}
                 className={`text-xs px-1 py-0 h-4 w-full justify-center ${
                   event.type === 'training' 
-                    ? 'bg-primary hover:bg-primary/100 text-primary-foreground'
+                    ? 'bg-primary hover:bg-primary/80 text-primary-foreground'
                     : event.type === 'one-on-one'
-                    ? 'bg-muted hover:bg-muted/100 text-muted-foreground'
+                    ? 'bg-muted hover:bg-muted/80 text-muted-foreground'
                     : 'bg-transparent border-purple-500 text-purple-700 hover:bg-purple-50'
                 }`}
               >
