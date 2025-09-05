@@ -92,7 +92,9 @@ export function MySkillsSubmenu() {
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
             style={{ 
               background: gradients[index % gradients.length],
-              aspectRatio: '16/9'
+              aspectRatio: '16/9',
+              transform: 'scale(0.7)',
+              transformOrigin: 'center'
             }}
           >
             <div className="p-4 h-full flex flex-col justify-between">
