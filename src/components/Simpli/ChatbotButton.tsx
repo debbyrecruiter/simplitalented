@@ -11,7 +11,7 @@ export function ChatbotButton() {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 h-12 w-12 rounded-full bg-primary hover:bg-primary/90 shadow-lg p-0 flex items-center justify-center"
+        className="fixed bottom-4 right-4 h-12 w-12 rounded-full bg-primary hover:bg-primary/100 shadow-lg p-0 flex items-center justify-center"
         aria-label="Open Simpli AI Assistant"
       >
         <MessageCircle className="h-6 w-6 text-white" />

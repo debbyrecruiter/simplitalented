@@ -86,7 +86,7 @@ export function SkillSelectionDialog({
               <Badge
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
-                className="cursor-pointer hover:bg-primary/20"
+                className="cursor-pointer hover:bg-primary/28"
                 onClick={() => setSelectedCategory(category)}
               >
                 {category}
@@ -112,7 +112,7 @@ export function SkillSelectionDialog({
                   return (
                     <div
                       key={skill.name}
-                      className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
+                      className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/70 transition-colors"
                     >
                       <div className="flex-1">
                         <div className="font-medium">{skill.name}</div>

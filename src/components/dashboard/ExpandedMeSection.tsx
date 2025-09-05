@@ -45,7 +45,7 @@ export function ExpandedMeSection({
                 <CardTitle className="text-white text-xl font-bold">
                   Goals
                 </CardTitle>
-                <div className="text-white text-sm opacity-90">
+                <div className="text-white text-sm opacity-100">
                   3 Active • Track your progress
                 </div>
               </div>
@@ -69,7 +69,7 @@ export function ExpandedMeSection({
                 <CardTitle className="text-white text-xl font-bold">
                   My Skills
                 </CardTitle>
-                <div className="text-white text-sm opacity-90">
+                <div className="text-white text-sm opacity-100">
                   5 Skills • View & develop
                 </div>
               </div>
@@ -93,7 +93,7 @@ export function ExpandedMeSection({
                 <CardTitle className="text-white text-xl font-bold">
                   My Learning
                 </CardTitle>
-                <div className="text-white text-sm opacity-90">
+                <div className="text-white text-sm opacity-100">
                   2 Courses • In progress
                 </div>
               </div>
@@ -119,7 +119,7 @@ export function ExpandedMeSection({
                 <CardTitle className="text-white text-xl font-bold">
                   My Reviews
                 </CardTitle>
-                <div className="text-white text-sm opacity-90">
+                <div className="text-white text-sm opacity-100">
                   Next: Jun 15 • Performance review
                 </div>
               </div>
@@ -143,7 +143,7 @@ export function ExpandedMeSection({
                 <CardTitle className="text-white text-xl font-bold">
                   My Development Schedule
                 </CardTitle>
-                <div className="text-white text-sm opacity-90">
+                <div className="text-white text-sm opacity-100">
                   Today: 3 meetings • Upcoming events
                 </div>
               </div>
@@ -170,7 +170,7 @@ export function ExpandedMeSection({
                 <CardTitle className="text-white text-xl font-bold">
                   Past 1:1s
                 </CardTitle>
-                <div className="text-white text-sm opacity-90">
+                <div className="text-white text-sm opacity-100">
                   Last: Apr 28 • Meeting history
                 </div>
               </div>
@@ -197,7 +197,7 @@ export function ExpandedMeSection({
                 <CardTitle className="text-white text-xl font-bold">
                   My To Do
                 </CardTitle>
-                <div className="text-white text-sm opacity-90">
+                <div className="text-white text-sm opacity-100">
                   Daily Tasks • Keep track of work
                 </div>
               </div>

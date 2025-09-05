@@ -76,7 +76,7 @@ export function MySkillsSubmenu() {
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-foreground">My Skills</h2>
         <Button 
-          className="bg-primary hover:bg-primary/90 text-primary-foreground"
+          className="bg-primary hover:bg-primary/100 text-primary-foreground"
           onClick={() => setIsAddSkillDialogOpen(true)}
         >
           <Plus className="h-4 w-4 mr-2" />
@@ -105,14 +105,14 @@ export function MySkillsSubmenu() {
                     )}
                     <h3 className="text-xl font-bold text-white">{skill.name}</h3>
                   </div>
-                  <p className="text-white text-sm opacity-90 mb-3">{skill.description}</p>
+                  <p className="text-white text-sm opacity-100 mb-3">{skill.description}</p>
                 </div>
               </div>
               
               <div className="mt-auto">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-white font-medium">Endorsements</span>
-                  <span className="text-white opacity-90">{skill.endorsements.length}</span>
+                  <span className="text-white opacity-100">{skill.endorsements.length}</span>
                 </div>
                 <div className="flex justify-start -space-x-2">
                   {skill.endorsements.slice(0, 3).map((endorser, idx) => (
@@ -122,7 +122,7 @@ export function MySkillsSubmenu() {
                     </Avatar>
                   ))}
                   {skill.endorsements.length > 3 && (
-                    <div className="w-8 h-8 rounded-full bg-white/20 border-2 border-white flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-white/28 border-2 border-white flex items-center justify-center">
                       <span className="text-white text-xs font-medium">+{skill.endorsements.length - 3}</span>
                     </div>
                   )}

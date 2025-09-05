@@ -74,7 +74,7 @@ export function MainMetricsGrid({
                   <CardTitle className="text-white text-xl font-bold">
                     Me
                   </CardTitle>
-                  <div className="text-white text-sm opacity-90">
+                  <div className="text-white text-sm opacity-100">
                     Personal dashboard
                   </div>
                 </div>
@@ -100,7 +100,7 @@ export function MainMetricsGrid({
                   <CardTitle className="text-white text-xl font-bold">
                     Team
                   </CardTitle>
-                  <div className="text-white text-sm opacity-90">
+                  <div className="text-white text-sm opacity-100">
                     Team overview
                   </div>
                 </div>
@@ -132,7 +132,7 @@ export function MainMetricsGrid({
                   <CardTitle className="text-white text-xl font-bold">
                     Direct Reports
                   </CardTitle>
-                  <div className="text-white text-sm opacity-90">
+                  <div className="text-white text-sm opacity-100">
                     Team members
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export function MainMetricsGrid({
                   <CardTitle className="text-white text-xl font-bold">
                     Reports
                   </CardTitle>
-                  <div className="text-white text-sm opacity-90">
+                  <div className="text-white text-sm opacity-100">
                     HR Analytics
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export function MainMetricsGrid({
                   <CardTitle className="text-white text-xl font-bold">
                     Exit Interviews
                   </CardTitle>
-                  <div className="text-white text-sm opacity-90">
+                  <div className="text-white text-sm opacity-100">
                     Upcoming Exits
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export function MainMetricsGrid({
                   <CardTitle className="text-white text-xl font-bold">
                     Learning & Development
                   </CardTitle>
-                  <div className="text-white text-sm opacity-90">
+                  <div className="text-white text-sm opacity-100">
                     Companywide L&D
                   </div>
                 </div>
