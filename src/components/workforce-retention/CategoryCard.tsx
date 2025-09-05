@@ -22,11 +22,20 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
     onClick();
   };
 
-  // Randomly assign gradient styles
+  // Randomly assign gradient styles based on position and title
   const getGradientStyle = () => {
     const gradients = ['var(--gradient-1)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)', 'var(--gradient-6)', 'var(--gradient-7)'];
-    const hash = title.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0);
-    return { background: gradients[Math.abs(hash) % gradients.length] };
+    // Create variety by using different factors for each card type
+    let seed = title.length;
+    if (title.includes("Companywide")) seed += 1;
+    if (title.includes("Manager")) seed += 2;
+    if (title.includes("Performance")) seed += 3;
+    if (title.includes("Race")) seed += 4;
+    if (title.includes("Gender")) seed += 5;
+    if (title.includes("Recruiter")) seed += 6;
+    if (title.includes("Regrettable")) seed += 7;
+    if (title.includes("Cost")) seed += 8;
+    return { background: gradients[seed % gradients.length] };
   };
 
   const gradientStyle = getGradientStyle();

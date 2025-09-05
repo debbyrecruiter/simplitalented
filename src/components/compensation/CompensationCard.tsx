@@ -17,8 +17,9 @@ export const CompensationCard: React.FC<CompensationCardProps> = ({
   // Randomly assign gradient styles
   const getGradientStyle = () => {
     const gradients = ['var(--gradient-1)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)', 'var(--gradient-6)', 'var(--gradient-7)'];
-    const hash = title.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0);
-    return { background: gradients[Math.abs(hash) % gradients.length] };
+    // Use position in title string + length for pseudo-randomness
+    const seed = (title.charCodeAt(0) || 0) + title.length;
+    return { background: gradients[seed % gradients.length] };
   };
 
   const gradientStyle = getGradientStyle();
