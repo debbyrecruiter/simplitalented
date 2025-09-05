@@ -89,9 +89,11 @@ export function MySkillsSubmenu() {
         {skills.map((skill, index) => (
           <Card 
             key={skill.name}
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 h-32"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
             style={{ 
-              background: gradients[index % gradients.length]
+              background: gradients[index % gradients.length],
+              aspectRatio: '16/9',
+              height: '128px'
             }}
           >
             <div className="p-4 h-full flex flex-col justify-between">
