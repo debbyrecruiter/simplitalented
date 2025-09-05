@@ -32,22 +32,16 @@ export function MetricCard({
   // Determine gradient based on title for workforce analytics cards
   const getGradientStyle = () => {
     if (title === "Demographics") {
-      return { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' };
+      return { background: 'var(--gradient-5)' };
     }
     if (title === "Retention") {
-      return { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
+      return { background: 'var(--gradient-2)' };
     }
     if (title === "Video") {
-      return { 
-        '--card-gradient-start': 'var(--gradient-blue-start)',
-        '--card-gradient-end': 'var(--gradient-blue-end)'
-      };
+      return { background: 'var(--gradient-3)' };
     }
     if (title === "Transcripts") {
-      return { 
-        '--card-gradient-start': 'var(--gradient-teal-start)',
-        '--card-gradient-end': 'var(--gradient-teal-end)'
-      };
+      return { background: 'var(--gradient-6)' };
     }
     return undefined;
   };
