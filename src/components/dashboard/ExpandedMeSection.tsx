@@ -35,7 +35,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-1)',
+              background: 'var(--gradient-2)',
               aspectRatio: '16/9'
             }}
             onClick={onGoalsCardClick}
@@ -59,7 +59,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-5)',
+              background: 'var(--gradient-7)',
               aspectRatio: '16/9'
             }}
             onClick={onMySkillsClick}
@@ -83,7 +83,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-3)',
+              background: 'var(--gradient-4)',
               aspectRatio: '16/9'
             }}
             onClick={handleMyLearningClick}
@@ -110,7 +110,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-2)',
+              background: 'var(--gradient-6)',
               aspectRatio: '16/9'
             }}
           >
@@ -133,7 +133,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-4)',
+              background: 'var(--gradient-1)',
               aspectRatio: '16/9'
             }}
             onClick={handleDevelopmentScheduleClick}
@@ -160,7 +160,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-6)',
+              background: 'var(--gradient-3)',
               aspectRatio: '16/9'
             }}
             onClick={onPast11CardClick}
@@ -187,7 +187,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-7)',
+              background: 'var(--gradient-5)',
               aspectRatio: '16/9'
             }}
             onClick={onToDoListClick}

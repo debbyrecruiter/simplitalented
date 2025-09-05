@@ -14,14 +14,11 @@ export const CompensationCard: React.FC<CompensationCardProps> = ({
   icon: Icon,
   onClick
 }) => {
-  // Define gradient styles based on card title
+  // Randomly assign gradient styles
   const getGradientStyle = () => {
-    if (title.includes("Job Grade & Performance")) return { background: 'var(--gradient-3)' };
-    if (title.includes("PIR Salary")) return { background: 'var(--gradient-1)' };
-    if (title.includes("Race & Gender")) return { background: 'var(--gradient-6)' };
-    if (title.includes("PIR by Race")) return { background: 'var(--gradient-4)' };
-    if (title.includes("PIR by Gender")) return { background: 'var(--gradient-2)' };
-    return { background: 'var(--gradient-5)' };
+    const gradients = ['var(--gradient-1)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)', 'var(--gradient-6)', 'var(--gradient-7)'];
+    const hash = title.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0);
+    return { background: gradients[Math.abs(hash) % gradients.length] };
   };
 
   const gradientStyle = getGradientStyle();
