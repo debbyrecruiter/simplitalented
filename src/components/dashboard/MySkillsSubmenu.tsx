@@ -85,7 +85,7 @@ export function MySkillsSubmenu() {
         </Button>
       </div>
       
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center -space-x-16">
         {skills.map((skill, index) => (
           <div key={skill.name} className="w-80">
             <Card 
