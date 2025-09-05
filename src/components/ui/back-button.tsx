@@ -21,8 +21,12 @@ export function BackButton({ onClick, label = "Back", fallbackPath = "/" }: Back
       // Call the provided onClick handler directly
       onClick();
     } else {
-      // Only use the fallback navigation if no onClick is provided
-      navigate(fallbackPath);
+      // Go back one page in browser history, or fallback if no history
+      if (window.history.length > 1) {
+        navigate(-1);
+      } else {
+        navigate(fallbackPath);
+      }
     }
   };
 
