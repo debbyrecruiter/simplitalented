@@ -64,8 +64,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full"
               style={{ 
-                '--card-gradient-start': 'var(--gradient-green-start)',
-                '--card-gradient-end': 'var(--gradient-green-end)'
+                background: 'var(--gradient-1)'
               } as React.CSSProperties}
               onClick={handleMeClick}
             >
@@ -90,8 +89,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full"
               style={{ 
-                '--card-gradient-start': 'var(--gradient-blue-start)',
-                '--card-gradient-end': 'var(--gradient-blue-end)'
+                background: 'var(--gradient-5)'
               } as React.CSSProperties}
               onClick={onTeamCardClick}
             >
@@ -116,8 +114,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full"
               style={{ 
-                '--card-gradient-start': 'var(--gradient-purple-start)',
-                '--card-gradient-end': 'var(--gradient-purple-end)'
+                background: 'var(--gradient-3)'
               } as React.CSSProperties}
               onClick={onDirectReportsClick}
             >
@@ -152,8 +149,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full"
               style={{ 
-                '--card-gradient-start': 'var(--gradient-pink-start)',
-                '--card-gradient-end': 'var(--gradient-pink-end)'
+                background: 'var(--gradient-2)'
               } as React.CSSProperties}
               onClick={handleReportsClick}
             >
@@ -184,8 +180,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full"
               style={{ 
-                '--card-gradient-start': 'var(--gradient-orange-start)',
-                '--card-gradient-end': 'var(--gradient-orange-end)'
+                background: 'var(--gradient-4)'
               } as React.CSSProperties}
               onClick={onExitInterviewsClick}
             >
@@ -216,8 +211,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full"
               style={{ 
-                '--card-gradient-start': 'var(--gradient-teal-start)',
-                '--card-gradient-end': 'var(--gradient-teal-end)'
+                background: 'var(--gradient-6)'
               } as React.CSSProperties}
               onClick={handleLearningDevelopmentClick}
             >
