@@ -85,16 +85,13 @@ export function MySkillsSubmenu() {
         </Button>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 -m-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
         {skills.map((skill, index) => (
           <Card 
             key={skill.name}
-            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 m-4"
+            className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 h-32"
             style={{ 
-              background: gradients[index % gradients.length],
-              aspectRatio: '16/9',
-              transform: 'scale(0.7)',
-              transformOrigin: 'center'
+              background: gradients[index % gradients.length]
             }}
           >
             <div className="p-4 h-full flex flex-col justify-between">
