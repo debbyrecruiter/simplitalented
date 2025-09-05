@@ -1,17 +1,8 @@
 
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Star, Code, Plus } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { SkillSelectionDialog } from "./SkillSelectionDialog";
-import { useState } from "react";
-
-export function MySkillsSubmenu() {
-  const [isAddSkillDialogOpen, setIsAddSkillDialogOpen] = useState(false);
-  
-  const skills = [
-    { 
-      name: "Leadership", 
+ <CardHeader className="flex flex-row items-start justify-between p-4">
+              <div className="flex flex-col">
+                <CardTitle className="text-white text-xl font-bold">
+name: "Leadership", 
       description: "Leading teams and projects",
       endorsements: [
         { name: "Alex Morgan", avatarUrl: "https://i.pravatar.cc/300?u=alex@example.com", initials: "AM" },
