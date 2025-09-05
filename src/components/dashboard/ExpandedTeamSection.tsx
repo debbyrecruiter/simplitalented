@@ -19,7 +19,7 @@ interface TeamMemberCardProps {
 const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: TeamMemberCardProps) => {
   const gradientStyle = level === "manager" 
     ? { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' }
-    : { background: 'var(--gradient-green)' };
+    : { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
 
   return (
     <Card 
