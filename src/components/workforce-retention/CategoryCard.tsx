@@ -24,15 +24,15 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
   // Define gradient styles based on card type
   const getGradientStyle = () => {
-    if (title.includes("Companywide")) return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
-    if (title.includes("Manager")) return { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' };
-    if (title.includes("Performance")) return { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
-    if (title.includes("Race")) return { background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))' };
-    if (title.includes("Gender")) return { background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))' };
-    if (title.includes("Recruiter")) return { background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))' };
-    if (title.includes("Regrettable")) return { background: 'linear-gradient(135deg, var(--gradient-red-start), var(--gradient-red-end))' };
-    if (title.includes("Cost")) return { background: 'linear-gradient(135deg, var(--gradient-yellow-start), var(--gradient-yellow-end))' };
-    return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
+    if (title.includes("Companywide")) return { background: 'var(--gradient-7)' };
+    if (title.includes("Manager")) return { background: 'var(--gradient-5)' };
+    if (title.includes("Performance")) return { background: 'var(--gradient-1)' };
+    if (title.includes("Race")) return { background: 'var(--gradient-6)' };
+    if (title.includes("Gender")) return { background: 'var(--gradient-2)' };
+    if (title.includes("Recruiter")) return { background: 'var(--gradient-4)' };
+    if (title.includes("Regrettable")) return { background: 'var(--gradient-3)' };
+    if (title.includes("Cost")) return { background: 'var(--gradient-1)' };
+    return { background: 'var(--gradient-7)' };
   };
 
   const gradientStyle = getGradientStyle();

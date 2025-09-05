@@ -16,12 +16,12 @@ export const CompensationCard: React.FC<CompensationCardProps> = ({
 }) => {
   // Define gradient styles based on card title
   const getGradientStyle = () => {
-    if (title.includes("Job Grade & Performance")) return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
-    if (title.includes("PIR Salary")) return { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
-    if (title.includes("Race & Gender")) return { background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))' };
-    if (title.includes("PIR by Race")) return { background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))' };
-    if (title.includes("PIR by Gender")) return { background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))' };
-    return { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' };
+    if (title.includes("Job Grade & Performance")) return { background: 'var(--gradient-3)' };
+    if (title.includes("PIR Salary")) return { background: 'var(--gradient-1)' };
+    if (title.includes("Race & Gender")) return { background: 'var(--gradient-6)' };
+    if (title.includes("PIR by Race")) return { background: 'var(--gradient-4)' };
+    if (title.includes("PIR by Gender")) return { background: 'var(--gradient-2)' };
+    return { background: 'var(--gradient-5)' };
   };
 
   const gradientStyle = getGradientStyle();
