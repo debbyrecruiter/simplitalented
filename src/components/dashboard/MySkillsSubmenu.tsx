@@ -3,8 +3,12 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Code, Plus } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AddSkillDialog } from "./AddSkillDialog";
+import { useState } from "react";
 
 export function MySkillsSubmenu() {
+  const [isAddSkillDialogOpen, setIsAddSkillDialogOpen] = useState(false);
+  
   const skills = [
     { 
       name: "Leadership", 
@@ -73,10 +77,7 @@ export function MySkillsSubmenu() {
         <h2 className="text-2xl font-bold text-foreground">My Skills</h2>
         <Button 
           className="bg-primary hover:bg-primary/90 text-primary-foreground"
-          onClick={() => {
-            // TODO: Open add skill dialog/modal
-            console.log("Add new skill clicked");
-          }}
+          onClick={() => setIsAddSkillDialogOpen(true)}
         >
           <Plus className="h-4 w-4 mr-2" />
           Add New Skill
@@ -131,6 +132,11 @@ export function MySkillsSubmenu() {
           </Card>
         ))}
       </div>
+      
+      <AddSkillDialog 
+        open={isAddSkillDialogOpen}
+        onOpenChange={setIsAddSkillDialogOpen}
+      />
     </div>
   );
 }
