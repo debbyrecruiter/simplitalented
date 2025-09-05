@@ -85,7 +85,7 @@ name: "Leadership",
         </Button>
       </div>
       
-      <div className="grid grid-cols-3 gap-1.5 max-w-6xl mx-auto">
+      <div className="grid grid-cols-3 gap-3 max-w-6xl mx-auto">
         {skills.map((skill, index) => (
           <Card 
             key={skill.name}
