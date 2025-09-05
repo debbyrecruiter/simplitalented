@@ -86,8 +86,11 @@ export function MySkillsSubmenu() {
       </div>
       
       <div className="flex flex-wrap justify-center gap-y-0">
-        {skills.map((skill, index) => (
-          <div key={skill.name} className="w-1/3 px-2">
+        {skills.map((skill, index) => {
+          const columnIndex = index % 3;
+          const marginClass = columnIndex === 0 ? "ml-8" : columnIndex === 2 ? "mr-8" : "";
+          return (
+            <div key={skill.name} className={`w-1/3 px-2 ${marginClass}`}>
             <Card 
               className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
               style={{ 
@@ -134,7 +137,8 @@ export function MySkillsSubmenu() {
               </div>
             </Card>
           </div>
-        ))}
+          );
+        })}
       </div>
       
       <SkillSelectionDialog 
