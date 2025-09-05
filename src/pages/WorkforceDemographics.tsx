@@ -41,7 +41,7 @@ const WorkforceDemographics = () => {
         <Card 
           className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "gender" ? "ring-4 ring-white/50" : ""}`}
           onClick={() => handleCardClick("gender")}
-          style={{ background: 'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))' }}
+          style={{ background: 'var(--gradient-2)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
@@ -61,7 +61,7 @@ const WorkforceDemographics = () => {
         <Card 
           className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "race" ? "ring-4 ring-white/50" : ""}`}
           onClick={() => handleCardClick("race")}
-          style={{ background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))' }}
+          style={{ background: 'var(--gradient-6)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
@@ -81,7 +81,7 @@ const WorkforceDemographics = () => {
         <Card 
           className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "age" ? "ring-4 ring-white/50" : ""}`}
           onClick={() => handleCardClick("age")}
-          style={{ background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))' }}
+          style={{ background: 'var(--gradient-4)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
