@@ -14,12 +14,27 @@ export const CompensationCard: React.FC<CompensationCardProps> = ({
   icon: Icon,
   onClick
 }) => {
-  // Randomly assign gradient styles
+  // Assign varied gradients based on specific titles
   const getGradientStyle = () => {
-    const gradients = ['var(--gradient-1)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)', 'var(--gradient-6)', 'var(--gradient-7)'];
-    // Use position in title string + length for pseudo-randomness
-    const seed = (title.charCodeAt(0) || 0) + title.length;
-    return { background: gradients[seed % gradients.length] };
+    const gradientMap: { [key: string]: string } = {
+      'Job Grade &\nPerformance': 'var(--gradient-3)',
+      'PIR Salary\nAnalysis': 'var(--gradient-1)', 
+      'Race & Gender\nEquity Analysis': 'var(--gradient-6)',
+      'PIR by Race': 'var(--gradient-4)',
+      'PIR by Gender': 'var(--gradient-2)',
+    };
+    
+    // Find matching title or use a fallback rotation
+    const normalizedTitle = title.replace(/\s+/g, ' ').trim();
+    for (const [key, gradient] of Object.entries(gradientMap)) {
+      if (normalizedTitle.includes(key.replace('\n', ' ')) || title.includes(key.split('\n')[0])) {
+        return { background: gradient };
+      }
+    }
+    
+    // Fallback for unmatched titles
+    const gradients = ['var(--gradient-5)', 'var(--gradient-7)'];
+    return { background: gradients[title.length % gradients.length] };
   };
 
   const gradientStyle = getGradientStyle();

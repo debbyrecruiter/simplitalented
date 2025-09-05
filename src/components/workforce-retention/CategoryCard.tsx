@@ -22,20 +22,28 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
     onClick();
   };
 
-  // Randomly assign gradient styles based on position and title
+  // Assign varied gradients based on specific card types
   const getGradientStyle = () => {
-    const gradients = ['var(--gradient-1)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)', 'var(--gradient-6)', 'var(--gradient-7)'];
-    // Create variety by using different factors for each card type
-    let seed = title.length;
-    if (title.includes("Companywide")) seed += 1;
-    if (title.includes("Manager")) seed += 2;
-    if (title.includes("Performance")) seed += 3;
-    if (title.includes("Race")) seed += 4;
-    if (title.includes("Gender")) seed += 5;
-    if (title.includes("Recruiter")) seed += 6;
-    if (title.includes("Regrettable")) seed += 7;
-    if (title.includes("Cost")) seed += 8;
-    return { background: gradients[seed % gradients.length] };
+    const gradientMap: { [key: string]: string } = {
+      'Companywide': 'var(--gradient-1)',
+      'Manager': 'var(--gradient-5)', 
+      'Performance': 'var(--gradient-3)',
+      'Race': 'var(--gradient-7)',
+      'Gender': 'var(--gradient-2)',
+      'Recruiter': 'var(--gradient-4)',
+      'Regrettable': 'var(--gradient-6)',
+      'Cost': 'var(--gradient-1)',
+    };
+    
+    // Find the first matching keyword
+    for (const [keyword, gradient] of Object.entries(gradientMap)) {
+      if (title.includes(keyword)) {
+        return { background: gradient };
+      }
+    }
+    
+    // Fallback
+    return { background: 'var(--gradient-7)' };
   };
 
   const gradientStyle = getGradientStyle();
