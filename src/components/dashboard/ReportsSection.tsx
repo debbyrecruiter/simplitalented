@@ -11,7 +11,7 @@ export const ReportsSection: React.FC = () => {
       <Link to="/reports/workforce-analytics">
         <Card 
           className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
-          style={{ background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' }}
+          style={{ background: 'var(--gradient-3)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
@@ -32,7 +32,7 @@ export const ReportsSection: React.FC = () => {
       <Link to="/reports/compensation-analysis">
         <Card 
           className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
-          style={{ background: 'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))' }}
+          style={{ background: 'var(--gradient-4)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
@@ -52,7 +52,7 @@ export const ReportsSection: React.FC = () => {
 
       <Card 
         className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 opacity-60"
-        style={{ background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))' }}
+        style={{ background: 'var(--gradient-6)' }}
       >
         <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
           <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
