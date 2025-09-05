@@ -123,7 +123,7 @@ export function MainMetricsGrid({
             >
               {/* Watermark for Direct Reports card */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <p className="text-2xl font-bold text-white/20 transform -rotate-12 select-none">
+                <p className="text-2xl font-bold text-white/28 transform -rotate-12 select-none">
                   Manager View Only
                 </p>
               </div>
@@ -159,7 +159,7 @@ export function MainMetricsGrid({
             >
               {/* Watermark for Reports card */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <p className="text-2xl font-bold text-white/20 transform -rotate-12 select-none">
+                <p className="text-2xl font-bold text-white/28 transform -rotate-12 select-none">
                   People Team View Only
                 </p>
               </div>
@@ -191,7 +191,7 @@ export function MainMetricsGrid({
             >
               {/* Watermark for Exit Interviews card */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <p className="text-2xl font-bold text-white/20 transform -rotate-12 select-none">
+                <p className="text-2xl font-bold text-white/28 transform -rotate-12 select-none">
                   People Team View Only
                 </p>
               </div>
@@ -223,7 +223,7 @@ export function MainMetricsGrid({
             >
               {/* Watermark for Learning & Development card */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <p className="text-2xl font-bold text-white/20 transform -rotate-12 select-none">
+                <p className="text-2xl font-bold text-white/28 transform -rotate-12 select-none">
                   People Team View Only
                 </p>
               </div>
