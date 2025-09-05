@@ -17,9 +17,10 @@ interface TeamMemberCardProps {
 }
 
 const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: TeamMemberCardProps) => {
-  const gradientStyle = level === "manager" 
-    ? { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' }
-    : { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
+  // Create varied gradients based on name to ensure different colors
+  const gradients = ['var(--gradient-1)', 'var(--gradient-2)', 'var(--gradient-3)', 'var(--gradient-4)', 'var(--gradient-5)', 'var(--gradient-6)', 'var(--gradient-7)'];
+  const nameHash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const gradientStyle = { background: gradients[nameHash % gradients.length] };
 
   return (
     <Card 
