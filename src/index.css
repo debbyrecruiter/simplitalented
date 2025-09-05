@@ -117,13 +117,13 @@
     @apply rounded-2xl border-0 overflow-hidden;
     aspect-ratio: 16 / 9;
     background: linear-gradient(135deg, var(--card-gradient-start, #9B87F5), var(--card-gradient-end, #7C3AED));
+    opacity: 0.6;
     box-shadow: 
       0 15px 35px -5px rgba(0, 0, 0, 0.25),
       0 25px 50px -10px rgba(0, 0, 0, 0.2),
       0 0 0 1px rgba(255, 255, 255, 0.2) inset;
     transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: brightness(1.4) saturate(1.2);
   }
   
   .card-modern:hover {
