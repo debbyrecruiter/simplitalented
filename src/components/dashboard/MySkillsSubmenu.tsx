@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Code, Plus } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { AddSkillDialog } from "./AddSkillDialog";
+import { SkillSelectionDialog } from "./SkillSelectionDialog";
 import { useState } from "react";
 
 export function MySkillsSubmenu() {
@@ -133,9 +133,10 @@ export function MySkillsSubmenu() {
         ))}
       </div>
       
-      <AddSkillDialog 
+      <SkillSelectionDialog 
         open={isAddSkillDialogOpen}
         onOpenChange={setIsAddSkillDialogOpen}
+        mode="add"
       />
     </div>
   );

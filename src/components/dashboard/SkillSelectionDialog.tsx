@@ -4,15 +4,22 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Search, Plus } from "lucide-react";
+import { Search, Plus, ThumbsUp } from "lucide-react";
 import { skillsData, getSkillCategories } from "@/data/skillsData";
 
-interface AddSkillDialogProps {
+interface SkillSelectionDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  mode: "add" | "endorse";
+  targetPersonName?: string; // For endorse mode
 }
 
-export function AddSkillDialog({ open, onOpenChange }: AddSkillDialogProps) {
+export function SkillSelectionDialog({ 
+  open, 
+  onOpenChange, 
+  mode, 
+  targetPersonName 
+}: SkillSelectionDialogProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
@@ -38,18 +45,27 @@ export function AddSkillDialog({ open, onOpenChange }: AddSkillDialogProps) {
     return filtered;
   }, [searchQuery, selectedCategory]);
 
-  const handleAddSkill = (skillName: string) => {
-    // TODO: Implement actual skill addition logic
-    console.log("Adding skill:", skillName);
-    // Close dialog after adding
+  const handleSkillAction = (skillName: string) => {
+    if (mode === "add") {
+      // TODO: Implement actual skill addition logic
+      console.log("Adding skill:", skillName);
+    } else {
+      // TODO: Implement actual skill endorsement logic
+      console.log("Endorsing skill:", skillName, "for", targetPersonName);
+    }
+    // Close dialog after action
     onOpenChange(false);
   };
+
+  const dialogTitle = mode === "add" ? "Add New Skill" : `Endorse ${targetPersonName}`;
+  const actionIcon = mode === "add" ? Plus : ThumbsUp;
+  const actionText = mode === "add" ? "Add" : "Endorse";
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
         <DialogHeader>
-          <DialogTitle>Add New Skill</DialogTitle>
+          <DialogTitle>{dialogTitle}</DialogTitle>
         </DialogHeader>
         
         <div className="flex flex-col gap-4 flex-1 min-h-0">
@@ -91,27 +107,30 @@ export function AddSkillDialog({ open, onOpenChange }: AddSkillDialogProps) {
                   No skills found matching your search.
                 </div>
               ) : (
-                filteredSkills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
-                  >
-                    <div className="flex-1">
-                      <div className="font-medium">{skill.name}</div>
-                      <div className="text-sm text-muted-foreground">
-                        {skill.category}
-                      </div>
-                    </div>
-                    <Button
-                      size="sm"
-                      onClick={() => handleAddSkill(skill.name)}
-                      className="ml-4"
+                filteredSkills.map((skill) => {
+                  const ActionIcon = actionIcon;
+                  return (
+                    <div
+                      key={skill.name}
+                      className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
                     >
-                      <Plus className="h-4 w-4 mr-1" />
-                      Add
-                    </Button>
-                  </div>
-                ))
+                      <div className="flex-1">
+                        <div className="font-medium">{skill.name}</div>
+                        <div className="text-sm text-muted-foreground">
+                          {skill.category}
+                        </div>
+                      </div>
+                      <Button
+                        size="sm"
+                        onClick={() => handleSkillAction(skill.name)}
+                        className="ml-4"
+                      >
+                        <ActionIcon className="h-4 w-4 mr-1" />
+                        {actionText}
+                      </Button>
+                    </div>
+                  );
+                })
               )}
             </div>
           </ScrollArea>

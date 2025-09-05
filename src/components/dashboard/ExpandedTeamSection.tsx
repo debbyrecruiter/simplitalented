@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserRound } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { SkillSelectionDialog } from "./SkillSelectionDialog";
+import { useState } from "react";
 
 interface TeamMemberCardProps {
   name: string;
@@ -11,9 +13,10 @@ interface TeamMemberCardProps {
   level: "manager" | "direct-report";
   avatarUrl?: string;
   initials: string;
+  onEndorse: (memberName: string) => void;
 }
 
-const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCardProps) => {
+const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: TeamMemberCardProps) => {
   const gradientStyle = level === "manager" 
     ? { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' }
     : { background: 'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))' };
@@ -50,7 +53,12 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
           <Button size="sm" variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
             Review
           </Button>
-          <Button size="sm" variant="outline" className="bg-white/10 border-white/20 text-white hover:bg-white/20">
+          <Button 
+            size="sm" 
+            variant="outline" 
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+            onClick={() => onEndorse(name)}
+          >
             Endorse
           </Button>
         </div>
@@ -60,6 +68,14 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials }: TeamMemberCa
 };
 
 export const ExpandedTeamSection = () => {
+  const [isEndorseDialogOpen, setIsEndorseDialogOpen] = useState(false);
+  const [selectedMemberName, setSelectedMemberName] = useState<string>("");
+
+  const handleEndorse = (memberName: string) => {
+    setSelectedMemberName(memberName);
+    setIsEndorseDialogOpen(true);
+  };
+
   return (
     <div className="p-4">
       {/* Brick pattern layout using flexbox */}
@@ -72,6 +88,7 @@ export const ExpandedTeamSection = () => {
             level="manager"
             avatarUrl={teamMembers[0].avatarUrl}
             initials={teamMembers[0].initials}
+            onEndorse={handleEndorse}
           />
           {teamMembers.slice(1, 3).map((member) => (
             <TeamMemberCard
@@ -81,6 +98,7 @@ export const ExpandedTeamSection = () => {
               level="direct-report"
               avatarUrl={member.avatarUrl}
               initials={member.initials}
+              onEndorse={handleEndorse}
             />
           ))}
         </div>
@@ -98,6 +116,7 @@ export const ExpandedTeamSection = () => {
               level="direct-report"
               avatarUrl={member.avatarUrl}
               initials={member.initials}
+              onEndorse={handleEndorse}
             />
           ))}
         </div>
@@ -112,10 +131,18 @@ export const ExpandedTeamSection = () => {
               level="direct-report"
               avatarUrl={member.avatarUrl}
               initials={member.initials}
+              onEndorse={handleEndorse}
             />
           ))}
         </div>
       </div>
+
+      <SkillSelectionDialog 
+        open={isEndorseDialogOpen}
+        onOpenChange={setIsEndorseDialogOpen}
+        mode="endorse"
+        targetPersonName={selectedMemberName}
+      />
     </div>
   );
 };
