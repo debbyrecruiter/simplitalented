@@ -51,11 +51,13 @@
     --gradient-pink: linear-gradient(199deg, rgb(2, 108, 223) 0.00%, rgb(0, 246, 253) 53.91%);
     --gradient-pink-start: #f338a3;
     --gradient-pink-end: #a30e4a;
+    --gradient-blue: linear-gradient(242deg, rgb(255, 206, 236) 22.58%, rgb(151, 150, 240) 100.00%);
     --gradient-blue-start: #4a9eff;
     --gradient-blue-end: #1a2332;
     --gradient-orange: linear-gradient(346deg, rgb(249, 202, 120) 0.00%, rgb(212, 206, 169) 35.72%, rgb(172, 192, 191) 65.66%);
     --gradient-orange-start: #ffb366;
     --gradient-orange-end: #5c2317;
+    --gradient-purple: linear-gradient(355deg, rgb(44, 222, 242) 0.00%, rgb(156, 43, 171) 56.87%, rgb(39, 43, 44) 100.00%);
     --gradient-purple-start: #a855f7;
     --gradient-purple-end: #7c2d12;
     --gradient-teal-start: #f4e87c;

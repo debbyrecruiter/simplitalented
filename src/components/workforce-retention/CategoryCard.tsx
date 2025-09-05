@@ -24,15 +24,15 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
   // Define gradient styles based on card type
   const getGradientStyle = () => {
-    if (title.includes("Companywide")) return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
-    if (title.includes("Manager")) return { background: 'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))' };
+    if (title.includes("Companywide")) return { background: 'var(--gradient-purple)' };
+    if (title.includes("Manager")) return { background: 'var(--gradient-blue)' };
     if (title.includes("Performance")) return { background: 'var(--gradient-green)' };
     if (title.includes("Race")) return { background: 'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))' };
     if (title.includes("Gender")) return { background: 'var(--gradient-pink)' };
     if (title.includes("Recruiter")) return { background: 'var(--gradient-orange)' };
     if (title.includes("Regrettable")) return { background: 'linear-gradient(135deg, var(--gradient-red-start), var(--gradient-red-end))' };
     if (title.includes("Cost")) return { background: 'linear-gradient(135deg, var(--gradient-yellow-start), var(--gradient-yellow-end))' };
-    return { background: 'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))' };
+    return { background: 'var(--gradient-purple)' };
   };
 
   const gradientStyle = getGradientStyle();
