@@ -73,18 +73,6 @@ name: "Leadership",
 
   return (
     <div className="space-y-6 animate-in fade-in-50">
-      {/* Header section with title and Add New Skill button */}
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-foreground">My Skills</h2>
-        <Button 
-          className="bg-primary hover:bg-primary/90 text-primary-foreground"
-          onClick={() => setIsAddSkillDialogOpen(true)}
-        >
-          <Plus className="h-4 w-4 mr-2" />
-          Add New Skill
-        </Button>
-      </div>
-      
       <div className="grid grid-cols-3 gap-3 max-w-6xl mx-auto">
         {skills.map((skill, index) => (
           <Card 
