@@ -62,12 +62,13 @@ export function MySkillsSubmenu() {
   ];
 
   const gradients = [
-    'linear-gradient(135deg, var(--gradient-purple-start), var(--gradient-purple-end))',
-    'linear-gradient(135deg, var(--gradient-blue-start), var(--gradient-blue-end))',
-    'linear-gradient(135deg, var(--gradient-green-start), var(--gradient-green-end))',
-    'linear-gradient(135deg, var(--gradient-pink-start), var(--gradient-pink-end))',
-    'linear-gradient(135deg, var(--gradient-orange-start), var(--gradient-orange-end))',
-    'linear-gradient(135deg, var(--gradient-teal-start), var(--gradient-teal-end))'
+    'var(--gradient-1)',
+    'var(--gradient-2)',
+    'var(--gradient-3)',
+    'var(--gradient-4)',
+    'var(--gradient-5)',
+    'var(--gradient-6)',
+    'var(--gradient-7)'
   ];
 
   return (
