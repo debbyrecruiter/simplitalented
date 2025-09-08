@@ -62,7 +62,7 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Me Card */}
             <Card 
-              className="card-modern cursor-pointer w-full"
+              className="card-modern cursor-pointer w-full shadow-lg"
               style={{ 
                 background: 'var(--gradient-1)'
               } as React.CSSProperties}
@@ -87,7 +87,7 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Team Card */}
             <Card 
-              className="card-modern cursor-pointer w-full"
+              className="card-modern cursor-pointer w-full shadow-lg"
               style={{ 
                 background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
               } as React.CSSProperties}
@@ -112,7 +112,7 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Direct Reports Card */}
             <Card 
-              className="card-modern cursor-pointer w-full"
+              className="card-modern cursor-pointer w-full shadow-lg relative"
               style={{ 
                 background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
               } as React.CSSProperties}
@@ -147,7 +147,7 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Reports Card */}
             <Card 
-              className="card-modern cursor-pointer w-full"
+              className="card-modern cursor-pointer w-full shadow-lg relative"
               style={{ 
                 background: 'var(--gradient-2)'
               } as React.CSSProperties}
@@ -178,7 +178,7 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Exit Interviews Card */}
             <Card 
-              className="card-modern cursor-pointer w-full"
+              className="card-modern cursor-pointer w-full shadow-lg relative"
               style={{ 
                 background: 'var(--gradient-4)'
               } as React.CSSProperties}
@@ -209,7 +209,7 @@ export function MainMetricsGrid({
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             {/* Learning & Development Card */}
             <Card 
-              className="card-modern cursor-pointer w-full"
+              className="card-modern cursor-pointer w-full shadow-lg relative"
               style={{ 
                 background: 'var(--gradient-6)'
               } as React.CSSProperties}
