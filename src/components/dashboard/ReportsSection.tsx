@@ -11,7 +11,7 @@ export const ReportsSection: React.FC = () => {
       <Link to="/reports/workforce-analytics">
         <Card 
           className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
-          style={{ background: 'var(--gradient-3)' }}
+          style={{ background: 'linear-gradient(135deg, #f403d1, #64b5f6)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
@@ -32,7 +32,7 @@ export const ReportsSection: React.FC = () => {
       <Link to="/reports/compensation-analysis">
         <Card 
           className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
-          style={{ background: 'var(--gradient-4)' }}
+          style={{ background: 'linear-gradient(135deg, #f403d1, #64b5f6)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
@@ -52,7 +52,7 @@ export const ReportsSection: React.FC = () => {
 
       <Card 
         className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 opacity-60"
-        style={{ background: 'var(--gradient-6)' }}
+        style={{ background: 'linear-gradient(135deg, #f403d1, #64b5f6)' }}
       >
         <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
           <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">

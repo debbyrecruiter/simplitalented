@@ -41,7 +41,7 @@ const WorkforceDemographics = () => {
         <Card 
           className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "gender" ? "ring-4 ring-white/50" : ""}`}
           onClick={() => handleCardClick("gender")}
-          style={{ background: 'var(--gradient-2)' }}
+          style={{ background: 'linear-gradient(135deg, #f403d1, #64b5f6)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
@@ -61,7 +61,7 @@ const WorkforceDemographics = () => {
         <Card 
           className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "race" ? "ring-4 ring-white/50" : ""}`}
           onClick={() => handleCardClick("race")}
-          style={{ background: 'var(--gradient-6)' }}
+          style={{ background: 'linear-gradient(135deg, #f403d1, #64b5f6)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
@@ -81,7 +81,7 @@ const WorkforceDemographics = () => {
         <Card 
           className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "age" ? "ring-4 ring-white/50" : ""}`}
           onClick={() => handleCardClick("age")}
-          style={{ background: 'var(--gradient-4)' }}
+          style={{ background: 'linear-gradient(135deg, #f403d1, #64b5f6)' }}
         >
           <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
             <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">

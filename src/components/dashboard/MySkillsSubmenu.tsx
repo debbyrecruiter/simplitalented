@@ -62,12 +62,12 @@ name: "Leadership",
   ];
 
   const gradients = [
-    'var(--gradient-1)',
-    'var(--gradient-2)',
-    'var(--gradient-3)',
-    'var(--gradient-4)',
-    'var(--gradient-5)',
-    'var(--gradient-6)',
+    'linear-gradient(135deg, #f403d1, #64b5f6)',
+    'linear-gradient(135deg, #f403d1, #64b5f6)',
+    'linear-gradient(135deg, #f403d1, #64b5f6)',
+    'linear-gradient(135deg, #f403d1, #64b5f6)',
+    'linear-gradient(135deg, #f403d1, #64b5f6)',
+    'linear-gradient(135deg, #f403d1, #64b5f6)',
     'var(--gradient-7)'
   ];
 

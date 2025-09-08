@@ -18,7 +18,7 @@ const LearningDevelopmentPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
               <Card 
                 className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
-                style={{ background: 'var(--gradient-5)' }}
+                style={{ background: 'linear-gradient(135deg, #f403d1, #64b5f6)' }}
               >
                 <CardHeader className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
                   <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">

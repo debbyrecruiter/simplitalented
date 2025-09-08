@@ -35,7 +35,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-3)',
+              background: 'linear-gradient(135deg, #f403d1, #64b5f6)',
               aspectRatio: '16/9'
             }}
             onClick={onGoalsCardClick}
@@ -83,7 +83,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-6)',
+              background: 'linear-gradient(135deg, #f403d1, #64b5f6)',
               aspectRatio: '16/9'
             }}
             onClick={handleMyLearningClick}
@@ -110,7 +110,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-4)',
+              background: 'linear-gradient(135deg, #f403d1, #64b5f6)',
               aspectRatio: '16/9'
             }}
           >
@@ -160,7 +160,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-2)',
+              background: 'linear-gradient(135deg, #f403d1, #64b5f6)',
               aspectRatio: '16/9'
             }}
             onClick={onPast11CardClick}
@@ -187,7 +187,7 @@ export function ExpandedMeSection({
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px]"
             style={{ 
-              background: 'var(--gradient-5)',
+              background: 'linear-gradient(135deg, #f403d1, #64b5f6)',
               aspectRatio: '16/9'
             }}
             onClick={onToDoListClick}

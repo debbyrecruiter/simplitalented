@@ -26,12 +26,12 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   const getGradientStyle = () => {
     const gradientMap: { [key: string]: string } = {
       'Companywide': 'var(--gradient-1)',
-      'Manager': 'var(--gradient-5)', 
-      'Performance': 'var(--gradient-3)',
+      'Manager': 'linear-gradient(135deg, #f403d1, #64b5f6)', 
+      'Performance': 'linear-gradient(135deg, #f403d1, #64b5f6)',
       'Race': 'var(--gradient-7)',
-      'Gender': 'var(--gradient-2)',
-      'Recruiter': 'var(--gradient-4)',
-      'Regrettable': 'var(--gradient-6)',
+      'Gender': 'linear-gradient(135deg, #f403d1, #64b5f6)',
+      'Recruiter': 'linear-gradient(135deg, #f403d1, #64b5f6)',
+      'Regrettable': 'linear-gradient(135deg, #f403d1, #64b5f6)',
       'Cost': 'var(--gradient-1)',
     };
     
