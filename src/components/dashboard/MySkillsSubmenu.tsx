@@ -62,12 +62,12 @@ name: "Leadership",
   ];
 
   const gradients = [
-    'linear-gradient(135deg, #f403d1, #64b5f6)',
-    'linear-gradient(135deg, #f403d1, #64b5f6)',
-    'linear-gradient(135deg, #f403d1, #64b5f6)',
-    'linear-gradient(135deg, #f403d1, #64b5f6)',
-    'linear-gradient(135deg, #f403d1, #64b5f6)',
-    'linear-gradient(135deg, #f403d1, #64b5f6)',
+    'linear-gradient(135deg, #f403d1, #64b5f6)', // Leadership
+    'linear-gradient(135deg, #F7EAFB, #A076AD)', // Python
+    'linear-gradient(135deg, #f403d1, #64b5f6)', // Problem-solving
+    'linear-gradient(135deg, #f403d1, #64b5f6)', // React
+    'linear-gradient(135deg, #F7EAFB, #A076AD)', // Scala
+    'linear-gradient(135deg, #f403d1, #64b5f6)', // AWS
     'var(--gradient-7)'
   ];
 

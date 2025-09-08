@@ -22,7 +22,7 @@ export function GoalsSubmenu() {
           <Card 
             className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300"
             style={{ 
-              background: 'var(--gradient-1)',
+              background: 'linear-gradient(135deg, #F7EAFB, #A076AD)',
               aspectRatio: '16/9'
             }}
             onClick={handleMyGoalsClick}

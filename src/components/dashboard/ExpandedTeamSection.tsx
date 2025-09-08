@@ -18,7 +18,7 @@ interface TeamMemberCardProps {
 
 const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: TeamMemberCardProps) => {
   // Create varied gradients based on name to ensure different colors
-  const gradients = ['linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'var(--gradient-7)'];
+  const gradients = ['linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #F7EAFB, #A076AD)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'linear-gradient(135deg, #f403d1, #64b5f6)', 'var(--gradient-7)'];
   const nameHash = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
   const gradientStyle = { background: gradients[nameHash % gradients.length] };
 

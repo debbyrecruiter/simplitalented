@@ -64,7 +64,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full shadow-lg"
               style={{ 
-                background: 'var(--gradient-1)'
+                background: 'linear-gradient(135deg, #F7EAFB, #A076AD)'
               } as React.CSSProperties}
               onClick={handleMeClick}
             >
@@ -211,7 +211,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full shadow-lg relative"
               style={{ 
-                background: 'var(--gradient-6)'
+                background: 'linear-gradient(135deg, #F7EAFB, #A076AD)'
               } as React.CSSProperties}
               onClick={handleLearningDevelopmentClick}
             >
