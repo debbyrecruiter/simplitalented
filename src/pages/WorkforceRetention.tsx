@@ -57,71 +57,87 @@ const WorkforceRetention = () => {
           <BackButton fallbackPath="/reports/workforce-analytics" label="Back" />
         </div>
         
-        {/* Custom layout: 3-2-3 rows */}
+        {/* Brick-style staggered layout */}
       <div className="space-y-4 mb-8">
-        {/* First row - 3 cards */}
-        <div className="flex flex-wrap gap-4 justify-center">
-          <CategoryCard 
-            title="Companywide Attrition" 
-            icon={TrendingDown} 
-            onClick={() => handleCardClick('company')}
-            isActive={activeCard === 'company'}
-          />
+        {/* Row 1 - Full alignment */}
+        <div className="flex flex-wrap gap-4">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <CategoryCard 
+              title="Companywide Attrition" 
+              icon={TrendingDown} 
+              onClick={() => handleCardClick('company')}
+              isActive={activeCard === 'company'}
+            />
+          </div>
           
-          <CategoryCard 
-            title="Attrition by Manager" 
-            icon={Briefcase} 
-            onClick={() => handleCardClick('manager')}
-            isActive={activeCard === 'manager'}
-          />
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <CategoryCard 
+              title="Attrition by Manager" 
+              icon={Briefcase} 
+              onClick={() => handleCardClick('manager')}
+              isActive={activeCard === 'manager'}
+            />
+          </div>
           
-          <CategoryCard 
-            title="Attrition by Performance Score" 
-            icon={Award} 
-            onClick={() => handleCardClick('performance')}
-            isActive={activeCard === 'performance'}
-          />
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <CategoryCard 
+              title="Attrition by Performance Score" 
+              icon={Award} 
+              onClick={() => handleCardClick('performance')}
+              isActive={activeCard === 'performance'}
+            />
+          </div>
         </div>
         
-        {/* Second row - 2 cards */}
-        <div className="flex flex-wrap gap-4 justify-center">
-          <CategoryCard 
-            title="Attrition by Race" 
-            icon={BarChart2} 
-            onClick={() => handleCardClick('race')}
-            isActive={activeCard === 'race'}
-          />
+        {/* Row 2 - Offset by half tile width (brick pattern) */}
+        <div className="flex flex-wrap gap-4 ml-[calc(50%/3)]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <CategoryCard 
+              title="Attrition by Race" 
+              icon={BarChart2} 
+              onClick={() => handleCardClick('race')}
+              isActive={activeCard === 'race'}
+            />
+          </div>
           
-          <CategoryCard 
-            title="Attrition by Gender" 
-            icon={Users} 
-            onClick={() => handleCardClick('gender')}
-            isActive={activeCard === 'gender'}
-          />
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <CategoryCard 
+              title="Attrition by Gender" 
+              icon={Users} 
+              onClick={() => handleCardClick('gender')}
+              isActive={activeCard === 'gender'}
+            />
+          </div>
         </div>
         
-        {/* Third row - 3 cards */}
-        <div className="flex flex-wrap gap-4 justify-center">
-          <CategoryCard 
-            title="Attrition by Recruiter" 
-            icon={Badge} 
-            onClick={() => handleCardClick('recruiter')}
-            isActive={activeCard === 'recruiter'}
-          />
+        {/* Row 3 - Full alignment */}
+        <div className="flex flex-wrap gap-4">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <CategoryCard 
+              title="Attrition by Recruiter" 
+              icon={Badge} 
+              onClick={() => handleCardClick('recruiter')}
+              isActive={activeCard === 'recruiter'}
+            />
+          </div>
           
-          <CategoryCard 
-            title="Regrettable Departures" 
-            icon={UserX} 
-            onClick={() => handleCardClick('regrettable')}
-            isActive={activeCard === 'regrettable'}
-          />
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <CategoryCard 
+              title="Regrettable Departures" 
+              icon={UserX} 
+              onClick={() => handleCardClick('regrettable')}
+              isActive={activeCard === 'regrettable'}
+            />
+          </div>
 
-          <CategoryCard 
-            title="Cost Analysis" 
-            icon={DollarSign} 
-            onClick={() => handleCardClick('cost')}
-            isActive={activeCard === 'cost'}
-          />
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <CategoryCard 
+              title="Cost Analysis" 
+              icon={DollarSign} 
+              onClick={() => handleCardClick('cost')}
+              isActive={activeCard === 'cost'}
+            />
+          </div>
         </div>
       </div>
 

@@ -36,9 +36,9 @@ const CompensationAnalysis = () => {
           <PIRSalaryCard onBack={handleBackClick} />
         </div>
       ) : (
-        <div className="space-y-6">
-          {/* First row - 2 cards */}
-          <div className="flex flex-wrap gap-4 justify-center">
+        <div className="space-y-4">
+          {/* Row 1 - Full alignment */}
+          <div className="flex flex-wrap gap-4">
             <div className="flex-1 min-w-[300px] max-w-[400px]">
               <CompensationCard
                 title="Comp By Job Grade & Performance"
@@ -53,11 +53,7 @@ const CompensationAnalysis = () => {
                 onClick={() => handleCardClick('pir-salary')}
               />
             </div>
-          </div>
-          
-          {/* Second row - 1 card centered */}
-          <div className="flex justify-center">
-            <div className="min-w-[300px] max-w-[400px]">
+            <div className="flex-1 min-w-[300px] max-w-[400px]">
               <CompensationCard
                 title="Performance Relative to Starting PIR by Race & Gender"
                 icon={Users}
@@ -66,8 +62,8 @@ const CompensationAnalysis = () => {
             </div>
           </div>
           
-          {/* Third row - 2 cards */}
-          <div className="flex flex-wrap gap-4 justify-center">
+          {/* Row 2 - Offset by half tile width (brick pattern) */}
+          <div className="flex flex-wrap gap-4 ml-[calc(50%/3)]">
             <div className="flex-1 min-w-[300px] max-w-[400px]">
               <CompensationCard
                 title="Starting PIR by Race"
