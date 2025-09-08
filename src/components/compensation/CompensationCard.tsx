@@ -17,11 +17,11 @@ export const CompensationCard: React.FC<CompensationCardProps> = ({
   // Assign varied gradients based on specific titles
   const getGradientStyle = () => {
     const gradientMap: { [key: string]: string } = {
-      'Job Grade &\nPerformance': 'var(--gradient-3)',
+      'Job Grade &\nPerformance': 'linear-gradient(135deg, #f403d1, #64b5f6)',
       'PIR Salary\nAnalysis': 'var(--gradient-1)', 
-      'Race & Gender\nEquity Analysis': 'var(--gradient-6)',
-      'PIR by Race': 'var(--gradient-4)',
-      'PIR by Gender': 'var(--gradient-2)',
+      'Race & Gender\nEquity Analysis': 'linear-gradient(135deg, #f403d1, #64b5f6)',
+      'PIR by Race': 'linear-gradient(135deg, #f403d1, #64b5f6)',
+      'PIR by Gender': 'linear-gradient(135deg, #f403d1, #64b5f6)',
     };
     
     // Find matching title or use a fallback rotation
@@ -33,7 +33,7 @@ export const CompensationCard: React.FC<CompensationCardProps> = ({
     }
     
     // Fallback for unmatched titles
-    const gradients = ['var(--gradient-5)', 'var(--gradient-7)'];
+    const gradients = ['linear-gradient(135deg, #f403d1, #64b5f6)', 'var(--gradient-7)'];
     return { background: gradients[title.length % gradients.length] };
   };
 
