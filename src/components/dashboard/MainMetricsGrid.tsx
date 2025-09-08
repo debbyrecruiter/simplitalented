@@ -114,7 +114,7 @@ export function MainMetricsGrid({
             <Card 
               className="card-modern cursor-pointer w-full"
               style={{ 
-                background: 'var(--gradient-3)'
+                background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
               } as React.CSSProperties}
               onClick={onDirectReportsClick}
             >
