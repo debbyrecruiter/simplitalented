@@ -25,14 +25,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   // Assign varied gradients based on specific card types
   const getGradientStyle = () => {
     const gradientMap: { [key: string]: string } = {
-      'Companywide': 'var(--gradient-1)',
+      'Companywide': 'linear-gradient(135deg, #C698EB, #571B88)',
       'Manager': 'linear-gradient(135deg, #f403d1, #64b5f6)', 
       'Performance': 'linear-gradient(135deg, #f403d1, #64b5f6)',
-      'Race': 'var(--gradient-7)',
+      'Race': 'linear-gradient(135deg, #C698EB, #571B88)',
       'Gender': 'linear-gradient(135deg, #f403d1, #64b5f6)',
       'Recruiter': 'linear-gradient(135deg, #f403d1, #64b5f6)',
       'Regrettable': 'linear-gradient(135deg, #f403d1, #64b5f6)',
-      'Cost': 'var(--gradient-1)',
+      'Cost': 'linear-gradient(135deg, #C698EB, #571B88)',
     };
     
     // Find the first matching keyword

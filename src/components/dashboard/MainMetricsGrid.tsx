@@ -179,10 +179,10 @@ export function MainMetricsGrid({
             {/* Exit Interviews Card */}
             <Card 
               className="card-modern cursor-pointer w-full shadow-lg relative"
-              style={{ 
-                background: 'var(--gradient-4)'
-              } as React.CSSProperties}
-              onClick={onExitInterviewsClick}
+            style={{ 
+              background: 'linear-gradient(135deg, #C698EB, #571B88)'
+            }}
+            onClick={onExitInterviewsClick}
             >
               {/* Watermark for Exit Interviews card */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">

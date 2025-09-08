@@ -32,7 +32,7 @@ export function MetricCard({
   // Determine gradient based on title for workforce analytics cards
   const getGradientStyle = () => {
     if (title === "Demographics") {
-      return { background: 'var(--gradient-5)' };
+      return { background: 'linear-gradient(135deg, #C698EB, #571B88)' };
     }
     if (title === "Retention") {
       return { background: 'var(--gradient-2)' };
