@@ -36,24 +36,24 @@ const CompensationAnalysis = () => {
           <PIRSalaryCard onBack={handleBackClick} />
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-6">
           {/* Row 1 - Full alignment */}
-          <div className="flex flex-wrap gap-4">
-            <div className="flex-1 min-w-[300px] max-w-[400px]">
+          <div className="flex flex-wrap gap-4 justify-start">
+            <div className="w-[300px]">
               <CompensationCard
                 title="Comp By Job Grade & Performance"
                 icon={BarChart4}
                 onClick={() => handleCardClick('performance-compensation')}
               />
             </div>
-            <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <div className="w-[300px]">
               <CompensationCard
                 title="Performance Relative to Starting PIR Salary"
                 icon={DollarSign}
                 onClick={() => handleCardClick('pir-salary')}
               />
             </div>
-            <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <div className="w-[300px]">
               <CompensationCard
                 title="Performance Relative to Starting PIR by Race & Gender"
                 icon={Users}
@@ -63,15 +63,15 @@ const CompensationAnalysis = () => {
           </div>
           
           {/* Row 2 - Offset by half tile width (brick pattern) */}
-          <div className="flex flex-wrap gap-4 ml-[calc(50%/3)]">
-            <div className="flex-1 min-w-[300px] max-w-[400px]">
+          <div className="flex flex-wrap gap-4 justify-start ml-[150px]">
+            <div className="w-[300px]">
               <CompensationCard
                 title="Starting PIR by Race"
                 icon={BarChart}
                 onClick={() => handleCardClick('pir-race')}
               />
             </div>
-            <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <div className="w-[300px]">
               <CompensationCard
                 title="Starting PIR by Gender"
                 icon={ArrowDownUp}

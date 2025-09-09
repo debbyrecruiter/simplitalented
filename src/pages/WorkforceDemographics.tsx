@@ -38,10 +38,10 @@ const WorkforceDemographics = () => {
         </div>
         
         {/* Brick-style staggered layout */}
-        <div className="space-y-4 mb-8">
+        <div className="space-y-6 mb-8">
           {/* Row 1 - Full alignment */}
-          <div className="flex flex-wrap gap-4">
-            <div className="flex-1 min-w-[300px] max-w-[400px]">
+          <div className="flex flex-wrap gap-4 justify-start">
+            <div className="w-[300px]">
               <Card 
                 className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "gender" ? "ring-4 ring-white/50" : ""}`}
                 onClick={() => handleCardClick("gender")}
@@ -63,7 +63,7 @@ const WorkforceDemographics = () => {
               </Card>
             </div>
 
-            <div className="flex-1 min-w-[300px] max-w-[400px]">
+            <div className="w-[300px]">
               <Card 
                 className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "race" ? "ring-4 ring-white/50" : ""}`}
                 onClick={() => handleCardClick("race")}
@@ -87,8 +87,8 @@ const WorkforceDemographics = () => {
           </div>
           
           {/* Row 2 - Offset by half tile width (brick pattern) */}
-          <div className="flex flex-wrap gap-4 ml-[calc(50%/3)]">
-            <div className="flex-1 min-w-[300px] max-w-[400px]">
+          <div className="flex flex-wrap gap-4 justify-start ml-[150px]">
+            <div className="w-[300px]">
               <Card 
                 className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "age" ? "ring-4 ring-white/50" : ""}`}
                 onClick={() => handleCardClick("age")}
