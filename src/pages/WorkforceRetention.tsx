@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
 import { 
@@ -13,41 +13,38 @@ import {
   DollarSign
 } from "lucide-react";
 import CategoryCard from "@/components/workforce-retention/CategoryCard";
-import CompanyAttritionCard from "@/components/workforce-retention/CompanyAttritionCard";
-import ManagerAttritionCard from "@/components/workforce-retention/ManagerAttritionCard";
-import PerformanceAttritionCard from "@/components/workforce-retention/PerformanceAttritionCard";
-import DemographicAttritionCard from "@/components/workforce-retention/DemographicAttritionCard";
-import RegrettableDeparturesCard from "@/components/workforce-retention/RegrettableDeparturesCard";
-import CostAnalysisCard from "@/components/workforce-retention/CostAnalysisCard";
 import { useToast } from "@/hooks/use-toast";
 
 const WorkforceRetention = () => {
-  // Use a single activeCard state instead of multiple boolean states
-  const [activeCard, setActiveCard] = useState<string | null>(null);
   const { toast } = useToast();
 
-  // Function to handle card clicks
+  // Function to handle card clicks - open in new window
   const handleCardClick = (cardName: string) => {
     console.log(`Card clicked: ${cardName}`);
     
-    // Determine if we're toggling off or on
-    const isTogglingOff = activeCard === cardName;
+    const reportUrls = {
+      company: "/reports/workforce-retention/company-attrition",
+      manager: "/reports/workforce-retention/manager-attrition", 
+      performance: "/reports/workforce-retention/performance-attrition",
+      race: "/reports/workforce-retention/race-attrition",
+      gender: "/reports/workforce-retention/gender-attrition",
+      regrettable: "/reports/workforce-retention/regrettable-departures",
+      cost: "/reports/workforce-retention/cost-analysis"
+    };
     
-    // Toggle the card if it's already active, otherwise set it as active
-    setActiveCard(prevCard => prevCard === cardName ? null : cardName);
+    const url = reportUrls[cardName as keyof typeof reportUrls];
+    if (url) {
+      // Open in new window
+      window.open(url, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+    }
     
     // Show a toast notification to confirm the click was registered
     toast({
-      title: `${cardName.charAt(0).toUpperCase() + cardName.slice(1)} data`,
-      description: isTogglingOff ? "Data hidden" : "Data displayed",
+      title: `${cardName.charAt(0).toUpperCase() + cardName.slice(1)} report`,
+      description: "Opening in new window",
       duration: 2000,
     });
   };
-
-  // Log state changes to help debug
-  useEffect(() => {
-    console.log(`Active card changed to: ${activeCard}`);
-  }, [activeCard]);
 
   return (
     <div className="flex flex-col h-screen">
@@ -66,7 +63,7 @@ const WorkforceRetention = () => {
               title="Companywide Attrition" 
               icon={TrendingDown} 
               onClick={() => handleCardClick('company')}
-              isActive={activeCard === 'company'}
+              isActive={false}
             />
           </div>
           
@@ -75,7 +72,7 @@ const WorkforceRetention = () => {
               title="Attrition by Manager" 
               icon={Briefcase} 
               onClick={() => handleCardClick('manager')}
-              isActive={activeCard === 'manager'}
+              isActive={false}
             />
           </div>
           
@@ -84,7 +81,7 @@ const WorkforceRetention = () => {
               title="Attrition by Performance Score" 
               icon={Award} 
               onClick={() => handleCardClick('performance')}
-              isActive={activeCard === 'performance'}
+              isActive={false}
             />
           </div>
         </div>
@@ -96,7 +93,7 @@ const WorkforceRetention = () => {
               title="Attrition by Race" 
               icon={BarChart2} 
               onClick={() => handleCardClick('race')}
-              isActive={activeCard === 'race'}
+              isActive={false}
             />
           </div>
           
@@ -105,7 +102,7 @@ const WorkforceRetention = () => {
               title="Attrition by Gender" 
               icon={Users} 
               onClick={() => handleCardClick('gender')}
-              isActive={activeCard === 'gender'}
+              isActive={false}
             />
           </div>
         </div>
@@ -117,7 +114,7 @@ const WorkforceRetention = () => {
               title="Regrettable Departures" 
               icon={UserX} 
               onClick={() => handleCardClick('regrettable')}
-              isActive={activeCard === 'regrettable'}
+              isActive={false}
             />
           </div>
 
@@ -126,23 +123,13 @@ const WorkforceRetention = () => {
               title="Cost Analysis" 
               icon={DollarSign} 
               onClick={() => handleCardClick('cost')}
-              isActive={activeCard === 'cost'}
+              isActive={false}
             />
           </div>
         </div>
       </div>
 
-      {/* Display the selected content based on activeCard state */}
-      <div className="mt-8">
-        {activeCard === 'company' && <CompanyAttritionCard />}
-        {activeCard === 'manager' && <ManagerAttritionCard />}
-        {activeCard === 'performance' && <PerformanceAttritionCard />}
-        {activeCard === 'race' && <DemographicAttritionCard type="race" title="Race" />}
-        {activeCard === 'gender' && <DemographicAttritionCard type="gender" title="Gender" />}
-        {activeCard === 'recruiter' && <DemographicAttritionCard type="recruiter" title="Recruiter" />}
-        {activeCard === 'regrettable' && <RegrettableDeparturesCard />}
-        {activeCard === 'cost' && <CostAnalysisCard />}
-      </div>
+      {/* Note: Individual reports now open in separate windows */}
       </div>
     </div>
   );

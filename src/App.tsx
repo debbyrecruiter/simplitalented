@@ -15,6 +15,13 @@ import Reports from "./pages/Reports";
 import WorkforceAnalytics from "./pages/WorkforceAnalytics";
 import WorkforceDemographics from "./pages/WorkforceDemographics";
 import WorkforceRetention from "./pages/WorkforceRetention";
+import CompanyAttritionReport from "./pages/reports/CompanyAttritionReport";
+import ManagerAttritionReport from "./pages/reports/ManagerAttritionReport";
+import PerformanceAttritionReport from "./pages/reports/PerformanceAttritionReport";
+import RaceAttritionReport from "./pages/reports/RaceAttritionReport";
+import GenderAttritionReport from "./pages/reports/GenderAttritionReport";
+import RegrettableDeparturesReport from "./pages/reports/RegrettableDeparturesReport";
+import CostAnalysisReport from "./pages/reports/CostAnalysisReport";
 import CompensationAnalysis from "./pages/CompensationAnalysis";
 import ReviewsPage from "./pages/ReviewsPage";
 import NotFound from "./pages/NotFound";
@@ -42,6 +49,13 @@ const App = () => (
               <Route path="reports/workforce-analytics" element={<WorkforceAnalytics />} />
               <Route path="reports/workforce-demographics" element={<WorkforceDemographics />} />
               <Route path="reports/workforce-retention" element={<WorkforceRetention />} />
+              <Route path="reports/workforce-retention/company-attrition" element={<CompanyAttritionReport />} />
+              <Route path="reports/workforce-retention/manager-attrition" element={<ManagerAttritionReport />} />
+              <Route path="reports/workforce-retention/performance-attrition" element={<PerformanceAttritionReport />} />
+              <Route path="reports/workforce-retention/race-attrition" element={<RaceAttritionReport />} />
+              <Route path="reports/workforce-retention/gender-attrition" element={<GenderAttritionReport />} />
+              <Route path="reports/workforce-retention/regrettable-departures" element={<RegrettableDeparturesReport />} />
+              <Route path="reports/workforce-retention/cost-analysis" element={<CostAnalysisReport />} />
               <Route path="reports/compensation-analysis" element={<CompensationAnalysis />} />
               <Route path="*" element={<NotFound />} />
             </Route>
