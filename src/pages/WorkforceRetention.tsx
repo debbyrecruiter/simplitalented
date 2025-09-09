@@ -108,10 +108,7 @@ const WorkforceRetention = () => {
               isActive={activeCard === 'gender'}
             />
           </div>
-        </div>
-        
-        {/* Row 3 - Full alignment */}
-        <div className="flex flex-wrap gap-4">
+          
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Attrition by Recruiter" 
@@ -120,7 +117,10 @@ const WorkforceRetention = () => {
               isActive={activeCard === 'recruiter'}
             />
           </div>
-          
+        </div>
+        
+        {/* Row 3 - Full alignment */}
+        <div className="flex flex-wrap gap-4">
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Regrettable Departures" 

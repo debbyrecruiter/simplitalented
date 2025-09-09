@@ -84,7 +84,10 @@ const WorkforceDemographics = () => {
                 </CardContent>
               </Card>
             </div>
-
+          </div>
+          
+          {/* Row 2 - Offset by half tile width (brick pattern) */}
+          <div className="flex flex-wrap gap-4 ml-[calc(50%/3)]">
             <div className="flex-1 min-w-[300px] max-w-[400px]">
               <Card 
                 className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0 ${selectedCategory === "age" ? "ring-4 ring-white/50" : ""}`}
