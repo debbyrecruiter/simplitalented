@@ -1,5 +1,6 @@
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { BackButton } from "@/components/ui/back-button";
 import { 
@@ -17,8 +18,9 @@ import { useToast } from "@/hooks/use-toast";
 
 const WorkforceRetention = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
 
-  // Function to handle card clicks - open in new window
+  // Function to handle card clicks - navigate to new pages
   const handleCardClick = (cardName: string) => {
     console.log(`Card clicked: ${cardName}`);
     
@@ -34,14 +36,14 @@ const WorkforceRetention = () => {
     
     const url = reportUrls[cardName as keyof typeof reportUrls];
     if (url) {
-      // Open in new window
-      window.open(url, '_blank', 'width=1200,height=800,scrollbars=yes,resizable=yes');
+      // Navigate to new page
+      navigate(url);
     }
     
     // Show a toast notification to confirm the click was registered
     toast({
       title: `${cardName.charAt(0).toUpperCase() + cardName.slice(1)} report`,
-      description: "Opening in new window",
+      description: "Loading report...",
       duration: 2000,
     });
   };
