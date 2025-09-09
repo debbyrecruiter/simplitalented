@@ -106,6 +106,7 @@
   /* Modern card styling inspired by the reference */
   .card-modern {
     @apply rounded-2xl border-0 overflow-hidden;
+    position: relative;
     aspect-ratio: 16 / 9;
     background: linear-gradient(135deg, var(--card-gradient-start, #9B87F5), var(--card-gradient-end, #7C3AED));
     box-shadow: 
@@ -135,14 +136,19 @@
   }
 
   /* Shadow gradient effect for cards */
+  .card-shadow {
+    position: relative;
+    z-index: 1;
+  }
+
   .card-shadow::before {
     content: "";
-    z-index: -1;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: -1;
     background: linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%);
     transform: translate3d(25px, 27px, 0) scale(0.95);
     filter: blur(20px);
@@ -158,12 +164,12 @@
   */
   .card-shadow::after {
     content: "";
-    z-index: -1;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: -1;
     background: inherit;
     border-radius: inherit;
   }
