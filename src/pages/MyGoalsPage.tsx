@@ -12,7 +12,7 @@ const MyGoalsPage = () => {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate("/?section=me");
+    navigate("/?section=goals");
   };
 
   // Sample goals data for the tracker
