@@ -49,25 +49,35 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   const gradientStyle = getGradientStyle();
 
   return (
-    <Card 
-      className={`card-modern card-shadow cursor-pointer w-full shadow-lg ${isActive ? 'ring-4 ring-white/50' : ''}`}
-      onClick={handleClick}
-      style={gradientStyle}
-    >
-      <div className="flex flex-row items-start justify-between p-4">
-        <div className="flex flex-col">
-          <h3 className="text-white text-xl font-bold">
-            {title}
-          </h3>
-          <div className="text-white text-sm opacity-90">
-            View analytics data
+    <div className="relative">
+      <div 
+        className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
+        style={{
+          background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
+          transform: 'translate(25px, 27px) scale(0.95)',
+          zIndex: -1
+        }}
+      ></div>
+      <Card 
+        className={`card-modern cursor-pointer w-full shadow-lg relative z-10 ${isActive ? 'ring-4 ring-white/50' : ''}`}
+        onClick={handleClick}
+        style={gradientStyle}
+      >
+        <div className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <h3 className="text-white text-xl font-bold">
+              {title}
+            </h3>
+            <div className="text-white text-sm opacity-90">
+              View analytics data
+            </div>
+          </div>
+          <div className="card-icon">
+            <Icon className="h-6 w-6 text-primary" />
           </div>
         </div>
-        <div className="card-icon">
-          <Icon className="h-6 w-6 text-primary" />
-        </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 };
 

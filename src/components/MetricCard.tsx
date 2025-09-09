@@ -56,107 +56,127 @@ export function MetricCard({
   };
   
   return (
-    <Card 
-      className={cn(
-        isWorkforceCard 
-          ? "card-modern card-shadow cursor-pointer w-full shadow-lg"
-          : isPast11sCard
-          ? "card-modern card-shadow cursor-pointer"
-          : "border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden flex flex-col justify-center aspect-square",
-        onClick && !isWorkforceCard && !isPast11sCard && "cursor-pointer hover:border-blue-600 transition-colors",
-        className
-      )}
-      onClick={handleClick}
-      style={gradientStyle}
-    >
-      {isWorkforceCard ? (
-        <div className="flex flex-row items-start justify-between p-4">
-          <div className="flex flex-col">
-            <CardTitle className="text-white text-xl font-bold">
-              {title}
-            </CardTitle>
-            <div className="text-white text-sm opacity-90">
-              {title === "Demographics" 
-                ? "Workforce composition"
-                : "Employee turnover"
-              }
-            </div>
-          </div>
-          {Icon && (
-            <div className="card-icon">
-              <Icon className="h-6 w-6 text-primary" />
-            </div>
+    isWorkforceCard ? (
+      <div className="relative">
+        <div 
+          className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
+          style={{
+            background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
+            transform: 'translate(25px, 27px) scale(0.95)',
+            zIndex: -1
+          }}
+        ></div>
+        <Card 
+          className={cn(
+            "card-modern cursor-pointer w-full shadow-lg relative z-10",
+            onClick && "cursor-pointer hover:border-blue-600 transition-colors",
+            className
           )}
-        </div>
-      ) : isPast11sCard ? (
-        <div className="flex flex-row items-start justify-between p-4">
-          <div className="flex flex-col">
-            <CardTitle className="text-white text-xl font-bold">
+          onClick={handleClick}
+          style={gradientStyle}
+        >
+          <div className="flex flex-row items-start justify-between p-4">
+            <div className="flex flex-col">
+              <CardTitle className="text-white text-xl font-bold">
+                {title}
+              </CardTitle>
+              <div className="text-white text-sm opacity-90">
+                {title === "Demographics" 
+                  ? "Workforce composition"
+                  : "Employee turnover"
+                }
+              </div>
+            </div>
+            {Icon && (
+              <div className="card-icon">
+                <Icon className="h-6 w-6 text-primary" />
+              </div>
+            )}
+          </div>
+        </Card>
+      </div>
+    ) : (
+      <Card 
+        className={cn(
+          isPast11sCard
+            ? "card-modern card-shadow cursor-pointer"
+            : "border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden flex flex-col justify-center aspect-square",
+          onClick && !isPast11sCard && "cursor-pointer hover:border-blue-600 transition-colors",
+          className
+        )}
+        onClick={handleClick}
+        style={gradientStyle}
+      >
+        {isPast11sCard ? (
+          <div className="flex flex-row items-start justify-between p-4">
+            <div className="flex flex-col">
+              <CardTitle className="text-white text-xl font-bold">
+                {title}
+              </CardTitle>
+              {value && (
+                <div className="text-white text-2xl font-semibold mb-1">
+                  {value}
+                </div>
+              )}
+              {description && (
+                <div className="text-white text-xs opacity-80">
+                  {description}
+                </div>
+              )}
+              {trendValue && (
+                <div className="text-white text-xs opacity-70 mt-1">
+                  {trendValue}
+                </div>
+              )}
+            </div>
+            {Icon && (
+              <div className="card-icon">
+                <Icon className="h-6 w-6 text-primary" />
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full p-4 text-center">
+            <CardTitle className={cn(
+              "font-small text-[#9320E7] text-center w-full whitespace-pre-line mb-1",
+              isMenuCard ? "text-4xl" : "text-5xl",
+              titleClassName
+            )}>
               {title}
             </CardTitle>
+            
             {value && (
-              <div className="text-white text-2xl font-semibold mb-1">
-                {value}
-              </div>
+              <div className="mt-2 text-2xl font-bold">{value}</div>
             )}
+            
             {description && (
-              <div className="text-white text-xs opacity-80">
-                {description}
+              <div className="mt-1 text-sm text-muted-foreground">{description}</div>
+            )}
+            
+            {trend && (
+              <div className="flex items-center justify-center mt-1">
+                <span
+                  className={cn(
+                    "font-small text-center whitespace-pre-line",
+                    isMenuCard ? "text-xs" : "text-sm",
+                    trend === "up" && "text-green-600",
+                    trend === "down" && "text-red-600",
+                    trend === "neutral" && "text-muted-foreground"
+                  )}
+                >
+                  {trendValue}
+                </span>
               </div>
             )}
-            {trendValue && (
-              <div className="text-white text-xs opacity-70 mt-1">
-                {trendValue}
+            
+            {Icon && !isWorkforceCard && (
+              <div className="absolute right-6 top-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
+                <Icon className="h-6 w-6 text-blue-600" />
               </div>
             )}
           </div>
-          {Icon && (
-            <div className="card-icon">
-              <Icon className="h-6 w-6 text-primary" />
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-          <CardTitle className={cn(
-            "font-small text-[#9320E7] text-center w-full whitespace-pre-line mb-1",
-            isMenuCard ? "text-4xl" : "text-5xl",
-            titleClassName
-          )}>
-            {title}
-          </CardTitle>
-          
-          {value && (
-            <div className="mt-2 text-2xl font-bold">{value}</div>
-          )}
-          
-          {description && (
-            <div className="mt-1 text-sm text-muted-foreground">{description}</div>
-          )}
-          
-          {trend && (
-            <div className="flex items-center justify-center mt-1">
-              <span
-                className={cn(
-                  "font-small text-center whitespace-pre-line",
-                  isMenuCard ? "text-xs" : "text-sm",
-                  trend === "up" && "text-green-600",
-                  trend === "down" && "text-red-600",
-                  trend === "neutral" && "text-muted-foreground"
-                )}
-              >
-                {trendValue}
-              </span>
-            </div>
-          )}
-          
-          {Icon && !isWorkforceCard && (
-            <div className="absolute right-6 top-6 h-12 w-12 rounded-full bg-[#FAFFCB]/50 flex items-center justify-center">
-              <Icon className="h-6 w-6 text-blue-600" />
-            </div>
-          )}
-        </div>
-      )}
-    </Card>
+        )}
+      </Card>
+    )
   );
 }
