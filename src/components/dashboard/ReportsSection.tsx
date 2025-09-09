@@ -15,7 +15,7 @@ export const ReportsSection: React.FC = () => {
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <Link to="/reports/workforce-analytics">
               <Card 
-                className="card-modern cursor-pointer w-full shadow-lg"
+                className="card-modern card-shadow cursor-pointer w-full shadow-lg"
                 style={{ 
                   background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
                 } as React.CSSProperties}
@@ -40,7 +40,7 @@ export const ReportsSection: React.FC = () => {
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <Link to="/reports/compensation-analysis">
               <Card 
-                className="card-modern cursor-pointer w-full shadow-lg"
+                className="card-modern card-shadow cursor-pointer w-full shadow-lg"
                 style={{ 
                   background: 'linear-gradient(135deg, #F7EAFB, #A076AD)'
                 } as React.CSSProperties}
@@ -67,7 +67,7 @@ export const ReportsSection: React.FC = () => {
         <div className="flex flex-wrap gap-4 justify-center pl-[calc(50%/3)]">
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <Card 
-              className="card-modern cursor-pointer w-full shadow-lg opacity-60"
+              className="card-modern card-shadow cursor-pointer w-full shadow-lg opacity-60"
               style={{ 
                 background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
               } as React.CSSProperties}

@@ -59,9 +59,9 @@ export function MetricCard({
     <Card 
       className={cn(
         isWorkforceCard 
-          ? "card-modern cursor-pointer w-full shadow-lg"
+          ? "card-modern card-shadow cursor-pointer w-full shadow-lg"
           : isPast11sCard
-          ? "card-modern cursor-pointer"
+          ? "card-modern card-shadow cursor-pointer"
           : "border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden flex flex-col justify-center aspect-square",
         onClick && !isWorkforceCard && !isPast11sCard && "cursor-pointer hover:border-blue-600 transition-colors",
         className

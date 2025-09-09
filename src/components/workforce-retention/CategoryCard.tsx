@@ -50,7 +50,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
   return (
     <Card 
-      className={`card-modern cursor-pointer w-full shadow-lg ${isActive ? 'ring-4 ring-white/50' : ''}`}
+      className={`card-modern card-shadow cursor-pointer w-full shadow-lg ${isActive ? 'ring-4 ring-white/50' : ''}`}
       onClick={handleClick}
       style={gradientStyle}
     >
