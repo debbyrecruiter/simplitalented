@@ -58,9 +58,9 @@ const WorkforceRetention = () => {
         </div>
         
       {/* Brick-style staggered layout */}
-      <div className="space-y-6 mb-8">
+      <div className="space-y-24 mb-8">
         {/* Row 1 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-16 justify-center">
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Companywide Attrition" 
@@ -90,7 +90,7 @@ const WorkforceRetention = () => {
         </div>
         
         {/* Row 2 - Offset by half tile width (brick pattern) */}
-        <div className="flex flex-wrap gap-4 justify-center pl-[calc(50%/3)]">
+        <div className="flex flex-wrap gap-16 justify-center pl-[calc(50%/3)]">
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Attrition by Race" 
@@ -111,7 +111,7 @@ const WorkforceRetention = () => {
         </div>
         
         {/* Row 3 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-16 justify-center">
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Regrettable Departures" 

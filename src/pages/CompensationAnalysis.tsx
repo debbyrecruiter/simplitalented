@@ -36,9 +36,9 @@ const CompensationAnalysis = () => {
           <PIRSalaryCard onBack={handleBackClick} />
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-24">
           {/* Row 1 - Full alignment */}
-          <div className="flex flex-wrap gap-4 justify-start">
+          <div className="flex flex-wrap gap-16 justify-start">
             <div className="w-[300px]">
               <CompensationCard
                 title="Comp By Job Grade & Performance"
@@ -63,7 +63,7 @@ const CompensationAnalysis = () => {
           </div>
           
           {/* Row 2 - Offset by half tile width (brick pattern) */}
-          <div className="flex flex-wrap gap-4 justify-start ml-[150px]">
+          <div className="flex flex-wrap gap-16 justify-start ml-[150px]">
             <div className="w-[300px]">
               <CompensationCard
                 title="Starting PIR by Race"

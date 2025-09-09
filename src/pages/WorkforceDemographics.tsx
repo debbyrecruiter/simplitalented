@@ -38,7 +38,7 @@ const WorkforceDemographics = () => {
         </div>
         
         {/* Single row - all cards centered */}
-        <div className="flex flex-wrap gap-4 justify-center mb-8">
+        <div className="flex flex-wrap gap-16 justify-center mb-8">
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <div className="relative">
               <div 

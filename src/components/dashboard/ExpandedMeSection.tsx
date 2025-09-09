@@ -28,9 +28,9 @@ export function ExpandedMeSection({
   return (
     <div className="p-4">
       {/* Brick-style staggered layout */}
-      <div className="space-y-6">
+      <div className="space-y-24">
         {/* Row 1 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-16 justify-center">
           <div className="w-[300px]">
             <div className="relative">
               <div 
@@ -138,7 +138,7 @@ export function ExpandedMeSection({
         </div>
 
         {/* Row 2 - Offset by half tile width (brick pattern) */}
-        <div className="flex flex-wrap gap-4 justify-center pl-[150px]">
+        <div className="flex flex-wrap gap-16 justify-center pl-[150px]">
           <div className="w-[300px]">
             <div className="relative">
               <div 
@@ -210,7 +210,7 @@ export function ExpandedMeSection({
         </div>
 
         {/* Row 3 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-16 justify-center">
           <div className="w-[300px]">
             <div className="relative">
               <div 

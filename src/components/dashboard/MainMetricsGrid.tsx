@@ -56,9 +56,9 @@ export function MainMetricsGrid({
   return (
     <div className="p-4">
       {/* Brick-style layout matching reference image */}
-      <div className="space-y-4">
+      <div className="space-y-16">
         {/* Row 1 - Full alignment */}
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-16">
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <div className="relative">
               <div 
@@ -169,7 +169,7 @@ export function MainMetricsGrid({
         </div>
 
         {/* Row 2 - Offset by half tile width (brick pattern) */}
-        <div className="flex flex-wrap gap-4 ml-[calc(50%/3)]">
+        <div className="flex flex-wrap gap-16 ml-[calc(50%/3)]">
 
           <div className="flex-1 min-w-[300px] max-w-[400px]">
             <div className="relative">

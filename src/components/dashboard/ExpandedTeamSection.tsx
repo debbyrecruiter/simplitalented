@@ -80,9 +80,9 @@ export const ExpandedTeamSection = () => {
   return (
     <div className="p-4">
       {/* Brick-style staggered layout */}
-      <div className="space-y-6">
+      <div className="space-y-24">
         {/* Row 1 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-16 justify-center">
           <div className="relative">
             <div 
               className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
@@ -124,7 +124,7 @@ export const ExpandedTeamSection = () => {
         </div>
 
         {/* Row 2 - Offset by half tile width (brick pattern) */}
-        <div className="flex flex-wrap gap-4 justify-center pl-[150px]">
+        <div className="flex flex-wrap gap-16 justify-center pl-[150px]">
           {teamMembers.slice(3, 6).map((member) => (
             <div key={member.id} className="relative">
               <div 
@@ -148,7 +148,7 @@ export const ExpandedTeamSection = () => {
         </div>
 
         {/* Row 3 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-16 justify-center">
           {teamMembers.slice(6).map((member) => (
             <div key={member.id} className="relative">
               <div 
