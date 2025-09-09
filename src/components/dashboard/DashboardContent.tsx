@@ -22,6 +22,8 @@ export const DashboardContent: React.FC = () => {
   const navigate = useNavigate();
   
   console.log("Rendering DashboardContent. Current expanded section:", expandedSection);
+  console.log("Type of expandedSection:", typeof expandedSection);
+  console.log("Is past11s-transcript?", expandedSection === "past11s-transcript");
   
   const handleMeCardClick = () => {
     console.log("Me card clicked");
@@ -94,7 +96,12 @@ export const DashboardContent: React.FC = () => {
       
       {expandedSection === "past11s-video" && <Past11sVideoFeed />}
       
-      {expandedSection === "past11s-transcript" && <Past11sTranscriptFeed />}
+      {expandedSection === "past11s-transcript" && (
+        <div style={{ backgroundColor: 'red', padding: '20px', minHeight: '200px' }}>
+          <h1>TRANSCRIPT SECTION IS RENDERING</h1>
+          <Past11sTranscriptFeed />
+        </div>
+      )}
     </div>
   );
 };
