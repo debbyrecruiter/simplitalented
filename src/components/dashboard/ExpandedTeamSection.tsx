@@ -22,12 +22,13 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: T
   const gradientStyle = { background: gradients[nameHash % gradients.length] };
 
   return (
-    <Card 
-      className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 flex-1 min-w-[300px] max-w-[400px]"
-      style={{
-        ...gradientStyle
-      }}
-    >
+    <div className="flex-1 min-w-[300px] max-w-[400px]">
+      <Card 
+        className="card-modern cursor-pointer w-full shadow-lg relative z-10 hover:scale-105 transition-all duration-300"
+        style={{
+          ...gradientStyle
+        }}
+      >
       <CardHeader className="flex flex-row items-start justify-between p-4">
         <div className="flex flex-col">
           <CardTitle className="text-white text-xl font-bold">
@@ -62,7 +63,8 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: T
           </Button>
         </div>
       </CardContent>
-    </Card>
+      </Card>
+    </div>
   );
 };
 
@@ -81,8 +83,26 @@ export const ExpandedTeamSection = () => {
       <div className="space-y-24">
         {/* Row 1 - Full alignment */}
         <div className="flex flex-wrap gap-16 justify-center">
-          <div className="flex-1 min-w-[300px] max-w-[400px]">
-            <div className="relative">
+          <div className="relative">
+            <div 
+              className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
+              style={{
+                background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
+                transform: 'translate(25px, 27px) scale(0.95)',
+                zIndex: -1
+              }}
+            ></div>
+            <TeamMemberCard
+              name="Alex Morgan"
+              role="Senior Developer"
+              level="manager"
+              avatarUrl={teamMembers[0].avatarUrl}
+              initials={teamMembers[0].initials}
+              onEndorse={handleEndorse}
+            />
+          </div>
+          {teamMembers.slice(1, 3).map((member) => (
+            <div key={member.id} className="relative">
               <div 
                 className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
                 style={{
@@ -92,35 +112,13 @@ export const ExpandedTeamSection = () => {
                 }}
               ></div>
               <TeamMemberCard
-                name="Alex Morgan"
-                role="Senior Developer"
-                level="manager"
-                avatarUrl={teamMembers[0].avatarUrl}
-                initials={teamMembers[0].initials}
+                name={member.name}
+                role={member.role}
+                level="direct-report"
+                avatarUrl={member.avatarUrl}
+                initials={member.initials}
                 onEndorse={handleEndorse}
               />
-            </div>
-          </div>
-          {teamMembers.slice(1, 3).map((member) => (
-            <div key={member.id} className="flex-1 min-w-[300px] max-w-[400px]">
-              <div className="relative">
-                <div 
-                  className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
-                  style={{
-                    background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
-                    transform: 'translate(25px, 27px) scale(0.95)',
-                    zIndex: -1
-                  }}
-                ></div>
-                <TeamMemberCard
-                  name={member.name}
-                  role={member.role}
-                  level="direct-report"
-                  avatarUrl={member.avatarUrl}
-                  initials={member.initials}
-                  onEndorse={handleEndorse}
-                />
-              </div>
             </div>
           ))}
         </div>
@@ -128,25 +126,23 @@ export const ExpandedTeamSection = () => {
         {/* Row 2 - Offset by half tile width (brick pattern) */}
         <div className="flex flex-wrap gap-16 justify-center pl-[150px]">
           {teamMembers.slice(3, 6).map((member) => (
-            <div key={member.id} className="flex-1 min-w-[300px] max-w-[400px]">
-              <div className="relative">
-                <div 
-                  className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
-                  style={{
-                    background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
-                    transform: 'translate(25px, 27px) scale(0.95)',
-                    zIndex: -1
-                  }}
-                ></div>
-                <TeamMemberCard
-                  name={member.name}
-                  role={member.role}
-                  level="direct-report"
-                  avatarUrl={member.avatarUrl}
-                  initials={member.initials}
-                  onEndorse={handleEndorse}
-                />
-              </div>
+            <div key={member.id} className="relative">
+              <div 
+                className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
+                style={{
+                  background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
+                  transform: 'translate(25px, 27px) scale(0.95)',
+                  zIndex: -1
+                }}
+              ></div>
+              <TeamMemberCard
+                name={member.name}
+                role={member.role}
+                level="direct-report"
+                avatarUrl={member.avatarUrl}
+                initials={member.initials}
+                onEndorse={handleEndorse}
+              />
             </div>
           ))}
         </div>
@@ -154,25 +150,23 @@ export const ExpandedTeamSection = () => {
         {/* Row 3 - Full alignment */}
         <div className="flex flex-wrap gap-16 justify-center">
           {teamMembers.slice(6).map((member) => (
-            <div key={member.id} className="flex-1 min-w-[300px] max-w-[400px]">
-              <div className="relative">
-                <div 
-                  className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
-                  style={{
-                    background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
-                    transform: 'translate(25px, 27px) scale(0.95)',
-                    zIndex: -1
-                  }}
-                ></div>
-                <TeamMemberCard
-                  name={member.name}
-                  role={member.role}
-                  level="direct-report"
-                  avatarUrl={member.avatarUrl}
-                  initials={member.initials}
-                  onEndorse={handleEndorse}
-                />
-              </div>
+            <div key={member.id} className="relative">
+              <div 
+                className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
+                style={{
+                  background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
+                  transform: 'translate(25px, 27px) scale(0.95)',
+                  zIndex: -1
+                }}
+              ></div>
+              <TeamMemberCard
+                name={member.name}
+                role={member.role}
+                level="direct-report"
+                avatarUrl={member.avatarUrl}
+                initials={member.initials}
+                onEndorse={handleEndorse}
+              />
             </div>
           ))}
         </div>
