@@ -79,10 +79,10 @@ export const ExpandedTeamSection = () => {
 
   return (
     <div className="p-4">
-      {/* Brick pattern layout using flexbox */}
-      <div className="flex flex-wrap gap-4">
-        {/* First row */}
-        <div className="flex flex-wrap gap-4 w-full">
+      {/* Brick-style staggered layout */}
+      <div className="space-y-6">
+        {/* Row 1 - Full alignment */}
+        <div className="flex flex-wrap gap-4 justify-center">
           <TeamMemberCard
             name="Alex Morgan"
             role="Senior Developer"
@@ -104,11 +104,8 @@ export const ExpandedTeamSection = () => {
           ))}
         </div>
 
-        {/* Second row - offset for brick pattern */}
-        <div 
-          className="flex flex-wrap gap-4 w-full"
-          style={{ marginLeft: 'calc(33.333% + 0.5rem)' }}
-        >
+        {/* Row 2 - Offset by half tile width (brick pattern) */}
+        <div className="flex flex-wrap gap-4 justify-center pl-[150px]">
           {teamMembers.slice(3, 6).map((member) => (
             <TeamMemberCard
               key={member.id}
@@ -122,8 +119,8 @@ export const ExpandedTeamSection = () => {
           ))}
         </div>
 
-        {/* Third row - normal alignment */}
-        <div className="flex flex-wrap gap-4 w-full">
+        {/* Row 3 - Full alignment */}
+        <div className="flex flex-wrap gap-4 justify-center">
           {teamMembers.slice(6).map((member) => (
             <TeamMemberCard
               key={member.id}
