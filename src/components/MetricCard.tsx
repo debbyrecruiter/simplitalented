@@ -59,7 +59,7 @@ export function MetricCard({
     <Card 
       className={cn(
         isWorkforceCard 
-          ? "shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 h-80 w-full flex flex-col flex-shrink-0"
+          ? "card-modern cursor-pointer w-full shadow-lg"
           : isPast11sCard
           ? "card-modern cursor-pointer"
           : "border-12 border-[#840DD7] bg-[#FFFFFF] shadow-sm overflow-hidden flex flex-col justify-center aspect-square",
@@ -70,26 +70,24 @@ export function MetricCard({
       style={gradientStyle}
     >
       {isWorkforceCard ? (
-        <>
-          <div className="flex flex-col items-center text-center pt-6 pb-3 flex-shrink-0">
-            {Icon && (
-              <div className="bg-white/20 rounded-full p-4 mb-4 shadow-md">
-                <Icon className="h-12 w-12 text-white" />
-              </div>
-            )}
-            <CardTitle className="text-xl font-bold text-white mb-2">
+        <div className="flex flex-row items-start justify-between p-4">
+          <div className="flex flex-col">
+            <CardTitle className="text-white text-xl font-bold">
               {title}
             </CardTitle>
-          </div>
-          <div className="px-4 pb-6 flex-1 flex flex-col justify-center text-center">
-            <p className="text-white/80 text-sm">
+            <div className="text-white text-sm opacity-90">
               {title === "Demographics" 
-                ? "Analyze workforce composition and diversity metrics"
-                : "Track employee turnover and retention strategies"
+                ? "Workforce composition"
+                : "Employee turnover"
               }
-            </p>
+            </div>
           </div>
-        </>
+          {Icon && (
+            <div className="card-icon">
+              <Icon className="h-6 w-6 text-primary" />
+            </div>
+          )}
+        </div>
       ) : isPast11sCard ? (
         <div className="flex flex-row items-start justify-between p-4">
           <div className="flex flex-col">
