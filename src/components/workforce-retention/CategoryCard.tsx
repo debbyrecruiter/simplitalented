@@ -50,20 +50,20 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
 
   return (
     <Card 
-      className={`shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 w-[300px] ${isActive ? 'ring-4 ring-white/50' : ''}`}
+      className={`card-modern cursor-pointer w-full shadow-lg ${isActive ? 'ring-4 ring-white/50' : ''}`}
       onClick={handleClick}
       style={gradientStyle}
     >
-      <div className="flex flex-row items-start justify-between p-4 h-full">
+      <div className="flex flex-row items-start justify-between p-4">
         <div className="flex flex-col">
           <h3 className="text-white text-xl font-bold">
             {title}
           </h3>
-          <div className="text-white text-sm opacity-90 mt-1">
+          <div className="text-white text-sm opacity-90">
             View analytics data
           </div>
         </div>
-        <div className="bg-white rounded-full p-2 shadow-md">
+        <div className="card-icon">
           <Icon className="h-6 w-6 text-primary" />
         </div>
       </div>

@@ -60,8 +60,8 @@ const WorkforceRetention = () => {
       {/* Brick-style staggered layout */}
       <div className="space-y-6 mb-8">
         {/* Row 1 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-start">
-          <div className="w-[300px]">
+        <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Companywide Attrition" 
               icon={TrendingDown} 
@@ -70,7 +70,7 @@ const WorkforceRetention = () => {
             />
           </div>
           
-          <div className="w-[300px]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Attrition by Manager" 
               icon={Briefcase} 
@@ -79,7 +79,7 @@ const WorkforceRetention = () => {
             />
           </div>
           
-          <div className="w-[300px]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Attrition by Performance Score" 
               icon={Award} 
@@ -90,8 +90,8 @@ const WorkforceRetention = () => {
         </div>
         
         {/* Row 2 - Offset by half tile width (brick pattern) */}
-        <div className="flex flex-wrap gap-4 justify-start ml-[150px]">
-          <div className="w-[300px]">
+        <div className="flex flex-wrap gap-4 justify-center pl-[calc(50%/3)]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Attrition by Race" 
               icon={BarChart2} 
@@ -100,7 +100,7 @@ const WorkforceRetention = () => {
             />
           </div>
           
-          <div className="w-[300px]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Attrition by Gender" 
               icon={Users} 
@@ -111,8 +111,8 @@ const WorkforceRetention = () => {
         </div>
         
         {/* Row 3 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-start">
-          <div className="w-[300px]">
+        <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Regrettable Departures" 
               icon={UserX} 
@@ -121,7 +121,7 @@ const WorkforceRetention = () => {
             />
           </div>
 
-          <div className="w-[300px]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <CategoryCard 
               title="Cost Analysis" 
               icon={DollarSign} 
