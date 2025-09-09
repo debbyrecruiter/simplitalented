@@ -12,14 +12,13 @@ export const ReportsSection: React.FC = () => {
       <div className="space-y-6">
         {/* Row 1 - Full alignment */}
         <div className="flex flex-wrap gap-4 justify-center">
-          <div className="w-[300px]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <Link to="/reports/workforce-analytics">
               <Card 
-                className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 w-full flex flex-col flex-shrink-0"
+                className="card-modern cursor-pointer w-full shadow-lg"
                 style={{ 
-                  background: 'linear-gradient(135deg, #f403d1, #64b5f6)',
-                  aspectRatio: '16/9'
-                }}
+                  background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
+                } as React.CSSProperties}
               >
                 <CardHeader className="flex flex-row items-start justify-between p-4">
                   <div className="flex flex-col">
@@ -30,22 +29,21 @@ export const ReportsSection: React.FC = () => {
                       Performance insights
                     </div>
                   </div>
-                  <div className="bg-white/20 rounded-full p-2 shadow-md">
-                    <BarChart2 className="h-6 w-6 text-white" />
+                  <div className="card-icon">
+                    <BarChart2 className="h-6 w-6 text-primary" />
                   </div>
                 </CardHeader>
               </Card>
             </Link>
           </div>
           
-          <div className="w-[300px]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <Link to="/reports/compensation-analysis">
               <Card 
-                className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 w-full flex flex-col flex-shrink-0"
+                className="card-modern cursor-pointer w-full shadow-lg"
                 style={{ 
-                  background: 'linear-gradient(135deg, #F7EAFB, #A076AD)',
-                  aspectRatio: '16/9'
-                }}
+                  background: 'linear-gradient(135deg, #F7EAFB, #A076AD)'
+                } as React.CSSProperties}
               >
                 <CardHeader className="flex flex-row items-start justify-between p-4">
                   <div className="flex flex-col">
@@ -56,8 +54,8 @@ export const ReportsSection: React.FC = () => {
                       Salary benchmarking
                     </div>
                   </div>
-                  <div className="bg-white/20 rounded-full p-2 shadow-md">
-                    <DollarSign className="h-6 w-6 text-white" />
+                  <div className="card-icon">
+                    <DollarSign className="h-6 w-6 text-primary" />
                   </div>
                 </CardHeader>
               </Card>
@@ -66,14 +64,13 @@ export const ReportsSection: React.FC = () => {
         </div>
 
         {/* Row 2 - Offset by half tile width (brick pattern) */}
-        <div className="flex flex-wrap gap-4 justify-center pl-[150px]">
-          <div className="w-[300px]">
+        <div className="flex flex-wrap gap-4 justify-center pl-[calc(50%/3)]">
+          <div className="flex-1 min-w-[300px] max-w-[400px]">
             <Card 
-              className="shadow-lg relative cursor-pointer hover:scale-105 transition-all duration-300 w-full flex flex-col flex-shrink-0 opacity-60"
+              className="card-modern cursor-pointer w-full shadow-lg opacity-60"
               style={{ 
-                background: 'linear-gradient(135deg, #f403d1, #64b5f6)',
-                aspectRatio: '16/9'
-              }}
+                background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
+              } as React.CSSProperties}
             >
               <CardHeader className="flex flex-row items-start justify-between p-4">
                 <div className="flex flex-col">
@@ -84,8 +81,8 @@ export const ReportsSection: React.FC = () => {
                     Coming Soon
                   </div>
                 </div>
-                <div className="bg-white/20 rounded-full p-2 shadow-md">
-                  <FileText className="h-6 w-6 text-white" />
+                <div className="card-icon">
+                  <FileText className="h-6 w-6 text-primary" />
                 </div>
               </CardHeader>
             </Card>
