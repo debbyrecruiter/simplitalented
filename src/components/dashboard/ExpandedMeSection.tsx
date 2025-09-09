@@ -7,13 +7,15 @@ interface ExpandedMeSectionProps {
   onGoalsCardClick: () => void;
   onMySkillsClick: () => void;
   onToDoListClick: () => void;
+  onReviewsClick?: () => void;
 }
 
 export function ExpandedMeSection({ 
   onPast11CardClick, 
   onGoalsCardClick,
   onMySkillsClick,
-  onToDoListClick
+  onToDoListClick,
+  onReviewsClick
 }: ExpandedMeSectionProps) {
   const navigate = useNavigate();
 
@@ -154,6 +156,14 @@ export function ExpandedMeSection({
                 style={{ 
                   background: 'linear-gradient(135deg, #F7EAFB, #A076AD)',
                   aspectRatio: '16/9'
+                }}
+                onClick={() => {
+                  console.log("My Reviews card clicked in Me section!");
+                  if (onReviewsClick) {
+                    onReviewsClick();
+                  } else {
+                    console.log("onReviewsClick not provided!");
+                  }
                 }}
               >
                 <CardHeader className="flex flex-row items-start justify-between p-4">

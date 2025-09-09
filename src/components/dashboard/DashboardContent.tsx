@@ -34,7 +34,10 @@ export const DashboardContent: React.FC = () => {
   const handleMySkillsClick = () => updateSection("my-skills");
   const handleToDoListClick = () => updateSection("todo-list");
   const handleReportsClick = () => updateSection("reports");
-  const handleReviewsClick = () => updateSection("reviews");
+  const handleReviewsClick = () => {
+    console.log("Reviews card clicked! Setting section to reviews");
+    updateSection("reviews");
+  };
   const handleExitInterviewsClick = () => navigate("/exit-interviews");
 
   return (
@@ -65,6 +68,7 @@ export const DashboardContent: React.FC = () => {
           onGoalsCardClick={handleGoalsCardClick}
           onMySkillsClick={handleMySkillsClick}
           onToDoListClick={handleToDoListClick}
+          onReviewsClick={handleReviewsClick}
         />
       )}
 
