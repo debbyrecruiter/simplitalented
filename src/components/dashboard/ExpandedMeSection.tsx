@@ -30,7 +30,7 @@ export function ExpandedMeSection({
       {/* Brick-style staggered layout */}
       <div className="space-y-6">
         {/* Row 1 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-start">
+        <div className="flex flex-wrap gap-4 justify-center">
           <div className="w-[300px]">
             <Card 
               className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
@@ -108,7 +108,7 @@ export function ExpandedMeSection({
         </div>
 
         {/* Row 2 - Offset by half tile width (brick pattern) */}
-        <div className="flex flex-wrap gap-4 justify-start ml-[150px]">
+        <div className="flex flex-wrap gap-4 justify-center pl-[150px]">
           <div className="w-[300px]">
             <Card 
               className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
@@ -160,7 +160,7 @@ export function ExpandedMeSection({
         </div>
 
         {/* Row 3 - Full alignment */}
-        <div className="flex flex-wrap gap-4 justify-start">
+        <div className="flex flex-wrap gap-4 justify-center">
           <div className="w-[300px]">
             <Card 
               className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full"
