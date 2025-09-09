@@ -22,11 +22,12 @@ const TeamMemberCard = ({ name, role, level, avatarUrl, initials, onEndorse }: T
   const gradientStyle = { background: gradients[nameHash % gradients.length] };
 
   return (
-    <div className="flex-1 min-w-[300px] max-w-[400px]">
+    <div className="w-[300px]">
       <Card 
-        className="card-modern cursor-pointer w-full shadow-lg relative z-10 hover:scale-105 transition-all duration-300"
+        className="shadow-lg overflow-hidden relative cursor-pointer hover:scale-105 transition-all duration-300 w-full flex flex-col flex-shrink-0 z-10"
         style={{
-          ...gradientStyle
+          ...gradientStyle,
+          aspectRatio: '16/9'
         }}
       >
       <CardHeader className="flex flex-row items-start justify-between p-4">
