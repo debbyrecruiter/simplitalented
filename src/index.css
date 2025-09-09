@@ -109,20 +109,12 @@
     position: relative;
     aspect-ratio: 16 / 9;
     background: linear-gradient(135deg, var(--card-gradient-start, #9B87F5), var(--card-gradient-end, #7C3AED));
-    box-shadow: 
-      0 10px 25px -5px rgba(0, 0, 0, 0.1),
-      0 20px 40px -10px rgba(0, 0, 0, 0.1),
-      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
     transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .card-modern:hover {
     transform: perspective(1000px) rotateX(-2deg) rotateY(2deg) translateY(-8px);
-    box-shadow: 
-      0 20px 40px -5px rgba(0, 0, 0, 0.2),
-      0 30px 60px -10px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   }
   
   .card-modern .card-icon {
@@ -137,33 +129,18 @@
 
   /* Shadow gradient effect for cards */
   .card-shadow {
-    position: relative;
+    box-shadow: 
+      25px 27px 40px -10px rgba(184, 79, 206, 0.7),
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 20px 40px -10px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   }
 
-  .card-shadow::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -2;
-    background: linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%);
-    transform: translate(25px, 27px) scale(0.95);
-    filter: blur(20px);
-    opacity: 0.7;
-    border-radius: 1rem;
-  }
-
-  .card-shadow::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    background: inherit;
-    border-radius: inherit;
+  .card-shadow:hover {
+    box-shadow: 
+      25px 27px 60px -5px rgba(184, 79, 206, 0.8),
+      0 20px 40px -5px rgba(0, 0, 0, 0.2),
+      0 30px 60px -10px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.2) inset;
   }
 }
