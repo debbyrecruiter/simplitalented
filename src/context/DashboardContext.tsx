@@ -6,6 +6,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 export type ExpandedSectionType = 
   | "me" 
   | "past11s" 
+  | "past11s-video"
+  | "past11s-transcript"
   | "team" 
   | "direct-reports" 
   | "goals" 
@@ -51,6 +53,10 @@ export const DashboardProvider = ({ children }: { children: React.ReactNode }) =
     if (expandedSection === "past11s" || expandedSection === "goals" || 
         expandedSection === "my-skills" || expandedSection === "todo-list") {
       setExpandedSection("me");
+    }
+    // If we're in past11s subsections, go back to past11s
+    else if (expandedSection === "past11s-video" || expandedSection === "past11s-transcript") {
+      setExpandedSection("past11s");
     } else {
       // Otherwise, go back to the main dashboard
       setExpandedSection(null);

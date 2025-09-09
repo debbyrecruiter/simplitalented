@@ -1,7 +1,19 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Video, Search } from "lucide-react";
+import { useDashboard } from "@/context/DashboardContext";
 
 export const Past11sSubmenu = () => {
+  const { updateSection } = useDashboard();
+  
+  const handleVideoClick = () => {
+    console.log("Video card clicked!");
+    updateSection("past11s-video");
+  };
+  
+  const handleTranscriptClick = () => {
+    console.log("Transcript card clicked!");  
+    updateSection("past11s-transcript");
+  };
   return (
     <div className="col-span-full flex justify-center items-center gap-16 mt-72 animate-fade-in">
       <div className="w-[300px]">
@@ -20,6 +32,7 @@ export const Past11sSubmenu = () => {
               background: 'linear-gradient(135deg, #f403d1, #64b5f6)',
               aspectRatio: '16/9'
             }}
+            onClick={handleVideoClick}
           >
             <CardHeader className="flex flex-row items-start justify-between p-4">
               <div className="flex flex-col">
@@ -57,6 +70,7 @@ export const Past11sSubmenu = () => {
               background: 'linear-gradient(135deg, #C698EB, #571B88)',
               aspectRatio: '16/9'
             }}
+            onClick={handleTranscriptClick}
           >
             <CardHeader className="flex flex-row items-start justify-between p-4">
               <div className="flex flex-col">
