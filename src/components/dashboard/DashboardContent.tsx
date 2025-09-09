@@ -34,10 +34,7 @@ export const DashboardContent: React.FC = () => {
   const handleMySkillsClick = () => updateSection("my-skills");
   const handleToDoListClick = () => updateSection("todo-list");
   const handleReportsClick = () => updateSection("reports");
-  const handleReviewsClick = () => {
-    console.log("Reviews card clicked!");
-    updateSection("reviews");
-  };
+  const handleReviewsClick = () => updateSection("reviews");
   const handleExitInterviewsClick = () => navigate("/exit-interviews");
 
   return (

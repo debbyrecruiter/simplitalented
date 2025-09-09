@@ -27,8 +27,6 @@ export function MainMetricsGrid({
 }: MainMetricsGridProps) {
   const navigate = useNavigate();
   
-  console.log("MainMetricsGrid rendered, onReviewsClick:", typeof onReviewsClick);
-  
   // Handle Me card click with extra debugging
   const handleMeClick = (e: React.MouseEvent) => {
     // Log the event
@@ -270,15 +268,7 @@ export function MainMetricsGrid({
                 style={{ 
                   background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
                 } as React.CSSProperties}
-                onClick={() => {
-                  console.log("Reviews card clicked directly!");
-                  if (onReviewsClick) {
-                    console.log("Calling onReviewsClick handler");
-                    onReviewsClick();
-                  } else {
-                    console.log("onReviewsClick is not defined!");
-                  }
-                }}
+                onClick={onReviewsClick}
               >
                 <CardHeader className="flex flex-row items-start justify-between p-4">
                   <div className="flex flex-col">
