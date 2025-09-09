@@ -60,53 +60,71 @@ export function MainMetricsGrid({
         {/* Row 1 - Full alignment */}
         <div className="flex flex-wrap gap-4">
           <div className="flex-1 min-w-[300px] max-w-[400px]">
-            {/* Me Card */}
-            <Card 
-              className="card-modern card-shadow cursor-pointer w-full shadow-lg"
-              style={{ 
-                background: 'linear-gradient(135deg, #F7EAFB, #A076AD)'
-              } as React.CSSProperties}
-              onClick={handleMeClick}
-            >
-              <CardHeader className="flex flex-row items-start justify-between p-4">
-                <div className="flex flex-col">
-                  <CardTitle className="text-white text-xl font-bold">
-                    Me
-                  </CardTitle>
-                  <div className="text-white text-sm opacity-90">
-                    Personal dashboard
+            <div className="relative">
+              <div 
+                className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
+                style={{
+                  background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
+                  transform: 'translate(25px, 27px) scale(0.95)',
+                  zIndex: -1
+                }}
+              ></div>
+              <Card 
+                className="card-modern cursor-pointer w-full shadow-lg relative z-10"
+                style={{ 
+                  background: 'linear-gradient(135deg, #F7EAFB, #A076AD)'
+                } as React.CSSProperties}
+                onClick={handleMeClick}
+              >
+                <CardHeader className="flex flex-row items-start justify-between p-4">
+                  <div className="flex flex-col">
+                    <CardTitle className="text-white text-xl font-bold">
+                      Me
+                    </CardTitle>
+                    <div className="text-white text-sm opacity-90">
+                      Personal dashboard
+                    </div>
                   </div>
-                </div>
-                <div className="card-icon">
-                  <User className="h-6 w-6 text-primary" />
-                </div>
-              </CardHeader>
-            </Card>
+                  <div className="card-icon">
+                    <User className="h-6 w-6 text-primary" />
+                  </div>
+                </CardHeader>
+              </Card>
+            </div>
           </div>
           
           <div className="flex-1 min-w-[300px] max-w-[400px]">
-            {/* Team Card */}
-            <Card 
-              className="card-modern card-shadow cursor-pointer w-full shadow-lg"
-              style={{ 
-                background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
-              } as React.CSSProperties}
-              onClick={onTeamCardClick}
-            >
-              <CardHeader className="flex flex-row items-start justify-between p-4">
-                <div className="flex flex-col">
-                  <CardTitle className="text-white text-xl font-bold">
-                    Team
-                  </CardTitle>
-                  <div className="text-white text-sm opacity-90">
-                    Team overview
+            <div className="relative">
+              <div 
+                className="absolute top-0 left-0 w-full h-full rounded-2xl opacity-70 blur-xl"
+                style={{
+                  background: 'linear-gradient(-45deg, #b84fce 0%, #d4acfb 100%)',
+                  transform: 'translate(25px, 27px) scale(0.95)',
+                  zIndex: -1
+                }}
+              ></div>
+              <Card 
+                className="card-modern cursor-pointer w-full shadow-lg relative z-10"
+                style={{ 
+                  background: 'linear-gradient(135deg, #f403d1, #64b5f6)'
+                } as React.CSSProperties}
+                onClick={onTeamCardClick}
+              >
+                <CardHeader className="flex flex-row items-start justify-between p-4">
+                  <div className="flex flex-col">
+                    <CardTitle className="text-white text-xl font-bold">
+                      Team
+                    </CardTitle>
+                    <div className="text-white text-sm opacity-90">
+                      Team overview
+                    </div>
                   </div>
-                </div>
-                <div className="card-icon">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-              </CardHeader>
-            </Card>
+                  <div className="card-icon">
+                    <Users className="h-6 w-6 text-primary" />
+                  </div>
+                </CardHeader>
+              </Card>
+            </div>
           </div>
           
           <div className="flex-1 min-w-[300px] max-w-[400px]">
