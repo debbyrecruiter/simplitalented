@@ -16,6 +16,7 @@ import WorkforceAnalytics from "./pages/WorkforceAnalytics";
 import WorkforceDemographics from "./pages/WorkforceDemographics";
 import WorkforceRetention from "./pages/WorkforceRetention";
 import CompensationAnalysis from "./pages/CompensationAnalysis";
+import ReviewsPage from "./pages/ReviewsPage";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
 
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="learning-development" element={<LearningDevelopmentPage />} />
               <Route path="exit-interviews" element={<ExitInterviewsPage />} />
               <Route path="development-schedule" element={<DevelopmentSchedulePage />} />
+              <Route path="reviews" element={<ReviewsPage />} />
               <Route path="reports" element={<Reports />} />
               <Route path="reports/workforce-analytics" element={<WorkforceAnalytics />} />
               <Route path="reports/workforce-demographics" element={<WorkforceDemographics />} />

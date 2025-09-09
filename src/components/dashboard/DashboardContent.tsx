@@ -10,6 +10,7 @@ import { GoalsSubmenu } from "@/components/dashboard/GoalsSubmenu";
 import { ExpandedCompanyGoalsSection } from "@/components/dashboard/ExpandedCompanyGoalsSection";
 import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
 import { ExpandedToDoSection } from "@/components/dashboard/ExpandedToDoListSection";
+import { ExpandedReviewsSection } from "@/components/dashboard/ExpandedReviewsSection";
 import { useDashboard, ExpandedSectionType } from "@/context/DashboardContext";
 import { ReportsSection } from "@/components/dashboard/ReportsSection";
 import { useNavigate } from "react-router-dom";
@@ -80,6 +81,8 @@ export const DashboardContent: React.FC = () => {
       {expandedSection === "todo-list" && <ExpandedToDoSection />}
       
       {expandedSection === "reports" && <ReportsSection />}
+      
+      {expandedSection === "reviews" && <ExpandedReviewsSection />}
     </div>
   );
 };
