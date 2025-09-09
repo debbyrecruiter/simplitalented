@@ -12,6 +12,7 @@ import { MySkillsSubmenu } from "@/components/dashboard/MySkillsSubmenu";
 import { ExpandedToDoSection } from "@/components/dashboard/ExpandedToDoListSection";
 import { ExpandedReviewsSection } from "@/components/dashboard/ExpandedReviewsSection";
 import { Past11sVideoFeed } from "@/components/dashboard/Past11sVideoFeed";
+import { Past11sTranscriptFeed } from "@/components/dashboard/Past11sTranscriptFeed";
 import { useDashboard, ExpandedSectionType } from "@/context/DashboardContext";
 import { ReportsSection } from "@/components/dashboard/ReportsSection";
 import { useNavigate } from "react-router-dom";
@@ -92,6 +93,8 @@ export const DashboardContent: React.FC = () => {
       {expandedSection === "reviews" && <ExpandedReviewsSection />}
       
       {expandedSection === "past11s-video" && <Past11sVideoFeed />}
+      
+      {expandedSection === "past11s-transcript" && <Past11sTranscriptFeed />}
     </div>
   );
 };
